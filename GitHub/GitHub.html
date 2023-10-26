@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->
+        <title>Curso Alura - GitHub</title>
+    </head>
+    <body>
+        <p>
+        # GIT<br>
+        <br>
+        <a href=" http://git-school.github.io/visualizing-git/">Simulador de GIT</a>
+        <br>
+        <br>
+        ## Estados<br>        
+        * Modificado (modified);<br>
+        * Preparado (staged/index)<br>
+        * Consolidado (comitted);<br>
+        <br>
+        ## Ajuda <br>
+        : Geral<br>
+            git help<br>
+        <br>    
+        : Comando específico <br>
+            git help add <br>
+            git help commit <br>
+            git help &lt qualquer_comando_git &gt <br>
+        <br>
+        ## Configuração<br>
+        <br>
+        : Geral<br>
+        As configurações do GIT são armazenadas no arquivo **.gitconfig** localizado dentro do diretório do usuário do Sistema Operacional (Ex.: Windows: C:\Users\Documents and Settings\Leonardo ou *nix /home/leonardo).
+        <br>
+        As configurações realizadas através dos comandos abaixo serão incluídas no arquivo citado acima.<br>
+        <br>
+        : Setar usuário<br>
+            git config --global user.name "Leonardo Comelli"<br>
+        <br>
+        : Setar email <br>
+            git config --global user.email leonardo@software-ltda.com.br <br>
+        <br>
+        : Setar editor <br>
+            git config --global core.editor vim <br>
+        <br>
+        : Setar ferramenta de merge <br>
+            git config --global merge.tool vimdiff <br>
+        <br>
+        : Setar arquivos a serem ignorados <br>
+            git config --global core.excludesfile ~/.gitignore <br>
+        <br>
+        : Listar configurações <br>
+            git config --list <br>
+        <br>
+        : Ignorar Arquivos<br>
+        Os nomes de arquivos/diretórios ou extensões de arquivos listados no arquivo **.gitignore** não serão adicionados em um repositório. Existem dois arquivos .gitignore, são eles:
+        <br>
+        * Geral: Normalmente armazenado no diretório do usuário do Sistema Operacional. O arquivo que possui a lista dos arquivos/diretórios a serem ignorados por **todos os repositórios** deverá ser declarado conforme citado acima. O arquivo não precisa ter o nome de **.gitignore**.
+        <br>
+        * Por repositório: Deve ser armazenado no diretório do repositório e deve conter a lista dos arquivos/diretórios que devem ser ignorados apenas para o repositório específico.
+        <br>
+        <br>
+        ## Repositórios<br>
+        <br>
+        Os repositórios do Git podem corresponder a um diretório local na sua estação ou um diretório em qualquer outra estação.
+        Como usuários precisamos saber onde pegamos as informações e onde as publicamos.                
+        <br>
+        Algumas arquiteturas praticadas no controle de versão, utilizam um servidor mestre que contem as versões finais dos arquivos e outros servidores que são utilzados para compartilhar ou publicar versões liberadas pelos usuários.
+        <br>
+        Como o exemplo acima, poderíamos ter um repositório em diretório local na estação e um repositório remoto no github, onde o repositório local serveria como um repositório de desenvolvimento local e o repositório remoto, o repositório que seria utilizado para atualizar com as modificações confirmadas no repositório local,
+        <br>
+        <br>
+        ## Repositório Local<br>
+        <br>
+        : Criar novo repositório<br>
+            git init
+        <br>
+        <br>
+        Observação: Pode ser criado um repositório Git com a opção --bare. Com essa opção o diretório git não possui os arquivos físicos no diretório, mas somente as alterações.
+        Essa função pode ser utilizada para o controle de alterações e esse repositório pode ser compartilhado em outros repositórios. 
+        <br>
+        <br>
+        : Verificar estado dos arquivos/diretórios <br>
+            git status
+        <br>
+        <br>
+        : Adicionar arquivo/diretório (staged area)<br>
+        <br>
+        : Adicionar um arquivo em específico<br>
+            git add meu_arquivo.txt
+        <br>
+        <br>
+        : Adicionar um diretório em específico<br>
+            git add meu_diretorio
+        <br>
+        <br>
+        : Adicionar todos os arquivos/diretórios<br>
+            git add .	
+        <br>
+        <br>
+        : Adicionar um arquivo que esta listado no .gitignore (geral ou do repositório)<br>
+            git add -f arquivo_no_gitignore.txt
+        <br>
+        <br>
+        : Comitar arquivo/diretório<br>
+        <br>
+        : Comitar um arquivo<br>
+            git commit meu_arquivo.txt
+        <br>
+        <br>
+        : Comitar vários arquivos<br>
+            git commit meu_arquivo.txt meu_outro_arquivo.txt
+        <br>
+        <br>
+        : Comitar informando mensagem<br>
+            git commit meuarquivo.txt -m "minha mensagem de commit"
+        <br>
+        <br>
+        : Remover arquivo/diretório<br>
+        <br>
+        : Remover arquivo<br>        
+            git rm meu_arquivo.txt
+        <br>
+        <br>
+        : Remover diretório<br>
+            git rm -r diretorio
+        <br>
+        <br>
+        : Visualizar histórico<br>
+        <br>
+        : Exibir histórico<br>        
+            git log
+        <br>
+        <br>
+        : Exibir histórico com diff das duas últimas alterações<br>
+            git log -p -2
+        <br>
+        <br>    
+        : Exibir resumo do histórico (hash completa, autor, data, comentário e qtde de alterações (+/-))<br>
+            git log --stat
+        <br>
+        <br>
+        : Exibir informações resumidas em uma linha (hash completa e comentário)<br>
+            git log --pretty=oneline
+        <br>
+        <br>
+        : Exibir histórico com formatação específica (hash abreviada, autor, data e comentário)<br>
+            git log --pretty=format:"%h - %an, %ar : %s"
+        <br>
+        * %h: Abreviação do hash;<br>
+        * %an: Nome do autor;<br>
+        * %ar: Data;<br>
+        * %s: Comentário.<br>
+        <br>        
+        Verifique as demais opções de formatação no [Git Book](http://git-scm.com/book/en/Git-Basics-Viewing-the-Commit-History)
+        <br>
+        <br>
+        : Exibir histório de um arquivo específico<br>
+            git log -- <caminho_do_arquivo>
+        <br>
+        <br>
+        : Exibir histórico de um arquivo específico que contêm uma determinada palavra<br>
+            git log --summary -S<palavra> [<caminho_do_arquivo>]
+        <br>
+        <br>
+        : Exibir histórico modificação de um arquivo<br>
+            git log --diff-filter=M -- <caminho_do_arquivo>
+        <br>
+        * O --diff-filter pode ser substituido por: Adicionado (A), Copiado (C), Apagado (D), Modificado (M), Renomeado (R), entre outros.
+        <br>
+        <br>
+        : Exibir histório de um determinado autor<br>
+            git log --author=usuario
+        <br>
+        <br>
+        : Exibir revisão e autor da última modificação de uma bloco de linhas<br>
+            git blame -L 12,22 meu_arquivo.txt 
+        <br>
+        <br>
+        ## Desfazendo operações <br>
+        <br>        
+        : Desfazendo alteração local (working directory)<br>
+        <br>
+        Este comando deve ser utilizando enquanto o arquivo não foi adicionado na **staged area**, ou seja, ainda não adicionado ao controle, sem "git add [arquivo]", somente está salvo no repositório. 
+        <br>
+            git checkout -- meu_arquivo.txt
+        <br>
+        <br>
+        : Desfazendo alteração local (staging area)<br>
+        Este comando deve ser utilizando quando o arquivo já foi adicionado na **staged area**, ou seja, já foi adicionado ao controle, comando "git add [arquivo]", foi executado. 
+        <br>
+            git reset HEAD meu_arquivo.txt
+        <br>
+        <br>
+        Se o resultado abaixo for exibido, o comando reset *não* alterou o diretório de trabalho. 
+        <br>
+            Unstaged changes after reset:<br>
+            M	meu_arquivo.txt<br>
+        <br>
+        A alteração do diretório pode ser realizada através do comando abaixo:
+        <br>    
+            git checkout meu_arquivo.txt
+        <br>
+        <br>
+        : Desfazendo alteração local (staging area Consolidado (comitted))<br>
+        Este comando deve ser utilizando quando o arquivo já foi adicionado na **comitted area**, ou seja, já foi consolidado,  comando "git commit", foi executado.
+        <br> 
+        O comando "git revert" é usado para desfazer alterações ao histórico de commits do repositório. 
+        <br> 
+        Outros comandos de "desfazer", como o git checkout e o git reset, movem os indicadores de referência do HEAD e do branch para commits especificados. 
+        <br>        
+        O git revert também pega o commit específico; no entanto, o git revert não move os indicadores de referência para esse commit. 
+        <br>
+        A operação de reversão vai pegar o commit especificado, inverter as alterações dele e criar um "commit de reversão" novo. Os indicadores de referência são então atualizados para apontar para o commit de reversão novo, tornando o commit na ponta do branch.
+        <br>
+        <br>
+            git revert [número hash atribuído ao commit]
+        <br>
+        <br>
+        O comando "git reset" deve ser utilizado de forma segura, porque todos os commits realizados após o ponto de restauração indicado, serão removidos e pode afetar outros desenvolvimentos consolidados e que não deveriam ser perdidos.
+        <br>
+        O comando pode ser utilizado com as opções "soft", "mixed", "hard"
+        <br>
+        > mixed: Este é o modo operante padrão. Os indicadores de ref são atualizados. O Índice de staging é redefinido para o estado do commit especificado. Quaisquer alterações desfeitas no Índice de staging são movidas para o Diretório de trabalho.
+        <br>
+        > hard: Esta é a opção mais direta, usada e PERIGOSA. Quando --hard é transmitido, os indicadores de ref do histórico de commits são atualizados para o commit especificado. Então, o Índice de staging e o Diretório de trabalho são redefinidos para corresponder ao commit especificado. Quaisquer alterações prévias pendentes no Índice de staging e no Diretório de trabalho são redefinidas para corresponder ao estado da árvore de commits. Ou seja: qualquer trabalho pendente que estava no Índice de staging e no Diretório de trabalho é perdido.
+        <br>
+        > soft: Quando o argumento --soft é transmitido, os indicadores de ref são atualizados e a redefinição para aí. O Índice de staging e o Diretório de trabalho permanecem intocados. Este comportamento pode ser difícil de demonstrar com clareza. A gente vai continuar com o repositório de demonstração e preparar ele para um soft reset.
+        <br>
+        <br>
+            git reset --soft [número hash atribuído ao commit]
+        <br>
+        <br>
+        ## Repositório Remoto
+        <br>
+        <br>
+        : Exibir os repositórios remotos
+        <br>
+            git remote
+        <br>    
+        <br>
+            git remote -v
+        <br>
+        <br>
+        : Vincular repositório local com um repositório remoto
+        <br>
+            git remote add origin git@github.com:leocomelli/curso-git.git
+        <br>    
+        <br>
+        : Exibir informações dos repositórios remotos
+        <br>
+            git remote show origin
+        <br>
+        <br>
+        : Renomear um repositório remoto 
+        <br>
+            git remote rename origin curso-git
+        <br>
+        <br>
+        : Desvincular um repositório remoto
+        <br>  
+            git remote rm curso-git
+        <br>
+        <br>
+        : Enviar arquivos/diretórios para o repositório remoto
+        <br>
+        O primeiro **push** de um repositório deve conter o nome do repositório remoto e o branch.
+        <br>
+            git push -u origin master
+        <br>
+        <br>
+        Os demais **pushes** não precisam dessa informação
+        <br>
+            git push
+        <br>
+        <br>
+        : Atualizar repositório local de acordo com o repositório remoto
+        <br>
+        <br>
+        : Atualizar os arquivos no branch atual
+        <br>
+            git pull
+        <br>
+        <br>
+        : Buscar as alterações, mas não aplica-las no branch atual
+        <br>
+            git fetch
+        <br>
+        <br>
+        : Clonar um repositório remoto já existente
+        <br>
+            git clone git@github.com:leocomelli/curso-git.git
+        <br>    
+        <br>
+        ## Tags
+        <br>
+        <br>
+        Possui o conceito de "versão". Uma tag pode ser utilizada como um ponto de publicação, de recuperação e no caso de integrado ao github, representa um "release".  
+        <br>
+        <br>
+        : Criando uma tag leve
+        <br>
+            git tag vs-1.1
+        <br>
+        <br>
+        : Criando uma tag anotada
+        <br>
+            git tag -a vs-1.1 -m "Minha versão 1.1"
+        <br>
+        <br>
+        : Criando uma tag assinada
+        <br>
+        Para criar uma tag assinada é necessário uma chave privada (GNU Privacy Guard - GPG).
+        <br>
+            git tag -s vs-1.1 -m "Minha tag assinada 1.1"
+        <br>
+        <br>
+        : Criando tag a partir de um commit (hash)
+        <br>
+            git tag -a vs-1.2 9fceb02
+        <br>    
+        <br>
+        : Criando tags no repositório remoto
+        <br>
+            git push origin vs-1.2
+        <br>
+        <br>
+        : Criando todas as tags locais no repositório remoto
+        <br>
+            git push origin --tags
+        <br>    
+        <br>
+        ## Branches
+        <br>
+        <br>
+        O **master** é o branch principal do GIT.
+        <br>
+        O **HEAD** é um ponteiro *especial* que indica qual é o branch atual. Por padrão, o **HEAD** aponta para o branch principal, o **master**.
+        <br>
+        <br>
+        Uma branch (ou ramo) é uma linha de commits separada e que pode ser utilizada para desenvolver funcionalidades independentes de forma separada e dessa forma evitar que o código de uma funcionalidade interfira em outra.        
+        Que com branches separados, podemos evitar que o código de uma funcionalidade interfira em outra.
+        <br>
+        <br>
+        Podemos trazer o trabalho realizado em uma branch para outra branch, como por exemplo, o master, através do comando "git merge" ou "git rebase"
+        O "git merge" gera um novo commit, informando que houve uma mescla entre duas branches.
+        O "git rebase" não gera um commit de merge e simplifica o log;
+        <br>
+        <br>
+        : Criando um novo branch
+        <br>
+            git branch bug-123
+        <br>    
+        <br>
+        : Trocando para um branch existente
+        <br>
+            git checkout bug-123
+        <br>
+        <br>
+        Neste caso, o ponteiro principal **HEAD** esta apontando para o branch chamado bug-123.
+        <br>
+        <br>
+        : Criar um novo branch e trocar 
+        <br>
+            git checkout -b bug-456
+        <br>    
+        <br>
+        : Voltar para o branch principal (master)
+        <br>
+            git checkout master
+        <br>
+        <br>
+        : Resolver merge entre os branches
+        <br>
+            git merge bug-123
+        <br>
+        <br>
+        Para realizar o *merge*, é necessário estar no branch que deverá receber as alterações. O *merge* pode automático ou manual. O merge automático será feito em arquivos textos que não sofreram alterações nas mesmas linhas, já o merge manual será feito em arquivos textos que sofreram alterações nas mesmas linhas.
+        <br>
+        A mensagem indicando um *merge* manual será:
+        <br>
+        <br>
+            Automerging meu_arquivo.txt<br>
+            CONFLICT (content): Merge conflict in meu_arquivo.txt<br>
+            Automatic merge failed; fix conflicts and then commit the result.<br>
+        <br>
+        <br>
+        : Apagando um branch
+        <br>
+            git branch -d bug-123
+        <br>
+        <br>
+        : Listar branches 
+        <br>
+        -># Listar branches
+        <br>
+            git branch
+        <br>
+        <br>
+        : Listar branches com informações dos últimos commits
+        <br>
+            git branch -v
+        <br>
+        <br>
+        : Listar branches que já foram fundidos (merged) com o **master**
+        <br>
+            git branch --merged
+        <br>
+        <br>
+        : Listar branches que não foram fundidos (merged) com o **master**
+        <br>
+            git branch --no-merged
+        <br>
+        <br>
+        : Criando branches no repositório remoto
+        <br>
+        : Criando um branch remoto com o mesmo nome
+        <br>
+            git push origin bug-123
+        <br>
+        <br>
+        : Criando um branch remoto com nome diferente
+        <br>
+            git push origin bug-123:new-branch
+        <br>
+        <br>
+        : Baixar um branch remoto para edição
+        <br>
+            git checkout -b bug-123 origin/bug-123
+        <br>
+        <br>
+        : Apagar branch remoto
+        <br>
+            git push origin:bug-123
+        <br>
+        <br>
+        ## Rebasing
+        <br>
+        <br>
+        Fazendo o **rebase** entre um o branch bug-123 e o master.
+        <br>
+            git checkout experiment
+        <br>
+        <br>            
+            git rebase master
+        <br>    
+        <br>
+        Mais informações e explicações sobre o [Rebasing](http://git-scm.com/book/en/Git-Branching-Rebasing)
+        <br>
+        <br>
+        ## Stash
+        <br>
+        <br>
+        Para alternar entre um branch e outro é necessário fazer o commit das alterações atuais para depois trocar para um outro branch. 
+        <br>
+        Se existir a necessidade de realizar a troca sem fazer o commit é possível criar um **stash**. 
+        <br>
+        O Stash como se fosse um branch temporário que contem apenas as alterações ainda não commitadas.
+        <br>
+        Um ponto importante sobre um stash é que se realizarmos alterações nos arquivos da "branch" e realizarmos commit, as informações no stash não estarão no commit e apesar de referenciarem mesmos objetos.
+        <br>
+        Após a aplicação de um stash sobre uma versão "git stash pop" ou "git stash apply", será realizado um merge sobre o conteúdo atual.
+        <br>
+        <br>
+        : Criar um stash
+        <br>    
+            git stash
+        <br>
+        <br>        
+        Adicionar a opção -u (ou --include-untracked) vai dizer ao git stash para também fazer o stashing dos arquivos não rastreados.    
+        <br>
+        <br>
+        : Listar stashes
+        <br>
+            git stash list
+        <br>
+        <br>
+        : Voltar para o último stash
+        <br>
+            git stash apply
+        <br>
+        <br>
+        : Voltar para o último stash e removê-lo
+        <br>
+            git stash pop
+        <br>
+        <br>
+        : Voltar para um stash específico
+        <br>
+            git stash apply stash@{2}
+        <br>
+        <br>
+        Onde **2** é o indíce do stash desejado.
+        <br>
+        <br>
+        : Criar um branch a partir de um stash
+        <br>
+            git stash branch meu_branch
+        <br>
+        <br>
+        : Limpando o stash
+        <br>
+        O comando "git stash clear" realiza essa função ou "git stash drop stash@{1}"
+        <br>                        
+        <br>
+        Para remover arquivos não rastreados sem "git add", execute "git clean -f -d", o parâmetro -f força a limpeza.
+        <br>
+        Para verificar o que será removido, utilize a opção -n.
+        <br>
+        Para remover todos os arquivos não rastreados sem "git add", execute "git clean -x.
+        <br>
+        <br>
+            git clean -d -n
+        <br>
+        <br>
+        ## Reescrevendo o histórico
+        <br>
+        <br>
+        : Alterando mensagens de commit
+        <br>
+            git commit --amend -m "Minha nova mensagem"
+        <br>
+        <br>
+        : Alterar últimos commits
+        <br>
+        Alterando os três últimos commits
+        <br>
+            git rebase -i HEAD~3
+        <br>
+        <br>
+        O editor de texto será aberto com as linhas representando os três últimos commits.
+        <br>
+            pick f7f3f6d changed my name a bit<br>
+            pick 310154e updated README formatting and added blame<br>
+            pick a5f4a0d added catfile<br>
+        <br>
+        Altere para edit os commits que deseja realizar alterações.<br>
+        <br>
+            edit f7f3f6d changed my name a bit<br>
+            pick 310154e updated README formatting and added blame<br>
+            pick a5f4a0d added catfile<br>
+        <br>
+        Feche o editor de texto.<br>
+        
+        Digite o comando para alterar a mensagem do commit que foi marcado como *edit*.
+        <br>
+        <br>
+            git commit –amend -m “Nova mensagem”
+        <br>
+        <br>
+        Aplique a alteração
+        <br>
+            git rebase --continue
+        <br>
+        <br>
+        **Atenção:** É possível alterar a ordem dos commits ou remover um commit apenas mudando as linhas ou removendo.
+        <br>
+        <br>
+        : Juntando vários commits
+        <br>
+        Seguir os mesmos passos acima, porém marcar os commtis que devem ser juntados com **squash*
+        <br>
+        <br>    
+        : Remover todo histórico de um arquivo
+        <br>
+            git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
+        <br>    
+        <br>
+        ## Bisect
+        <br>
+        <br>
+        O bisect (pesquisa binária) é útil para encontrar um commit que esta gerando um bug ou uma inconsistência entre uma sequência de commits.
+        <br>
+        <br>
+        : Iniciar pequinsa binária
+        <br>
+            git bisect start
+        <br>    
+        <br>
+        : Marcar o commit atual como ruim
+        <br>
+            git bisect bad
+        <br>
+        <br>
+        : Marcar o commit de uma tag que esta sem o bug/inconsistência
+        <br>
+            git bisect good vs-1.1
+        <br>
+        <br>
+        : Marcar o commit como bom
+        <br>
+        O GIT irá navegar entre os commits para ajudar a indentificar o commit que esta com o problema. Se o commit atual não estiver quebrado, então é necessário marca-lo como **bom**.
+        <br>
+            git bisect good
+        <br>
+        <br>
+        : Marcar o commit como ruim
+        <br>
+        Se o commit estiver com o problema, então ele deverá ser marcado como **ruim**.
+        <br>
+             git bisect bad
+        <br>
+        <br>
+        : Finalizar a pesquisa binária
+        <br>
+        Depois de encontrar o commit com problema, para retornar para o *HEAD* utilize:
+        <br>
+            git bisect reset
+        <br>     
+        <br>
+        
+    </p>        
+    </body>   
+</html>

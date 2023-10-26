@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../rede/rede.html">Redes</a></li>
+                    <li><a href="#Tipos de Comunicação (Unicast, Multicast e Broadcast)">Tipos de Comunicação (Unicast, Multicast e Broadcast)</a></li>
+                    <li><a href="#Classificação de Redes">Classificação de Redes</a></li>                    
+                    <li><a href="#Arquitetura de Camadas">Arquitetura de Camadas</a></li>                                        
+                    <li><a href="#Detalhes Básicos da Arquitetura OSI">Detalhes Básicos da Arquitetura OSI</a></li>                                                            
+                    <li><a href="#Identificando Adaptadores de Rede - Linux">Identificando Adaptadores de Rede - Linux</a></li>                                                                                
+                    <li><a href="#Comunicação na Camada de Link">Comunicação na Camada de Link</a></li>
+                    <li><a href="#Gerenciando Adaptadores de Rede">Gerenciando Adaptadores de Rede</a></li>                    
+                        <ul>
+                            <li><a href="#Comando ip">Comando ip</a></li>                    
+                        </ul>
+                    <li><a href="#Configurando IP Dinâmico - DHCP">Configurando IP Dinâmico - DHCP</a></li>
+                    <li><a href="#Configurando IP Estático">Configurando IP Estático</a></li>                    
+                    <li><a href="#Função de Roteamento">Função de Roteamento</a></li>                    
+                    <ul>
+                        <li><a href="#Comando route">Comando route</a></li>                    
+                    </ul>
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Redes</h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Ante de verificarmos a configurações de rede no Linux, vamos abordar os principais conceitos de redes.</p>
+            <p>Uma rede é formada por vários elementos e que em conjunto permitem que dois ou mais dispositivos se comuiniquem.</p>
+            <p>Para entender melhor como ocorre a comunicação nessas redes é preciso conhecer os requisitos necessários para que ocorra a transmissão de informações entre origem
+            e destino, que são:
+            </p>
+            <li>Regras.</li>
+            <li>Dispositivos.</li>
+            <li>Meio físico.</li>
+            <li>Mensagem.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Regras</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>As regras são os protocolos de comunicações necessários para organizar a comunicação propriamente dita. Imagine uma
+            situação onde uma pessoa que só fala o idioma português se apresenta para uma pessoa que só fala o idioma alemão. 
+            Provavelmente eles não vão conseguir se comunicar por utilizarem idiomas diferentes, ou seja, protocolos diferentes.
+            São exemplos de protocolos: TCP, IP, IPX, SPX, UDP, SCP.
+            </p>
+            <p>Os protocolos fornecem:</p>
+            <li>O formato ou estrutura da mensagem.</li>
+            <li>O método pelo qual os dispositivos de rede compartilham informações sobre rotas com outras redes.</li>
+            <li>Como e quando mensagens de erro e de sistema são passadas entre dispositivos.</li>
+            <li>A configuração e término das sessões de transferência de dados.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Dispositivos</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Os dispositivos são os equipamentos que se conectam na rede de computador para transmitir as informações. 
+            São classificados em dispositivos finais e dispositivos intermediários.</p> 
+            <p>Os dispositivos finais são aqueles que originam e recebem as informações, ou seja, fazem a interface entre os usuários e a rede de comunicação. 
+            Computadores e servidores são exemplos de dispositivos finais.
+            </p>
+            <p>Os dispositivos intermediários são aqueles que realizam a comunicação entre os dispositivos finais assegurando a troca de informações por meio da rede. 
+            Exemplos de dispositivos intermediários são os hubs, switches e roteadores.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Meio Físico</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para que a informação seja transmitida entre os dispositivos finais, um meio físico de rede precisa estar disponível. 
+            É por meio deste meio físico que a mensagem será transmitida.
+            Como exemplos de meios físicos temos: os cabos de cobre, cabos de fibra óptica e o ar, para redes sem fio. Na figura a
+            seguir você pode visualizar esses exemplos de meios físicos. Confira!
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Mensagem</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A mensagem é a informação que precisa ser transmitida entre origem e destino. Qualquer informação que precisa ser
+            transportada entre dispositivos finais é um exemplo de mensagem, como um e-mail, página de web, mensagens instantâneas e até mesmo jogos on-line.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Tipos de Comunicação (Unicast, Multicast e Broadcast)<a name="Tipos de Comunicação (Unicast, Multicast e Broadcast)"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>É importante você conhecer os tipos de mensagens que podem ser transmitidas entre hosts com base no endereçamento.</p>        
+            <p>Uma mensagem transmitida contendo um endereço de destino Unicast é aquela mensagem tradicional, enviada de origem a destino conforme você viu
+            anteriormente, ou seja, um único dispositivo de origem envia uma mensagem para outro dispositivo de destino único.</p> 
+            <p>Uma mensagem em Multicast é utilizada quando uma mensagem precisa ser transmitida para um determinado grupo de dispositivos de destino dentro de
+            uma rede, ou seja, a mensagem não será recebida por um único dispositivo ou todos os dispositivos naquela rede e sim, para um grupo específico.
+            </p>
+            <p>Uma mensagem em Broadcast é utilizada quando uma informação precisa ser transmitida para todos os dispositivos dentro de uma determinada rede ou
+            sub-rede. Para exemplificar esse cenário, quando um dispositivo de origem não conhece o endereço MAC do dispositivo de destino, ele emite
+            um Broadcast (mensagem) de camada 2 chamado de solicitação "ARP" ou "ARP Request", para que um dispositivo, responda essa requisição e informe o endereço MAC do dispositivo de destino. 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Classificação de Redes<a name="Classificação de Redes"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Redes classificadas com base no tamanho:</p> 
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>LAN</th>
+                    <td>Uma LAN é o acrônimo2 de Rede de Área Local (Local Area Network), onde os
+                       computadores que fazem parte desta rede estão fisicamente localizados em um
+                       mesmo espaço físico, geralmente limitado por uma sala, um andar de um prédio
+                       ou, até mesmo, todo o prédio ou escritório. A LAN também pode ser chamada de
+                       rede local.</td>
+                </tr>
+                <tr>
+                    <th>WAN</th>
+                    <td>Uma WAN é o acrônimo de Rede de Área Distribuída (Wide Area Network). Pode
+                        ser chamada também de Rede de Longa Distância. Uma WAN se caracteriza pela
+                        união ou interligação de diversas LANs.</td>
+                </tr>
+                <tr>
+                    <th>WLAN</th>
+                    <td>Muito próxima de uma LAN, mas, utiliza redes sem fio.</td>
+                </tr>
+                <tr>
+                    <th>MAN</th>
+                    <td>Rede de Área Metropolitana que interliga LANs em uma distância não
+                        tão maior do que uma WAN. São, geralmente, disponibilizadas por operadoras de
+                        TV a cabo.</td>
+                </tr>
+                <tr>
+                    <th>PAN</th>
+                    <td>Rede de Área Pessoal que interliga dispositivos bem próximos uns dos
+                        outros, geralmente utilizando tecnologias de bluetooth.</td>
+                </tr>
+                <tr>
+                    <th>SAN</th>
+                    <td>Rede de Área de Armazenamento usada na interligação de servidores e
+                        recursos de armazenamento.</td>
+                </tr>
+                <tr>
+                    <th>WMAN</th>
+                    <td>Muito próxima de uma MAN, mas, utiliza redes sem fio.</td>
+                </tr>
+                <tr>
+                    <th>WWAN</th>
+                    <td>Muito próxima de uma WAN, mas, utiliza redes sem fio.</td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Arquitetura de Camadas<a name="Arquitetura de Camadas"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">           
+            <p>Podemos utilizar o conceito de que uma arquitetura de rede é um conjunto de convenções para interconexão de equipamento. Arquitetura é estruturada em camadas ou níveis, Número, nome, conjunto de funções e serviços e o
+            protocolo de cada nível definem uma arquitetura de rede.</p>
+            <p>Modelos de Arquitetura:</p>
+            <li>Modelo de Referência OSI</li>
+            <li>Arquitetura TCP/IP (Internet)</li>
+            <li>Arquitetura IEEE 802</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Modelo de Referência OSI</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">           
+            <p>O modelo OSI é composto de sete camadas. Cada camada do modelo OSI possui funções e características distintas.</p>        
+            <li>Aplicação: fornece serviços de redes para as aplicações.</li>
+            <li>Apresentação: fornece uma estrutura de formatação dos dados.</li>
+            <li>Sessão: estabelece, gerencia e termina sessões entre aplicações.</li>
+            <li>Transporte: estabelece, mantém e termina circuitos virtuais entre dispositivos finais.</li>
+            <li>Rede: endereçamento de rede e determinação do melhor caminho.</li>
+            <li>Enlace de dados: controle de acesso ao meio de rede.</li>
+            <li>Física: transmissão binária através dos meios físicos de redes.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Modelo de Referência TCP/IP</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">           
+            <p>O Modelo de Referência TCP/IP, como seu próprio nome já diz, é um modelo utilizado na aplicação de toda a Internet e redes de computadores, ou seja,
+            o modelo OSI é usado como uma referência, enquanto que o modelo TCP/IP é o
+            modelo ao qual a Internet se desenvolveu e funciona até hoje.
+            </p>            
+            <p>O modelo TCP/IP é composto de quatro camadas:</p> 
+            <li>Aplicação: fornece serviços de redes para as aplicações.</li>
+            <li>Transporte: estabelece, mantém e termina circuitos virtuais entre dispositivos finais.</li> 
+            <li>Intenet: A camada de internet, também conhecida como inter-redes, é responsável pela permissão de envio de pacotes por
+            hosts a qualquer rede e pela garantia de que esses dados cheguem ao seu destino final. Equivalente ao que é
+            operacionalizado na camada de rede do modelo OSI, na arquitetura TCP/IP a camada de internet tem como embasamento os
+            protocolos IP (Internet Protocol) e ICMP (Internet Control Message Protocol).</li>
+            <li>Interface de rede: correspondente às camadas de enlace de dados e
+                física do OSI, onde ocorre a conexão básica do host com a rede por meio de algum protocolo capaz de enviar pacotes
+                IP. É por meio desta camada que é possível transmitir dados a outros computadores dentro de uma mesma rede física,
+                além de realizar o envio do datagrama recebido pela camada de internet através de meios físicos.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Detalhes Básicos da Arquitetura OSI<a name="Detalhes Básicos da Arquitetura OSI"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Camada de Aplicação</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A camada de aplicação do modelo OSI (camada 7) é a camada que tem a função de fornecer uma interface de comunicação entre o usuário e a rede, ou seja,
+                esta camada está mais próxima do usuário, fornecendo o seu acesso à rede.</p>
+            <p>O acesso destes usuários se dará por meio de aplicações de redes, e entre os mais populares, pode-se destacar:</p>
+            <li>Navegação de Internet (WEB).</li>
+            <li>Correio eletrônico.</li>
+            <li>Mensagens instantâneas.</li>
+            <li>Compartilhamento de arquivos.</li>
+            <li>Jogos on-line.</li>
+            <li>Transferência de arquivos.</li>
+        <p>Estas aplicações de redes vão necessitar de protocolos de comunicação para
+            realizar a interface para a rede. Alguns exemplos de protocolos de comunicação
+            da camada de aplicação são:</p>
+            <li>HTTP e HTPS.</li>
+            <li>FTP e TFTP.</li>
+            <li>SMTP, POP e IMAP.</li>
+            <li>DNS.</li>
+            <li>DHCP.</li>
+            <li>SNMP.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Camada de Apresentação</strong></p>
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Sua principal função é representar os dados para que os mesmos estejam legíveis para a camada de apresentação do dispositivo de destino. Vejamos as funções da camada de apresentação:
+            </p>
+            <li>Representação dos dados.</li>
+            <li>Formatação de dados.</li>
+            <li>Estruturação dos dados.</li>
+            <li>Negociação e sintaxe entre as camadas de aplicação e sessão.</li>
+            <p>Além destas funções de representação de dados, a camada de apresentação
+            também é responsável por realizar a compactação e criptografia. A figura seguinte apresenta uma visão das sete camadas do modelo OSI, com destaque para a
+            camada de apresentação.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Camada de sessão</strong></p>
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A camada 5 do modelo de referência OSI tem como principais funções: estabelecer, gerenciar e terminar sessões entre aplicativos. Além disso, é a camada de
+            sessão que entrega os dados para a camada de transporte, fazendo a conexão das
+            camadas de mais alto nível com a camada de transporte.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Conceitos da Camada de Transporte</strong></p>
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace">     
+            <p>A camada de transporte do modelo OSI (camada 4) é a camada que tem como
+            função transportar e controlar o fluxo de dados entre origem e destino, de forma
+            confiável e precisa. Para fazer esta tarefa, a camada 4 terá que garantir que os
+            segmentos cheguem com sucesso até o destino; caso algum segmento não chegue ao destino, a camada de transporte terá que pedir uma retransmissão. Além
+            disso, a camada de transporte precisa ordenar todos os segmentos no dispositivo
+            de destino. Por último, a camada de transporte precisa prevenir e controlar os
+            congestionamentos na rede.
+            </p>
+            <p>Devemos lembrar que a PDU da camada de transporte
+            é chamada de SEGMENTO e que os dados das camadas
+            superiores são encapsulados em diversos segmentos. 
+            Os campos do SEGMENTO vão ajudar o destino a ordenar os
+            dados no destino, além de realizar controle de fluxo e confiabilidade.
+            </p>
+            <p>Para realizar todas estas funções, a camada de transporte precisa utilizar várias
+            funcionalidades, como as que você pode ver a seguir:
+            </p>
+            <li>serviço orientado à conexão.</li>
+            <li>entrega ordenada.</li>
+            <li>entrega confiável.</li>
+            <li>controle de fluxo.</li>
+            <li>identificar diferentes aplicações.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Serviço Orientado à Conexão</strong></p>
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace">         
+            <p>A camada de transporte utiliza um serviço orientado à conexão para garantir
+            confiabilidade. Ser um protocolo orientado à conexão significa que uma sessão
+            precisa ser estabelecida entre origem e destino antes da transmissão dos dados
+            propriamente ditos.</p> 
+            <p>Após esta sessão ser estabelecida, os dados poderão ser transmitidos e, após o término de transmissão das informações, a sessão será encerrada.
+            A camada de transporte realiza este estabelecimento de comunicação por meio do handshake triplo.</p> 
+            <p>O handshake triplo consiste em uma sincronização iniciada pelo cliente ao servidor. Vejamos a seguir como ocorre esta sincronização
+            entre os dispositivos finais.</p>
+            <li>O dispositivo que está iniciando a comunicação envia um segmento contendo um número de sequência inicial indicando um início de comunicação. Este é o SYN inicial.</li>
+            <li>O dispositivo receptor responde com um SYN/ACK confirmando a comunicação.</li>
+            <li>O dispositivo que iniciou a comunicação responde a confirmação, completando o estabelecimento e sincronização da comunicação.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Entrega Ordenada</strong></p>
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace">         
+            <p>Quando os diversos segmentos são enviados entre dispositivos de origem e
+            destino numa comunicação, a chegada ao destino pode ser de forma desordenada, justamente pelas diversas rotas disponíveis na comunicação em rede. 
+            </p>
+            <p>Para que os segmentos possam ser ordenados no destino, cada segmento recebe um
+            número de sequência. Quando estes segmentos chegam fora de ordem, eles são
+            colocados em buffer para, depois de ordenados, serem entregues à camada superior. 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Entrega Confiável</strong></p>
+        </div> 
+        <div class="w3-container w3-theme-l5 w3-monospace">         
+            <p>Outro recurso usado pela camada de transporte para garantir confiabilidade
+            na comunicação são as confirmações positivas. Também chamado de confirmações esperadas. Para isso, são usados os números de sequência juntamente com
+            os números de confirmações (ACK). Ao receber os segmentos enviados pela origem, o destino confirma o recebimento destes segmentos pedindo o próximo
+            segmento, ou seja, o próximo segmento é solicitado e com isso, o dispositivo de
+            origem entende que o destino recebeu todos os segmentos anteriores. 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Controle de Fluxo</strong></p>
+        </div> 
+        <div class="w3-container w3-theme-l5 w3-monospace">         
+            <p>A camada de transporte controla e gerencia o fluxo das informações, indicando a quantidade de informação que poderá ser transmitida antes de aguardar
+            uma confirmação de recebimento do destino. A camada de transporte realiza
+            esta função por meio do janelamento. Por exemplo, caso o tamanho da janela
+            seja 3, o dispositivo de origem vai enviar 3 segmentos para o dispositivo de destino e, depois disso, a origem aguarda uma confirmação de recebimento por parte
+            do destino. Após o destino confirmar o recebimento dos 3 segmentos, a origem
+            poderá enviar mais 3 segmentos.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Identificar Diferentes Aplicações</strong></p>
+        </div> 
+        <div class="w3-container w3-theme-l5 w3-monospace">         
+            <p>A camada de transporte precisa utilizar uma forma de identificar as diversas
+            comunicações simultâneas que ocorrem entre dispositivos de origem e destino,
+            iguais ou diferentes. Imagine um dispositivo recebendo ao mesmo tempo um e-mail, uma mensagem no MSN e uma página WEB. 
+            Como o dispositivo vai saber identificar qual aplicação precisa receber a informação?
+            </p>
+            <p>Os números de portas são usados para identificar essas comunicações entre
+            diversas aplicações. Quando um dispositivo inicia uma comunicação, ele escolhe
+            um número de porta de origem e outro número de porta de destino. A porta de
+            origem identifica a comunicação na origem, enquanto que a porta de destino vai
+            identificar a aplicação que vai receber a informação no destino. No retorno da
+            comunicação, estes números são trocados. Veja a figura a seguir, identificando os
+            números de portas
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Protocolos Orientados à Conexão</strong></p>
+        </div> 
+        <div class="w3-container w3-theme-l5 w3-monospace">         
+            <p>A camada de transporte fornece um serviço
+            orientado à conexão, e o protocolo de camada de transporte que fornece um
+            serviço orientado à conexão é o TCP (Transmission Control Protocol).
+            </p>
+            <p>Principais campos de um segmento TCP.</p>                    
+            <li>Porta de origem: campo de 16 bits que contém o número da porta origem.</li>
+            <li>Porta de destino: campo de 16 bits que contém o número da porta de
+            destino.</li>
+            <li>Número de Sequência: campo de 32 bits utilizado para ordenar os segmentos.</li>
+            <li>Número de reconhecimento: campo de 32 bits com o número de confirmação que indica o próximo segmento TCP esperado.</li>
+            <li>Comprimento do cabeçalho: campo de 4 bits que indica o tamanho do
+            cabeçalho do segmento.</li>
+            <li>Janela: campo de 16 bits com o número de segmentos que poderão ser
+            transmitidos antes de aguardar uma confirmação.</li>
+            <li>Checksum1: campo de 16 bits para o cálculo de verificação de erros.</li>
+            <li>Dados: campo com os dados das camadas superiores.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Protocolos Não Orientados à Conexão</strong></p>
+        </div> 
+        <div class="w3-container w3-theme-l5 w3-monospace">                 
+            <p>Nem sempre a camada de transporte precisa oferecer um serviço confiável,
+            onde é necessário estabelecer uma comunicação entre origem e destino antes
+            de enviar os dados, bem como, oferecer uma entrega ordenada e com controle
+            de fluxo. Nestes casos, onde a confiabilidade não é necessária, um protocolo não orientado à conexão poderá ser utilizado.
+            </p>
+            <p>O protocolo da camada de transporte que oferece serviço não-orientado à conexão é o UDP (UserDatagramProtocol)</p>
+            <p>Principais campos de um segmento UDP.</p>                    
+            <li>Porta de origem: campo de 16 bits que contém o número da porta origem.</li>
+            <li>Porta de destino: Campo de 16 bits que contém o número da porta de destino.</li>
+            <li>Comprimento: Campo de 16 bits que indica o tamanho do datagrama, incluindo os dados.</li>
+            <li>Checksum: Campo de 16 bits para o cálculo de verificação de erros.</li>
+            <li>Dados: Campo com os dados das camadas superiores.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Camada de Rede</strong></p>
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A camada de rede é responsável por endereçar e permitir a transferência de
+                dados da origem até o destino de uma comunicação por meio das diversas redes
+                que podem existir neste caminho. O grande mérito da camada de rede é permitir
+                que os dispositivos se comuniquem pelas diversas redes.
+            </p>
+            <p>Essa camada possui quatro processos básicos bem definidos:</p>
+            <li>Endereçamento: é o processo de definir endereços para os dispositivos
+            existentes em uma rede que permite a comunicação de dados. Existem padrões de endereçamento de acordo com o protocolo de camada de rede
+            utilizado pelo dispositivo.</li>
+            <li>Encapsulamento: é o processo de empacotar, moldar, segmentar o fluxo
+            de dados a ser transmitido pela rede dentro da PDU do protocolo da camada 5.</li>
+            <li>Roteamento: é o processo que consiste na tarefa de direcionar estes pacotes montados no processo de encapsulamento, por meio da rede de dados.
+            O roteamento é tradicionalmente realizado por dispositivos que trabalham
+            na camada 3 com o intuito de escolher o melhor caminho para a entrega eficiente de cada pacote ao seu destino. Normalmente, esta função é realizada
+            por equipamentos chamados de roteadores.</li>
+            <li>Desencapsulamento: é o processo de desempacotar, retirar o conteúdo de
+            dados constante no pacote recebido e entregar para a camada superior do
+            modelo de referência OSI, no caso, a camada de transporte.</li>
+
+            <p>Existem diversos protocolos que foram implementados para atender às funcionalidades básicas desta camada. Estes protocolos foram criados por organismos ou empresas com o intuito de permitir a comunicação em uma de rede de
+            dados. Entre eles temos como principais:</p>
+            <li>IPv4: Internet Protocol Versão 4.</li>
+            <li>IPv6: Internet Protocol Versão 6.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Identificando Adaptadores de Rede - Linux<a name="Identificando Adaptadores de Rede - Linux"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para identificar os adaptadores de rede presentes no servidor, podemos utilizar os comandos "lshw" ou "lspci" ou "lsusb".<br>
+                Cada um desses comandos apresenta uma listagem de informações do hardware específica.              
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Comando: lshw</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando lshw (listar hardware) é uma pequena ferramenta Linux / Unix usada para gerar informações detalhadas da configuração de hardware do sistema a partir de vários arquivos no diretório /proc.<br>
+               O lshw também pode relatar a configuração exata da memória, versão do firmware, configuração da placa-mãe, versão e velocidade da CPU, configuração da memória cache, velocidade do barramento, etc. no sistema compatível com DMI x86 ou IA-64 (família Itanium de 64 microprocessadores) e algumas máquinas PowerPC. Este comando precisa de permissão de root para mostrar informações completas, caso contrário, informações parciais serão exibidas.
+            </p>                                
+            <p>Para instalar essa biblioteca utilize a biblioteca para console modo texto "lshw" e a lshw-gtk para aplicação com interface.</p> 
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ sudo apt-get install lshw<br>
+             $ sudo apt-get install lshw-gtk
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Sintaxe: lshw [-format] [-options ...]</p>            
+            <p>Onde o formato pode ser:</p>
+                <li>-html : Saída da árvore de hardware como HTML.</li>
+                <li>-xml : Saída da árvore de hardware como XML.</li>
+                <li>-short : Caminhos de hardware de saída.</li>
+                <li>-businfo : Informação do barramento de saída.</li>
+            </ul>
+            <p>Opções:</p>
+            <li>-class CLASS: Mostra somente uma classe de hardware</li>
+            <li>-C CLASS: O mesmo que '-class CLASS'</li>
+            <li>-c CLASS: O mesmo que '-class CLASS'</li>
+            <li>-disable TESTE: Desativa um teste (como pci, isapnp, cpuid, etc. )</li>
+            <li>-enable TESTE: Ativa um teste (como pci, isapnp, cpuid, etc. )</li>
+            <li>-quiet :Não exibe o status</li>
+            <li>-sanitize : Sanear saída (remove informações confidenciais como números de série, etc.)</li>
+            <li>-numeric : Gera saída de IDs numéricas (para PCI, USB, etc.)</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para identificar as Classes (CLASS) presentes no hardware, utilize o comando: <strong>$ sudo lshw -short</strong></p>            
+            <p>Abaixo exemplos de comandos com filtro por Classes.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ sudo lshw -C network<br>
+             $ sudo  lshw -C disk
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Comando: lspci</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O lspci é útil para mostrar todas as informações sobre os barramentos PCI do sistema e os dispositivos conectados a eles.
+            </p>                                
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Comando: lsusb</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando lsusb no Linux é usado para exibir as informações sobre barramentos USB e os dispositivos conectados a eles.
+            </p>                                
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Comunicação na Camada de Link<a name="Comunicação na Camada de Link"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A função de qualquer pacote é transportar informações da origem até o destino através de um link que conecta os dois
+            dispositivos. Esses dispositivos precisam de uma maneira de se identificar. Esse é o objetivo de um endereço de camada
+            de link. Em uma rede Ethernet, os endereços de Controle de Acesso de Mídia (Media Access Control ou MAC) são usados para
+            identificar dispositivos individuais. Um endereço MAC consiste em 48 bits. Eles não são necessariamente únicos
+            globalmente e não podem ser usados para endereçar pontos externos ao link atual. Portanto, esses endereços não podem ser
+            usados para rotear pacotes para outros links. O destinatário de um pacote verifica se o endereço de destino corresponde
+            à sua própria camada de link e, se for o caso, processa o pacote. Caso contrário, o pacote será descartado. A exceção a
+            essa regra são pacotes de broadcast (um pacote enviado a todos em uma determinada rede local), que sempre são aceitos.</p>
+            
+            <p>O comando ip link show exibe uma lista de todas as interfaces de rede disponíveis e seus endereços da camada de link,
+            além de outras informações sobre o tamanho máximo do pacote:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ip link show<br>
+            1: lo: &gt LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000<br>
+                link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00<br>
+                2: ens33: &gt BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000<br>
+                    link/ether 00:0c:29:33:3b:25 brd ff:ff:ff:ff:ff:ff
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A saída acima mostra que o dispositivo tem duas interfaces, lo e ens33. lo é o dispositivo de loopback e tem o
+            endereço MAC 00:00:00:00:00:00, ao passo que ens33 é uma interface Ethernet com o endereço MAC
+            00:0c:29:33:3b:25.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Rede IPv4</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Para visitar sites como o Google ou o Twitter, verificar emails ou permitir que empresas se conectem entre si,
+            os pacotes precisam ser capazes de passar de uma camada de link para outra. Freqüentemente, essas redes são
+            conectadas indiretamente, com diversas camadas de link intermediárias que os pacotes devem atravessar para
+            alcançar seu destino real.</p>
+    
+            <p>Os endereços de camada de link de uma interface de rede não podem ser usados fora da rede específica em que está
+            a camada de link. Como esse endereço não tem significado para os dispositivos de camada de link de outras redes,
+            é necessária uma forma de endereços globalmente exclusivos para implementar o roteamento. Esse esquema de
+            endereçamento, juntamente com o conceito geral de roteamento, é implementado pelo Protocolo de Internet
+            (Internet Protocol ou IP).
+            </p>
+            
+            <p>Os endereços IP, como os endereços MAC, são uma maneira de indicar de onde vem um pacote de dados e para onde
+            ele está indo. IPv4 era o protocolo original. Os endereços IPv4 têm 32 bits de largura, fornecendo um número
+            máximo teórico de 4.294.967.296 endereços. No entanto, o número desses endereços que são utilizáveis pelos
+            dispositivos é muito menor, pois alguns intervalos são reservados para casos de uso especiais, como endereços de
+            broadcast (usados para alcançar todos os participantes de uma rede específica), endereços multicast (semelhantes
+            aos endereços de broadcast, mas o dispositivo deve sintonizá-lo, como um rádio) ou endereços reservados para uso
+            privado.            
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Total de Bits</th>
+                    <td>32</td>
+                </tr>
+                <tr>
+                    <th>Composição do Endereço</th>
+                    <td>4 Blocos de 8 Bits</td>
+                </tr>
+                <tr>
+                    <th>Representação</th>
+                    <td>[Bloco de 8 Bits].[Bloco de 8 Bits].[Bloco de 8 Bits].[Bloco de 8 Bits]</td>
+                </tr>
+                <tr>
+                    <th>Faixa de Valores Cada Bloco</th>                                        
+                    <td>[255 a 0].[255 a 0].[255 a 0].[255 a 0]</td>
+                </tr>
+                <tr>
+                    <th>Cálculo Conversão Binário para Decimal (Bloco)</th>
+                    <td>Do bit mais a direita para a esquerda:<br>
+                        Bit(1) = Valor Bit(1) * (2^0)<br>
+                        Bit(2) = Valor Bit(2) * (2^1)<br>
+                        Bit(3) = Valor Bit(3) * (2^2)<br>
+                        ...<br>
+                        Bit(8) = Valor Bit(8) * (2^7)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Representação Decimal (Bloco)</th>
+                    <td>Representação = Bit(1) + Bit(2) + Bit(3) + ... Bit(8)</td>
+                </tr>
+            </table>
+    
+            <p>Em seu formato legível para humanos, os endereços IPv4 são representados como quatro grupos de dígitos separados
+            por um ponto. Cada grupo pode variar de 0 a 255. Por exemplo, veja o seguinte endereço IP: 192.168.0.1</p>
+            <p>Tecnicamente, cada um desses grupos de dígitos representa oito bits individuais. Assim, esse endereço também
+            pode ser escrito desta maneira:</p>            
+            <p><strong>11000000.10101000.00000000.00000001</strong></p>
+            
+            <p>Na prática, usamos uma notação decimal como a mostrada acima. No entanto, a representação bit a bit ainda é
+            importante para entender as sub-redes.</p>
+        </div>    
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Sub-redes IPv4</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                        
+            <p>Para oferecer suporte ao roteamento, os endereços IP podem ser divididos em duas partes: uma parte da rede e uma
+            do host. A parte da rede identifica a rede na qual o dispositivo está e é usada para rotear pacotes para essa
+            rede. A parte do host é usada para identificar especificamente um determinado dispositivo em uma rede e para
+            entregar o pacote ao seu destinatário específico, uma vez atingida a sua camada de link.
+            </p>
+            <p>Os endereços IP podem ser divididos em partes de sub-rede e host em qualquer ponto. A chamada máscara de
+            sub-rede define onde essa divisão acontece. Vamos reconsiderar a representação binária do endereço IP do exemplo
+            anterior:</p>
+    
+            <p><strong>11000000.10101000.00000000.00000001</strong></p>
+            <p>Para esse endereço IP, a máscara de sub-rede define cada bit que pertence à parte da rede como 1 e cada bit que
+            pertence à parte do host como 0:</p>
+    
+            <p><strong>11111111.11111111.11111111.00000000</strong></p>
+            
+            <p>Na prática, a máscara de rede é escrita na notação decimal: 255.255.255.0</p>
+            
+            <p>Isso significa que essa rede varia de 192.168.0.0 a 192.168.0.255. Note que os três primeiros números, que
+            possuem todos os bits definidos na máscara de rede, permanecem inalterados nos endereços IP.</p>
+    
+            <p>Por fim, existe uma notação alternativa para a máscara de sub-rede, chamada Classless Inter-Domain Routing
+            (CIDR). Essa notação indica somente quantos bits estão definidos na máscara de sub-rede e adiciona esse número
+            ao endereço IP. No exemplo, 24 dos 32 bits são definidos como 1 na máscara de sub-rede. Isso pode ser expresso
+            na notação CIDR como 192.168.0.1/24</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Endereços IPv4 Privados</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                    
+            <p>Como mencionado anteriormente, determinadas seções do endereço IPv4 são reservadas para casos de uso especiais.
+            Um desses casos de uso são atribuições de endereços privados. As seguintes sub-redes estão reservadas para
+            endereçamento privado:</p>
+    
+            <li>10.0.0.0/8</li>
+    
+            <li>172.16.0.0/12</li>
+    
+            <li>192.168.0.0/16</li>
+    
+            <p>Os endereços dessas sub-redes podem ser usados por qualquer pessoa. No entanto, essas sub-redes não podem ser
+            roteadas na internet pública, pois são potencialmente usadas por várias redes ao mesmo tempo.</p>
+    
+            <p>Hoje, a maioria das redes usa esses endereços internos. Eles permitem a comunicação interna sem a necessidade de
+            qualquer atribuição de endereço externo. A maioria das conexões à Internet atualmente vem apenas com um único
+            endereço IPv4 externo. Ao encaminhar pacotes para a Internet, os roteadores mapeiam todos os endereços internos
+            para esse único endereço IP externo. Esse processo se chama Network Address Translation (NAT). O caso especial
+            do NAT, em que um roteador mapeia endereços internos para um único endereço IP externo, às vezes é chamado de
+            masquerading. Ele permite que qualquer dispositivo na rede interna estabeleça novas conexões com qualquer
+            endereço IP global na internet.</p>
+        </div>
+    
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Nota: Com o masquerading, os dispositivos internos não podem ser referenciados na Internet, pois não possuem um
+                endereço válido globalmente. No entanto, esse não é um recurso de segurança. Mesmo ao usar masquerading, um
+                firewall permanece necessário.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Configuração do endereço IPv4</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                    
+                
+            <p>Existem duas maneiras principais de configurar endereços IPv4 em um computador: atribuir os endereços
+            manualmente ou usar o protocolo de configuração dinâmica de host (Dynamic Host Configuration Protocol ou DHCP)
+            para configuração automática.</p>
+    
+            <p>Ao usar o DHCP, um servidor central controla quais endereços são entregues a quais dispositivos. O servidor
+            também pode fornecer aos dispositivos outras informações sobre a rede, como os endereços IP dos servidores DNS,
+            o endereço IP do roteador padrão ou, no caso de configurações mais complicadas, iniciar um sistema operacional a
+            partir da rede. O DHCP está ativado por padrão em muitos sistemas; portanto, você provavelmente já terá um
+            endereço IP quando estiver conectado a uma rede.</p>
+    
+            <p>Também é possível adicionar endereços IP manualmente a uma interface usando o comando ip addr add. Aqui,
+            adicionamos o endereço 192.168.0.5 à interface ens33. A rede usa a máscara de rede 255.255.255.0, que equivale a
+            /24 em notação CIDR:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ sudo ip addr add 192.168.0.5/255.255.255.0 dev ens33</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                    
+            <p>Agora, podemos verificar se o endereço foi adicionado, usando o comando ip addr show:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ip addr show<br>
+            1: lo: &lt LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000<br>
+                link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00<br>
+                inet 127.0.0.1/8 scope host lo<br>
+                valid_lft forever preferred_lft forever<br>
+                inet6 ::1/128 scope host<br>
+                valid_lft forever preferred_lft forever<br>
+                25: ens33: &lt BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000<br>
+                    link/ether 00:0c:29:33:3b:25 brd ff:ff:ff:ff:ff:ff<br>
+                    inet 192.168.0.5/24 192.168.0.255 scope global ens33<br>
+                    valid_lft forever preferred_lft forever<br>
+                    inet6 fe80::010c:29ff:fe33:3b25/64 scope link noprefixroute<br>
+                    valid_lft forever preferred_lft forever
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                    
+            <p>A saída acima mostra a interface lo e a interface ens33 com seu endereço atribuído com o comando acima.</p>
+
+            <p>Para verificar se um dispositivo está acessível, usamos o comando ping. Ele envia um tipo especial de
+            mensagem chamado echo request (solicitação de eco), na qual o remetente solicita uma resposta ao
+            destinatário. Se a conexão entre os dois dispositivos puder ser estabelecida com sucesso, o destinatário
+            retornará uma resposta de eco, confirmando a conexão:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ping -c 3 192.168.0.1<br>
+            PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.<br>
+            64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=2.16 ms<br>
+            64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=1.85 ms<br>
+            64 bytes from 192.168.0.1: icmp_seq=3 ttl=64 time=3.41 ms
+            </p>
+
+            <p>--- 192.168.0.1 ping statistics ---<br>
+            3 packets transmitted, 3 received, 0% packet loss, time 5ms<br>
+            rtt min/avg/max/mdev = 1.849/2.473/3.410/0.674 ms
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                    
+            <p>O parâmetro -c 3 faz com que o ping pare de ser executado após o envio de três solicitações de eco. Caso
+            contrário, o ping continua a rodar para sempre e precisa ser interrompido pressionando Ctrl+C.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Roteamento IPv4</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                    
+            
+            <p>O roteamento é o processo no qual um pacote passa da rede de origem para a rede de destino. Cada
+            dispositivo mantém uma tabela de roteamento contendo informações sobre qual rede IP pode ser acessada
+            diretamente através do vínculo do dispositivo com a camada de link e qual rede IP pode ser alcançada com
+            a transmissão de pacotes para um roteador. Por fim, uma rota padrão define um roteador que recebe todos
+            os pacotes que não correspondem a nenhuma outra rota.
+            </p>    
+            <p>Ao estabelecer uma conexão, o dispositivo procura o endereço IP do destino em sua tabela de roteamento.
+            Se uma entrada corresponder ao endereço, o pacote será enviado à camada de link respectiva ou repassado
+            ao roteador indicado na tabela de roteamento.
+            </p>
+            <p>Os próprios roteadores também mantêm tabelas de roteamento. Ao receber um pacote, um roteador procura o
+            endereço de destino em sua própria tabela e envia o pacote para o roteador seguinte. Isso é repetido até
+            que o pacote chegue ao roteador na rede de destino. Cada roteador envolvido nessa jornada é chamado de
+            hop. O último roteador encontra um link conectado direto para o endereço de destino em sua tabela de
+            roteamento e envia os pacotes para a interface do destino.
+            </p>
+            <p>A maioria das redes domésticas conta com apenas uma saída, o roteador enviado pelo provedor de internet
+            (ISP). Nesse caso, o dispositivo apenas encaminha todos os pacotes que não são para a rede interna
+            diretamente para o roteador doméstico, que o envia então ao roteador do provedor para encaminhamento
+            adicional. Esse é um exemplo de rota padrão.
+            </p>
+            <p>O comando ip route show lista a tabela atual de roteamento IPv4:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ip route show<br>
+            127.0.0.0/8 via 127.0.0.1 dev lo0<br>
+            192.168.0.0/24 dev ens33 scope link
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                    
+            <p>Para adicionar uma rota padrão, basta ter o endereço interno do roteador que será o gateway padrão. Se,
+            por exemplo, o roteador tiver o endereço 192.168.0.1, o seguinte comando o configurará como uma rota
+            padrão:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ sudo ip route add default via 192.168.0.1</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                    
+            <p>Para confirmar, execute ip route show novamente:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ip route show<br>
+            default via 192.168.0.1 dev ens33<br>
+            127.0.0.0/8 via 127.0.0.1 dev lo0<br>
+            192.168.0.0/24 dev ens33 scope link
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Rede IPv6</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                    
+                    
+            <p>O IPv6 foi projetado para suprir as deficiências do IPv4, principalmente a falta de endereços conforme
+            mais e mais dispositivos iam sendo postos online. No entanto, o IPv6 também inclui outros recursos, como
+            novos protocolos para a configuração automática de redes. Em vez de 32 bits por endereço, o IPv6 usa
+            128. Isso permite aproximadamente 2128 endereços. No entanto, como o IPv4, o número de endereços
+            utilizáveis globalmente exclusivos é muito menor porque algumas seções da alocação são reservadas para
+            outros usos. Esse grande número de endereços significa que existem endereços públicos mais do que
+            suficientes para todos os dispositivos atualmente conectados à Internet, mais muitos outros, reduzindo
+            assim a necessidade de masquerading e os problemas gerados por ele, como o atraso na tradução e a
+            impossibilidade de conectar-se diretamente a dispositivos mascarados.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Endereços IPv6</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                    
+            <p>Quando escritos, os endereços usam 8 grupos de 4 dígitos hexadecimais, separados por dois pontos:</p>
+            <p><strong>2001:0db8:0000:abcd:0000:0000:0000:7334</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Nota:</strong> Os dígitos hexadecimais vão de 0 a F, de forma que cada dígito pode conter um dentre 16 valores diferentes.</p>                                                                                                
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Total de Bits</th>
+                    <td>128</td>
+                </tr>
+                <tr>
+                    <th>Composição do Endereço</th>
+                    <td>8 Blocos de 16 Bits. Os 16 bits se tornam necessários para para representar cada valor em Hexadecimal (0,1,2,3...9,A,B.C,D,E,F) e que são compostos por 4 bits [0000] = 0 e [1111] = F.</td>
+                </tr>
+                <tr>
+                    <th>Representação</th>
+                    <td>[Bloco de 16 Bits]:[Bloco de 16 Bits]:[Bloco de 16 Bits]:[Bloco de 16 Bits]:[Bloco de 16 Bits]:[Bloco de 16 Bits]:[Bloco de 16 Bits]:[Bloco de 16 Bits]</td>
+                </tr>
+                <tr>
+                    <th>Faixa de Valores Cada Bloco</th>                                        
+                    <td>[FFFF a 0]:[FFFF a 0]:[FFFF a 0]:[FFFF a 0]:[FFFF a 0]:[FFFF a 0]:[FFFF a 0]:[FFFF a 0]</td>
+                </tr>
+                <tr>
+                    <th>Cálculo Conversão Binário para Hexadecimal (4 Bits de um Bloco formado por 16 bits)</th>
+                    <td>Para cada mais a direita para a esquerda:<br>
+                        Bit(1) = Valor Bit(1) * (2^0)<br>
+                        Bit(2) = Valor Bit(2) * (2^1)<br>
+                        Bit(3) = Valor Bit(3) * (2^2)<br>
+                        Bit(4) = Valor Bit(8) * (2^3)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Representação Hexadecimal (4 Bits de um Bloco formado por 16 bits)</th>
+                    <td>Representação = Bit(1) + Bit(2) + Bit(3) + Bit(4)</td>
+                </tr>
+            </table>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                    
+            <p>Para facilitar, os zeros à esquerda de cada grupo podem ser removidos quando escritos, mas cada grupo
+            deve conter pelo menos um dígito:</p>
+            <p><strong>Exemplo:</strong> O endereço 2001:0db8:0000:abcd:0000:0000:0000:7334 poderia ser escrito como: <strong>2001:db8:0:abcd:0:0:0:7334</strong></p>
+            
+            <p>Quando diversos grupos contendo apenas zeros aparecem diretamente um após o outro, esses podem ser 
+            substituídos pelo conjunto de caracteres, '::', lembrando que o endereço sempre e composto por 8 grupos de 4 dígitos e isso só pode ser feito uma vez em cada endereço.</p>
+            <p><strong>Exemplo:</strong> O endereço 2001:0db8:0000:abcd:0000:0000:0000:7334 ou 2001:db8:0:abcd:0:0:0:7334, já abreviado, pode ser representado pelo conjunto de caracteres <strong>"::"</strong> e da seguinte forma: <strong>2001:db8:0:abcd::7334</strong></p> 
+            <p>Os endereços IPV6 somente trabalham com a sua representação de mascara de rede somente no formato CIDR e que corresponde ao formato "/tamanho da rede", como por exemplo: "Número IP"/64.<br>
+                Portanto para indicamos um rede com o tamanho /64, indica que teremos 64 bits que determinarão o endereço de rede, sendo que os demais bits corresponderão aos hosts dessa rede.<br>
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Rede IPV6</th>
+                    <td>2001:0BAA:0000:0000:0000:24D2:12AB:98BC</td>
+                </tr>    
+                <tr>
+                    <th>Rede IPV6 /64</th>
+                    <td><strong>2001:0BAA:0000:0000</strong> Cada bloco contem 16 bits, então para termos o endereço da rede seriam necessário 4 blocos do endereço para identificar a rede: 16 + 16 + 16 + 16 = 64.</td>
+                </tr>    
+                <tr>
+                    <th>Rede IPV6 /64 - Hosts da Rede</th>
+                    <td><strong>0000:24D2:12AB:98BC</strong> Os demais blocos serão utilizado para repesentar um host da rede, de 0000:0000:0000:0000 até ffff:ffff:ffff:ffff.</td>
+                </tr>    
+            </table>
+            <hr>    
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Prefixo IPv6</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            <p>Os primeiros 64 bits de um endereço IPv6 são conhecidos como o prefixo de roteamento. O prefixo é usado
+            pelos roteadores para determinar a qual rede um dispositivo pertence e, portanto, em qual caminho os
+            dados precisam ser enviados. A sub-rede sempre acontece dentro do prefixo. Os provedores de internet
+            geralmente distribuem prefixos /48 ou /58 aos seus clientes, deixando 16 ou 8 bits para sua sub-rede
+            interna.</p>
+
+            <p>Existem três tipos principais de prefixos no IPv6:</p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Endereço Global Unicast</th>
+                </tr>
+                <tr>
+                    <td>Nele, o prefixo é atribuído a partir dos blocos reservados aos endereços globais. Esses endereços são
+                        válidos em toda a internet.</td>
+                </tr>
+                <tr>
+                    <th>Endereço Local Unicast</th>
+                </tr>
+                <tr>
+                    <td>Pode não ser roteado na internet. No entanto, pode ser roteado internamente dentro de uma organização.
+                        Esses endereços são usados dentro de uma rede para garantir que os dispositivos tenham um endereço mesmo
+                        quando não houver conexão com a Internet. Equivalem aos intervalos de endereços privados do IPv4. Os
+                        primeiros 8 bits são sempre fc ou fd, seguidos por 40 bits gerados aleatoriamente.</td>
+                </tr>
+                <tr>
+                    <th>Endereço Link-Local</th>
+                </tr>
+                <tr>
+                    <td>São válidos somente em um link específico. Toda interface de rede compatível com IPv6 possui um desses
+                        endereços, começando com fe80. Esses endereços são usados internamente pelo IPv6 para solicitar
+                        endereços adicionais usando a configuração automática e para encontrar outros computadores na rede
+                        usando o protocolo Neighbor Discovery.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Identificador da interface IPv6</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+                                                   
+            <p>Enquanto o prefixo determina em qual rede um dispositivo reside, o identificador de interface é usado
+            para enumerar os dispositivos em uma rede. Os últimos 64 bits de um endereço IPv6 formam o identificador
+            da interface, assim como os últimos bits de um endereço IPv4.</p>
+
+            <p>Quando um endereço IPv6 é atribuído manualmente, o identificador da interface é definido como parte do
+            endereço. Ao usar a configuração automática de endereço, o identificador de interface é escolhido
+            aleatoriamente ou derivado do endereço da camada de link do dispositivo. Isso faz com que uma variação
+            do endereço da camada de link apareça no endereço IPv6.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Configuração do endereço IPv6</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+
+            <p>Como o IPv4, o endereço IPv6 pode ser atribuído manualmente ou automaticamente. No entanto, o IPv6
+            possui dois tipos diferentes de configuração automatizada: DHCPv6 e Stateless Address Autoconfiguration
+            (SLAAC).</p>
+
+            <p>O SLAAC é o mais fácil dos dois métodos automatizados, sendo incorporado no padrão IPv6. As mensagens
+            usam o novo Neighbor Discovery Protocol, que permite que os dispositivos se encontrem e solicitem
+            informações a respeito de uma rede. Essas informações são enviadas pelos roteadores e podem conter
+            prefixos IPv6 que os dispositivos podem usar combinando-os com um identificador de interface de sua
+            escolha, desde que o endereço resultante ainda não esteja em uso. Os dispositivos não fornecem feedback
+            ao roteador sobre os endereços criados.</p>
+
+            <p>O DHCPv6, por outro lado, é o DHCP atualizado para funcionar com as alterações do IPv6. Ele permite um
+            controle mais preciso das informações entregues aos clientes, como permitir que o mesmo endereço seja
+            sempre entregue ao mesmo cliente e enviar mais opções para o cliente do que o SLAAC. Com o DHCPv6, os
+            clientes precisam obter o consentimento explícito de um servidor DHCP para usar um endereço.</p>
+
+            <p>O método para atribuir manualmente um endereço IPv6 a uma interface é o mesmo do IPv4:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ sudo ip addr add 2001:db8:0:abcd:0:0:0:7334/64 dev ens33</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            <p>Para confirmar se a atribuição funcionou, usamos o mesmo comando, ip addr show:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ip addr show<br>
+                1: lo: &lt LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000<br>
+                link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00<br>
+                inet 127.0.0.1/8 scope host lo<br>
+                valid_lft forever preferred_lft forever<br>
+                inet6 ::1/128 scope host<br>
+                valid_lft forever preferred_lft forever<br>
+                25: ens33: &lt BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000<br>
+                link/ether 00:0c:29:33:3b:25 brd ff:ff:ff:ff:ff:ff<br>
+                inet 192.168.0.5/24 192.168.0.255 scope global ens33<br>
+                valid_lft forever preferred_lft forever<br>
+                inet6 fe80::010c:29ff:fe33:3b25/64 scope link noprefixroute<br>
+                valid_lft forever preferred_lft forever<br>
+                inet6 2001:db8:0:abcd::7334/64 scope global<br>
+                valid_lft forever preferred_lft forever
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            <p>Aqui também vemos o endereço link-local fe80::010c:29ff:fe33:3b25/64.</p>
+
+            <p>Como no caso do IPv4, o comando ping também pode ser usado para confirmar a acessibilidade dos
+            dispositivos através do IPv6:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ping 2001:db8:0:abcd::1<br>
+            PING 2001:db8:0:abcd::1(2001:db8:0:abcd::1) 56 data bytes<br>
+            64 bytes from 2001:db8:0:abcd::1: icmp_seq=1 ttl=64 time=0.030 ms<br>
+            64 bytes from 2001:db8:0:abcd::1: icmp_seq=2 ttl=64 time=0.040 ms<br>
+            64 bytes from 2001:db8:0:abcd::1: icmp_seq=3 ttl=64 time=0.072 ms
+            </p>
+
+            <p>--- 2001:db8:0:abcd::1 ping statistics ---<br>
+            3 packets transmitted, 3 received, 0% packet loss, time 43ms<br>
+            rtt min/avg/max/mdev = 0.030/0.047/0.072/0.018 ms
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Nota: Em certos sistemas Linux, o ping não suporta IPv6. Esses sistemas incluem um comando dedicado
+                ping6 para isso.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+
+            <p>Para confirmar o endereço link-local, use ping novamente. Mas como todas as interfaces usam o
+            prefixo fe80::/64, a interface correta deve ser especificada junto com o endereço:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ping6 -c 1 fe80::010c:29ff:fe33:3b25%ens33<br>
+            PING fe80::010c:29ff:fe33:3b25(fe80::010c:29ff:fe33:3b25) 56 data bytes<br>
+            64 bytes from fe80::010c:29ff:fe33:3b25%ens33: icmp_seq=1 ttl=64 time=0.049 ms
+            </p>
+            <p>--- fe80::010c:29ff:fe33:3b25 ping statistics ---<br>
+            1 packets transmitted, 1 received, 0% packet loss, time 0ms<br>
+            rtt min/avg/max/mdev = 0.049/0.049/0.049/0.000 ms
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> DNS (Arquivo resolv.conf)</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            
+            <p>Os endereços IP são difíceis de memorizar e não são lá muito atraentes quando estamos tentando
+            comercializar um serviço ou produto. É aqui que o Domain Name System (sistema de nomes de
+            domínio) entra em ação. Em sua forma mais simples, o DNS é uma lista telefônica que mapeia nomes
+            de domínio memoráveis e amigáveis, como exemplo.com, para endereços IP. Quando, por exemplo, um
+            usuário navega até um site, ele insere o nome do host DNS como parte da URL. O navegador web
+            envia o nome de DNS para o resolvedor DNS configurado. Esse resolvedor de DNS, por sua vez,
+            descobrirá o endereço relacionado àquele domínio. O resolvedor responde com essa informação e o
+            navegador tenta acessar o servidor web nesse endereço IP.
+            </p>
+            <p>Os resolvedores usados pelo Linux para procurar dados DNS estão no arquivo de configuração
+            /etc/resolv.conf:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ cat /etc/resolv.conf</p>
+            search lpi<br>
+            nameserver 192.168.0.1
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            <p>Quando o resolvedor realiza uma pesquisa de nome, ele primeiro verifica o arquivo /etc/hosts
+            para ver se encontra um endereço para o nome solicitado. Se for o caso, ele retorna esse
+            endereço e não entra em contato com o DNS. Isso permite que os administradores de rede forneçam
+            a resolução de nomes sem a necessidade de configurar um servidor DNS completo. Cada linha desse
+            arquivo contém um endereço IP seguido por um ou mais nomes:</p>
+        
+
+            <p>127.0.0.1 localhost.localdomain localhost<br>
+            ::1 localhost.localdomain localhost<br>
+            192.168.0.10 server<br>
+            2001:db8:0:abcd::f server
+            </p>
+            <p>Para realizar uma pesquisa no DNS, use o comando host:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ host learning.lpi.org<br>
+            learning.lpi.org has address 208.94.166.198
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            <p>O comando dig oferece informações mais detalhadas:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ dig learning.lpi.org<br>
+            ; &lt &lt >> DiG 9.14.3 &lt &lt>> learning.lpi.org<br>
+                    ;; global options: +cmd<br>
+                    ;; Got answer:<br>
+                    ;; ->>HEADER &tl &lt - opcode: QUERY, status: NOERROR, id: 21525 ;; flags: qr rd ra; QUERY: 1,<br>
+                        ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1 ;; OPT PSEUDOSECTION: ; EDNS: version: 0,<br>
+                        flags:; udp: 1232 ; COOKIE: 2ac55879b1adef30a93013705d3306d2128571347df8eadf (bad)<br>
+                        ;; QUESTION SECTION: ;learning.lpi.org. IN A ;; ANSWER SECTION: learning.lpi.org.<br>
+                        550 IN A 208.94.166.198 ;; Query time: 3 msec ;; SERVER: 192.168.0.1#53(192.168.0.1)<br>
+                        ;; WHEN: Sat Jul 20 14:20:21 EST 2019 ;; MSG SIZE rcvd: 89 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            <p>Aqui também vemos o nome dos tipos de registro DNS, neste caso A para IPv4. </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Sockets</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            <p>Um socket é um terminal de comunicação para dois programas conversando entre si. Se o socket estiver
+            conectado por uma rede, os programas poderão ser executados em dispositivos
+            diferentes, como um navegador web no laptop de um usuário e um servidor web no data
+            center de uma empresa. 
+            </p>
+            <p>Existem três tipos principais de sockets:</p> 
+            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Sockets Unix</th>
+                </tr>
+                <tr>
+                    <td>Conecta os processos em execução no mesmo dispositivo.</td>
+                </tr>
+                <tr>
+                    <th>Sockets UDP (User Datagram Protocol)</th>
+                </tr>
+                <tr>
+                    <td>Conectam aplicativos usando um protocolo rápido, mas pouco resistente.</td>
+                </tr>
+                <tr>
+                    <th>Sockets TCP (Transmission Control Protocol)</th>
+                </tr>
+                <tr>
+                    <td>Mais confiáveis que os sockets UDP; por exemplo, eles confirmam a recepção de dados.</td>
+                </tr>
+            </table>        
+            <p>Os sockets Unix só podem conectar aplicativos em execução no mesmo dispositivo. Já os sockets TCP e UDP podem se
+            conectar através de uma rede. O TCP permite um fluxo de dados que sempre chegam na ordem exata em que foram enviados. O
+            UDP meio que se guia sozinho; o pacote é enviado, mas a forma de entrega na outra extremidade não é garantida. No
+            entanto, o UDP não tem a mesma sobrecarga do TCP, sendo assim perfeito para aplicações de baixa latência, como
+            videogames online.</p>
+            
+            <p>O TCP e o UDP usam portas para endereçar vários sockets no mesmo endereço IP. Embora a porta de origem de uma conexão
+            geralmente seja aleatória, as portas de destino são padronizadas para um serviço específico. O HTTP, por exemplo,
+            geralmente é hospedado na porta 80; o HTTPS é executado na porta 443. O SSH, um protocolo para fazer login com segurança
+            em um sistema Linux remoto, escuta na porta 22.</p>
+            
+            <p>O comando ss permite que um administrador investigue todos os sockets em um computador Linux. Ele mostra tudo, desde o
+            endereço de origem até o endereço de destino e o tipo. Um de seus melhores recursos é o uso de filtros que permitem
+            monitorar os sockets em qualquer estado de conexão que se queira. O ss pode ser executado com um conjunto de opções,
+            além de uma expressão de filtro para limitar as informações mostradas.
+            </p>
+            
+            <p>Quando executado sem nenhuma opção, o comando exibe uma lista de todos os sockets estabelecidos. A opção -p inclui
+            informações sobre o processo que está usando cada socket. A opção –s mostra um resumo dos sockets. Há muitas outras
+            opções disponíveis para esta ferramenta, mas algumas das principais são -4 e -6 para restringir o protocolo IP a IPv4 ou
+            IPv6 respectivamente; -t e -u permitem que o administrador selecione sockets TCP ou UDP e -l exibe apenas o socket que
+            está atento às novas conexões.
+            </p>
+            
+            <p>O comando a seguir, por exemplo, lista todos os sockets TCP atualmente em uso:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">                
+            <p>$ ss -t<br>
+            State       Recv-Q  Send-Q    Local Address:Port      Peer Address:Port<br>
+            ESTAB       0       0           192.168.0.5:49412      192.168.0.1:https<br>
+            ESTAB       0       0           192.168.0.5:37616      192.168.0.1:https<br>
+            ESTAB       0       0           192.168.0.5:40114      192.168.0.1:https<br>
+            ESTAB       0       0           192.168.0.5:54948      192.168.0.1:imap<br>
+            ...
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Gerenciando Adaptadores de Rede<a name="Gerenciando Adaptadores de Rede"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                                                                
+            <p>A convenção usada no Ubuntu 20.04 pode parecer um pouco estranha para aqueles que se acostumaram com o esquema usado em
+                versões anteriores, que utilizavam nomes de interface de rede como eth0, wlan0 e assim por diante. Como o Ubuntu é
+                baseado no Debian, ele adotou a nova convenção de nomenclatura que foi introduzida a partir do Debian 9.0. A nova
+                convenção de nomenclatura foi implementada para permanecer persistente entre as inicializações, Exemplo: <strong>enp0s3</strong>.                
+            </p>
+            <p>Como uma rápida visão geral de como os nomes de rede são divididos, "en" é para Ethernet e "wl" é para wireless. Portanto,
+            sabemos que a interface de exemplo que mencionei anteriormente (enp0s3) faz referência a uma placa com fio. O "p" faz
+            referência a qual barramento está sendo usado, então "p0" refere-se ao primeiro barramento do sistema (a numeração começa
+            em 0). Em seguida, temos "s3", que faz referência ao slot PCI 3. Juntando tudo, "enp0s3" faz referência a uma placa de
+            interface de rede com fio no primeiro barramento do sistema, colocada no slot PCI 3. O ponto importante aqui é que o
+            novo esquema de nomenclatura é baseado na localização física do cartão e nãoa partir da inicialização do dispositivo. 
+            As mudanças que podem ocorer são fisica, troca de hardware ou posições na placa-mãe.
+            </p>
+
+            <p>Quando você adiciona novas interfaces de rede a um sistema Linux, sempre
+                existe a possibilidade de que outros nomes de interface também sejam alterados. Por exemplo, se você tiver uma
+                instalação mais antiga do Linux em um servidor com uma única placa de rede (eth0) e adicionar uma segunda (que recebe o
+                nome eth1), sua configuração pode quebrar se os nomes forem trocados durante a próxima inicialização . Imagine por um
+                momento que uma interface está conectada à internet e outra conectada a um switch (basicamente, você tem um gateway de
+                internet). Se as interfaces aparecessem na ordem errada, o acesso à Internet seria interrompido em todo o seu
+                escritório, devido ao fato de que as regras de firewall que você escreveu estão sendo aplicadas às interfaces erradas.
+            </p>
+            <p>No passado, versões anteriores do Ubuntu (assim como Debian e até mesmo CentOS) optaram por usar o udev para manter os
+                nomes, a fim de contornar esse problema. Isso não é mais necessário hoje em dia, mas pensei em mencioná-lo aqui caso
+                você acabe trabalhando em um servidor com uma instalação mais antiga. Esses servidores mais antigos alcançariam
+                aderência com nomes de interface da configuração armazenada no seguinte arquivo:
+            </p>
+            <li><strong>/etc/udev/rules.d/70-persistent-net-rules</strong></li>
+            <p>Este arquivo existia em versões mais antigas de algumas distribuições populares do Linux (incluindo o Ubuntu), como uma
+            solução para esse problema. Este arquivo contém algumas informações que identificam qualidades específicas da interface
+            de rede, de forma que a cada boot, ela sempre virá com o mesmo nome. Portanto, a placa que você reconhece como eth0
+            sempre será eth0. Se você tiver uma versão mais antiga do Ubuntu Server em uso, poderá ver esse arquivo por conta
+            própria. Aqui está um exemplo de saída deste arquivo em uma instalação mais antiga:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*",<br>
+            TTR{address}=="01:22:4e:a5:f2:ec", ATTR{dev_id}=="0x0", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Como você pode ver, ele está usando o endereço MAC do cartão para identificá-lo com eth0. Mas isso se torna um pequeno
+                problema se eu quiser obter uma imagem desta máquina e reimplantá-la em outro servidor. Ao restaurarmos a imagem em
+                outro servidor, o arquivo /etc/udev/rules.d/70-persistent-net-rules virá junto. Provavelmente descobriremos que a
+                primeira interface de rede do novo servidor terá a designação eth1, mesmo que tenhamos apenas uma interface. Isso ocorre
+                porque o arquivo já designou um dispositivo como eth0 (está fazendo referência a um dispositivo que não está presente no
+                sistema), então precisaríamos corrigir esse arquivo nós mesmos para recuperar o eth0. Faríamos isso editando o arquivo
+                de regras, excluindo a linha que contém o cartão que não está no sistema e, em seguida, alterando a designação do
+                dispositivo na linha restante de volta para eth0.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Comando ip</strong><a name="Comando ip"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para verificar informações sobre nossas interfaces de rede e gerenciá-las devemos utilizar o comando "ip".<br> 
+            Usando o comando ip, também podemos gerenciar a configuração e estado de uma interface e.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>Usage: ip [ OPTIONS ] OBJECT { COMMAND | help }<br>
+            ip [ -force ] -batch filename<br>
+            where  OBJECT := { link | address | addrlabel | route | rule | neigh | ntable |<br>
+                   tunnel | tuntap | maddress | mroute | mrule | monitor | xfrm |<br>
+                   netns | l2tp | fou | macsec | tcp_metrics | token | netconf | ila |<br>
+                   vrf | sr | nexthop | mptcp }<br>
+                OPTIONS := { -V[ersion] | -s[tatistics] | -d[etails] | -r[esolve] |<br>
+                    -h[uman-readable] | -iec | -j[son] | -p[retty] |<br>
+                    -f[amily] { inet | inet6 | mpls | bridge | link } |<br>
+                    -4 | -6 | -I | -D | -M | -B | -0 |<br>
+                    -l[oops] { maximum-addr-flush-attempts } | -br[ief] |<br>
+                    -o[neline] | -t[imestamp] | -ts[hort] | -b[atch] [filename] |<br>
+                    -rc[vbuf] [size] | -n[etns] name | -N[umeric] | -a[ll] |<br>
+                    -c[olor]}
+                </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Exemplos comando ip:</p> 
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Comando</th>
+                    <th>Função</th>
+                </tr>
+                <tr>
+                    <td>sudo ip link show</td>
+                    <td>Mostrar as interfaces de rede disponíveis no computador.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip addr show</td>
+                    <td>Ver os ips das interfaces de rede ou de um adaptador específico: "sudo ip addr show enp0s3"</td>
+                </tr>
+                <tr>
+                    <td>sudo ip a</td>
+                    <td>Ver ip no linux com "ip addr show".</td>
+                </tr>
+                <tr>
+                    <td>sudo ip -4 a</td>
+                    <td>Ver somente informações sobre o protocolo IPv4 nas interfaces.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip -6 a</td>
+                    <td>Ver somente informações sobre o protocolo IPv6 nas interfaces.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip link set enp0s3 up</td>
+                    <td>Sobe o serviço de rede.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip link set enp0s3 down</td>
+                    <td>Desabilitar uma interface de rede.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip -s link show enp0s3</td>
+                    <td>Ver estatísticas de comunicação (tx e rx) de uma interface específica (opção -s).</td>
+                </tr>
+                <tr>
+                    <td>sudo ip addr add 192.168.12.100/24 dev enp0s3</td>
+                    <td>Atribuir um endereço IP a uma interface específica.<br>
+                        <strong>Observação:</strong> Esta configuração é perdida ao reiniciar o sistema. Para mantê-la verifique os tópicos mais abaixo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>sudo ip addr del 192.168.12.100/24 dev enp0s3</td>
+                    <td>Excluir um endereço IP de uma interface específica.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip link set enp0s3 name eth0</td>
+                    <td>Ajustar o nome da interface de rede enp0s3 para eth0.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip route show</td>
+                    <td>Verificar as rotas de rede (tabela de roteamento).</td>
+                </tr>
+                <tr>
+                    <td>sudo ip route add 10.20.30.0/24 via 192.168.100.10 dev enp0s3</td>
+                    <td>Adicionar uma rota estática.
+                        <strong>Observação:</strong> Esta configuração é perdida ao reiniciar o sistema. Para mantê-la verifique os tópicos mais abaixo.
+                    </td>
+                </tr>
+                <tr>
+                    <td>sudo ip route del 10.20.30.0/24</td>
+                    <td>Remover uma rota estática.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip route add default via 192.168.100.10</td>
+                    <td>Adicionar um endereço de gateway padrão geral.</td>
+                </tr>
+                <tr>
+                    <td>sudo ip link set dev enp0s3 address 00:0a:75:20:f5:bd</td>
+                    <td> Configurar um endereço MAC em uma interface.</td>
+                </tr>   
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Configurando IP Dinâmico - DHCP<a name="Configurando IP Dinâmico - DHCP"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para configurar seu servidor para usar DHCP para atribuição de endereço dinâmico, crie uma configuração Netplan no
+            arquivo /etc/netplan/99_config.yaml. O exemplo a seguir supõe que você esteja configurando sua primeira interface
+            Ethernet identificada como enp3s0.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:sudo vim /etc/netplan/00-installer-config.yaml<br>
+            # This is the network config written by 'subiquity'<br>
+            network:<br>
+            &nbsp version: 2<br>
+            &nbsp renderer: networkd<br>
+            &nbsp ethernets:<br>
+            &nbsp &nbsp enp0s3:<br>
+            &nbsp &nbsp &nbsp dhcp4: true<br>                    
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A instrução <strong>"dhcp4: true"</strong>, indica que o ip deverá ser obtido por meio de um servidor DHCP.</p>
+            <p>Salve o arquivo e execute o comando: <strong>"sudo netplan apply"</strong></p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Configurando IP Estático<a name="Configurando IP Estático"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Sobre o mesmo arquivo "99_config.yaml" vamos alterar as suas configuarações para indicar um ip estático no adaptador.</p>
+            <p>No arquivo teremos que informar:</p>
+            <li>O ou os endereços ip representados na seção "addresses:".</li>
+            <li>O ou os gateways que podem ser configurado na seção "routes:". Caso exista somente um gateway, esse pode ser representado na seção "gateway4:"</li>                
+            <li>Os endereços e domínios de busca relacionados ao DNS representado na seção "nameservers:"</li>                
+            <p>As seções descritas acima podem ser usadas com a opção DHCP, lembrando que essas informações geralmente são propagadas pelo próprio DHCP.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:sudo vim /etc/netplan/00-installer-config.yaml<br>
+                # This is the network config written by 'subiquity'<br>
+                network:<br>
+                &nbsp version: 2<br>
+                &nbsp renderer: networkd<br>
+                &nbsp ethernets:<br>
+                &nbsp &nbsp enp0s3:<br>
+                &nbsp &nbsp &nbsp addresses:<br>
+                &nbsp &nbsp &nbsp &nbsp [192.168.100.50/24]<br>
+                &nbsp &nbsp &nbsp gateway4: 192.168.100.1<br>
+                &nbsp &nbsp &nbsp nameservers:<br>
+                &nbsp &nbsp &nbsp &nbsp search: <br>
+                &nbsp &nbsp &nbsp &nbsp &nbsp [mydomain, otherdomain]<br>
+                &nbsp &nbsp &nbsp &nbsp addresses:<br>
+                &nbsp &nbsp &nbsp &nbsp &nbsp [192.168.100.1, 192.168.100.2]
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No exemplo acima podemos indetificar as seções de informações, sendo que nesse exemplo temos a forma de indicação um gateway único e não informado via seção "routes:".</p>
+            <p>No exemplo abaixo indicaremos + de um ip para um mesmo adaptador de rede e diferenciados por seu "label".</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:sudo vim /etc/netplan/00-installer-config.yaml<br>
+                # This is the network config written by 'subiquity'<br>
+                network:<br>
+                &nbsp version: 2<br>
+                &nbsp renderer: networkd<br>
+                &nbsp ethernets:<br>
+                &nbsp &nbsp enp0s3:<br>
+                &nbsp &nbsp &nbsp addresses:<br>
+                &nbsp &nbsp &nbsp &nbsp - 10.100.1.37/24<br>
+                &nbsp &nbsp &nbsp &nbsp - 10.100.1.38/24:<br>
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp label: enp3s0:0<br>
+                &nbsp &nbsp &nbsp &nbsp - 10.100.1.39/24:<br>
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp label: enp3s0:some-label<br>
+                &nbsp &nbsp &nbsp gateway4: 192.168.100.1<br>
+                &nbsp &nbsp &nbsp nameservers:<br>
+                &nbsp &nbsp &nbsp &nbsp search: <br>
+                &nbsp &nbsp &nbsp &nbsp [mydomain, otherdomain]<br>
+                &nbsp &nbsp &nbsp addresses:<br>
+                &nbsp &nbsp &nbsp &nbsp [192.168.100.1, 192.168.100.2]
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No próximo exemplo teremos a indicação dos gateways via rota e para um adaptador com dois endereços de rede.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:sudo vim /etc/netplan/00-installer-config.yaml<br>
+                # This is the network config written by 'subiquity'<br>
+                network:<br>
+                &nbsp version: 2<br>
+                &nbsp renderer: networkd<br>
+                &nbsp ethernets:<br>
+                &nbsp &nbsp enp0s3:<br>
+                &nbsp &nbsp &nbsp addresses:<br>
+                &nbsp &nbsp &nbsp &nbsp - 10.0.0.10/24<br>
+                &nbsp &nbsp &nbsp &nbsp - 11.0.0.11/24<br>
+                &nbsp &nbsp &nbsp nameservers:<br>
+                &nbsp &nbsp &nbsp &nbsp search: <br>
+                &nbsp &nbsp &nbsp &nbsp &nbsp [mydomain, otherdomain]<br>
+                &nbsp &nbsp &nbsp &nbsp addresses:<br>
+                &nbsp &nbsp &nbsp &nbsp &nbsp [192.168.100.1, 192.168.100.2]<br>
+                &nbsp &nbsp &nbsp routes:<br>
+                &nbsp &nbsp &nbsp &nbsp - to: default<br>
+                &nbsp &nbsp &nbsp &nbsp via: 10.0.0.1<br>
+                &nbsp &nbsp &nbsp &nbsp metric: 200<br>
+                &nbsp &nbsp &nbsp &nbsp - to: default<br>
+                &nbsp &nbsp &nbsp &nbsp via: 11.0.0.1<br>
+                &nbsp &nbsp &nbsp &nbsp metric: 300<br>
+                &nbsp &nbsp &nbsp routes:<br>
+                &nbsp &nbsp &nbsp &nbsp - to: default<br>
+                &nbsp &nbsp &nbsp &nbsp via: 10.0.0.1<br>
+                &nbsp &nbsp &nbsp &nbsp metric: 200<br>
+                &nbsp &nbsp &nbsp &nbsp - to: default<br>
+                &nbsp &nbsp &nbsp &nbsp via: 11.0.0.1<br>
+                &nbsp &nbsp &nbsp &nbsp metric: 300
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Função de Roteamento<a name="Função de Roteamento"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Se tiver mais de uma placa de rede em um computador (normalmente, duas ou mais placas de rede), você pode configurar o
+            Linux como um roteador. Para que isso aconteça, tudo o que é necessário é uma mudança em um parâmetro do kernel que
+            habilita o roteamento de pacotes. Para verificar esse parâmetro, digite o comando "sudo cat /proc/sys/net/ipv4/ip_forward" e verifique a
+            saída do comando. Caso o valor seja "0" a função está desabilitada, caso o valor seja "1" a função está habilitada. 
+            </p>
+            <p>Para alterar momentaneamente e de imediato, mude o valor dop arquivo para "1" e conforme o exemplo abaixo.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">            
+            <p>edumcosta@vm-ubuntu-v22-a: sudo echo 1 > /proc/sys/net/ipv4/ip_forward<br>
+            # sudo cat /proc/sys/net/ipv4/ip_forward<br>
+            1</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Caso queira alterar esse valor de forma permanente, você deve adicionar esse valor ao arquivo /etc/sysctl.conf na configuração <strong>net.ipv4.ip_forward = 1</strong></p>
+            <p>Abaixo a saída do arquivo /etc/sysctl.conf buncao pelas opções "net.ipv4.".</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">            
+            <p>edumcosta@vm-ubuntu-v22-a:~$ sudo cat /etc/sysctl.conf |grep net.ipv4.<br>
+                #net.ipv4.conf.default.rp_filter=1<br>
+                #net.ipv4.conf.all.rp_filter=1<br>
+                #net.ipv4.tcp_syncookies=1<br>
+                #net.ipv4.ip_forward=1<br>
+                #net.ipv4.conf.all.accept_redirects = 0<br>
+                # net.ipv4.conf.all.secure_redirects = 1<br>
+                #net.ipv4.conf.all.send_redirects = 0<br>
+                #net.ipv4.conf.all.accept_source_route = 0<br>
+                #net.ipv4.conf.all.log_martians = 1
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Comando route</strong><a name="Comando route"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando route exibe ou modifica a tabela de roteamento IP.</p>
+            <p>Caso o comando route não tenha sido instalado, execute o comando <strong>"sudo apt install net-tools"</strong>.</p>
+            <p>route [-f] [-p] comando [destino] [mask mascara_de_rede] [gateway] [metric métrica]] [IF interface]]</p>
+            <p>Quando as opções <strong>"add"</strong> ou <strong>"del"</strong> são usadas, o route modifica as tabelas de roteamento. Sem essas opções , route exibe o conteúdo atual das tabelas de roteamento.
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>
+                </tr>
+                <tr>
+                    <td>-v</td>
+                    <td>Lista detalhada.</td>
+                </tr>
+                <tr>
+                    <td>-n</td>
+                    <td>Mostra rotas definidas.</td>
+                </tr>
+                <tr>
+                    <td>-e</td>
+                    <td>Mostra a tabela de roteamento.</td>
+                </tr>
+                <tr>
+                    <td>-ee</td>
+                    <td>Mostra imensa linha com todos os parâmetros da tabela de roteamento.</td>
+                </tr>
+                <tr>
+                    <td>add</td>
+                    <td>Adiciona rota.</td>
+                </tr>
+                <tr>
+                    <td>-net</td>
+                    <td>Utilizado em conjunto com a função "add", para indicar um endereço de rede.</td>
+                </tr>
+                <tr>
+                    <td>Netmask</td>
+                    <td>Utilizado em conjunto com a função "add", para adicionar mascara de rede.</td>
+                </tr>
+                <tr>
+                    <td>Gw</td>
+                    <td>Utilizado em conjunto com a função "add", para adicionar gateway.</td>
+                </tr>
+                <tr>
+                    <td>Metric</td>
+                    <td>Utilizado em conjunto com a função "add", para adicionar informação de métrica para a rede.</td>
+                </tr>
+            </table>
+            <p>Exemplos do comando "route":</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Exemplo</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <td>$sudo route add default gw 169.254.0.0</td>
+                    <td>Define o gateway padrão.</td>                
+                </tr>      
+                <tr>
+                    <td># sudo route add –net 192.56.76.0 mascara de rede 255.255.255.0 dev eth0</td>
+                    <td>Adiciona uma rota a rede indicada via eth0.
+                    </td>                
+                </tr>         
+                <tr>
+                    <td>#route add –net 224.0.0 mascara de rede 240.0.0 dev eth0</td>
+                    <td>Define todas as IPs da classe para serem enviadas por eth0.
+                    </td>                
+                </tr>         
+            </table>
+        </div>        
+        <hr>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Referências</strong><a name="> Referências"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para mais detalhes de configuração de outros tipos de adaptadores, consulte:</p> 
+            <li><a href="https://netplan.io/reference">Netplan References</a>.</li>
+            <li><a href="https://netplan.io/examples">Netplan Exemples</a>.</li>                
+            <p>Para saber mais sobre o padrão YAML acesse <a href="https://yaml.org/spec/1.1/current.html">Markup Language (YAML)</a>.</p>
+        </div>
+        
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

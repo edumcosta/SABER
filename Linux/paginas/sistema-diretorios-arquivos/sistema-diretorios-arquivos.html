@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->        
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux: Sistema de Arquivos</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../sistema-diretorios-arquivos.html">Sistema de Diretórios e Arquivos</a></li>
+                    <li><a href="#Características dos Arquivos">Características dos Arquivos</a></li>
+                    <li><a href="#Informações sobre Arquivos e Diretórios">Informações sobre Arquivos e Diretórios</a></li>
+                    <li><a href="#Permissões sobre Arquivos e Diretórios">Permissões sobre Arquivos e Diretórios</a></li>
+                    <li><a href="#Modificando as Permissões de Arquivos">Modificando as Permissões de Arquivos</a></li>                    
+                    <li><a href="#Modificando o Proprietário do Arquivo">Modificando o Proprietário do Arquivo</a></li>                                        
+                    <li><a href="#Consultando os Grupos">Consultando os Grupos</a></li>                                                            
+                    <li><a href="#Permissões Padrão">Permissões Padrão</a></li>                                                                                
+                    <li><a href="#Permissões Especiais">Permissões Especiais</a></li>                    
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Sistema de Diretórios e Arquivos</h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Diretórios: Armazenamento de Binários</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Mais especificamente, os programas são distribuídos em uma estrutura de três camadas: a primeira camada (/) inclui os programas que podem ser necessários no modo de usuário único, a segunda camada (/usr) contém a maioria dos programas multiusuários e a terceira camada (/usr/local) é usada para armazenar o software que não é fornecido pela distribuição e foi compilado localmente. Tipicamente, os programas estão nestes locais:
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Diretório</th>
+                    <th>Descritivo</th>
+                </tr>  
+                <tr>
+                    <th>/sbin</th>
+                    <td>Contém binários essenciais para a administração do sistema, como parted ou ip.</td>
+                </tr>                            
+                <tr>
+                    <th>/bin</th>
+                    <td>Contém binários essenciais para todos os usuários, como ls, mv ou mkdir.</td>
+                </tr>                            
+                <tr>
+                    <th>/usr/sbin</th>
+                    <td>Armazena binários para administração do sistema, como deluser ou groupadd.</td>
+                </tr>                            
+                <tr>
+                    <th>/usr/bin</th>
+                    <td>Inclui a maioria dos arquivos executáveis - como free, pstree, sudo or man — que podem ser acessados por todos os usuários.</td>
+                </tr>                            
+                <tr>
+                    <th>/usr/local/sbin</th>
+                    <td>Usado para armazenar programas instalados localmente para a administração do sistema e que não são gerenciados pelo gerenciador de pacotes do sistema.</td>
+                </tr>                            
+                <tr>
+                    <th>/usr/local/bin</th>
+                    <td>Tem a mesma finalidade de /usr/local/sbin, mas para programas comuns de usuário.</td>
+                </tr>                            
+                <tr>
+                    <th>/opt</th>
+                    <td>às vezes é usado para armazenar aplicativos opcionais de terceiros.</td>
+                </tr>                            
+            </table>
+            <p>Recentemente, algumas distribuições começaram a substituir /bin e /sbin por links simbólicos para /usr/bin e /usr/sbin.</p>   
+            
+            <p>Além desses diretórios, os usuários comuns podem ter seus próprios programas em:</p>
+            <ul>
+                <li>/home/$USER/bin</li>
+                <li>/home/$USER/.local/bin</li>
+            </ul>
+            <p>Podemos encontrar o local dos programas com o comando which:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">    
+            <p>$ which git<br>
+                /usr/bin/git
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Diretórios: Armazenamento de Configurações</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Nos primeiros dias do Unix, havia uma pasta para cada tipo de dados, como /bin para binários e /boot para o(s) kernel(s). No entanto, /etc (que significa literalmente et cetera) foi criado como um diretório abrangente para armazenar todos os arquivos que não pertenciam às outras categorias. A maioria deles eram arquivos de configuração. Com o passar do tempo, mais e mais arquivos de configuração foram adicionados, de modo que o /etc se tornou a pasta principal dos arquivos de configuração dos programas. Como já explicamos, um arquivo de configuração geralmente é um arquivo local de texto puro sem formatação (diferente de um arquivo binário) que controla a operação de um programa. No /etc, encontramos diferentes padrões para os nomes dos arquivos de configuração:</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <li><strong>Arquivos com extensão ad hoc ou sem extensão, como por exemplo:</strong></li><br>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>group</th>
+                    <td>Banco de dados de grupo do sistema.</td>
+                </tr>  
+                <tr>
+                    <th>hostname</th>
+                    <td>Nome do computador na rede.</td>
+                </tr>  
+                <tr>
+                    <th>hosts</th>
+                    <td>Lista de endereços IP com sua tradução em nomes de computadores na rede.</td>
+                </tr>  
+                <tr>
+                    <th>passwd</th>
+                    <td>Banco de dados do usuário do sistema — composto por sete campos separados por dois pontos, fornecendo informações sobre o usuário.</td>
+                </tr>  
+                <tr>
+                    <th>profile</th>
+                    <td>Arquivo de configuração de todo o sistema para o Bash.</td>
+                </tr>  
+                <tr>
+                    <th>shadow</th>
+                    <td>Arquivo criptografado para as senhas de usuário.</td>
+                </tr>
+            </table><br>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <li><strong>Arquivos de inicialização terminados em rc:</strong></li><br>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>bash.bashrc</th>
+                    <td>Arquivo .bashrc de todo o sistema para shells bash interativos.</td>
+                </tr>  
+                <tr>
+                    <th>nanorc</th>
+                    <td>Exemplo de arquivo de inicialização para o GNU nano (um editor de texto simples que normalmente é fornecido com qualquer distribuição).</td>
+                </tr>  
+            </table><br>                  
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <li><strong>Arquivos terminados em .conf:</strong></li><br>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>resolv.conf</th>
+                    <td>Arquivo de configuração do resolvedor — que fornece acesso ao DNS (Internet Domain Name System).</td>
+                </tr>  
+                <tr>
+                    <th>sysctl.conf</th>
+                    <td>Arquivo de configuração para definir variáveis de sistema para o kernel.</td>
+                </tr>  
+            </table><br>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <li><strong>Diretórios com sufixo .d:</strong></li>
+            <p>Alguns programas com um arquivo de configuração exclusivo (*.conf ou outro) trazem um diretório *.d dedicado que ajuda a criar configurações modulares e mais robustas. Por exemplo, para configurar o logrotate, encontramos o diretório logrotate.conf, mas também os diretórios logrotate.d.</p>
+            <p>Esse tratamento é útil nos casos em que aplicativos diferentes precisam de configurações para um mesmo serviço específico. Se, por exemplo, um pacote de servidor web contiver uma configuração de logrotate, essa configuração poderá ser posta em um arquivo dedicado no diretório logrotate.d. Esse arquivo pode ser atualizado pelo pacote do servidor web sem interferir na configuração restante de logrotate. Da mesma forma, os pacotes podem adicionar tarefas específicas colocando arquivos no diretório /etc/cron.d em vez de modificar /etc/crontab.
+            </p>
+            <p>No Debian - e derivados do Debian - essa abordagem foi aplicada à lista de fontes confiáveis lidas pela ferramenta de gerenciamento de pacotes apt: além do clássico /etc/apt/sources.list, agora encontramos o diretório /etc/apt/sources.list.d:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls /etc/apt/sources*<br>
+               /etc/apt/sources.list<br>
+               /etc/apt/sources.list.d:
+            </p>   
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <br><li></strong>Arquivos de configuração em HOME (Dotfiles):</strong></li>
+            <p>No nível do usuário, os programas armazenam suas configurações e arquivos em arquivos ocultos no diretório inicial do usuário (também representado como ~). Lembre-se de que os arquivos ocultos começam com um ponto (.), donde o nome: dotfiles.</p>                
+            <p>Alguns desses dotfiles são scripts Bash que personalizam a sessão de shell do usuário, originados assim que o usuário faz login no sistema:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>.bash_history</th>
+                    <td>Armazena o histórico da linha de comando.</td>
+                </tr>  
+                <tr>
+                    <th>.bash_logout</th>
+                    <td>Inclui comandos a executar quando o usuário sai do shell de login.</td>
+                </tr>  
+                <tr>
+                    <th>.bashrc</th>
+                    <td>Script de inicialização do Bash para shells não-login.</td>
+                </tr>  
+                <tr>
+                    <th>.profile</th>
+                    <td>Script de inicialização do Bash para shells de login.</td>
+                </tr>  
+            </table><br>        
+            <p>Outros arquivos de configuração específicos ao usuário são obtidos na inicialização dos programas respectivos: .gitconfig, .emacs.d, .ssh etc.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Diretórios - Armazenamento de Kernel</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Antes que qualquer processo possa ser executado, o kernel deve ser carregado em uma área protegida da memória. Depois disso, o processo com o PID 1 (quase sempre o systemd hoje em dia) desencadeia a cadeia de processos, ou seja, um processo inicia outro(s) e assim por diante. Uma vez que os processos estão ativos, o kernel do Linux é encarregado de alocar recursos para eles (teclado, mouse, discos, memória, interfaces de rede etc.).</p>            
+            <p>Obseração: Antes do systemd, o primeiro processo em um sistema Linux sempre era /sbin/init, como parte do gerenciador de sistemas System V Init. Na verdade, ainda podemos encontrar o /sbin/init, mas vinculado a /lib/systemd/systemd.</p>
+            <li><strong>Diretório: /boot</strong></li>
+            <p>O kernel reside em /boot, junto com outros arquivos relacionados à inicialização. A maioria desses arquivos inclui os componentes do número da versão do kernel em seu nome (versão do kernel, revisão principal, revisão secundária e número do patch).</p>
+            <p>O diretório /boot inclui os seguintes tipos de arquivos, com nomes correspondentes à respectiva versão do kernel:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>config-4.9.0-9-amd64</th>
+                    <td>Definições de configuração do kernel, como opções e módulos que foram compilados junto com o kernel.</td>
+                </tr>  
+                <tr>
+                    <th>initrd.img-4.9.0-9-amd64</th>
+                    <td>Imagem de disco RAM inicial que ajuda no processo de inicialização, carregando um sistema de arquivos root temporário na memória.</td>
+                </tr>  
+                <tr>
+                    <th>System-map-4.9.0-9-amd64</th>
+                    <td>O arquivo` System-map` (em certos sistemas, System.map) contém localizações de endereços de memória para nomes de símbolos do kernel. Cada vez que um kernel é reconstruído, o conteúdo do arquivo muda, pois as localizações da memória podem ser diferentes. O kernel usa este arquivo para procurar localizações de endereços de memória para um símbolo do kernel determinado, ou vice-versa.                        
+                    </td>
+                </tr>  
+                <tr>
+                    <th>vmlinuz-4.9.0-9-amd64</th>
+                    <td>O kernel propriamente dito, em um formato compactado de extração automática (vem daí o z in vmlinuz; vm significa memória virtual e começou a ser usado quando o kernel começou a ter suporte a memória virtual).</td>
+                </tr>  
+                <tr>
+                    <th>grub</th>
+                    <td>Diretório de configuração do gerenciador de inicialização grub2.</td>
+                </tr>  
+            </table><br>
+            <p>Por se tratar de um recurso crítico do sistema operacional, mais de um kernel e seus arquivos associados são mantidos em /boot, caso o kernel padrão apresente algum defeito e seja preciso voltar a uma versão anterior para — pelo menos — ser possível inicializar o sistema e repará-lo.                
+            </p>            
+            <li><strong>Diretório: /proc</strong></li>            
+            <p>O diretório /proc é um dos chamados sistemas de arquivos virtuais ou pseudo-sistemas de arquivos, pois seu conteúdo não é gravado no disco, mas carregado na memória. Ele é preenchido de forma dinâmica sempre que o computador é inicializado e reflete constantemente o estado atual do sistema. O /proc inclui informações sobre:</p>
+            <ul>
+                <li><strong>Processos em execução</strong></li>            
+                <li><strong>Configuração do kernel</strong></li>
+                <li><strong>Hardware do sistema</strong></li>
+            </ul>
+            <p>Além de todos os dados referentes aos processos que veremos na próxima lição, esse diretório também armazena arquivos com informações sobre o hardware do sistema e as definições de configuração do kernel. Alguns desses arquivos são:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>/proc/cpuinfo</th>
+                    <td>Armazena informações sobre a CPU do sistema.</td>
+                </tr>
+                <tr>
+                    <th>/proc/cmdline</th>
+                    <td>Armazena as strings passadas para o kernel na inicialização.</td>
+                </tr>   
+                <tr>
+                    <th>/proc/modules</th>
+                    <td>Mostra a lista de módulos carregados no kernel.</td>
+                </tr>   
+                <tr>
+                    <th>/proc/sys</th>
+                    <td>Este diretório inclui as definições de configuração do kernel em arquivos classificados em categorias por subdiretório.</td>
+                </tr>   
+                <tr>
+                    <th>/proc/sys/net/ipv4/ip_forward</th>
+                    <td>O valor que habilita ou desabilita a máquina para atuar como roteador (capaz de encaminhar pacotes).</td>
+                </tr>   
+                <tr>
+                    <th>/proc/sys/kernel/pid_max</th>
+                    <td>O PID máximo permitido.</td>
+                </tr>   
+            </table><br>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ cat /proc/cpuinfo<br>
+                processor	: 0<br>
+                vendor_id	: GenuineIntel<br>
+                cpu family	: 6<br>
+                model		: 158<br>
+                model name	: Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz<br>
+                stepping	: 10<br>
+                cpu MHz		: 3696.000<br>
+                cache size	: 12288 KB<br>
+                (...)<br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ cat /proc/cmdline<br>
+                BOOT_IMAGE=/boot/vmlinuz-4.9.0-9-amd64<br>
+                root=UUID=5216e1e4-ae0e-441f-b8f5-8061c0034c74 ro quiet<br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ cat /proc/modules<br>
+            nls_utf8 16384 1 - Live 0xffffffffc0644000<br>
+            isofs 40960 1 - Live 0xffffffffc0635000<br>
+            udf 90112 0 - Live 0xffffffffc061e000<br>
+            crc_itu_t 16384 1 udf, Live 0xffffffffc04be000<br>
+            fuse 98304 3 - Live 0xffffffffc0605000<br>
+            vboxsf 45056 0 - Live 0xffffffffc05f9000 (O)<br>
+            joydev 20480 0 - Live 0xffffffffc056e000<br>
+            vboxguest 327680 5 vboxsf, Live 0xffffffffc05a8000 (O)<br>
+            hid_generic 16384 0 - Live 0xffffffffc0569000<br>
+            (...)</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls /proc/sys<br>
+            abi  debug  dev  fs  kernel  net  user  vm<br>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">        
+            <p>A maioria desses arquivos funciona como um interruptor e — portanto — só contém um dentre dois valores possíveis: 0 ou 1 (“ligado” ou “desligado”). Por exemplo:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ cat /proc/sys/net/ipv4/ip_forward<br>
+            0</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">        
+            <p>Porém, há algumas exceções:</p>                    
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ cat /proc/sys/kernel/pid_max<br>
+            32768</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Diretório: Dispositivos de hardware</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Lembre-se, no Linux “tudo é arquivo”. Ou seja, as informações sobre o hardware do dispositivo, bem como as próprias configurações do kernel, são todas armazenadas em arquivos especiais que residem em diretórios virtuais.</p>
+            <li><strong>Diretório: /dev</strong></li>
+            <p>O diretório device (dispositivo) /dev contém arquivos (ou nós) de dispositivos para todos os dispositivos de hardware conectados. Esses arquivos de dispositivo são usados como interface entre os dispositivos e os processos que os utilizam. Cada arquivo de dispositivo se enquadra em uma destas duas categorias:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Dispositivos de bloco</th>
+                    <td>São aqueles em que os dados são lidos e gravados em blocos que podem ser endereçados individualmente. Podemos dar como exemplo os discos rígidos (e suas partições, como /dev/sda1), as unidades flash USB, CDs, DVDs etc.</td>
+                </tr>
+                <tr>
+                    <th>Dispositivos de caracteres</th>
+                    <td>São aqueles em que os dados são lidos e gravados sequencialmente, um caractere de cada vez, como é o caso dos teclados, console de texto (/dev/console),portas seriais (como /dev/ttyS0 e outras) etc.</td>
+                </tr>
+            </table><br>
+            <p>Ao listar os arquivos do dispositivo, use ls com a opção -l para diferenciar os dois. Podemos — por exemplo — verificar discos rígidos e partições:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            # ls -l /dev/sd*<br>
+            brw-rw---- 1 root disk 8, 0 may 25 17:02 /dev/sda<br>
+            brw-rw---- 1 root disk 8, 1 may 25 17:02 /dev/sda1<br>
+            brw-rw---- 1 root disk 8, 2 may 25 17:02 /dev/sda2<br>
+            (...)<br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Ou para terminais seriais (TeleTYpewriter):</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            # ls -l /dev/tty*
+            crw-rw-rw- 1 root tty     5,  0 may 25 17:26 /dev/tty
+            crw--w---- 1 root tty     4,  0 may 25 17:26 /dev/tty0
+            crw--w---- 1 root tty     4,  1 may 25 17:26 /dev/tty1
+            (...)
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Observe que o primeiro caractere é b para dispositivos de bloco e c para dispositivos de caracteres.</p>                        
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Dica: O asterisco (*) é um caractere de globbing que significa 0 ou mais caracteres. Por isso, ele é importante nos comandos ls -l /dev/sd* e ls -l /dev/tty* mostrados acima. Para saber mais sobre esses caracteres especiais, consulte a lição sobre globbing.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Além disso, /dev inclui alguns arquivos especiais bastante úteis para diferentes finalidades de programação:</p>
+                <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                    <tr>
+                        <th>/dev/zero</th>
+                        <td>Fornece tantos caracteres nulos quantos solicitados.</td>
+                    </tr>  
+                    <tr>
+                        <th>/dev/null</th>
+                        <td>Também chamado de balde de bits. Descarta todas as informações enviadas para ele.</td>
+                    </tr>  
+                    <tr>
+                        <th>/dev/urandom</th>
+                        <td>Gera números pseudo-aleatórios.</td>
+                    </tr>  
+                </table><br>                
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <li><strong>Diretório: /sys</strong></li>                    
+            <p>O sistema de arquivos sys (sysfs) é montado em /sys. Foi introduzido com a chegada do kernel 2.6 e representou um grande progresso em /proc/sys.</p>                    
+            <p>Os processos têm de interagir com os dispositivos em /dev e, portanto, o kernel precisa de um diretório que contenha informações sobre esses dispositivos de hardware. Esse diretório é o /sys, e seus dados são organizados em categorias. Por exemplo, para verificar o endereço MAC da sua placa de rede (enp0s3), aplicaríamos cat no seguinte arquivo:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ cat /sys/class/net/enp0s3/address<br>
+               08:00:27:02:b2:74
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Memória e tipos de memória</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Basicamente, para um programa começar a rodar, ele precisa ser carregado na memória. De modo geral, quando falamos de memória, nos referimos à Memória de Acesso Randômico (RAM), que — quando comparada aos discos rígidos mecânicos — tem a vantagem de ser muito mais rápida. Pelo lado negativo, ela é volátil (ou seja, quando o computador é desligado, os dados desaparecem).</p>
+            <p>Não obstante o mencionado acima, quando se trata de memória, podemos diferenciar dois tipos principais em um sistema Linux:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Memória física</th>
+                    <td>Também conhecida como RAM, vem na forma de chips compostos de circuitos integrados contendo milhões de transistores e capacitores. Estes, por sua vez, formam células de memória (o componente básico da memória do computador). Cada uma dessas células tem um código hexadecimal associado — um endereço de memória — que pode ser referenciado quando necessário.                        
+                    </td>
+                </tr>
+                <tr>
+                    <th>Swap</th>
+                    <td>Também conhecida como memória de troca, é a parte da memória virtual que fica no disco rígido e é usada quando não há mais RAM disponível.</td>
+                </tr>
+            </table>
+            <p>Por outro lado, existe o conceito de memória virtual, que é uma abstração da quantidade total de memória utilizável, incluindo a memória (a RAM, mas também o espaço em disco) tal como é vista pelos aplicativos.</p>            
+            <p>free analisa /proc/meminfo e exibe a quantidade de memória livre e usada no sistema de maneira bem clara</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+                <p>$ free<br>
+                            total        used        free      shared  buff/cache   available<br>
+                Mem:        4050960     1474960     1482260       96900     1093740     2246372<br>
+                Swap:       4192252           0     4192252<br>
+                </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Vamos entender melhor as diferentes colunas:</p>          
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>total</th>
+                    <td>Quantidade total de memória física e de troca instalada.</td>
+                </tr>      
+                <tr>
+                    <th>used</th>
+                    <td>Quantidade de memória física e de troca atualmente em uso.</td>
+                </tr>      
+                <tr>
+                    <th>free</th>
+                    <td>Quantidade de memória física e de troca que não está atualmente em uso.</td>
+                </tr>      
+                <tr>
+                    <th>shared</th>
+                    <td>Quantidade de memória física usada — principalmente — por tmpfs.</td>
+                </tr>      
+                <tr>
+                    <th>buff/cache</th>
+                    <td>Quantidade de memória física atualmente em uso pelos buffers do kernel, a cache e as slabs.</td>
+                </tr>      
+                <tr>
+                    <th>available</th>
+                    <td>Estimativa da memória física disponível para novos processos.</td>
+                </tr>      
+            </table><br>
+            <p>Por padrão, free mostra valores em kibibytes, mas permite uma variedade de opções para exibir os resultados em diferentes unidades de medida. Algumas dessas opções são:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>-b</th>
+                    <td>Bytes.</td>
+                </tr>  
+                <tr>
+                    <th>-m</th>
+                    <td>Megabytes.</td>
+                </tr>  
+                <tr>
+                    <th>-g</th>
+                    <td>Gigabytes.</td>
+                </tr>  
+                <tr>
+                    <th>-h</th>
+                    <td>Formato legível por humanos.</td>
+                </tr>  
+                <tr>
+                    <th>-h</th>
+                    <td>Formato legível por humanos.</td>
+                </tr>  
+            </table><br>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>free -h<br>
+                            total        used        free      shared  buff/cache   available<br>
+                Mem:           3,9G        1,4G        1,5G         75M        1,0G        2,2G<br>
+                Swap:          4,0G          0B        4,0G<br>
+                </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Observação: kibibyte (KiB) é igual a 1.024 bytes, enquanto um kilobyte (KB) é igual a 1000 bytes. O mesmo se aplica, respectivamente, a megabytes, gigabytes etc.</strong></p>                    
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Características dos Arquivos<a name="Características dos Arquivos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O tamanho dos arquivos são apresentados por padrão em bytes e diretórios e arquivos "ocultos" são apresentados com o caracgter "." no ínício.</p>
+            <p>Arquivo do tipo link.</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">                
+                <tr>
+                    <th>Links simbólicos</th>
+                    <td>Também chamados de soft links, eles apontam para o caminho de outro arquivo. Podemos criar links simbólicos para arquivos e diretórios, mesmo em diferentes partições, diferentemente do link físico.<br>
+                        Se excluirmos o arquivo para o qual o link aponta (chamado destino), o link ainda existirá, mas “para de funcionar”, pois passará a apontar para “nada”.                        
+                    </td>
+                </tr>  
+                <tr>
+                    <th>Links físicos</th>
+                    <td>Um link físico é como como um segundo nome para o arquivo original. Eles não são duplicatas, mas sim uma entrada adicional no sistema de arquivos e que aponta para o mesmo local (inode) no disco.<br>
+                        Ao contrário dos links simbólicos, só é possível criar links físicos para arquivos, se tanto o link quanto o destino devem residir no mesmo sistema de arquivos.
+                    </td>
+                </tr>
+            </table><br>                
+            <p>Exemplo Link Físico e Simbólico:</p> 
+            <p>Na listagem (comando "ls -li") são apresentados 3 arquivos: um arquivo texto e dois arquivos de link que apontam para o arquivo de texto, um simbólico identificado pelos caracteres "->" e o outro físico. No início da listagem também é apresentado um número e que indica o local "inode" de cada arquivo. O link físico aponta para o mesmo local do arquivo texto e o link simbólico aponta para um local diferente.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>ls -li<br>
+                921493 -rw-rw-r-- 2 edumcosta edumcosta 72 May 30 14:49 arquivo-texto.txt<br>
+                921493 -rw-rw-r-- 2 edumcosta edumcosta 72 May 30 14:49 link-fisico-arquivo-txt <br>
+                921491 lrwxrwxrwx 1 edumcosta edumcosta 17 May 30 14:50 link-simbolico-arquivo-txt -> arquivo-texto.txt<br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Um inode é uma estrutura de dados que armazena os atributos de um objeto (como um arquivo ou diretório) em um sistema de arquivos. Entre esses atributos estão as permissões, proprietário e os blocos do disco nos quais estão armazenados os dados referentes àquele objeto. São semelhantes a um verbete em um índice; por isso o nome, que vem de “index node”.                            
+            </p>
+            <p><strong>>Observação sobre a construção e manutenção de links: Os links físicos e simbólicos são tratados como arquivos regulares e podem ser excluídos com rm e renomeados ou movidos no sistema de arquivos com mv, mas como uma boa prática e especialmente para a criação de um link simbólico, sempre informe o caminho completo do arquivo de destino para o qual o link apontará e evitar dessa forma a possibilidade de "quebra" do link.                
+            </strong></p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Informações sobre Arquivos e Diretórios<a name="Informações sobre Arquivos e Diretórios"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para visualizar as informações de arquivos e diretórios, utilize o comando "ls -l". A opção -l, permite uma visualização no formato de lista longa</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            $ ls -l<br>
+            total 536<br>
+            drwxrwxr-x 2 carol carol   4096 Dec 10 15:57 Another_Directory<br>
+            -rw------- 1 carol carol 539663 Dec 10 10:43 picture.jpg<br>
+            -rw-rw-r-- 1 carol carol   1881 Dec 10 15:57 text.txt<br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A primeira coluna da lista mostra o tipo de arquivo e as permissões. Por exemplo, em drwxrwxr-x:</p>
+            <ul>
+                <li>O primeiro caractere, d, indica o tipo de arquivo.</li>
+                <li>Os três caracteres seguintes, rwx, indicam as permissõe do proprietário do arquivo, também chamado de usuário ou u.</li>
+                <li>Os três caracteres seguintes, rwx, indicam as permissões do grupo que possui o arquivo, também chamado de g.</li>
+                <li>Os três últimos caracteres, r-x, indicam as permissões de todos os outros ou o.</li>
+            </ul>
+            <p>A segunda coluna indica o número de links físicos que apontam para aquele arquivo. 
+            <p>A terceira e quarta colunas mostram informações sobre a propriedade: respectivamente o usuário e o grupo que possuem o arquivo.</p>
+            <p>A quinta coluna mostra o tamanho do arquivo. 
+            <p>A sexta coluna mostra a data e hora em que o arquivo foi modificado pela última vez.</p>            
+            <p>A sétima e a última colunas mostram o nome do arquivo.</p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Dica: Também é comum chamar as permissões de outros de permissões world (mundo), como em “Todo mundo tem essas permissões”.</strong></li>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>As informações de diretórios também são apresentadas pelo mesmo comando "ls"</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -l Another_Directory/<br>
+            total 0<br>
+            -rw-r--r-- 1 carol carol 0 Dec 10 17:59 another_file.txt</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para evitar isso e consultar informações sobre o próprio diretório, adicione o parâmetro -d a ls:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -l -d Another_Directory/<br>
+            drwxrwxr-x 2 carol carol 4096 Dec 10 17:59 Another_Directory/
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A primeira letra em cada saída de ls -l descreve o tipo do arquivo. Os três tipos de arquivo mais comuns são:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">                
+                <tr>
+                    <th>-</th>
+                    <td>Corresponde a um arquivo, pode conter dados de qualquer tipo e ajuda a gerenciar esses dados. Os arquivos podem ser modificados, movidos, copiados e excluídos.
+                    </td>
+                </tr>  
+                <tr>
+                    <th>d</th>
+                    <td>Corresponde a um diretório contém outros arquivos ou diretórios e ajuda a organizar o sistema de arquivos. Tecnicamente, os diretórios são um tipo especial de arquivo.
+                    </td>
+                </tr>  
+                <tr>
+                    <th>l</th>
+                    <td>Corresponde a um link sinbólico. Este “arquivo” é um ponteiro para outro arquivo ou diretório em outro local no sistema de arquivos.
+                    </td>
+                </tr>  
+            </table>>            
+            <p>Além desses, existem três outros tipos de arquivo que você precisa pelo menos conhecer, mas estão fora do escopo desta lição:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">                
+                <tr>
+                    <th>b</th>
+                    <td>Este arquivo representa um dispositivo virtual ou físico, geralmente discos ou outros tipos de dispositivos de armazenamento, como o primeiro disco rígido, que pode ser representado por /dev/sda.
+                    </td>
+                </tr>  
+                <tr>
+                    <th>c</th>
+                    <td>Este arquivo representa um dispositivo virtual ou físico. Terminais (como o terminal principal em /dev/ttyS0) e portas seriais são exemplos comuns de dispositivos de caracteres.
+                    </td>
+                </tr>  
+                <tr>
+                    <th>s</th>
+                    <td>Sockets servem como “canais” passando informações entre dois programas.
+                    </td>
+                </tr>  
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Observação: Não altere nenhuma permissão nos dispositivos de bloco, dispositivos de caracteres ou sockets, a menos que saiba muito bem o que está fazendo. Isso pode fazer o sistema parar de funcionar!</strong></p>                    
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Permissões sobre Arquivos e Diretórios<a name="Permissões sobre Arquivos e Diretórios"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Na saída de "ls -l", as permissões de arquivo são mostradas logo após o tipo de arquivo, como três grupos de três caracteres cada, na ordem r, w e x. Eis o que significam. Lembre-se de que um traço - representa a falta de permissão.
+            </p>
+            <li>Permissões em Arquivos:</li>            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>r</th>
+                    <td>Significa read (leitura) e tem um valor octal de 4 (não se preocupe, falaremos de octais em breve). Indica permissão para abrir um arquivo e ler seu conteúdo.</td>
+                </tr>
+                <tr>
+                    <th>w</th>
+                    <td>Significa write (escrita) e tem um valor octal de 2. Indica permissão para editar ou excluir um arquivo.</td>
+                </tr>
+                <tr>
+                    <th>x</th>
+                    <td>Significa execute (execução) e tem um valor octal de 1. Indica que o arquivo pode ser executado como um executável ou script.</td>
+                </tr>
+            </table>
+            <p>Assim, por exemplo, um arquivo com permissões rw- pode ser lido e escrito, mas não pode ser executado.</p>
+            <li>Permissões em Diretórios:</li>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>r</th>
+                    <td>Significa read (leitura) e tem um valor octal de 4. Indica permissão para ler o conteúdo do diretório, como nomes de arquivos. Mas não implica em permissão para ler os arquivos em si.</td>
+                </tr>
+                <tr>
+                    <th>w</th>
+                    <td>Significa write (escrita) e tem um valor octal de 2. Indica permissão para editar ou excluir arquivos em um diretório, ou alterar seus nomes, permissões e proprietários.</td>
+                </tr>
+                <tr>
+                    <th>x</th>
+                    <td>Significa execute (execução) e tem um valor octal de 1. Indica permissão para entrar em um diretório, mas não para listar seus arquivos (para isso, r é necessário).
+                    </td>
+                </tr>
+            </table><br>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Observação</th>                    
+                </tr>
+                <tr>
+                    <td>Se um usuário tiver a permissão w em um diretório, ele poderá alterar as permissões de qualquer arquivo dentro do diretório (o conteúdo do diretório), mesmo que o usuário não tenha permissões no arquivo ou se o arquivo pertencer a outro utilizador.                        
+                    </td>                    
+                </tr>
+                <tr>
+                    <td>Lembre-se de que ter permissões de gravação em um diretório ou arquivo não significa que você tem permissão para remover ou renomear o diretório ou arquivo em si.
+                    </td>                    
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Um conceito importante para premissões em diretórios pode ser vista no exemplo abaixo:</p>
+            <li>No  diretório chamado Another_Directory, temnos as seguintes permissões:</li>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            $ ls -ld Another_Directory/<br>
+            d--x--x--x 2 carol carol 4,0K Dec 20 18:46 Another_Directory
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Imagine também que dentro deste diretório há um script de shell chamado hello.sh com as permissões abaixo:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            -rwxr-xr-x 1 carol carol 33 Dec 20 18:46 hello.sh
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Se você for a usuária carol e tentar listar o conteúdo de Another_Directory, receberá uma mensagem de erro, pois seu usuário não tem permissão de leitura para esse diretório:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ ls -l Another_Directory/<br>
+                ls: cannot open directory 'Another_Directory/': Permission denied    
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No entanto, a usuária carol tem permissões de execução, o que significa que ela pode entrar no diretório. Portanto, a usuária carol pode acessar arquivos dentro do diretório, desde que tenha as permissões corretas para o respectivo arquivo. Vamos supor que a usuária tem permissões totais (rwx) para o script hello.sh. Nesse caso, se souber o nome do arquivo completo, ela pode executar o script, embora não possa ler o conteúdo do diretório que o contém:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ sh Another_Directory/hello.sh<br>
+                Hello LPI World!
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Como dissemos antes, as permissões são especificadas em sequência: primeiro para o proprietário do arquivo, depois para o grupo proprietário e, em seguida, para outros usuários. Sempre que alguém tenta realizar uma ação no arquivo, as permissões são verificadas na mesma ordem.</p>
+            <p>Primeiro, o sistema verifica se o usuário atual possui o arquivo e, se for o caso, ele aplica apenas o primeiro conjunto de permissões. Caso contrário, ele verifica se o usuário atual pertence ao grupo que possui o arquivo. Nesse caso, ele aplica o segundo conjunto de permissões apenas. Em qualquer outro caso, o sistema aplicará o terceiro conjunto de permissões.
+            </p>
+            </p>Isso significa que, se o usuário atual for o proprietário do arquivo, apenas as permissões do proprietário serão efetivas, mesmo se as permissões do grupo ou outras forem mais permissivas do que as do proprietário.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Modificando as Permissões de Arquivos<a name="Modificando as Permissões de Arquivos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando chmod é usado para modificar as permissões de um arquivo, e pede pelo menos dois parâmetros: o primeiro descreve quais permissões alterar, o segundo aponta para o arquivo ou diretório onde a alteração será feita. Lembre-se de que apenas o proprietário do arquivo ou o administrador do sistema (root) pode alterar as permissões em um arquivo.</p>
+            <p>As permissões a alterar podem ser descritas de duas maneiras, ou “modos”, diferentes.</p>
+            <p>O primeiro, denominado modo simbólico, oferece um controle refinado, permitindo adicionar ou revogar uma única permissão sem modificar as outras no conjunto. O outro modo, chamado modo octal, é mais fácil de lembrar e mais rápido de usar quando desejamos definir todos os valores de permissão de uma vez.</p>
+            <p>Ambos os modos levam ao mesmo resultado final. Assim, por exemplo, os comandos abaixo produzem exatamente a mesma saída:</p>            
+            <li>$ chmod ug+rw-x,o-rwx text.txt</li>            
+            <li>$ chmod 660 text.txt</li><br>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>-rw-rw---- 1 carol carol  765 Dec 20 21:25 text.txt</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Simbólico</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+
+            <p>Ao descrever quais permissões alterar no modo simbólico, o(s) primeiro(s) caractere(s) indica(m) as permissões que serão alteradas: de usuário (u), grupo (g), outros (o) e/ou todos (a).</p>
+            <p>Então você precisa dizer ao comando o que fazer: você pode conceder uma permissão (+), revogar uma permissão (-) ou defini-la com um valor específico (=).</p> 
+            <p>Por último, você especifica em qual permissão deseja agir: leitura (r), escrita (w) ou execução (x).</p>
+            <p>Por exemplo, imagine que temos um arquivo chamado text.txt com o seguinte conjunto de permissões:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ ls -l text.txt<br>
+                -rw-r--r-- 1 carol carol 765 Dec 20 21:25 text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Se você deseja conceder permissões de gravação aos membros do grupo proprietário do arquivo, deve usar o parâmetro g+w. É mais fácil pensar desta forma: “Para o grupo (g), conceda (+) permissões de escrita (w)”. Então, o comando seria:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ chmod g+w text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Vamos conferir o resultado com ls:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ ls -l text.txt<br>
+                -rw-rw-r-- 1 carol carol 765 Dec 20 21:25 text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Deseja remover as permissões de leitura para o proprietário do mesmo arquivo? Pense assim: “Para o usuário (u), revogue (-) as permissões de leitura (r)”. Portanto, o parâmetro é u-r, desta maneira:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ chmod u-r text.txt<br>
+                $ ls -l text.txt<br>
+                --w-rw-r-- 1 carol carol 765 Dec 20 21:25 text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>E se quisermos definir as permissões exatamente como rw- para todos? Nesse caso, pensamos assim: “Para todos (a), defina exatamente (=) leitura (r), escrita (w), e não execução (-)”. Assim:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ chmod a=rw- text.txt<br>
+                $ ls -l text.txt<br>
+                -rw-rw-rw- 1 carol carol 765 Dec 20 21:25 text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Claro, é possível modificar diversas permissões ao mesmo tempo. Neste caso, separe-os com uma vírgula (,):
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ chmod u+rwx,g-x text.txt<br>
+                $ ls -lh text.txt<br>
+                -rwxrw-rw- 1 carol carol 765 Dec 20 21:25 text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O exemplo acima pode ser lido como: “Para o usuário (u), conceda (+) permissões de leitura, escrita e execução (rwx), para o grupo (g), revogue (-) permissões de execução (x)”.
+            </p>
+            <p>Quando executado em um diretório, chmod modifica apenas as permissões do diretório. chmod também possui um modo recursivo, útil quando desejamos alterar as permissões para “todos os arquivos dentro de um diretório e seus subdiretórios”. Para usá-lo, adicione o parâmetro -R após o nome do comando, antes das permissões a alterar:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ chmod -R u+rwx Another_Directory/
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Este comando pode ser lido como: “Recursivamente (-R), para o usuário (u), conceda (+) permissões de leitura, escrita e execução (rwx)”.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>*** Cuidado: Tenha cuidado e pense duas vezes antes de usar a opção -R, pois é fácil alterar sem querer as permissões de arquivos e diretórios, especialmente em diretórios com um grande número de arquivos e subdiretórios.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Modo octal</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No modo octal, as permissões são especificadas de maneira diferente: como um valor de três dígitos na notação octal, um sistema numérico de base 8.
+            </p>
+
+            <p>Cada permissão tem um valor correspondente e elas são especificadas na seguinte ordem: primeiro vem leitura (r), que é 4, depois escrita (w), que é 2, e por fim execução (x), representada por 1. Se não houver permissão, usamos o valor zero (0). Portanto, uma permissão rwx seria 7 (4 + 2 + 1) e rx seria 5 (4 + 0 + 1).
+            </p>
+
+            <p>O primeiro dos três dígitos no conjunto de permissões representa as permissões do usuário (u), o segundo as do grupo (g) e o terceiro as do outros (o). Se quisermos definir as permissões de um arquivo como rw-rw----, o valor octal seria 660:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+                $ chmod 660 text.txt<br>
+                $ ls -l text.txt<br>
+                -rw-rw---- 1 carol carol 765 Dec 20 21:25 text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Além disso, a sintaxe no modo octal é a mesma que no modo simbólico: o primeiro parâmetro representa as permissões que você deseja alterar e o segundo aponta para o arquivo ou diretório onde a alteração será feita.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Dica: Se o valor de uma permissão for ímpar, o arquivo certamente é executável!.</strong></li>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Qual sintaxe você deve usar? O modo octal é recomendado quando se deseja alterar as permissões para um valor específico, por exemplo 640 (rw- r-- ---).
+            </p>
+
+            <p>O modo simbólico é mais útil se você deseja inverter apenas um valor específico, independentemente das permissões atuais do arquivo. Por exemplo, você pode adicionar permissões de execução para o usuário usando apenas chmod u+x script.sh sem levar em conta, ou mesmo tocar, as permissões atuais de grupo e outros.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Modificando o Proprietário do Arquivo<a name="Modificando o Proprietário do Arquivo"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando chown é usado para modificar a propriedade de um arquivo ou diretório. A sintaxe é bastante simples:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>chown USERNAME:GROUPNAME FILENAME</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Por exemplo, vamos verificar um arquivo chamado text.txt:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -l text.txt<br>
+            -rw-rw---- 1 carol carol 1881 Dec 10 15:57 text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O usuário que possui o arquivo é carol, e o grupo também é carol. Agora, vamos mudar o grupo proprietário do arquivo para um outro grupo, como students:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ chown carol:students text.txt<br>
+            $ ls -l text.txt<br>
+            -rw-rw---- 1 carol students 1881 Dec 10 15:57 text.txt
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Lembre-se de que o usuário que possui um arquivo não precisa pertencer ao grupo que possui o arquivo. No exemplo acima, o usuário carol não precisa ser um membro do grupo students.
+            </p>
+            <p>O conjunto de permissões de usuário ou grupo pode ser omitido se você não quiser alterá-lo. Portanto, para alterar apenas o grupo que possui um arquivo, o comando seria chown: students text.txt. Para alterar apenas o usuário, o comando seria chown carol: text.txt ou apenas chown carol text.txt. Alternativamente, você pode usar o comando chgrp students text.txt.
+            </p>
+            <p>A menos que você seja o administrador do sistema (root), não é possível mudar a propriedade de um arquivo para outro usuário ou grupo ao qual você não pertence. Se tentar fazer isso, aparecerá a mensagem de erro Operation not allowed.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Consultando os Grupos<a name="Consultando os Grupos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Antes de alterar a propriedade de um arquivo, pode ser útil saber quais grupos existem no sistema, quais usuários são membros de um grupo e a quais grupos um usuário pertence.
+            </p>
+            <p>Para ver quais grupos existem em seu sistema, digite getent group. A saída será semelhante a esta (a saída foi abreviada):
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ getent group<br>
+                root:x:0:<br>
+                daemon:x:1:<br>
+                bin:x:2:<br>
+                sys:x:3:<br>
+                adm:x:4:syslog,rigues<br>
+                tty:x:5:rigues<br>
+                disk:x:6:<br>
+                lp:x:7:<br>
+                mail:x:8:<br>
+                news:x:9:<br>
+                uucp:x:10:rigues
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Se quiser saber a quais grupos um usuário pertence, adicione o nome de usuário como um parâmetro a groups:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ groups carol
+            carol : carol students cdrom sudo dip plugdev lpadmin sambashare
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para fazer o inverso (ver quais usuários pertencem a um grupo), use groupmems. O parâmetro -g especifica o grupo, e -l lista todos os seus membros:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p># groupmems -g cdrom -l<br>
+            carol
+            </p>
+        </div>        
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <hr>
+            <p><strong>Dica: groupmems só pode ser executado como root, o administrador do sistema. Se você não estiver conectado como root, adicione sudo antes do comando.</strong></li>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Permissões Padrão<a name="Permissões Padrão"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Vamos fazer uma experiência. Abra uma janela de terminal e crie um arquivo vazio com o seguinte comando:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ touch testfile</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Agora, vamos dar uma olhada nas permissões deste arquivo. Eles podem ser diferentes em seu sistema, mas vamos supor que sejam mais ou menos assim:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -lh testfile<br>
+            -rw-r--r-- 1 carol carol 0 jul 13 21:55 testfile
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>As permissões são rw-r—​r--: leitura e escrita para o usuário, e leitura para o grupo e outros, ou 644 no modo octal. Agora, tente criar um diretório:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ mkdir testdir<br>
+            $ ls -lhd testdir<br>
+            drwxr-xr-x 2 carol carol 4,0K jul 13 22:01 testdir
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Agora as permissões são rwxr-xr-x: leitura, escrita e execução para o usuário, leitura e execução para o grupo e outros, ou 755 no modo octal.
+            </p>
+            <p>Não importa onde você esteja no sistema de arquivos, cada arquivo ou diretório que criar terá as mesmas permissões. Você já se perguntou de onde eles vêm?
+            </p>
+            <p>Elas vêm da máscara de usuário ou umask, que define as permissões padrão para cada arquivo criado. Você pode verificar os valores atuais com o comando umask:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ umask<br>
+            0022
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Mas isso não se parece com rw-r—​r--, ou mesmo 644. Talvez devêssemos tentar com o parâmetro -S, para obter uma saída em modo simbólico:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ umask -S<br>
+            u=rwx,g=rx,o=rx
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Essas são as mesmas permissões que nosso diretório de teste obteve em um dos exemplos acima. Mas por que quando criamos um arquivo as permissões eram diferentes?
+            </p>
+            <p>Bem, não faz sentido definir permissões globais de execução para todos em qualquer arquivo por padrão, certo? Os diretórios precisam de permissões de execução (caso contrário, não é possível entrar neles), mas os arquivos não, então eles não as recebem. Daí o rw-r—​r--.
+            </p>
+
+            <p>Além de exibir as permissões padrão, o umask também pode ser usado para alterá-las para sua sessão do shell atual. Por exemplo, se usarmos o comando:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ umask u=rwx,g=rwx,o=
+            </p>
+            <p>Cada novo diretório irá herdar as permissões rwxrwx---, e cada arquivo rw-rw---- (já que eles não recebem permissões de execução). Se você repetir os exemplos acima para criar um testfile e testdir e verificar as permissões, o resultado será:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -lhd test*<br>
+            drwxrwx--- 2 carol carol 4,0K jul 13 22:25 testdir<br>
+            -rw-rw---- 1 carol carol    0 jul 13 22:25 testfile
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>E se você marcar o umask sem o parâmetro -S (modo simbólico), você obterá:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ umask<br>
+            0007</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O resultado não parece familiar porque os valores usados são diferentes. Eis uma tabela com todos os valores e seus respectivos significados:
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Valor</th>
+                    <th>Permissão para Arquivos</th>
+                    <th>Permissão para Diretórios</th>
+                </tr>
+                <tr>
+                    <td>0</td>
+                    <td>rw-</td>
+                    <td>rwx</td>
+                </tr>            
+                    <td>1</td>
+                    <td>rw-</td>
+                    <td>rw-</td> 
+                </tr>                          
+                    <td>2</td>             
+                    <td>r--</td>
+                    <td>r-x</td>
+                </tr>     
+                    <td>3</td>
+                    <td>r--</td>
+                    <td>r--</td>
+                </tr>     
+                    <td>4</td>                    
+                    <td>-w-</td>
+                    <td>-wx</td>
+                </tr>     
+                    <td>5</td>
+                    <td>-w-</td>
+                    <td>-w-</td>
+                </tr>     
+                    <td>6</td>
+                    <td>---</td>
+                    <td>--x</td>
+                </tr>     
+                <tr>
+                    <td>7</td>
+                    <td>---</td>
+                    <td>---</td>                    
+                </tr>
+            </table>
+            <p>Como vemos, 007 corresponde a rwxrwx---, exatamente como solicitamos. O zero inicial pode ser ignorado.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Permissões Especiais<a name="Permissões Especiais"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Além das permissões de leitura, gravação e execução para usuário, grupo e outros, cada arquivo pode ter três outras permissões especiais capazes de alterar a maneira como um diretório funciona ou como um programa é executado. Elas podem ser especificadas no modo simbólico ou octal e são as seguintes:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Sticky Bit</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O sticky bit, também chamado de sinalizador de exclusão restrito, tem o valor octal 1 e no modo simbólico é representado por um t dentro das permissões de outros. Ele se aplica apenas a diretórios e não tem efeito em arquivos normais. No Linux, ele evita que os usuários removam ou renomeiem um arquivo em um diretório, a menos que sejam proprietários desse arquivo ou diretório.
+            </p>
+            <p>Os diretórios com o sticky bit definido mostram um t substituindo o x nas permissões de outros na saída de ls -l:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -ld Sample_Directory/<br>
+            drwxr-xr-t 2 carol carol 4096 Dec 20 18:46 Sample_Directory/
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No modo octal, as permissões especiais são especificadas usando uma notação de 4 dígitos, sendo que o primeiro dígito representa a permissão especial sobre a qual agir. Por exemplo, para definir o sticky bit (valor 1) para o diretório Another_Directory no modo octal, com permissões 755, o comando seria:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ chmod 1755 Another_Directory<br>
+            $ ls -ld Another_Directory<br>
+            drwxr-xr-t 2 carol carol 4,0K Dec 20 18:46 Another_Directory
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Set GID</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">        
+            <p>O Set GID, também conhecido como SGID ou Set Group ID bit, tem o valor octal 2 e no modo simbólico é representado por um s nas permissões de grupo. Ele pode ser aplicado a arquivos executáveis ou diretórios. Nos arquivos, fará com que o processo seja executado com os privilégios do grupo que possui o arquivo. Quando aplicado a diretórios, fará com que cada arquivo ou diretório criado herde o grupo do diretório pai.
+            </p>
+            <p>Arquivos e diretórios com o bit SGID mostram um s no lugar do x nas permissões de grupo na saída de ls -l:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -l test.sh<br>
+            -rwxr-sr-x 1 carol root 33 Dec 11 10:36 test.sh
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para adicionar permissões SGID a um arquivo no modo simbólico, o comando seria:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ chmod g+s test.sh<br>
+            $ ls -l test.sh<br>
+            -rwxr-sr-x 1 carol root     33 Dec 11 10:36 test.sh
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O exemplo a seguir o ajudará a entender melhor os efeitos do SGID em um diretório. Suponha que temos um diretório chamado Sample_Directory, pertencente à usuária carol e ao grupo users, com a seguinte estrutura de permissões:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -ldh Sample_Directory/<br>
+            drwxr-xr-x 2 carol users 4,0K Jan 18 17:06 Sample_Directory/
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Agora, vamos mudar para esse diretório e, usando o comando touch, criar um arquivo vazio dentro dele. O resultado seria:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ cd Sample_Directory/<br>
+            $ touch newfile<br>
+            $ ls -lh newfile<br>
+            -rw-r--r-- 1 carol carol 0 Jan 18 17:11 newfile
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Como podemos ver, o arquivo é propriedade da usuária carol e do grupo carol. Mas, se o diretório tivesse a permissão SGID definida, o resultado seria diferente. Primeiro, vamos adicionar o bit SGID ao Sample_Directory e verificar os resultados:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ sudo chmod g+s Sample_Directory/<br>
+            $ ls -ldh Sample_Directory/<br>
+            drwxr-sr-x 2 carol users 4,0K Jan 18 17:17 Sample_Directory/
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O s nas permissões do grupo indica que o bit SGID está definido. Agora, vamos mudar para este diretório e, novamente, criar um arquivo vazio com o comando touch:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ cd Sample_Directory/<br>
+            $ touch emptyfile<br>
+            $ ls -lh emptyfile<br>
+            -rw-r--r-- 1 carol users 0 Jan 18 17:20 emptyfile
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O grupo que possui o arquivo é users. Isso ocorre porque o bit SGID fez o arquivo herdar o proprietário do grupo de seu diretório pai, que é users.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Set UID</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>SUID, também conhecido como Set User ID, tem valor octal 4 e é representado por um s nas permissões de usuário no modo simbólico. Aplica-se apenas aos arquivos e não tem efeito em diretórios. Seu comportamento é semelhante ao do bit SGID, mas o processo será executado com os privilégios do usuário proprietário do arquivo. Os arquivos com o bit SUID mostram um s no lugar do x nas permissões do usuário, na saída de ls -l:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -ld test.sh<br>
+            -rwsr-xr-x 1 carol carol 33 Dec 11 10:36 test.sh
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Podemos combinar diversas permissões especiais em um parâmetro somando-as. Assim, para definir o SGID (valor 2) e o SUID (valor 4) no modo octal para o script test.sh com permissões 755, digite:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ chmod 6755 test.sh</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>E o resultado seria:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -lh test.sh<br>
+            -rwsr-sr-x 1 carol carol 66 Jan 18 17:29 test.sh
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <hr>
+            <p><strong>Dica: Se o seu terminal exibe cores, como é o caso da maioria atualmente, é fácil ver se essas permissões especiais estão definidas olhando a saída de ls -l. Para o sticky bit, o nome do diretório pode ser mostrado em uma fonte preta com fundo azul. O mesmo se aplica aos arquivos com os bits SGID (fundo amarelo) e SUID (fundo vermelho). As cores podem ser diferentes dependendo da distribuição do Linux e das configurações do terminal que você usa.</strong></li>
+        </div>
+    </body>
+</html>

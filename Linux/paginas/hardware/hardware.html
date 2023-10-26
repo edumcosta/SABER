@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../hardware/hardware.html">Comandos para Inspeção</a></li>
+                    <li><a href="#Arquivos de Informação e de Dispositivo">Arquivos de Informação e de Dispositivo</a></li>
+                    <li><a href="#Dispositivos de Armazenamento">Dispositivos de Armazenamento</a></li>                    
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Comandos para Inspeção</h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Os dois comandos essenciais para identificar dispositivos conectados em um sistema Linux são:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>lspci</th>
+                    <td>Mostra todos os dispositivos atualmente conectados ao barramento PCI (Peripheral Component Interconnect). Os
+                        dispositivos PCI podem ser um componente conectado à placa-mãe, como um controlador de disco, ou uma placa de expansão
+                        instalada em um slot PCI, como uma placa de vídeo externa.
+                        Descrição</td>                
+                </tr>      
+                <tr>
+                    <th>lsusb</th>
+                    <td>Lista os dispositivos USB (Universal Serial Bus) atualmente conectados à máquina. Embora existam dispositivos USB para
+                        praticamente qualquer finalidade imaginável, a interface USB é amplamente usada para conectar dispositivos de
+                        entrada — teclados, dispositivos apontadores — e mídias de armazenamento removíveis.</td>                
+                </tr>      
+            </table>            
+            <p>A saída dos comandos lspci e lsusb consiste em uma lista de todos os dispositivos PCI e USB identificados pelo sistema
+            operacional. No entanto, o dispositivo pode não estar totalmente operacional ainda, porque cada peça de hardware requer
+            um componente de software para controlar o dispositivo correspondente. Esse componente de software é chamado de módulo
+            do kernel e pode fazer parte do kernel oficial do Linux ou ser adicionado separadamente. Os módulos do kernel do Linux
+            relacionados a dispositivos de hardware também são chamados de drivers, como em outros sistemas operacionais. Os drivers
+            para Linux, no entanto, nem sempre são fornecidos pelo fabricante do dispositivo. Enquanto alguns fabricantes fornecem
+            seus próprios drivers binários para serem instalados separadamente, muitos drivers são criados por desenvolvedores
+            independentes. Historicamente, dispositivos que funcionam no Windows, por exemplo, podem não ter um módulo de kernel
+            equivalente para Linux. Atualmente, os sistemas operacionais baseados em Linux têm um forte suporte de hardware e a
+            maioria dos dispositivos funciona sem dar trabalho.
+            </p>
+            <p>Os comandos diretamente relacionados ao hardware geralmente requerem privilégios de root para serem executados, exibindo
+            apenas informações limitadas quando executados por um usuário normal; portanto, pode ser necessário fazer login como
+            root ou executar o comando com sudo. A seguinte saída do comando lspci, por exemplo, mostra alguns dispositivos
+            identificados:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lspci<br>
+            01:00.0 VGA compatible controller: NVIDIA Corporation GM107 [GeForce GTX 750 Ti] (rev a2)<br>
+            04:02.0 Network controller: Ralink corp. RT2561/RT61 802.11g PCI<br>
+            04:04.0 Multimedia audio controller: VIA Technologies Inc. ICE1712 [Envy24] PCI Multi-Channel I/O Controller (rev 02)<br>
+            04:0b.0 FireWire (IEEE 1394): LSI Corporation FW322/323 [TrueFire] 1394a Controller (rev 70)
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A saída desses comandos pode ter dezenas de linhas, de forma que o exemplo anterior e o seguinte incluem apenas as
+            partes que nos interessam. Os números hexadecimais no início de cada linha são o endereço exclusivo do dispositivo PCI
+            correspondente. O comando lspci mostra mais detalhes sobre um dispositivo específico se seu endereço for fornecido com a
+            opção -s, acompanhada da opção -v:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lspci -s 04:02.0 -v<br>
+            04:02.0 Network controller: Ralink corp. RT2561/RT61 802.11g PCI<br>
+            Subsystem: Linksys WMP54G v4.1<br>
+            Flags: bus master, slow devsel, latency 32, IRQ 21<br>
+            Memory at e3100000 (32-bit, non-prefetchable) [size=32K]<br>
+            Capabilities: [40] Power Management version 2<br>
+            kernel driver in use: rt61pci
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A saída agora mostra muito mais detalhes sobre o dispositivo no endereço 04:02.0. Trata-se de um controlador de rede
+            cujo nome interno é Ralink corp. RT2561/RT61 802.11g PCI. Subsystem está associado à marca e modelo do
+            dispositivo — Linksys WMP54G v4.1 — e pode ser útil para fins de diagnóstico.
+            </p>
+            <p>Outra maneira de verificar qual módulo do kernel está sendo usado para o dispositivo especificado seria usar a opção -k,
+            disponível nas versões mais recentes do lspci:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lspci -s 01:00.0 -k<br>
+            01:00.0 VGA compatible controller: NVIDIA Corporation GM107 [GeForce GTX 750 Ti] (rev a2)<br>
+            kernel driver in use: nvidia<br>
+            kernel modules: nouveau, nvidia_drm, nvidia
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para o dispositivo escolhido, uma placa NVIDIA GPU, lspci informa que o módulo em uso é chamado nvidia, na linha kernel
+            driver in use: nvidia, e todos os módulos correspondentes do kernel estão listados na linha kernel modules: nouveau,
+            nvidia_drm, nvidia. O comando lsusb é semelhante a lspci, mas lista exclusivamente as informações relativas à USB:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lsusb<br>
+            Bus 001 Device 029: ID 1781:0c9f Multiple Vendors USBtiny<br>
+            Bus 001 Device 028: ID 093a:2521 Pixart Imaging, Inc. Optical Mouse<br>
+            Bus 001 Device 020: ID 1131:1001 Integrated System Solution Corp. KY-BT100 Bluetooth Adapter<br>
+            Bus 001 Device 011: ID 04f2:0402 Chicony Electronics Co., Ltd Genius LuxeMate i200 Keyboard<br>
+            Bus 001 Device 007: ID 0424:7800 Standard Microsystems Corp.<br>
+            Bus 001 Device 003: ID 0424:2514 Standard Microsystems Corp. USB 2.0 Hub<br>
+            Bus 001 Device 002: ID 0424:2514 Standard Microsystems Corp. USB 2.0 Hub<br>
+            Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando lsusb mostra os canais USB disponíveis e os dispositivos conectados a eles. Como no caso do lspci, a opção -v
+            exibe uma saída mais detalhada. Um dispositivo específico pode ser selecionado para inspeção, bastando fornecer seu ID            
+            com a opção -d:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lsusb -v -d 1781:0c9f<br>
+            Bus 001 Device 029: ID 1781:0c9f Multiple Vendors USBtiny<br>
+            Device Descriptor:<br>
+            bLength 18<br>
+            bDescriptorType 1<br>
+            bcdUSB 1.01<br>
+            bDeviceClass 255 Vendor Specific Class<br>
+            bDeviceSubClass 0<br>
+            bDeviceProtocol 0<br>
+            bMaxPacketSize0 8<br>
+            idVendor 0x1781 Multiple Vendors<br>
+            idProduct 0x0c9f USBtiny<br>
+            bcdDevice 1.04<br>
+            iManufacturer 0<br>
+            iProduct 2 USBtiny<br>
+            iSerial 0<br>
+            bNumConfigurations 1
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Com a opção -t, o comando lsusb mostra os mapeamentos do dispositivo USB atual na forma de árvore hierárquica:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lsusb -t<br>
+            /: Bus 01.Port 1: Dev 1, Class=root_hub, Driver=dwc_otg/1p, 480M<br>
+            |__ Port 1: Dev 2, If 0, Class=Hub, Driver=hub/4p, 480M<br>
+            |__ Port 1: Dev 3, If 0, Class=Hub, Driver=hub/3p, 480M<br>
+            |__ Port 2: Dev 11, If 1, Class=Human Interface Device, Driver=usbhid, 1.5M<br>
+            |__ Port 2: Dev 11, If 0, Class=Human Interface Device, Driver=usbhid, 1.5M<br>
+            |__ Port 3: Dev 20, If 0, Class=Wireless, Driver=btusb, 12M<br>
+            |__ Port 3: Dev 20, If 1, Class=Wireless, Driver=btusb, 12M<br>
+            |__ Port 3: Dev 20, If 2, Class=Application Specific Interface, Driver=, 12M<br>
+            |__ Port 1: Dev 7, If 0, Class=Vendor Specific Class, Driver=lan78xx, 480M<br>
+            |__ Port 2: Dev 28, If 0, Class=Human Interface Device, Driver=usbhid, 1.5M<br>
+            |__ Port 3: Dev 29, If 0, Class=Vendor Specific Class, Driver=, 1.5M
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>É possível que nem todos os dispositivos tenham um módulo correspondente associado. A comunicação com determinados
+            dispositivos pode ser feita diretamente pelo aplicativo, sem a intermediação de um módulo. Ainda assim, existem
+            informações importantes na saída de lsusb -t. Quando existe um módulo correspondente, seu nome aparece no final da linha
+            do dispositivo, como em Driver=btusb. O dispositivo Class identifica a categoria geral, como Human Interface Device,
+            Wireless, Vendor Specific Class, Mass Storage, dentre outros. Para verificar qual dispositivo está usando o módulo
+            btusb, presente na lista anterior, os números de Bus e Dev devem ser fornecidos à opção -s do comando lsusb:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lsusb -s 01:20<br>
+            Bus 001 Device 020: ID 1131:1001 Integrated System Solution Corp. KY-BT100 Bluetooth Adapter
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>É comum que haja um grande conjunto de módulos de kernel carregados em um sistema Linux padrão a qualquer momento. Para
+            interagir com eles, o melhor jeito é usar os comandos fornecidos pelo pacote kmod, um conjunto de ferramentas para
+            realizar tarefas comuns com os módulos do kernel Linux, como inserir, remover, listar, verificar propriedades, resolver
+            dependências e aliases. O comando lsmod, por exemplo, mostra todos os módulos carregados no momento:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lsmod<br>
+            Module Size Used by<br>
+            kvm_intel 138528 0<br>
+            kvm 421021 1 kvm_intel<br>
+            iTCO_wdt 13480 0<br>
+            iTCO_vendor_support 13419 1 iTCO_wdt<br>
+            snd_usb_audio 149112 2<br>
+            snd_hda_codec_realtek 51465 1<br>
+            snd_ice1712 75006 3<br>
+            snd_hda_intel 44075 7<br>
+            arc4 12608 2<br>
+            snd_cs8427 13978 1 snd_ice1712<br>
+            snd_i2c 13828 2 snd_ice1712,snd_cs8427<br>
+            snd_ice17xx_ak4xxx 13128 1 snd_ice1712<br>
+            snd_ak4xxx_adda 18487 2 snd_ice1712,snd_ice17xx_ak4xxx<br>
+            microcode 23527 0<br>
+            snd_usbmidi_lib 24845 1 snd_usb_audio<br>
+            gspca_pac7302 17481 0<br>
+            gspca_main 36226 1 gspca_pac7302<br>
+            videodev 132348 2 gspca_main,gspca_pac7302<br>
+            rt61pci 32326 0<br>
+            rt2x00pci 13083 1 rt61pci<br>
+            media 20840 1 videodev<br>
+            rt2x00mmio 13322 1 rt61pci<br>
+            hid_dr 12776 0<br>
+            snd_mpu401_uart 13992 1 snd_ice1712<br>
+            rt2x00lib 67108 3 rt61pci,rt2x00pci,rt2x00mmio<br>
+            snd_rawmidi 29394 2 snd_usbmidi_lib,snd_mpu401_uart
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A saída do comando lsmod é dividida em três colunas:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Module</th>
+                    <td>Nome do módulo.</td>                
+                </tr>      
+                <tr>
+                    <th>Size</th>
+                    <td>Quantidade de RAM utilizada pelo módulo, em bytes.</td>                
+                </tr>      
+                <tr>
+                    <th>Used by</th>
+                    <td>Módulos dependentes.</td>                
+                </tr>      
+            </table>                    
+
+            <p>Alguns módulos exigem que outros módulos funcionem corretamente, como é o caso dos módulos para dispositivos de áudio:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ lsmod | fgrep -i snd_hda_intel<br>
+            snd_hda_intel 42658 5<br>
+            snd_hda_codec 155748 3 snd_hda_codec_hdmi,snd_hda_codec_via,snd_hda_intel<br>
+            snd_pcm 81999 3 snd_hda_codec_hdmi,snd_hda_codec,snd_hda_intel<br>
+            snd_page_alloc 13852 2 snd_pcm,snd_hda_intel<br>
+            snd 59132 19<br>
+            snd_hwdep,snd_timer,snd_hda_codec_hdmi,snd_hda_codec_via,snd_pcm,snd_seq,snd_hda_codec,snd_hda_intel,snd_seq_device
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A terceira coluna, Used by, mostra os módulos que exigem que o módulo na primeira coluna funcione corretamente. Muitos
+            módulos da arquitetura de som do Linux, prefixados por snd, são interdependentes. Ao procurar por problemas durante um
+            diagnóstico do sistema, pode ser útil descarregar módulos específicos atualmente carregados. O comando modprobe pode ser
+            usado para carregar e descarregar módulos do kernel: para descarregar um módulo e seus módulos relacionados, desde que
+            não estejam sendo usados por um processo em execução, use o comando modprobe -r. Por exemplo, para descarregar o módulo
+            snd-hda-intel (o módulo para um dispositivo de áudio HDA Intel) e outros módulos relacionados ao sistema de som:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p># modprobe -r snd-hda-intel</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Além de carregar e descarregar módulos do kernel enquanto o sistema está em execução, é possível alterar os parâmetros
+            do módulo quando o kernel está sendo carregado, o que não é muito diferente de passar opções para os comandos. Os módulo
+            aceitam parâmetros específicos, mas na maioria das vezes recomenda-se usar os valores padrão, não sendo necessários
+            parâmetros extras. No entanto, em alguns casos precisamos usar parâmetros para alterar o comportamento de um módulo e
+            fazê-lo funcionar conforme o esperado.
+            </p>
+            <p>Usando o nome do módulo como único argumento, o comando modinfo mostra uma descrição, o arquivo, o autor, a licença, a
+            identificação, as dependências e os parâmetros disponíveis para o módulo fornecido. Para que os parâmetros
+            personalizados de um módulo se tornem persistentes, inclua-os no arquivo /etc/modprobe.conf ou em arquivos individuais
+            com a extensão .conf no diretório /etc/modprobe.d/`. A opção -p fará com que o comando modinfo exiba todos os parâmetros
+            disponíveis e ignore as outras informações:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p># modinfo -p nouveau<br>
+            vram_pushbuf:Create DMA push buffers in VRAM (int)<br>
+            tv_norm:Default TV norm.<br>
+            Supported: PAL, PAL-M, PAL-N, PAL-Nc, NTSC-M, NTSC-J,<br>
+            hd480i, hd480p, hd576i, hd576p, hd720p, hd1080i.<br>
+            Default: PAL<br>
+            NOTE Ignored for cards with external TV encoders. (charp)<br>
+            nofbaccel:Disable fbcon acceleration (int)<br>
+            fbcon_bpp:fbcon bits-per-pixel (default: auto) (int)<br>
+            mst:Enable DisplayPort multi-stream (default: enabled) (int)<br>
+            tv_disable:Disable TV-out detection (int)<br>
+            ignorelid:Ignore ACPI lid status (int)<br>
+            duallink:Allow dual-link TMDS (default: enabled) (int)<br>
+            hdmimhz:Force a maximum HDMI pixel clock (in MHz) (int)<br>
+            config:option string to pass to driver core (charp)<br>
+            debug:debug string to pass to driver core (charp)<br>
+            noaccel:disable kernel/abi16 acceleration (int)<br>
+            modeset:enable driver (default: auto, 0 = disabled, 1 = enabled, 2 = headless) (int)<br>
+            atomic:Expose atomic ioctl (default: disabled) (int)<br>
+            runpm:disable (0), force enable (1), optimus only default (-1) (int)
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O exemplo de saída mostra todos os parâmetros disponíveis para o módulo nouveau, um módulo do kernel fornecido pelo
+            nouveau project como alternativa aos drivers proprietários das placas de GPU da NVIDIA. A opção modeset, por exemplo,
+            permite controlar se a resolução e a profundidade da tela serão definidas no espaço do kernel em vez do espaço do
+            usuário. Quando adicionamos options nouveau modeset =0 ao arquivo /etc/modprobe.d/nouveau.conf, o recurso modeset do
+            kernel é desativado.
+            </p>
+            <p>Se um módulo estiver causando problemas, o arquivo /etc/modprobe.d/blacklist.conf pode ser usado. Por exemplo, para
+            impedir o carregamento automático do módulo nouveau, a linha blacklist nouveau deve ser adicionada ao arquivo
+            /etc/modprobe.d/blacklist.conf. Essa ação é necessária quando o módulo proprietário nvidia é instalado e o módulo padrão
+            nouveau deve ser posto de lado.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Arquivos de Informação e de Dispositivo<a name="Arquivos de Informação e de Dispositivo"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">                
+            <p>Os comandos lspci, lsusb e lsmod atuam como front-ends para ler as informações de hardware armazenadas pelo sistema
+            operacional. Este tipo de informação é mantido em arquivos especiais nos diretórios /proc e /sys. Esses diretórios
+            são pontos de montagem para sistemas de arquivos que não estão presentes em uma partição de dispositivo, mas somente
+            no espaço de RAM usado pelo kernel para armazenar a configuração do tempo de execução e informações sobre os
+            processos em execução. Esses sistemas de arquivos não se destinam ao armazenamento convencional de arquivos e,
+            portanto, são chamados de pseudosistemas de arquivos e existem apenas enquanto o sistema estiver em execução. O
+            diretório /proc contém arquivos com informações sobre processos em execução e recursos de hardware. Alguns dos
+            arquivos importantes em /proc para a inspeção de hardware são:
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>/proc/cpuinfo</th>
+                    <td>Lista informações detalhadas sobre a(s) CPU(s) encontradas pelo sistema operacional.</td>                
+                </tr>      
+                <tr>
+                    <th>/proc/interrupts</th>
+                    <td>Uma lista de números de interrupções por dispositivo de entrada e saída em cada CPU.</td>                
+                </tr>      
+                <tr>
+                    <th>/proc/ioports</th>
+                    <td>Lista as regiões de portas de Entrada/Saída registradas atualmente e em uso.</td>                
+                </tr>      
+                <tr>
+                    <th>/proc/dma</th>
+                    <td>Lista os canais registrados de DMA (acesso direto à memória) em uso.</td>                
+                </tr>      
+            </table>
+            
+            <p>Os arquivos dentro do diretório /sys têm funções semelhantes às do /proc. No entanto, o diretório /sys tem o
+            objetivo específico de armazenar informações do dispositivo e dados do kernel relacionados ao hardware, ao passo que
+            /proc também contém informações sobre diversas estruturas de dados do kernel, incluindo processos em execução e
+            configurações.
+            </p>
+            <p>Outro diretório diretamente relacionado aos dispositivos em um sistema Linux padrão é o /dev. Cada arquivo dentro de
+            /dev é associado a um dispositivo do sistema, particularmente dispositivos de armazenamento. Um disco rígido IDE
+            legado, por exemplo, quando conectado ao primeiro canal IDE da placa-mãe, é representado pelo arquivo /dev/hda. Cada
+            partição desse disco será identificada por /dev/hda1, /dev/hda2 e assim por diante, até a última partição
+            encontrada.
+            </p>
+
+            <p>Os dispositivos removíveis são manipulados pelo subsistema udev, que cria os dispositivos correspondentes em /dev. O
+            kernel do Linux captura o evento de detecção de hardware e o passa para o processo udev, que por sua vez identifica
+            o dispositivo e cria dinamicamente os arquivos correspondentes em /dev, usando regras predefinidas.
+            </p>
+            <p>Nas distribuições Linux atuais, o udev é responsável pela identificação e configuração dos dispositivos já presentes
+            durante a inicialização da máquina (detecção coldplug) e dos dispositivos identificados enquanto o sistema está em
+            execução (detecção hotplug). O Udev utiliza o SysFS, o pseudosistema de arquivos montado em /sys para informações
+            relacionadas ao hardware.
+            </p>
+
+            <p>À medida que novos dispositivos são detectados, o udev pesquisa uma regra correspondente nas regras predefinidas
+            armazenadas no diretório /etc/udev/rules.d/. As regras mais importantes são fornecidas pela distribuição, mas é
+            possível adicionar novas para casos específicos.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Dispositivos de Armazenamento<a name="Dispositivos de Armazenamento"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">                                            
+            <p>No Linux, os dispositivos de armazenamento são genericamente chamados de dispositivos de bloco, porque os dados que
+            contêm são lidos em blocos de dados armazenados em buffer com diferentes tamanhos e posições. Cada dispositivo de
+            bloco é identificado por um arquivo no diretório /dev, sendo que o nome do arquivo depende do tipo de dispositivo
+            (IDE, SATA, SCSI, etc.) e de suas partições. Os dispositivos de CD/DVD e de disquete, por exemplo, receberão nomes
+            específicos em /dev: uma unidade de CD/DVD conectada ao segundo canal IDE será identificada como /dev/hdc (/dev/hda
+            e /dev/hdb são reservados para os dispositivos mestre e escravo no primeiro canal IDE) e uma unidade de disquete
+            antiga será identificada como /dev/fdO, /dev/fd1, etc.
+            </p>
+
+            <p>A partir da versão 2.4 do kernel Linux em diante, a maioria dos dispositivos de armazenamento passou a ser
+            identificada como dispositivos SCSI, independentemente do tipo de hardware. Os dispositivos de bloco IDE, SSD e USB
+            são prefixados com sd. Para os discos IDE, o prefixo sd é usado, mas a terceira letra é escolhida dependendo da
+            unidade ser mestre ou escrava (no primeiro canal IDE, o mestre será sda e o escravo será sdb). As partições são
+            listadas em ordem numérica. Os caminhos /dev/sda1, /dev/sda2, etc. são usados para a primeira e a segunda partições
+            do dispositivo de bloco identificado primeiro e /dev/sdb1, /dev/sdb2, etc. identificam a primeira e a segunda
+            partições do dispositivo de bloco identificado a seguir. A exceção a esse padrão ocorre com cartões de memória
+            (cartões SD) e dispositivos NVMe (SSD conectados ao barramento PCI Express). Para os cartões SD, os caminhos
+            /dev/mmcblk0p1, /dev/mmcblk0p2 etc. são usados para a primeira e a segunda partições do dispositivo identificado
+            primeiro e /dev/mmcblk1p1, /dev/mmcblk1p2, etc. identificam a primeira e a segunda partições do dispositivo
+            identificado em segundo lugar. Os dispositivos NVMe recebem o prefixo nvme, como em /dev/nvme0n1p1 e /dev/nvme0n1p2.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

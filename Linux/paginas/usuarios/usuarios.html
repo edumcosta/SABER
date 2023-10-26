@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->        
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux: Sistema de Arquivos</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../usuarios.html">Usuários</a></li>
+                    <li><a href="#Obtendo Informações dos Usuários">Obtendo Informações dos Usuários</a></li>                    
+                    <li><a href="#Troca de Usuário e Aumento de Privilégios">Troca de Usuário e Aumento de Privilégios</a></li>                                        
+                    <li><a href="#Referenciado Usuário em Outros Grupos">Referenciado Usuário em Outros Grupos</a></li>
+
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Usuários</h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Contas</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>A segurança engloba muitos conceitos, sendo um dos mais comuns o conceito geral de controles de acesso. Antes de tratar dos controles de acesso a arquivos, como propriedade e permissões, é necessário compreender os conceitos básicos relacionados às contas de usuário do Linux, que são divididas em vários tipos.
+            </p>
+            <p>Todo usuário de um sistema Linux possui uma conta associada que, além das informações de login (como nome de usuário e senha), também define como e onde o usuário pode interagir com o sistema. Os privilégios e controles de acesso definem os “limites” dentro dos quais cada usuário pode operar.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Identificadores (UIDs/GIDs)</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                        
+            <p>Os Identificadores de Usuário e Grupos (UIDs/GIDs) são as referências básicas, numeradas, às contas. As implementações iniciais eram números inteiros limitados de 16 bits (valores de 0 a 65535), mas os sistemas do século XXI suportam UIDs e GIDs de 64 bits. Os usuários e grupos são enumerados de forma independente, de modo que o mesmo ID pode representar tanto um usuário quanto um grupo.
+            </p>
+            <p>Todo usuário possui não apenas um UID, mas também um GID primário. O GID primário de um usuário pode ser exclusivo apenas para esse usuário, não sendo usado por outros usuários. No entanto, o grupo pode ser compartilhado por diversos usuários. Além desses grupos primários, cada usuário também pode ser membro de outros grupos.
+            </p>
+            <p>Por padrão, nos sistemas Linux, todo usuário é incluído em um grupo com o mesmo nome que seu nome de usuário e um GID idêntico a seu UID. Por exemplo, se criarmos um novo usuário chamado "newuser", seu grupo por padrão também será "newuser".
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> A Conta de Superusuário</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>No Linux, a conta do superusuário é root, que sempre terá o UID 0. O superusuário também pode ser chamado de administrador do sistema e dispõe de acesso e controle ilimitados sobre o sistema, incluindo outros usuários.
+            </p>
+            <p>O grupo padrão do superusuário tem o GID 0 e também é chamado de root. O diretório inicial do superusuário é um diretório dedicado, de nível superior, /root, acessível apenas pelo próprio usuário root.
+            </p>
+            <p>Para alterar a senha do "root", utilize: <strong>"sudo -i"</strong> e executar o comando: <strong>passwd</strong>. Após alterar a senha utilize o comando <strong>"exit"</strong>.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Contas de Usuário Padrão</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">        
+            <p>Todas as contas que não sejam root são, tecnicamente, contas de usuário regulares, mas em um sistema Linux o termo coloquial conta de usuário geralmente indica uma conta de usuário “regular” (sem privilégios). Elas têm geralmente as seguintes propriedades, com algumas exceções:
+            </p>            
+            <p>UIDs iniciando em 1000 (4 dígitos), embora alguns sistemas legados possam iniciar em 500.
+            </p>
+            <p>Um diretório inicial definido, geralmente um subdiretório de /home, dependendo da configuração local.
+            </p>
+            <p>Um shell de login definido. No Linux, o shell padrão é geralmente o Bourne Again Shell (/bin/bash), embora outros possam estar disponíveis.
+            </p>
+            <p>Se uma conta de usuário não tiver um shell válido em seus atributos, o usuário não poderá abrir um shell interativo. Normalmente, /sbin/nologin é usado como um shell inválido. Isso pode ser proposital, no caso de o usuário ser autenticado apenas para serviços que excluam o console ou o acesso SSH; por exemplo, somente acesso FTP seguro (sftp).
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Contas do Sistema</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>As contas de sistema são tipicamente pré-criadas no momento da instalação do sistema. São destinadas a recursos, programas e serviços que não serão executados como superusuário. Em um mundo ideal, todos eles seriam funcionalidades do sistema operacional.
+            </p>
+            <p>As contas de sistema variam, mas dentre seus atributos temos:</p>
+            <li>Os UIDs normalmente são menores de 100 (2 dígitos) ou entre 500-1000 (3 dígitos).</li>
+            <li>Não têm nenhum diretório inicial dedicado ou têm um diretório que normalmente não está em /home.</li>
+            <li>Nenhum shell de login válido (tipicamente /sbin/nologin), com raras exceções.</li>
+            <p>A maioria das contas de sistema no Linux nunca faz login e não precisa de um shell definido em seus atributos. Muitos processos que pertencem e são executados por contas de sistema são transferidos para o seu próprio ambiente pelo gerenciamento do sistema, sendo executados com a conta de sistema especificada. Essas contas geralmente têm privilégios limitados ou, na maioria das vezes, nenhum privilégio.
+            </p>
+            <p>Em geral, as contas de sistema não devem ter um shell de login válido. O contrário representaria um problema de segurança na maioria dos casos.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Observação: Do ponto de vista do LPI Linux Essentials, as contas de sistema têm UIDs &lt 1000, com UIDs (e GIDs) de 2 ou 3 dígitos.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Contas de Serviço</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>As contas de serviço são criadas tipicamente quando instalamos e configuramos serviços. Como no caso das contas de sistema, elas são destinadas aos recursos, programas e serviços que não serão executados como superusuário.
+            </p>
+            <p>Em muitas documentações, as contas de sistema e de serviço são semelhantes e intercambiáveis. Isso inclui a localização dos diretórios pessoais, que normalmente ficam fora de /home, quando definidos (as contas de serviço têm mais probabilidade de ter um diretório pessoal do que as contas de sistema) e a ausência de um shell de login válido. Embora não exista uma definição estrita, a principal diferença entre contas de sistema e de serviço está no UID/GID.    
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Conta de Sistema</th>
+                    <td>UID/GID &lt 100 (2 dígitos) ou &lt 500-1000 (3 digitos)</td>
+                </tr>
+                <tr>
+                    <th>Conta de Serviço</th>
+                    <td>UID/GID > 1000 (4+ dígitos), mas não uma conta de usuário “padrão” ou “regular” , uma conta para os serviços, com um UID/GID > 1000 (4+ dígitos)</td>
+                </tr>
+            </table>
+            <p>Algumas distribuições Linux ainda têm contas de serviço pré-reservadas com UID &lt 100, e estas também podem ser consideradas contas de sistema, mesmo que não sejam criadas na instalação. Por exemplo, nas distribuições Linux baseadas no Fedora (incluindo o Red Hat), o usuário do servidor web Apache tem um UID (e GID) 48, claramente uma conta de sistema, apesar de contar com um diretório inicial (geralmente em /usr/share/httpd ou /var/www/html/).
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Observação: Do ponto de vista do LPI Linux Essentials, as contas de sistema têm UIDs <1000 e as contas de usuário regulares têm UIDs >1000. Como as contas de usuário regulares são >1000, esses UIDs também podem incluir contas de serviço.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Shells de Login e Diretórios Iniciais</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                           
+            <p>Algumas contas têm um shell de login, enquanto outras não os têm por motivos de segurança, já que não requerem acesso interativo. O shell de login padrão na maioria das distribuições Linux é o Bourne Again Shell, ou bash, mas outros shells podem estar disponíveis, como o C Shell (csh), Korn shell (ksh) ou Z shell (zsh), dentre outros.
+            </p>            
+            <p>O usuário pode alterar seu shell de login usando o comando chsh. Por padrão, o comando é executado no modo interativo e exibe um prompt perguntando qual shell deve ser usado. A resposta deve ser o caminho completo para o binário do shell, como mostrado abaixo:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ chsh<br>
+            Changing the login shell for emma<br>
+            Enter the new value, or press ENTER for the default<br>
+                Login Shell [/bin/bash]: /usr/bin/zsh
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Também é possível executar o comando no modo não interativo, com o parâmetro -s seguido pelo caminho para o binário, da seguinte forma:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p></p>$ chsh -s /usr/bin/zsh<br>
+            <p>A maioria das contas tem um diretório inicial definido. No Linux, esse é geralmente o único local em que a conta do usuário tem acesso garantido de gravação, com algumas exceções (por exemplo, áreas temporárias do sistema de arquivos). No entanto, algumas contas são configuradas propositalmente para não ter acesso de gravação, mesmo no próprio diretório pessoal, por motivos de segurança.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Obtendo Informações dos Usuários<a name="Obtendo Informações dos Usuários"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Informações básicas de usuário é uma prática cotidiana comum em um sistema Linux. Em alguns casos, os usuários precisarão trocar de usuário e ganhar privilégios para concluir tarefas privilegiadas.
+            </p>
+
+            <p>Os usuários comuns podem listar atributos e acessos na linha de comando usando os comandos abaixo. As informações básicas em contexto limitado não são uma operação privilegiada.
+            </p>
+
+            <p>Para listar as informações atuais de um usuário na linha de comando, basta um comando de duas letras: id. A saída vai depender de seu ISD de login:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            $ id<br>
+            uid=1024(emma) gid=1024(emma) 1024(emma),20(games),groups=10240(netusers),20480(netadmin) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Na listagem anterior, o usuário (emma) tem identificadores detalhados da seguinte maneira:</p>
+            <li>1024 = ISD de usuário (UID), seguido pelo nome de usuário (nome comum ou nome de login) entre parênteses.</li>
+            <li>1024 = o ID primário de grupo (GID), seguido pelo nome do grupo (nome comum) entre parênteses.
+            </li>
+            <li>Uma lista de GIDs adicionais (nomes de grupo) a que o usuário também pertence.</li>            
+            <p>Para listar a última vez em que os usuários se logaram no sistema, usamos o comando last:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            $ last<br>
+            emma     pts/3        ::1              Fri Jun 14 04:28   still logged in<br>
+            reboot   system boot  5.0.17-300.fc30. Fri Jun 14 04:03   still running<br>
+            reboot   system boot  5.0.17-300.fc30. Wed Jun  5 14:32 - 15:19  (00:46)<br>
+            reboot   system boot  5.0.17-300.fc30. Sat May 25 18:27 - 19:11  (00:43)<br>
+            reboot   system boot  5.0.16-100.fc28. Sat May 25 16:44 - 17:06  (00:21)<br>
+            reboot   system boot  5.0.9-100.fc28.x Sun May 12 14:32 - 14:46  (00:14)<br>
+            root     tty2                          Fri May 10 21:55 - 21:55  (00:00)<br>
+                ...
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>As informações listadas nas colunas podem variar, mas dentre os itens relevantes na listagem anterior podemos destacar:</p>
+            <li>Um usuário (emma) fez login através da rede (pseudo TTY pts/3) e ainda está logado.</li>
+            <li>A hora da inicialização atual está listada, junto com o kernel. No exemplo acima, cerca de 25 minutos antes do usuário fazer login.</li>            
+            <li>O superusuário (root) se logou através de um console virtual (TTY tty2), brevemente, em meados de maio.</li>
+            <p>Uma variante do comando last é o comando lastb, que lista as últimas tentativas malsucedidas de login.
+            </p>
+            <p>Os comandos who e w listam somente os logins ativos no sistema:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            $ who<br>
+            emma  pts/3        2019-06-14 04:28 (::1)
+            </p>
+            <p>$ w<br>
+             05:43:41 up  1:40,  1 user,  load average: 0.25, 0.53, 0.51<br>
+            USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT<br>
+            emma  pts/3     04:28    1:14m  0.04s  0.04s -bash
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Algumas informações são comuns aos dois comandos. Por exemplo, um usuário (emma) está logado com um pseudo-dispositivo TTY (pts/3) e a hora de login é 04:28.
+            </p>
+            <p>O comando w lista mais informações, incluindo o seguinte:</p>
+            <li>A hora atual e há quanto tempo o sistema está ativo</li>
+            <li>Quantos usuários estão conectados</li>
+            <li>As cargas médias dos últimos 1, 5 e 15 minutos</li>
+            <p>E as informações adicionais para cada sessão de usuário ativo.</p>
+            <li>Tempos selecionados e totais de uso da CPU (IDLE, JCPU e PCPU)</li>
+            <li>O processo atual (-bash). O tempo total de uso da CPU desse processo é o último item (PCPU).</li>
+            <p>Ambos os comandos têm mais opções para listar várias informações adicionais.</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Troca de Usuário e Aumento de Privilégios<a name="Troca de Usuário e Aumento de Privilégios"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Em um mundo ideal, os usuários nunca precisariam de privilégios adicionais para concluir suas tarefas. O sistema sempre “funcionaria” e tudo estaria configurado para diversos tipos de acesso.
+            </p>
+            <p>Felizmente para nós, o Linux — desde a instalação — já funciona dessa maneira para a maioria dos usuários que não são administradores de sistema, apesar de sempre seguir o modelo de segurança do menor privilégio.
+            </p>
+            <p>No entanto, existem comandos que permitem aumentar os privilégios quando necessário. Dois dos mais importantes são su e sudo.
+            </p>
+            <p>Atualmente, na maioria dos sistemas Linux, o comando su é usado apenas para conceder privilégios de root ao usuário padrão (se um nome de usuário não for especificado após o nome do comando). Embora possa ser usado para alternar para outro usuário, não é uma boa prática, os usuários devem fazer login a partir de outro sistema, pela rede, console físico ou terminal no sistema.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>~$ su -
+            Password:<br>
+            root ~#
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Após digitar a senha do superusuário (root), o usuário adquire um shell de superusuário (observe o # no final do prompt de comando) e se torna, para todos os efeitos, o superusuário (root).
+            </p>
+            <p>Compartilhar senhas é uma péssima ideia para a segurança, e por isso deve haver pouquíssima necessidade do comando su em um sistema Linux moderno.
+            </p>
+            <p>O cifrão ($) deve encerrar o prompt da linha de comando no shell de usuário não privilegiado, enquanto o símbolo da cerquilha (#) deve encerrar o prompt da linha de comando no shell do superusuário (root). É altamente recomendável que o caractere final de qualquer prompt nunca se afaste desse padrão “universalmente aceito”, uma vez que essa nomenclatura é empregada em materiais de aprendizado, incluindo estes.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>>Cuidado: Nunca mude para o superusuário (root) sem passar o parâmetro do shell de login (-). A menos que haja instruções explícitas do fornecedor do SO ou do software, quando o su for necessário sempre se deve executar su -, com pouquíssimas exceções. Os ambientes de usuário podem causar problemas e alterações indesejáveis de configuração quando usados no modo de privilégio total como superusuário.</strong></p>            
+        </div>  
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Qual o grande problema de se usar su para passar ao modo superusuário (root)? Se a sessão de um usuário regular tiver sido comprometida, a senha do superusuário (root) poderia ser capturada. É aí que entra o “Switch User Do” (ou “Superuser Do”):
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>
+            $ cat /sys/devices/virtual/dmi/id/board_serial<br>
+            cat: /sys/devices/virtual/dmi/id/board_serial: Permission denied
+            </p>
+            <p>
+            $ sudo cat /sys/devices/virtual/dmi/id/board_serial<br>
+            [sudo] password for emma:<br>
+            /6789ABC/
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Na listagem anterior, o usuário está tentando procurar o número de série da placa do sistema. No entanto, a permissão é negada, pois essas informações estão marcadas como privilegiadas.
+            </p>
+            <p>Porém, usando o sudo, o usuário digita sua própria senha para se autenticar. Se ele tiver sido autorizado na configuração sudoers para executar esse comando com privilégio, com as opções permitidas, ele funcionará.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Dica: Por padrão, o primeiro comando autorizado sudo autenticará os comandos sudo subsequentes por um período (muito curto) de tempo. Isso pode ser configurado pelo administrador do sistema.</strong></p>            
+        </div>  
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Arquivos de Controle de Acesso</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                      
+            <p>Quase todos os sistemas operacionais têm um conjunto de locais usados para armazenar os controles de acesso. No Linux, esses são tipicamente arquivos de texto localizados no diretório /etc, que é onde costumam ser armazenados os arquivos de configuração do sistema. Por padrão, esse diretório é legível por todos os usuários no sistema, mas modificável apenas por root.
+            </p>
+            <p>Os principais arquivos relacionados a contas de usuário, atributos e controle de acesso são:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>/etc/passwd</th>
+                    <td>Este arquivo armazena informações básicas sobre os usuários no sistema, incluindo UID e GID, diretório inicial, shell etc. Apesar do nome, nenhuma senha é armazenada aqui.</td>
+                </tr>
+                <tr>
+                    <th>/etc/group</th>
+                    <td>Este arquivo armazena informações básicas sobre todos os grupos de usuários no sistema, como nome do grupo, GID e membros.</td>
+                </tr>
+                <tr>
+                    <th>/etc/shadow</th>            
+                    <td>É aqui que as senhas dos usuários são armazenadas. Elas são criptografadas por segurança.</td>
+                </tr>
+                <tr>
+                    <th>/etc/gshadow</th>
+                    <td>Este arquivo armazena informações mais detalhadas sobre grupos, incluindo uma senha criptografada com hash que permite que os usuários se tornem membros do grupo temporariamente, uma lista de usuários que podem se tornar membros do grupo a qualquer momento e uma lista de administradores do grupo.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Cuidado: Esses arquivos não foram projetados para ser editados diretamente e isso jamais deve ser feito. Esta lição aborda apenas as informações armazenadas nesses arquivos e não a edição deles.</strong></p>            
+        </div>  
+        <div class="w3-container w3-theme-l5 w3-monospace">                                                      
+            <p>Por padrão, qualquer usuário pode acessar o /etc e ler os arquivos /etc/passwd e /etc/group. E também por padrão nenhum usuário, exceto root, pode ler os arquivos /etc/shadow ou /etc/gshadow.
+            </p>
+            <p>Também existem arquivos relacionados ao aumento básico de privilégios em sistemas Linux, como nos comandos su e sudo. Por padrão, eles só estão acessíveis ao usuário root.
+            </p>        
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>/etc/sudoers</th>
+                    <td>Este arquivo controla quem pode usar o comando sudo e como.</td>
+                </tr>
+                <tr>
+                    <th>/etc/sudoers.d</th>
+                    <td>Este diretório pode conter arquivos que suplementam as configurações do arquivo sudoers.</td>
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Cuidado: Embora /etc/sudoers seja um arquivo de texto, ele jamais deve ser editado diretamente. Se for necessário fazer alterações em seu conteúdo, elas devem ser efetuadas através do utilitário visudo.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Arquivo: /etc/passwd</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            
+            <p>O arquivo /etc/passwd é popularmente chamado “arquivo password” (senha). Cada linha contém diversos campos, sempre delimitados por dois pontos (:). Apesar do nome, o hash one-way das senhas não é armazenado neste arquivo atualmente.
+            </p>
+            <p>A sintaxe típica de uma linha nesse arquivo é:</p>
+            
+            <p>USERNAME:PASSWORD:UID:GID:GECOS:HOMEDIR:SHELL</p>
+            <p>Onde:</p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>USERNAME</th>
+                    <td>O nome de usuário ou nome de login (nome), como root, nobody, emma.</td>
+                </tr>
+                <tr>
+                    <th>PASSWORD</th>
+                    <td>Antigo local do hash de senhas. Quase sempre é x, indicando que a senha está armazenada no arquivo /etc/shadow.</td>
+                </tr>
+                <tr>
+                    <th>UID</th>
+                    <td>ID de usuário (UID), como 0, 99, 1024.</td>
+                </tr>
+                <tr>
+                    <th>GID</th>
+                    <td>ID de grupo padrão (GID), como 0, 99, 1024.</td>
+                </tr>
+                <tr>
+                    <th>GECOS</th>
+                    <td>Uma lista em formato CSV de informações de usuários, incluindo nome, localização, número de telefone. Por exemplo: Emma Smith,42 Douglas St,555.555.5555</td>
+                </tr>
+                <tr>
+                    <th>HOMEDIR</th>
+                    <td>Caminho para o diretório inicial do usuário, como /root, /home/emma, etc.</td>
+                </tr>
+                <tr>
+                    <th>SHELL</th>
+                    <td>O shell padrão para este usuário, como /bin/bash, /sbin/nologin, /bin/ksh etc.</td>
+                </tr>
+            </table>
+            
+            <p>Por exemplo, a linha a seguir descreve o usuário emma:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>emma:x:1000:1000:Emma Smith,42 Douglas St,555.555.5555:/home/emma:/bin/bash</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Compreendendo o campo GECOS</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            
+            <p>O campo GECOS contém três (3) ou mais campos delimitados por vírgula (,), sendo também conhecido como lista de Valores Separados por Vírgula (Comma Separated Values, ou CSV). Embora não exista um padrão imposto, os campos geralmente estão na seguinte ordem:
+            </p>
+
+            <p>NAME,LOCATION,CONTACT</p>
+            <p>Onde:</p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>NAME</th>
+                    <td>É o “Full Name” (nome completo) do usuário, ou o “Software Name” (nome do software) no caso de uma conta de serviço.</td>
+                </tr>
+                <tr>
+                    <th>LOCATION</th>
+                    <td>Normalmente é a localização física do usuário dentro de um prédio, o número da sala ou o departamento ou pessoa a contatar no caso de uma conta de serviço.</td>
+                </tr>
+                <tr>
+                    <th>CONTACT</th>
+                    <td>Lista as informações de contato, como o telefone pessoal ou profissional.</td>
+                </tr>
+            </table>
+            
+            <p>Os campos adicionais podem incluir outras informações de contato, como um número residencial ou endereço de email. Para alterar as informações no campo GECOS, use o comando chfn e responda às perguntas, como abaixo. Se nenhum nome de usuário for fornecido após o nome do comando, serão alteradas as informações do usuário atual:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ chfn
+            <br>
+            Changing the user information for emma<br>
+            Enter the new value, or press ENTER for the default<br>
+                Full Name: Emma Smith<br>
+                Room Number []: 42<br>
+                Work Phone []: 555.555.5555<br>
+                Home Phone []: 555.555.6666
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Arquivo: /etc/group</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            
+            <p>O arquivo /etc/group contém arquivos delimitados por dois pontos (:), armazenando informações básicas sobre os grupos no sistema. Ele às vezes é chamado “arquivo de grupo”. A sintaxe de cada linha é:
+            </p>
+            <p>NAME:PASSWORD:GID:MEMBERS</p>
+            <p>Onde:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>NAME</th>
+                    <td>É o nome do grupo, como root, users, emma etc.</td>
+                </tr>
+                <tr>
+                    <th>PASSWORD</th>
+                    <td>Antigo local do hash opcional de senhas de grupos. Quase sempre é x, indicando que a senha (caso definida) está armazenada no arquivo /etc/gshadow.</td>
+                </tr>
+                <tr>
+                    <th>GID</th>
+                    <td>ID de grupo (GID), como 0, 99, 1024.</td>
+                </tr>
+                <tr>
+                    <th>MEMBERS</th>
+                    <td>Uma lista de nomes de usuário que são membros do grupo, separados por vírgula, como jsmith,emma.</td>
+                </tr>
+            </table>
+            
+            <p>O exemplo abaixo mostra uma linha contendo informações sobre o grupo students:</p>
+            
+            <p>students:x:1023:jsmith,emma</p>
+            <p>O usuário não precisa ser listado no campo members quando o grupo é o grupo principal de um usuário. Se um usuário estiver listado, o item é redundante — ou seja, não há alterações na funcionalidade, estando listado ou não.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Dica: O uso de senhas para grupos está além do escopo desta seção; no entanto, se houver uma, o hash da senha é armazenado no arquivo /etc/gshadow. Isso também está além do escopo desta seção.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Arquivo: /etc/shadow</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p> A tabela a seguir lista os atributos armazenados no arquivo /etc/shadow, comumente chamado de “arquivo de sombra”. O arquivo contém campos sempre delimitados por dois pontos (:). Embora o arquivo tenha muitos campos, a maioria está além do escopo desta lição, exceto os dois primeiros.
+            </p>
+            <p>A sintaxe básica para uma linha nesse arquivo é:</p>
+            
+            <p>USERNAME:PASSWORD:LASTCHANGE:MINAGE:MAXAGE:WARN:INACTIVE:EXPDATE</p>
+            <p>Onde:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>USERNAME</th>
+                    <td>O nome de usuário (igual a /etc/passwd), como root, nobody, emma.</td>
+                </tr>
+                <tr>
+                    <th>PASSWORD</th>
+                    <td>Um hash unidirecional da senha, incluindo o sal anterior. Por exemplo: !!, !$1$01234567$ABC…​, $6$012345789ABCDEF$012…​.</td>
+                </tr>
+                <tr>
+                    <th>LASTCHANGE</th>
+                    <td>Data da última alteração da senha em dias desde a “época”, como 17909.</td>
+                </tr>
+                <tr>
+                    <th>MINAGE</th>
+                    <td>Idade mínima da senha em dias.</td>
+                </tr>
+                <tr>
+                    <th>MAXAGE</th>
+                    <td>Idade mínima da senha em dias.</td>
+                </tr>
+                <tr>
+                    <th>WARN</th>
+                    <td>Período de aviso antes da expiração da senha, em dias.</td>
+                </tr>
+                <tr>
+                    <th>INACTIVE</th>
+                    <td>Idade máxima da senha após a expiração, em dias.</td>
+                </tr>
+                <tr>
+                    <th>EXPDATE</th>
+                    <td>Data da expiração da senha, em dias desde a “época”.</td>
+                </tr>
+            </table>
+                        
+            <p>No exemplo abaixo vemos um exemplo de entrada do arquivo /etc/shadow. Note que certos valores, como INACTIVE e EXPDATE, estão indefinidos.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>emma:$6$nP532JDDogQYZF8I$bjFNh9eT1xpb9/n6pmjlIwgu7hGjH/eytSdttbmVv0MlyTMFgBIXESFNUmTo9EGxxH1OT1HGQzR0so4n1npbE0:18064:0:99999:7:::</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A “época” de um sistema POSIX é meia-noite (0000) do Tempo Universal Coordenado (UTC), na quinta-feira, 1º de janeiro de 1970. A maioria das datas e horas POSIX estão em segundos desde a “época” ou, no caso do arquivo /etc/shadow, dias desde a “época”.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>Nota: O arquivo de sombra foi desenvolvido para ser legível apenas pelo superusuário e serviços selecionados de autenticação do sistema principal que verificam o hash de senha unidirecional no login ou em outro momento da autenticação.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+                        
+            <p>Embora existam soluções de autenticação diferentes, o método básico de armazenamento de senha é a função de hash unidirecional (one-way). Isso é feito para que a senha nunca seja armazenada em texto não criptografado em um sistema, já que a função de hash não é reversível. Você pode transformar uma senha em um hash, mas (idealmente) não é possível transformar um hash novamente em uma senha.
+            </p>
+            <p>No máximo, é necessário um método de força bruta para experimentar todas as combinações de uma senha até que uma delas corresponda. Para atenuar o risco de um hash de senha ser quebrado em um sistema, os sistemas Linux aplicam um “sal” aleatório em cada hash de senha de um usuário. Assim, o hash para uma senha de usuário em um sistema Linux geralmente não será o mesmo que em outro sistema Linux, mesmo que a senha seja idêntica.
+            </p>
+            <p>No arquivo /etc/shadow, a senha pode assumir diversas formas. Elas tipicamente incluem o seguinte:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>!!</th>
+                    <td>Indica uma conta “desativada” (a autenticação não é possível), sem hash de senha armazenado.</td>
+                </tr>
+                <tr>
+                    <th>!$1$01234567$ABC…</th>
+                    <td>Uma conta “desativada” (indicado pelo ponto de exclamação inicial), com uma função de hash anterior, sal de hash e string de hash armazenados.</td>
+                </tr>
+                <tr>
+                    <th>$1$0123456789ABC$012…​</th>
+                    <td>Uma conta “ativada”, com uma função de hash, sal de hash e string de hash armazenados.</td>
+                </tr>
+                <tr>
+                    <th>$1$0123456789ABC$012…​</th>
+                    <td>Uma conta “ativada”, com uma função de hash, sal de hash e string de hash armazenados.</td>
+                </tr>
+            </table>
+            <p>A função de hash, o sal de hash e a string de hash são precedidos e delimitados por um cifrão ($). O comprimento do sal de hash deve ser entre oito e dezesseis (8-16) caracteres. Eis exemplos dos três mais comuns:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>$1$01234567$ABC…​</th>
+                    <td>Uma função de hash de MD5 (1), com um hash de exemplo com oito caracteres.</td>
+                </tr>
+                <tr>
+                    <th>$5$01234567ABCD$012…​</th>
+                    <td>Uma função de hash de SHA256 (5), com um hash de exemplo com doze caracteres.</td>
+                </tr>
+                <tr>
+                    <th>$6$01234567ABCD$012…​</th>
+                    <td>Uma função de hash de SHA512 (6), com um hash de exemplo com doze caracteres.</td>
+                </tr>
+            </table>
+            <br>    
+            <div class="w3-container w3-theme-l1 w3-monospace">
+                <p><strong>Nota: A função de hash MD5 é considerada criptograficamente insegura em relação ao nível atual (2010 e posterior) dos ASICs e até mesmo para os SIMD usados para computação em geral. Na verdade, o FIPS (Federal Information Processing Standards) dos EUA não permite que o MD5 seja usado para quaisquer funções criptográficas, exceto em aspectos muito limitados de validação, mas não para garantir a integridade das assinaturas digitais ou finalidades similares.                    
+                </strong></p>            
+            </div>
+            <div class="w3-container w3-theme-l5 w3-monospace">            
+                <p>Do ponto de vista dos objetivos e do exame LPI Linux Essentials, basta entender que o hash da senha de um usuário local é armazenado no arquivo /etc/shadow, que apenas serviços selecionados de autenticação podem ler e o superusuário pode modificar através de outros comandos.
+                </p>
+            </div>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Referenciado Usuário em Outros Grupos<a name="Referenciado Usuário em Outros Grupos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando `usermod` é usado no Linux para modificar as configurações de um usuário existente.<br>
+                Ele permite adicionar ou remover um usuário de grupos, alterar informações de login, como nome de usuário, diretório inicial, shell padrão, entre outras opções.<br>
+                <strong>usermod [opções] nome_do_usuario</strong>
+            </p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opção</th>
+                    <th>Descrição</th>
+                </tr>
+                <tr>
+                    <th>-c "comentário"</th>
+                    <td>Adiciona um comentário (descrição) para o usuário.</td>
+                </tr>
+                <tr>
+                    <th>-d "home diretório"</th>
+                    <td>Define o diretório inicial do usuário.</td>
+                </tr>
+                <tr>
+                    <th>-e "expiredate data"</th>
+                    <td>Define uma data de expiração para a conta do usuário.</td>
+                </tr>
+                <tr>
+                    <th>-G "grupos"</th>
+                    <td>Define os grupos suplementares do usuário (separados por vírgulas).</td>
+                </tr>
+                <tr>
+                    <th>-l "novo nome"</th>
+                    <td>Renomeia o nome de login do usuário.</td>
+                </tr>
+            </table>
+            <br>    
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

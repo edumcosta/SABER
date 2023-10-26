@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->        
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux: Discos e Partições</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../execucao-programas/execucao-programas.html">Execução de Programas</a></li>
+                    <li><a href="#Controle de Execução de Processos">Controle de Execução de Processos</a></li>
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Execução de Programas</h4>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>No aviso de comando #(root) ou $(usuário), digite o nome do comando e tecle Enter. O programa/comando é executado e
+            receberá um número de identificação (chamado de PID - Process Identification), este número é útil para identificar o
+            processo no sistema e assim ter um controle sobre sua execução.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Tipos de Execução de comandos/programas</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Um programa pode ser executado de duas formas:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Primeiro Plano</th>
+                    <td>Também chamado de foreground. Quando você deve esperar o término da execução de um programa para
+                        executar um novo comando. Somente é mostrado o aviso de comando após o término de execução do comando/programa.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>Segundo Plano</th>
+                    <td>Também chamado de background. Quando você não precisa esperar o término da execução de um programa para
+                        executar um novo comando. Após iniciar um programa em background, é mostrado um número PID (identificação do Processo) e
+                        o aviso de comando é novamente mostrado, permitindo o uso normal do sistema.
+                    </td>                
+                </tr>      
+            </table>
+            <p>O programa executado em background continua sendo executado internamente. Após ser concluído, o sistema retorna uma
+            mensagem de pronto acompanhado do número PID do processo que terminou.
+            </p>
+
+            <p>Para iniciar um programa em primeiro plano, basta digitar seu nome normalmente. Para iniciar um programa em segundo
+            plano, acrescente o caracter "&" após o final do comando.Exemplo: <strong>find / -name boot.b &</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Execução de comandos/programas em sequência</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Os comandos podem ser executados em seqüência (um após o término do outro) se os separarmos com ";". Por exemplo: echo primeiro;echo segundo;echo terceiro.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Comando "ps"</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Para visualizar os processos que estão sendo executados no computador. O comando ps faz isto, e também nos mostra qual usuário executou o programa, hora que o processo foi iniciado, etc.</p>
+            <p>ps [opções]</p>        
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>a</th>
+                    <td>Mostra os processos criados por você e de outros usuários do sistema.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>x</th>
+                    <td>Mostra processos que não são controlados pelo terminal.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>u</th>
+                    <td>Mostra o nome de usuário que iniciou o processo e hora em que o processo foi iniciado.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>m</th>
+                    <td>Mostra a memória ocupada por cada processo em execução.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>f</th>
+                    <td>Mostra a árvore de execução de comandos (comandos que são chamados por outros comandos).
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>e</th>
+                    <td>Mostra variáveis de ambiente no momento da inicialização do processo.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>w</th>
+                    <td>Mostra a continuação da linha atual na próxima linha ao invés de cortar o restante que não couber na tela.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>--sort:[coluna]</th>
+                    <td>Organiza a saída do comando ps de acordo com a coluna escolhida. Você pode usar as colunas pid, utime, ppid, rss, size, user, priority.
+                    </td>                
+                </tr>      
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Comando "top"</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Mostra os programas em execução ativos, parados, tempo usado na CPU, detalhes sobre o uso da memória RAM, Swap, disponibilidade para execução de programas no sistema, etc.</p>        
+            <p>O programa top que continua em execução mostrando continuamente os processos que estão rodando em seu computador e os recursos utilizados por eles. Para sair do top, pressione a tecla q.</p>
+            <p>top [opções]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-d [tempo]</th>
+                    <td>Atualiza a tela após o [tempo] (em segundos).
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>-s</th>
+                    <td>Diz ao top para ser executado em modo seguro.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>-i</th>
+                    <td>Inicia o top ignorando o tempo de processos zumbis.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>-c</th>
+                    <td>Mostra a linha de comando ao invés do nome do programa.
+                    </td>                                    
+                </tr>      
+            </table>
+
+            <p>Abaixo algumas teclas úteis:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Tecla</th>
+                    <th>Função</th>                
+                </tr>
+                <tr>
+                    <td>espaço</td>
+                    <td>Atualiza imediatamente a tela.</td>                
+                </tr>      
+                <tr>
+                    <td>CTRL+L</td>
+                    <td>Apaga e atualiza a tela.</td>                
+                </tr>
+                <tr>
+                    <td>h</td>
+                    <td>Mostra a tela de ajuda do programa. É mostrado todas as teclas que podem ser usadas com o top.</td>                
+                </tr>
+                <tr>
+                    <td>i</td>
+                    <td>Ignora o tempo ocioso de processos zumbis.</td>                
+                </tr>
+                <tr>
+                    <td>q</td>
+                    <td>Sai do programa.</td>                
+                </tr>
+                <tr>
+                    <td>k</td>
+                    <td>Finaliza um processo - semelhante ao comando kill. Você será perguntado pelo número de identificação do processo (PID). Este comando não estará disponível caso esteja usando o top com a opção -s.</td>                
+                </tr>
+                <tr>
+                    <td>n</td>
+                    <td>Muda o número de linhas mostradas na tela. Se 0 for especificado, será usada toda a tela para listagem de processos.</td>                
+                </tr>                
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Controle de Execução de Processos<a name="Controle de Execução de Processos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Abaixo algumas comandos e métodos úteis para o controle da execução de processos no Linux.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Interrompendo a execução de um processo</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Para cancelar a execução de algum processo rodando em primeiro plano, basta pressionar as teclas CTRL+C. A execução do
+            programa será cancelada e será mostrado o aviso de comando. Você também pode usar o comando “kill” para interromper um
+            processo sendo executado.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Parando momentaneamente a execução de um processo</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                           
+            <p>Para parar a execução de um processo rodando em primeiro plano, basta pressionar as teclas CTRL+Z. O programa em
+            execução será pausado e será mostrado o número de seu job e o aviso de comando.
+            </p>
+            <p>Para retornar a execução de um comando pausado, use <strong>“fg”</strong> ou <strong>“bg”</strong>.</p>
+            
+            <p>O programa permanece na memória no ponto de processamento em que parou quando ele é interrompido. Você pode usar outros
+            comandos ou rodar outros programas enquanto o programa atual está interrompido.
+            </p>            
+            <p>O comando <strong>"jobs"</strong> mostra os processos que estão parados ou rodando em segundo plano. Processos em segundo plano são
+            iniciados usando o símbolo "&" no final da linha de comando do comando bg.
+            </p>                       
+            <p>O número de identificação de cada processo parado ou em segundo plano (job), é usado com os comandos “fg” e “bg”. Um
+            processo interrompido pode ser finalizado usando-se o comando kill %[num], onde [num] é o número do processo obtido pelo
+            comando jobs.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> O comando "fg"</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>O comando <strong>"fg"</strong>: Permite fazer um programa rodando em segundo plano ou parado, rodar em primeiro plano. Você deve usar o comando jobs
+            para pegar o número do processo rodando em segundo plano ou interrompido, este número será passado ao comando fg para
+            ativa-lo em primeiro plano.</p>
+            <p><strong>fg [número]</strong></p>
+            <p>O valor de [número] é o número obtido através do comando jobs.<br>
+            Caso seja usado sem parâmetros, o fg utilizará o último programa interrompido (o maior número obtido com o comando
+            jobs).
+            </p>
+            <p>Exemplo: fg 1.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> O comando "bg"</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>O comando <strong>"bg"</strong>: Permite fazer um programa rodando em primeiro plano ou parado, rodar em segundo plano. Para fazer um programa em
+            primeiro plano rodar em segundo, é necessário primeiro interromper a execução do comando com CTRL+ Z, será mostrado o
+            número da tarefa interrompida, use este número com o comando bg para iniciar a execução do comando em segundo plano.
+            </p>
+            <p><strong>bg [número]</strong></p>            
+            <p>O valor de [número] é obtido com o pressionamento das teclas CTRL+Z ou através do comando jobs.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> O comando "kill"</strong></p>
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>O comando <strong>"kill"</strong>: Permite enviar um sinal a um comando/programa. Caso seja usado sem parâmetros, o kill enviará um sinal de término ao
+            processo sendo executado.
+            </p>            
+            <p><strong>kill [opções] [sinal] [número]</strong></p>                                    
+            <p>O valor de [número] é obtido com o comando “ps”. Também pode ser o número após o sinal de % obtido
+            pelo comando jobs para matar uma tarefa interrompida.
+            </p>
+            <p>O [Sinal] corresponde ao valor que será enviado ao processo. Se omitido usa -15 como padrão. O valor -9 envia um sinal de destruição ao processo ou programa. Ele é terminado imediatamente sem chances de salvar os dados ou
+            apagar os arquivos temporários criados por ele.
+            </p>
+            <p>A [opções] básicas correspondem a:
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opção</th>
+                    <th>Resultado</th>                
+                </tr>
+                <tr>
+                    <td>-i</td>
+                    <td>Pede confirmação sobre a finalização do processo.</td>                
+                </tr>      
+                <tr>
+                    <td>-l</td>
+                    <td>Lista o nome de todos os sinais conhecidos.</td>                
+                </tr>      
+                <tr>
+                    <td>-q</td>
+                    <td>Ignora a existência do processo.</td>                
+                </tr>      
+                <tr>
+                    <td>-v</td>
+                    <td>Retorna se o sinal foi enviado com sucesso ao processo.</td>                
+                </tr>      
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

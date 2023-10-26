@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->        
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace">        
+            <p>Ir Para:</p>
+            <ul>                
+                <li><a href="./paginas/bash/bash.html">Carcaterísticas do Bash</a></li>
+                <li><a href="./paginas/variaveis_ambiente/variaveis-ambiente.html">Variáveis de Ambiente</a></li>
+                <li><a href="./paginas/hardware/hardware.html">Entendendo o Hardware Local</a></li>
+                <li><a href="./paginas/discos-particoes/discos-particoes.html">Discos e Partições</a></li>
+                <li><a href="./paginas/rede/rede.html">Redes</a></li>
+                <li><a href="./paginas/usuarios/usuarios.html">Usuários</a></li>
+                <li><a href="./paginas/sistema-diretorios-arquivos/sistema-diretorios-arquivos.html">Sistema de Diretórios e Arquivos</a></li>                
+                <li><a href="./paginas/execucao-programas/execucao-programas.html">Execução de Programas</a></li>                
+                <li><a href="./paginas/pacotes/pacotes.html">Pacotes</a></li>                
+                <li><a href="./paginas/lista_comandos/lista_comandos.html">Lista dos Principais Comandos</a></li>                                
+                <li><a href="./paginas/servicos/servicos.html">Serviços</a></li>                                
+                <li><a href="./paginas/aplicativos/aplicativos.html">Aplicativos</a></li>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Apresentação</h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O termo Linux refere-se ao núcleo (em inglês: "kernel") do sistema operativo que inicia e gerencia outros programas que fornecem o acesso aos recursos do sistema como os vários software livres de shells, compiladores, bibliotecas-padrão e os comandos que fazem parte do Projeto GNU. O Projeto GNU, por sua vez, foi criado pela Free Software Foudation com o intuito de criar um sistema operacional completo, totalmente livre e compatível com o Unix. O principal compilador do Linux C, gcc, é um pedaço do projeto GNU.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Arquitetura</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O Linux é um núcleo monolítico: as funções do núcleo (escalonamento de processos, gerenciamento de memória, operações de entrada/saída, acesso ao sistema de arquivos) são executadas no espaço de núcleo. Uma característica do núcleo Linux é que algumas das funções (drivers de dispositivos, suporte à rede, sistema de arquivos, por exemplo) podem ser compiladas e executadas como módulos (em inglês: LKM - loadable kernel modules), que são bibliotecas compiladas separadamente da parte principal do núcleo e podem ser carregadas e descarregadas após o núcleo estar em execução.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Portabilidade</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Embora Linus Torvalds não tivesse como objetivo inicial tornar o Linux um sistema portátil, ele evoluiu nessa direção. Linux é hoje um dos núcleos de sistemas operativos mais portáteis, correndo em sistemas desde o iPaq (um computador portátil) até o IBM S/390 (um denso e altamente custoso mainframe).
+            </p>
+            <p>Os esforços de Linus foram também dirigidos a um diferente tipo de portabilidade. Portabilidade, de acordo com Linus, era a habilidade de facilmente compilar aplicações de uma variedade de código fonte no seu sistema; consequentemente, o Linux originalmente tornou-se popular em parte devido ao esforço para que os códigos-fonte GPL ou outros favoritos de todos corressem em Linux.
+            </p>
+            <p>O Linux hoje funciona em dezenas de plataformas, desde mainframes até um relógio de pulso, passando por várias arquitecturas: x86 (Intel, AMD), x86-64 (Intel EM64T, AMD64), ARM, PowerPC, Alpha, SPARC e etc, com grande penetração também em sistemas embarcados, como handhelds, PVR, console de videogames, celulares, TVs e centros multimídia, entre outros.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Termos de Licenciamento</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Inicialmente, Torvalds lançou o Linux sob uma licença de software própria que proibia qualquer uso comercial. Isso foi mudado, um ano depois, para a GNU General Public License. Essa licença permite a distribuição e até a venda de versões até mesmo modificadas do Linux, mas requer que todas as cópias sejam lançadas dentro da mesma licença e acompanhadas de acesso ao código fonte.
+            </p>
+            <p>Apesar de alguns dos programadores que contribuem para o núcleo permitirem que o seu código seja licenciado com GPL versão 2 ou posterior, grande parte do código (incluído as contribuições de Torvalds) menciona apenas a GPL versão 2. Isto faz com que o núcleo como um todo esteja sob a versão 2 exclusivamente.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Sistemas de Arquivos</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O Linux possui suporte de leitura e escrita a vários sistema de arquivos, de diversos sistemas operacionais, além de alguns sistemas nativos. Por isso, quando o Linux é instalado em dual boot com outros sistemas (Windows, por exemplo) ou mesmo funcionando como Live CD, ele poderá ler e escrever nas partições formatadas em FAT e NTFS. É por isso que os Live CDs Linux são muito utilizados na manutenção e recuperação de outros sistemas operacionais.
+            </p>
+            <p>Entre os sistemas de ficheiros suportados pelo Linux, podemos citar UFS, FAT, exFAT, NTFS, JFS, XFS, HPFS, Minix, ZFS, UDF (sistema de ficheiros usado em DVD-ROMs e BD-ROMs) e ISO 9660 (sistema de ficheiros usado em CD-ROMs), este último também com as extensões RRIP (IEEE P1282) e ZISOFS. Alguns sistemas de ficheiros nativos são, entre outros, Btrfs, Ext2, Ext3, Ext4, F2FS, ReiserFS e Reiser4.[nota 2] Alguns sistemas de ficheiros com características especiais são SWAP, UnionFS, SquashFS, Tmpfs, Aufs e NFS, dentre outros.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Referências</h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p>
+            <li>Wikipédia, Linux.</li></p>
+            <hr>
+        </div>
+
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

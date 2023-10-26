@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../pacotes/pacotes.html">Pacotes</a></li>                    
+                </ul>
+            </ul>
+        </div>    
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Pacotes<a name="Pacotes"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O termo APT (Advanced Packaging Tool), em nossa língua descrito como ferramenta de empacotamento avançada consiste no
+            conjunto conjunto de comandos a serem usados pela distribuição linux debian e outras distribuições baseadas no debian,
+            como é o caso do ubuntu para administrar pacotes do tipo DEB.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> apt</strong><a name="> apt"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>O "apt"" possui as opções de busca de pacotes, listagem de detalhes de um pacote, instalação de um pacote, atualização da
+            lista de pacotes do repositório de pacotes do sistema, verificação e atualização para a versão mais nova de pacotes,
+            remoção de pacotes, remoção e instalação de pacotes mais novos.
+            </p>
+            <p>Funções do "apt":</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opção</th>
+                    <th>Função</th>
+                </tr>
+                <tr>
+                    <th>list</th>
+                    <td>Lista pacotes baseado no nome do pacote.</td>
+                </tr>
+                <tr>
+                    <th>search</th>
+                    <td>Procura nas descrições dos pacote pela palavra informada.</td>
+                </tr>
+                <tr>
+                    <th>show</th>
+                    <td>Mostra detalhes do pacote.</td>
+                </tr>
+                <tr>
+                    <th>update</th>
+                    <td>Atualiza a lista dos pacotes disponíveis no repositório do sistema.</td>
+                </tr>
+                <tr>
+                    <th>remove</th>
+                    <td>Remove pacotes.</td>
+                </tr>
+                <tr>
+                    <th>upgrade</th>
+                    <td>Atualiza o sistema instalando ou atualizando pacotes.</td>
+                </tr>
+                <tr>
+                    <th>full-upgrade</th>
+                    <td>Atualiza o sistema removendo, instalando ou atualizando os pacotes.</td>
+                </tr>
+                <tr>
+                    <th>edit-sources</th>
+                    <td>Edita o arquivo de informação sobre as fontes para pacotes.</td>
+                </tr>
+            </table>
+            <p>O APT realiza o processo de instalação, remoção, atualização, listagem de foma automática, de modo que quaisquer
+                outros pacotes derivados que possam ser necessários sejam também baixados e instalados durante o processo de
+                instalação de um programa.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> apt-get</strong><a name="> apt-get"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>O apt-get é baseado numa biblioteca que contém as aplicações principais para manipulação de pacotes.</p>
+            
+            <p>O apt-get é o comando fornecido pela distribuição linux debian que lista e instala e atualiza pacotes
+                e dependências baseado na lista de fontes para os pacotes do repositório de pacotes. O arquivo que lista essas
+                fontes é o arquivo sources.list. O diretório desse arquivo pode variar conforme a distribuição.
+            </p>
+            <p>Funções do "apt-get":</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opção</th>
+                    <th>Função</th>
+                </tr>
+                <tr>
+                    <th>update</th>
+                    <td>Atualiza a lista de pacotes disponíveis baseando-se nas fontes listadas no arquivo list-sources.</td>
+                </tr>
+                <tr>
+                    <th>upgrade</th>
+                    <td>Atualiza pacotes.</td>
+                </tr>
+                <tr>
+                    <th>install</th>
+                    <td>Instala novos pacotes.</td>
+                </tr>
+                <tr>
+                    <th>remove</th>
+                    <td>Remove pacotes.</td>
+                </tr>
+                <tr>
+                    <th>autoremove</th>
+                    <td>Remove automaticamente todos os pacotes não utilizados do sistema, útil após realizar várias
+                        atualizações pois deixa o sistema mais limpo.</td>
+                </tr>
+                <tr>
+                    <th>purge</th>
+                    <td>Remove pacotes e diretórios de configuração do pacote. Cuidado ao utilizar este comando sem critério pois
+                        serviços como o apache criam seu diretório de configuração /etc/apache2 e o purge irá removê-lo, depois, mesmo
+                        reinstalando o apache ele não cria de novo o diretório. Para criar novamente os arquivos de configuração do apache
+                        deverá instalar o pacote apache-data, que instala os arquivos comuns do apache.</td>
+                </tr>
+                <tr>
+                    <th>source</th>
+                    <td>Faz o download dos arquivos de código-fonte para o pacote.</td>
+                </tr>
+                <tr>
+                    <th>build-dep</th>
+                    <td>Vonfigura as dependências de compilação de pacotes de código-fonte.</td>
+                </tr>
+                <tr>
+                    <th>dist-upgrade</th>
+                    <td>Atualiza a distribuição, várias distribuições são geradas, ao longo do ano, entre elas 2 versões
+                        fechadas e outras intermediarias, se houver uma versão mais atual disponível o comando “apt-get dist-upgrad”
+                        atualizará o sistema com ela para você.</td>
+                </tr>
+                <tr>
+                    <th>clean</th>
+                    <td>Apaga pastas e diretórios obtidos por downlad durante a instalação de pacotes.</td>
+                </tr>
+                <tr>
+                    <th>autoclean</th>
+                    <td>Apaga pastas e diretórios obtidos por downlad durante a instalação de pacotes.</td>
+                </tr>
+                <tr>
+                    <th>check</th>
+                    <td>Verifica se existem dependências erradas.</td>
+                </tr>
+                <tr>
+                    <th>changelog</th>
+                    <td>Obtém e mostra o changelog de um pacote.</td>
+                </tr>
+                <tr>
+                    <th>download</th>
+                    <td>Obtém o pacote binário do pacote e descarrega no diretório atual.</td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> dpkg</strong><a name="> dpkg"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                          
+            <p>O dpkg é fundamental para as distribuições debian pois ele é um programa de baixo nível (que lida de forma mais
+                precisa, próxima com o hardware da máquina). Para que possam distinguir bem o APT e o RPM são ferramentas de alto
+                nível com as quais temos mais facilidade de lidar.
+            </p>
+            <p>Esse programa serve de base para as distribuições linux debian. Ele é usado para instalar e remover pacotes do
+                sistema, bem como fornecer outras informações sobre esses pacotes. Os pacotes instalados pelo dpkg têm a extensão
+                deb.
+            </p>
+            <p>Ferramentas do dpkg são capazes empacotar e desempacotar pacotes, ler informações de pacotes, de mudanças nos
+                pacotes em suas atualizações, podem cacular as dependências de certo pacote, enfim além de outras funcionalidades.
+            </p>
+            <p>Opções do comando "dpkg":</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Função</th>
+                </tr>
+                <tr>
+                    <th>-i ou --install [Pacote]</th>
+                    <td>Instala um pacote em seu sistema. Talvez ele peça que seja instalado algum pacote que depende para seu funcionamento.</td>
+                </tr>
+                <tr>
+                    <th>-l ou --list [Pacote]</th>
+                    <td>Lista os pacotes e na listagem também será mostrado o "status" de cada um na coluna da esquerda, acompanhado do nome do pacote, versão e descrição básica.</td>
+                </tr>
+                <tr>
+                    <th>-r ou --remove [Pacote]</th>
+                    <td>Remove um pacote do sistema completamente.</td>
+                </tr>
+                <tr>
+                    <th>-I ou --info [Pacote]</th>
+                    <td>Mostrar a descrição do pacote. Entre a descrição são mostradas as dependências do pacote, pacotes sugeridos, recomendados, descrição do que o pacote faz, tamanho e número de arquivos que contém.</td>
+                </tr>
+                <tr>
+                    <th>-S ou --search [arquivo]</th>
+                    <td>Para saber o pacote existente no sistema no qual o arquivo pertence.</td>
+                </tr>
+            </table>
+            <p>Lista de ferramentas "dpkg":</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Ferramentas</th>
+                    <th>Função</th>
+                </tr>
+                <tr>
+                    <th>dpkg-source</th>
+                    <td>Empacota e desempacota os arquivos-fonte de um pacote debian.</td>
+                </tr>
+                <tr>
+                    <th>dpkg-deb</th>
+                    <td>empacota e desempacota pacotes binários.</td>
+                </tr>
+                <tr>
+                    <th>dpkg-gencontrol</th>
+                    <td>Lê a informação de um certo pacote que tenha sido desempacotado do repositório de pacotes do debian,
+                        gera um arquivo deb binário e cria uma entrada para ele nos arquivos debian.</td>
+                </tr>
+                <tr>
+                    <th>dpkg-shlibdeps</th>
+                    <td>Calcula as dependências ocorridas com respeito a bibliotecas.</td>
+                </tr>
+                <tr>
+                    <th>dpkg-genchanges</th>
+                    <td>Lê a informação de um pacote desempacotado da árvore-fonte do Debian gerando uma construção de
+                        controle de arquivos (.changes).</td>
+                </tr>
+                <tr>
+                    <th>dpkg-buildpackage</th>
+                    <td>É um script de controle que pode ser usado para construir um pacote automaticamente.</td>
+                </tr>
+                <tr>
+                    <th>dpkg-distaddfile</th>
+                    <td>Adiciona um arquivo nos arquivos Debian.</td>
+                </tr>
+                <tr>
+                    <th>dpkg-parsechangelog</th>
+                    <td>Lê os arquivos de mudanças (changelog) de um pacote desempacotado da árvore-fonte do Debian.</td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

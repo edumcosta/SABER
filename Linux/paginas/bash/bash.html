@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->        
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux: Bash</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../paginas/bash/bash.html">Carcaterísticas do Bash</a></li>
+                    <li><a href="#Estrutura da Linha de Comando">Estrutura da Linha de Comando</a></li>
+                    <li><a href="#Tipos de Comportamento dos Comandos">Tipos de Comportamento dos Comandos</a></li>
+                    <li><a href="#Citação">Citação</a></li>
+                    <li><a href="#Ajuda Interna para Comandos">Ajuda Interna para Comandos</a></li>
+                    <li><a href="#Localizar Arquivos">Localizar Arquivos</a></li>
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Características do Bash</h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No Ubuntu ou Debian GNU/Linux, o prompt de um usuário comum provavelmente será assim:</p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>carol@mycomputer:~$</p>
+        </div>                        
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <P>* Nome do usuário que está rodando o shell.<br>
+            * Nome da máquina hospedeira na qual o shell é executado. Também existe um comando hostname, que permite exibir ou definir o nome de hospedeiro do sistema.<br>
+            * O diretório em que o shell está atualmente. Um ~ indica que o shell está no diretório Home do usuário atual.<br>
+            * "$" indica que o shell está sendo executado por um usuário comum ou "#" indica que o shell está sendo executado pelo superusuário root.            
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Estrutura da Linha de Comando<a name="Estrutura da linha de comando"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A maioria dos comandos na linha de comando segue a mesma estrutura básica:</p>
+            <p>comando [opção(ões)/parâmetro(s)...] [argumento(s)...]</p>        
+            <p>Veja, por exemplo, o seguinte comando:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -l /home</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Vamos entender a finalidade de cada componente:</p>        
+            <li><strong>Comando: </strong>Programa que o usuário pretende executar — ls, no exemplo acima.</li>        
+            <li><strong>Opção(ões)/Parâmetro(s): </strong>Um “botão” que modifica o comportamento do comando de alguma forma, como -l no exemplo acima. As opções podem ser acessadas na forma curta ou longa. Por exemplo, -l é idêntico a --format = long.</li>                
+            <p>Também é possível combinar múltiplas opções e, no caso do formato abreviado, as letras geralmente podem ser digitadas juntas. Por exemplo, os seguintes comandos fazem todos a mesma coisa:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ ls -al<br>        
+            $ ls -a -l<br>
+            $ ls --all --format=long
+            </p>        
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <br>
+            <li><strong>Argumento(s): </strong>Dados adicionais exigidos pelo programa, como um nome de arquivo ou caminho, como /home no exemplo: <strong>"ls -l /home"</strong>.</li>
+        
+            <p>A única parte obrigatória dessa estrutura é o próprio comando. Em geral, todos os outros elementos são opcionais, mas um programa pode exigir que determinadas opções, parâmetros ou argumentos sejam especificados.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Dica:</strong></p>
+            <li>A maioria dos comandos exibe uma visão geral dos comandos disponíveis quando executados com o parâmetro --help. Em breve, veremos maneiras adicionais de saber mais sobre os comandos do Linux.</li>
+            <br>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Tipos de Comportamento dos Comandos<a name="Tipos de Comportamento dos Comandos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O shell aceita dois tipos de comandos:</p>
+        
+            <li><strong>Internos: </strong>Comandos que fazem parte do próprio shell e não são programas separados. Existem cerca de 30 desses comandos. Seu principal objetivo é executar tarefas dentro do shell (por exemplo, cd, set, export).
+            </li>        
+            <li><strong>Externos: </strong>Comandos que residem em arquivos individuais. Esses arquivos geralmente são programas binários ou scripts. Quando um comando externo ao shell é executado, o shell usa a variável PATH para procurar um arquivo executável com o mesmo nome que o comando. Além dos programas instalados com o gerenciador de pacotes da distribuição, os usuários também podem criar seus próprios comandos externos.
+            </li>
+            <p>O comando type mostra a que tipo pertence um comando específico:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ type echo<br>
+            echo is a shell builtin<br>
+            $ type man<br>
+            man is /usr/bin/man
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Citação<a name="Citação"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Como usuário de Linux, você precisa saber criar ou manipular arquivos ou variáveis de diversas maneiras. Isso é fácil quando se trabalha com nomes de arquivos curtos e valores simples, mas fica mais complicado quando, por exemplo, precisamos usar espaços, caracteres especiais e variáveis. Os shells oferecem um recurso chamado citação, que encapsula esses dados usando diversos tipos de aspas (" ", ' '). No Bash, há três tipos de citações:
+            </p>
+            <li>Aspas duplas</li>        
+            <li>Aspas simples</li>        
+            <li>Caracteres de escape</li>
+        
+            <p>Por exemplo, os seguintes comandos não agem da mesma maneira devido à citação:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ TWOWORDS="two words"<br>
+            $ touch $TWOWORDS<br>
+            $ ls -l<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 14:56 two<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 14:56 words<br>
+            $ touch "$TWOWORDS"<br>
+            $ ls -l<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 14:56  two<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 14:58 'two words'<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 14:56  words<br>
+            $ touch '$TWOWORDS'<br>
+            $ ls -l<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 15:00 '$TWOWORDS'<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 14:56  two<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 14:58 'two words'<br>
+            -rw-r--r-- 1 carol carol     0 Mar 10 14:56  words
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A linha com TWOWORDS = é uma variável Bash que nós mesmos criamos. Falaremos das variáveis mais tarde. Isso serve apenas para mostrar como as citações afetam a saída das variáveis.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Aspas duplas</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>As aspas duplas dizem ao shell para considerar o texto entre as aspas ("...") como caracteres regulares. Todos os caracteres especiais perdem o significado, exceto $ (cifrão), \ (barra invertida) e ` (crase). Isso significa que as variáveis, substituições de comando e funções aritméticas ainda podem ser usadas.
+            </p>
+            <p>Por exemplo, a substituição da variável $USER não é afetada pelas aspas duplas:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ echo I am $USER<br>
+            I am tom<br>
+            $ echo "I am $USER"<br>
+            I am tom
+            </p>
+        </div>  
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Um caractere de espaço, por outro lado, perde seu significado como separador de argumentos:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ touch new file<br>
+            $ ls -l<br>
+            -rw-rw-r-- 1 tom students 0 Oct 8 15:18 file<br>
+            -rw-rw-r-- 1 tom students 0 Oct 8 15:18 new<br>
+            $ touch "new file"<br>
+            $ ls -l<br>
+            -rw-rw-r-- 1 tom students 0 Oct 8 15:19 new file
+            </p>
+        </div> 
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Como explicado, no primeiro exemplo o comando touch cria dois arquivos individuais; o comando interpreta as duas seqüências como argumentos individuais. No segundo exemplo, o comando interpreta as duas seqüências como um argumento e, portanto, cria apenas um arquivo. No entanto, recomenda-se evitar o caractere de espaço nos nomes de arquivos. Em vez disso, é preferível usar um sublinhado (_) ou um ponto (.).
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Aspas simples</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>As aspas simples não têm as exceções das aspas duplas. Elas revogam qualquer significado especial de cada caractere. Se retomarmos um dos primeiros exemplos acima:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ echo I am $USER<br>
+            I am tom
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Ao aplicar aspas simples, obtemos um resultado diferente:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ echo 'I am $USER'<br>
+            I am $USER
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando agora exibe a sequência exata, sem substituir a variável.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Caracteres de escape</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Podemos usar caracteres de escape para remover os significados especiais dos caracteres do Bash. Voltando à variável de ambiente $USER:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ echo $USER<br>
+            carol
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Vemos que, por padrão, o conteúdo da variável é exibido no terminal. No entanto, se colocarmos um caractere de barra invertida (\) antes do cifrão, o significado especial do cifrão será cancelado. Por sua vez, isso não permitirá que o Bash expanda o valor da variável para o nome de usuário da pessoa que está executando o comando, mas, em vez disso, interpretará o nome da variável literalmente:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ echo \$USER<br>
+            $USER
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Como você deve lembrar, é possível obter resultados semelhantes usando aspas simples, que imprimem o conteúdo literal do que estiver entre elas. No entanto, o funcionamento do caractere de escape é diferente, pois instrui o Bash a ignorar qualquer significado especial do caractere que ele precede.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Ajuda Interna para Comandos<a name="Ajuda Interna para Comandos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A linha de comando é uma ferramenta bastante complexa. Cada comando possui suas próprias opções únicas; por isso, é essencial conhecer a documentação ao se trabalhar com um sistema Linux. Além do diretório /usr/share/doc/, que armazena a maior parte da documentação, diversas outras ferramentas fornecem informações sobre o uso dos comandos do Linux. Este capítulo se concentra em métodos para acessar essa documentação, com o objetivo de obter ajuda.
+            </p>                
+            <p>Existem vários métodos para obter ajuda na linha de comando do Linux. Alguns exemplos são man, help e info. Para o Linux Essentials, focaremos em man e info, que são as ferramentas mais usadas para obter ajuda.
+            </p>                
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Ajuda interna</th>
+                    <td>Quando são iniciados com o parâmetro --help, a maioria dos comandos exibe algumas breves instruções sobre seu uso. Embora nem todos os comandos ofereçam essa opção, ainda vale a pena experimentá-la na primeira vez que se usa o comando para aprender mais sobre os parâmetros dele.<br> Esteja ciente de que as instruções de --help geralmente são bastante concisas em comparação com outras fontes de documentação que discutiremos nesta lição.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>Páginas man</th>
+                    <td>A maioria dos comandos inclui uma página de manual, ou página “man”.<br>    Essa documentação geralmente é instalada com o software e pode ser acessada com o comando man. O comando cuja página de manual deve ser exibida é adicionado a man na forma de argumento:
+                    </td>                
+                </tr>  
+            </table>
+            <p>Exemplo para obter ajuda para o comando "mkdir".
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ man mkdir
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Esse comando abre a página man de mkdir. Use as setas direcionais ou a barra de espaço para navegar pela página do manual. Para sair da página man, pressione Q.</p>
+            <p>Cada página man é dividida em no máximo 11 seções, embora muitas delas sejam opcionais:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Seção</th>
+                    <th>Descrição</th>
+                </tr>      
+                <tr>
+                    <td>NAME</td>
+                    <td>Nome do comando e breve descrição.</td>
+                </tr>      
+                <tr>
+                    <td>SYNOPSIS</td>
+                    <td>Descrição da sintaxe do comando.</td>
+                </tr>      
+                <tr>
+                    <td>DESCRIPTION</td>
+                    <td>Descrição dos efeitos do comando.</td>
+                </tr>      
+                <tr>
+                    <td>OPTIONS</td>
+                    <td>Opções disponíveis.</td>
+                </tr>      
+                <tr>
+                    <td>ARGUMENTS</td>
+                    <td>Argumentos disponíveis.</td>
+                </tr>      
+                <tr>
+                    <td>FILES</td>
+                    <td>Arquivos auxiliares.</td>
+                </tr>      
+                <tr>
+                    <td>EXAMPLES</td>
+                    <td>Uma amostra da linha de comando.</td>
+                </tr>      
+                <tr>
+                    <td>SEE ALSO</td>
+                    <td>Referências cruzadas aos tópicos relacionados.</td>
+                </tr>      
+                <tr>
+                    <td>DIAGNOSTICS</td>
+                    <td>Mensagens de Advertência e Erro.</td>
+                </tr>      
+                <tr>
+                    <td>COPYRIGHT</td>
+                    <td>Autor(es) do comando.</td>
+                </tr>      
+                <tr>
+                    <td>BUGS</td>
+                    <td>Limitações conhecidas do comando.</td>
+                </tr>      
+            </table>
+            <p>Na prática, a maioria das páginas de manual não contém todas essas partes. As páginas man estão organizadas em oito categorias, numeradas de 1 a 8:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                </tr>      
+                <tr>
+                    <td>1</td>
+                    <td>Comando do usuário.</td>
+                </tr>      
+                <tr>
+                    <td>2</td>
+                    <td>Chamadas do sistema.</td>
+                </tr>      
+                <tr>
+                    <td>3</td>
+                    <td>Funções da biblioteca C.</td>
+                </tr>      
+                <tr>
+                    <td>4</td>
+                    <td>Drivers e arquivos de dispositivo.</td>
+                </tr>      
+                <tr>
+                    <td>5</td>
+                    <td>Arquivos de configuração e formatos de arquivo.</td>
+                </tr>      
+                <tr>
+                    <td>6</td>
+                    <td>Jogos.</td>
+                </tr>      
+                <tr>
+                    <td>7</td>
+                    <td>Miscelânea.</td>
+                </tr>      
+                <tr>
+                    <td>8</td>
+                    <td>Comandos do administrador do sistema.</td>
+                </tr>      
+                <tr>
+                    <td>9</td>
+                    <td>Funções do kernel (não padrão).</td>
+                </tr>      
+            </table>
+            <p>Cada página de manual pertence a exatamente uma seção. No entanto, seções diferentes podem conter páginas de manual com o mesmo nome. Vejamos, por exemplo, o comando passwd. Esse comando pode ser usado para alterar a senha de um usuário. Como passwd é um comando do usuário, sua página de manual reside na seção 1.</p> 
+            <p>Além do comando passwd, o arquivo de banco de dados de senhas /etc/passwd também possui uma página de manual chamada passwd. Como neste caso se trata de um arquivo de configuração, ele pertence à seção 5. Nas referências a uma página de manual, a categoria é frequentemente adicionada ao nome da página, por exemplo passwd(1) ou passwd(5), para identificar a página respectiva.
+            </p>
+            <p>Por padrão, man passwd exibe a primeira página man disponível; neste caso, passwd(1). A categoria da página man desejada pode ser especificada em um comando como man 1 passwd ou man 5 passwd.</p>
+            <p>Para procurar a palavra linux, podemos simplesmente digitar /linux para pesquisar a partir do ponto em que estamos na página, ou ?Linux para iniciar uma pesquisa reversa. Esta ação destaca todos os resultados correspondentes e move a página para a primeira correspondência destacada. Nos dois casos, basta digitar N para pular até a correspondência seguinte. Para encontrar mais informações sobre esses recursos adicionais, pressione H; será exibido um menu com todas as informações.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Páginas info</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Outra ferramenta muito útil ao trabalhar com o sistema Linux são as páginas de informações, ou info. As páginas info geralmente são mais detalhadas que as páginas man e são formatadas em hipertexto, semelhantes às páginas web na internet.</p>        
+            <p>Para exibir as páginas info, usamos:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ info mkdir</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Nessas páginas, o comando info lê um arquivo de informações estruturado em nós individuais dentro de uma árvore. Cada nó contém um tópico simples e o comando info inclui hiperlinks que ajudam a passar de um para o outro. Para acessar o link, pressione Enter, com o cursor pousado sobre um dos asteriscos principais.
+            </p>
+            <p>A exemplo de man, a ferramenta info também inclui comandos de navegação na página. Para descobrir mais sobre esses comandos, pressione ? enquanto estiver na página de informações. Essas ferramentas o ajudarão a navegar na página mais facilmente e a entender como acessar os nós e mover-se dentro da árvore de nós.
+            </p>
+            <p>O diretório "/usr/share/doc/" armazena a maior parte da documentação dos comandos que estão em uso. Essa pasta contém um diretório para a maioria dos pacotes instalados no sistema. O nome do diretório geralmente é o nome do pacote e, ocasionalmente, a versão. Esses diretórios incluem um arquivo README ou readme.txt contendo a documentação básica do pacote. Juntamente com o arquivo README, a pasta também pode conter outros arquivos de documentação, como o registro de alterações (changelog), que inclui o histórico do programa em detalhes, ou exemplos de arquivos de configuração para aquele pacote específico.
+            </p>
+            <p>As informações contidas no arquivo README variam de um pacote a outro. Todos os arquivos são gravados em texto simples e, portanto, podem ser lidos em qualquer editor de texto de sua preferência. O número exato e os tipos de arquivos dependem do pacote. Verifique alguns dos diretórios para obter uma visão geral de seu conteúdo.</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Localizar Arquivos<a name="Localizar Arquivos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Comando: locate</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Um sistema Linux é construído a partir de diversos diretórios e arquivos. O Linux tem muitas ferramentas que permitem localizar um arquivo específico em um sistema. A mais rápida é o comando locate.
+            </p>
+            <p>O locate pesquisa dentro de um banco de dados e, em seguida, gera todos os nomes que correspondem à cadeia de caracteres (string) especificada:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ locate note<br>
+                /lib/udev/keymaps/zepto-znote<br>
+                /usr/bin/zipnote<br>
+                /usr/share/doc/initramfs-tools/maintainer-notes.html<br>
+                /usr/share/man/man1/zipnote.1.gz
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando locate também suporta o uso de curingas e expressões regulares; assim, o termo de pesquisa não precisa corresponder ao nome inteiro do arquivo desejado. Trataremos mais a fundo das expressões regulares em um capítulo posterior.
+            </p>
+            <p>Por padrão, locate se comporta como se o termo de busca estivesse cercado por asteriscos. Portanto, locate TERMO é o mesmo que locate *TERMO*. Isso permite fornecer apenas substrings em vez do nome exato do arquivo. Se quiser modificar esse comportamento, use as diferentes opções especificadas na página man de locate.
+            </p>
+            <p>Como locate consulta um banco de dados, você pode não encontrar um arquivo que foi criado recentemente. O banco de dados é gerenciado por um programa chamado updatedb. Ele costuma ser executado periodicamente, mas se você possui privilégios de root e precisa atualizar o banco de dados imediatamente, pode executar o comando updatedb a qualquer momento.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Comando: find</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O find é outra ferramenta muito popular usada para procurar arquivos. Esse comando tem uma abordagem diferente do locate. O comando find pesquisa recursivamente em uma árvore de diretórios, incluindo os subdiretórios. O find faz essa pesquisa a cada chamada, em vez de manter um banco de dados como o locate. A exemplo do locate, o find também suporta caracteres curinga e expressões regulares.
+            </p>
+            <p>O find requer pelo menos o local em que ele deve procurar. Além disso, podemos adicionar expressões para filtrar os arquivos a exibir. Um exemplo é a expressão -name, que procura por arquivos com um nome específico:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>~$ cd Downloads<br>
+                ~/Downloads<br>
+                $ find . -name thesis.pdf<br>
+                ./thesis.pdf<br>
+                ~/Downloads<br>
+                $<br>
+                $ find ~ -name thesis.pdf<br>
+                /home/carol/Downloads/thesis.pdf
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O primeiro comando find procura por arquivos dentro do atual diretório Downloads, ao passo que o segundo busca pelo arquivo no diretório Home do usuário.</p>
+            <p>Opções do comando find:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opção</th>
+                    <th>Descrição</th>
+                </tr>      
+                <tr>
+                    <td>-name [arquivo]</td>
+                    <td>Indica o arquivo a ser procurado.</td>
+                </tr>      
+                <tr>
+                    <td>-type [tipo]</td>
+                    <td>Indica o tipo de arquivo a ser procurado:<br>
+                        f: busca por arquivos.<br>
+                        d: busca por diretórios.<br>
+                        l: busca por links simbólicos
+                    </td>
+                </tr>      
+                <tr>
+                    <td>-path [caminho]</td>
+                    <td>Indica o arquivo a ser procurado.</td>
+                </tr>      
+                <tr>
+                    <td>-user [usuário]</td>
+                    <td>Indica que o arquivo tem que pertencer ao usuário indicado.</td>
+                </tr>      
+                <tr>
+                    <td>-group [grupo]</td>
+                    <td>Indica que o arquivo tem que pertencer ao grupo indicado.</td>
+                </tr>      
+                <tr>
+                    <td>-mtime [n]</td>
+                    <td>Procura os arquivos que foram modificados nos exatos n dias.</td>
+                </tr>      
+                <tr>
+                    <td>-mmin [n]</td>
+                    <td>Procura os arquivos que foram modificados há n minutos.</td>
+                </tr>      
+                <tr>
+                    <td>-amin [n]</td>
+                    <td>Procura por arquivos acessados há n minutos.</td>
+                </tr>      
+                <tr>
+                    <td>-atime [n]</td>
+                    <td>Procura por arquivos acessados há n dias.</td>
+                </tr>      
+                <tr>
+                    <td>-cmin [n]</td>
+                    <td>Procura por arquivos no qual o status do arquivo foi alterado em até n minutos atrás.</td>
+                </tr>      
+                <tr>
+                    <td>-ctime [n]</td>
+                    <td>Procura por arquivos no qual o status do arquivo foi mudado nos últimos n dias.</td>
+                </tr>      
+                <tr>
+                    <td>-print</td>
+                    <td>Imprime o nome do arquivo na tela, é sempre necessário pois sem ele não irá ser mostrado nada.</td>
+                </tr>      
+                <tr>
+                    <td>-perm [permissão Octal]</td>
+                    <td>Procura por arquivos com uma determinada permissão.</td>
+                </tr>      
+                <tr>
+                    <td>-size [n][bckw]</td>
+                    <td>Procura por arquivos que tem n unidades de espaço. Ao usar + (-) antes de n procura-se por um arquivo maior (menor) que n. As unidades são:<br>
+                        b: blocos de 512 bytes (padrão);<br>
+                        c: bytes;<br>
+                        k: kilobytes;<br>
+                        w: palavras de 2 bytes.
+                    </td>
+                </tr>      
+                <tr>
+                    <td>-type [tipo]</td>
+                    </td>
+                    <td>Procura arquivos de um determinado tipo. São tipos possíveis:<br>
+                        b: blocos especiais (buffer)<br>
+                        c: caracteres especiais<br>
+                        d: diretórios<br>
+                        p: conector definido (FIFO)<br>
+                        f: arquivo regular<br>
+                        l: ligação simbólica<br>
+                        s: socket
+                    </td>
+                </tr>      
+                <tr>                    
+                    <td>-exec [comando]</td>
+                    <td>Procura os arquivos que foram modificados nos exatos n dias.</td>
+                </tr>      
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Exemplos do comando find:</p>
+            <p>Este comando procura por todos os diretórios, no diretório atual e abaixo dele, que tenham o nome example.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ find . -type d -name "example"</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Este comando procura por todos os arquivos em todo o sistema de arquivos (o caminho inicial é o diretório raiz, ou seja, /) que terminam com os caracteres .conf e que foram modificados nos últimos sete dias.<br>
+            Este comando exige privilégios elevados para acessar diretórios na base da estrutura de diretórios do sistema, daí o uso de sudo neste caso. O argumento passado para mtime representa o número de dias desde a última modificação do arquivo.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ sudo find / -name "*.conf" -mtime 7</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Esse comando filtra todos os objetos no diretório atual (.) e abaixo dele para nomes de arquivo terminando com .conf e em seguida executa o comando chmod 644 para modificar as permissões de arquivo nos resultados.</p>
+            <p>As chaves ({}) servem para reservar o espaço para os resultados encontrados por find. As {} são postas entre aspas simples (') para evitar passar arquivos com nomes contendo caracteres especiais para o grep.<br>
+                O comando -exec é concluído com um ponto e vírgula (;), que deve ser escapado (\;) para não ser interpretado pelo shell.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ find . -name "*.conf" -exec chmod 644 '{}' \;</p>        
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No exemplo abaixo, find localiza todos os arquivos na hierarquia começando no diretório atual e, em seguida, exclui todos os arquivos que terminam com os caracteres .bak</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ find . -name "*.bak" -delete</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

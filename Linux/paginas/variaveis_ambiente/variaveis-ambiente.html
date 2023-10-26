@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->        
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="#Variáveis de Ambiente">Variáveis de Ambiente</a></li>
+                    <li><a href="#Hostname">Hostname</a></li>
+                </ul>
+            </ul>
+            <hr>
+        </div>
+
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Variáveis de Ambiente</h4>
+        </div>
+
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>As variáveis são espaços de armazenamento para dados, como texto ou números. Uma vez definido, o valor de uma variável pode ser acessado posteriormente. As variáveis têm um nome, o que permite acessar uma variável específica mesmo quando seu conteúdo é alterado. Elas são uma ferramenta muito comum na maioria das linguagens de programação.</p>
+            <p>Na maioria dos shells do Linux, existem dois tipos de variáveis:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Variáveis locais</th>                    
+                </tr>
+                <tr>
+                    <td>Essas variáveis estão disponíveis apenas para o processo atual do shell. Se você criar uma variável local e, em seguida, iniciar outro programa nesse shell, a variável não poderá mais ser acessada por esse programa.<br> 
+                        Como não são herdadas por subprocessos, essas variáveis são chamadas variáveis locais.                        
+                    </td>                    
+                </tr>  
+                <tr>
+                    <th>Variáveis de ambiente</th>
+                </tr>
+                <tr>
+                    <td>Essas variáveis estão disponíveis tanto em uma sessão de shell específica quanto em subprocessos gerados a partir dessa sessão de shell. 
+                        Essas variáveis podem ser usadas para transmitir dados de configuração para os comandos executados.<br> 
+                        Como os programas podem acessar essas variáveis, elas são chamadas variáveis de ambiente.<br>
+                        A maioria das variáveis de ambiente aparece em letras maiúsculas (por exemplo, PATH, DATE, USER).<br>
+                        Um conjunto de variáveis de ambiente padrão fornece, por exemplo, informações sobre o diretório inicial ou o tipo de terminal do usuário. Em certos casos, nos referimos ao conjunto completo de todas as variáveis de ambiente como ambiente.                        
+                    </td>                
+                </tr>  
+            </table>
+            <p>Você pode configurar uma variável local usando o operador = (igual). Uma atribuição simples criará uma variável local:<br>
+            $ variavel="seu valor é um texto" **** Não coloque espaço antes ou depois do operador =.
+            </p>
+            <p>Para acessar o valor da variável, você terá de usar $ (cifrão) na frente do nome da variável.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p> edumcosta@ubuntu-server-v22:~$ variavel="seu valor é um texto"<br>
+            edumcosta@ubuntu-server-v22:~$ echo $variavel<br>
+            seu valor é um texto<br>
+            </p>    
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para remover uma variável, usamos o comando unset:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ unset variavel<br>
+            $ echo $variavel<br>
+            $
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para disponibilizar uma variável local para subprocessos, podemos transformá-la em variável de ambiente. Usamos para isso o comando export. Quando ele é invocado junto ao nome da variável, essa variável é adicionada ao ambiente do shell:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ variavel="seu valor é um texto"<br>
+            $ export variavel</p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Uma maneira mais fácil de criar a variável de ambiente é combinar os dois métodos acima, atribuindo o valor da variável na parte de argumento do comando.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ export variavel="seu valor é um texto"</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A variável "PATH" é uma variável de ambiente e uma das mais importantes de um sistema Linux. Ela armazena uma lista de diretórios, separados por dois pontos, que contêm programas executáveis que funcionam como comandos do shell do Linux.</p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ echo $PATH<br>
+            /home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para acrescentar um novo diretório à variável, usamos o sinal de dois pontos (:).</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ PATH=$PATH:$new_directory *** Sendo a informação aqui representada por outra variável ou que poderia representar um caminho "/caminho..." 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Hostname<a name="Hostname"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Você pode usar o comando hostname ou o comando hostnamectl para ver ou definir o nome do host do sistema. 
+            O nome do host ou nome do computador geralmente está na inicialização do sistema no arquivo /etc/hostname. 
+            Utilize o comando <strong>"sudo vi /etc/hostname"</strong> para definir ou alterar o nome do host.
+            </p>
+            <p>Outro ponto importante é que quando alteramos o arquivo <strong>"/etc/hostname"</strong>, precisamos também alterar o arquivos "hosts", responsável pela tradução do endereço "localhost".
+            Utilize o comando <strong>"sudo vi /etc/hosts"</strong> para definir ou alterar o nome do localhost.
+            </p>
+            <p>Para que as alterações façam efeito, reinicie o host.</p>                        
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>
+    </body>
+</html>

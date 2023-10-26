@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->        
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux: Discos e Partições</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../paginas/discos-particoes/discos-particoes.html">Partições</a></li>
+                    <li><a href="#Tabelas de Partições">Tabelas de Partições</a></li>
+                    <li><a href="#Sistemas de Arquivos">Sistemas de Arquivos</a></li>
+                    <li><a href="#Identificação de Dispositivos e Partições">Identificação de Dispositivos e Partições</a></li>
+                    <li><a href="#O Comando: lsblk">O Comando: lsblk</a></li>
+                    <li><a href="#O Comando: fdisk">O Comando: fdisk</a></li>
+                    <li><a href="#Particionamento e Formatação de Disco Rígido Linux">Particionamento e Formatação de Disco Rígido Linux</a></li>
+                    <ul>
+                        <li><a href="#Formatando pen-drives compatíveis com o Windows">Formatando pen-drives compatíveis com o Windows</a></li>
+                    </ul>
+                    <li><a href="#Montando uma Partição de Disco">Montando uma Partição de Disco</a></li>                    
+                    <li><a href="#Desmontando uma Partição de Disco">Desmontando uma Partição de Disco</a></li>                                        
+                    <li><a href="#Arquivo etc/fstab">Arquivo etc/fstab</a></li>                    
+                    <li><a href="#LVM - Logical Volume Manager">LVM - Logical Volume Manager</a></li>                    
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Partições</h4>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>São divisões existentes no disco rígido que marcam onde começa onde termina um sistema de arquivos. As partições nos permitem usar mais de um sistema operacional no mesmo computador (como o GNU/Linux, Windows e DOS), 
+                ou dividir o disco rígido em uma ou mais partes para ser usado por um único sistema operacional ou até mesmo por diferentes arquiteturas (32 e 64 bits).
+            </p>            
+            <p>Em relação aos tipos, as partições subdividas em Primárias, Estendidas e Lógicas.</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Primárias</th>
+                    <td>Partições que contém um sistema de arquivos. Normalmente, partições de sistemas operacionais.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>Estendidas</th>
+                    <td>Partições primárias especiais, que ao invés de receber um sistema de arquivos “abrigam” outras partições lógicas.
+                    </td>                
+                </tr>  
+                <tr>
+                    <th>Lógicas</th>
+                    <td>São partições criadas dentro das partições estendidas. Essas partições, assim como as primárias, recebem sistemas de arquivos.
+                    </td>                
+                </tr>  
+            </table>
+            <p>Exemplo:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>                    
+                    <th>Dispositivo</th>
+                    <th>Partição</th>
+                    <th>Sistema de Arquivo</th>
+                    <th>Tipo</th>
+                    <th>Tamanho</th>
+                    <th>Comentário</th>
+                </tr>
+                <tr>
+                    <td>/sda1</td>
+                    <td>1</td>
+                    <td>NTFS</td>
+                    <td>Primária</td>
+                    <td>100 GB</td>
+                    <td>Primeira partição no dispositivo sda[1], tipo "Primária" e com sistema de arquivo NTFS.</td>
+                </tr>
+                <tr>
+                    <td>/sda2</td>
+                    <td>2</td>
+                    <td>NTFS</td>
+                    <td>Primária</td>
+                    <td>200 GB</td>
+                    <td>Segunda partição no dispositivo sda[2], tipo "Primária" e com sistema de arquivo NTFS.</td>
+                </tr>
+                <tr>
+                    <td>/sda3</td>
+                    <td>3</td>
+                    <td>extended</td>
+                    <td>Estendida</td>
+                    <td>500 GB</td>
+                    <td>Terceira partição no dispositivo sda[3], tipo "Estendida" e com sistema de arquivo extended.</td>
+                </tr>
+                <tr>
+                    <td>/sda4</td>
+                    <td>4</td>
+                    <td>ext4</td>
+                    <td>Lógica</td>
+                    <td>120 GB</td>
+                    <td>Quarta partição no dispositivo sda[4], tipo "Estendida" e com sistema de arquivo extended.</td>
+                </tr>
+                <tr>
+                    <td>/sda5</td>
+                    <td>5</td>
+                    <td>Swap</td>
+                    <td>Lógica</td>
+                    <td>128 MB</td>
+                    <td>Quinta partição no dispositivo sda[5], tipo "Lógica" e com sistema de arquivo swap.</td>
+                </tr>
+            </table>
+            <p>A informação sda1 da coluna "Dispositivo" corresponde a identificação uma unidade.</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>sd</th>
+                    <td>Sigla que identifica o tipo do disco rígido (sd=SATA/SCSI, sd=IDE, xt=MFM).
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>a</th>
+                    <td>Letra que identifica o disco rígido (a=primeiro, b=segundo, etc...).
+                    </td>                
+                </tr>  
+                <tr>
+                    <th>1</th>
+                    <td>Número que identifica o número da partição no disco rígido.
+                    </td>                
+                </tr>  
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Tabelas de Partições<a name="Tabelas de Partições"></a></h4>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+        
+            <p>Uma tabela de partição descreve o “layout” (aparência) das partições de um disco rígido. Atualmente, existem dois padrões de tabela de partição de disco:</p>
+            <li>MBR (Master Boot Record) e GPT (GUID Partition Table). MBR, também conhecido como ms-dos, e é o padrão mais comum e antigo – suportado pela BIOS.</li>
+            <li>GPT veio depois – suportado pela interface UEFI, presente computadores modernos.</li>
+
+                <p>Criação do GPT em função das limitações do MBR:</p>
+            
+            <li>Não permite a configuração de mais de 4 partições primárias (GPT suporta até 128 partições primárias)</li>
+            <li>As partições de disco (cada fatia da pizza) são limitadas a 2 TB, ou seja, um disco com capacidade superior não será compreendido com sua capacidade máxima (GPT suporta partições acima dos 2 TB e um máximo de 1 ZB a depender do sistema de arquivos usado)
+            </li>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Sistemas de Arquivos<a name="Sistemas de Arquivos"></a></h4>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A partição do tipo Linux Native (Tipo 83) é a usada para armazenar arquivos no GNU/Linux, tanto ext2, ext3, ext4, reiserfs, xfs, etc.</p>
+            <p>A partição do tipo Linux Swap (Tipo 82) é usada como memória virtual.</p>
+
+            <p>Antes que uma partição de disco possa ser usada para armazenar dados, primeiro ela deve ser formatada. O processo de formatação inclui “carimbá-lo” com um sistema de arquivos. Isso ocorre durante a "formatação" da partição de disco, onde após a formatação, 
+                toda a estrutura para leitura/gravação/permissões de arquivos e diretórios pelo sistema operacional estará pronta para ser usada. Normalmente este passo é feito durante a instalação de sua distribuição GNU/Linux.
+            </p>
+            <p>Cada sistema de arquivos tem uma característica em particular mas seu propósito é o mesmo: Oferecer ao sistema operacional a estrutura necessária para ler/gravar os arquivos/diretórios.
+            </p>
+            <p>Entre os sistemas de arquivos principais:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Ext3</th>
+                    <td>Este sistema de arquivos possui melhorias em relação ao ext2, como destaque o recurso de jornaling e suporte a arquivos de até 16Gb. Ele também é identificado pelo tipo 83 e totalmente compatível com o ext2 em estrutura. 
+                        O journal mantém um log de todas as operações no sistema de arquivos, caso aconteça uma queda de energia elétrica (ou qualquer outra anormalidade que interrompa o funcionamento do sistema), o fsck verifica o sistema de arquivos no ponto em que estava quando houve a interrupção, 
+                        evitando a demora para checar todo um sistema de arquivos (que pode levar minutos em sistemas de arquivos muito grandes).
+                    </td>
+                </tr>
+                <tr>
+                    <th>Swap</th>
+                    <td>Usado em partições Linux Swap para oferecer memória virtual ao sistema. 
+                    </td>
+                </tr>
+                <tr>                    
+                    <th>FAT32</th>
+                    <td>Também usado no DOS e oferece suporte a discos de até 2 Terabytes. Não possui suporte a permissões e journaling. NTFS - Formato nativo de discos de sistemas operacionais Windows XP e superiores. Possui suporte a permissões de acesso e compactação nativa.                    
+                    </td>
+                </tr>
+            </table>
+            <p>O BtrFS é o “mais novo” sistema de arquivos Linux desenvolvido pela Oracle.</p>
+            <li>É um novo sistema de arquivos e permanece em desenvolvimento pesado. A comunidade Linux a considera instável para alguns casos.</li> 
+            <li>O foco central do BtrFS baseia-se no princípio do copy-on-write (CoW) – implementação onde o sistema mantém uma única cópia de um bit de dados antes que os dados tenham sido escritos; 
+            quando os dados forem escritos, uma cópia dele será feita.</li> 
+            <li>Essa estratégia é utilizada para reduzir a duplicação desnecessária de objetos de memória.</li>
+            <li>Ele vem com muitos recursos que não estão disponíveis em outros sistemas de arquivos Linux, 
+                como gerenciamento de volume e reconhecimento de RAID – acrônimo para Redundant Array of Disclaimer Disks – que é um método de combinação de dois ou mais discos rígidos em uma única unidade lógica.
+            </li>
+            <hr>
+        </div>    
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Identificação de Dispositivos e Partições<a name="Identificação de Dispositivos e Partições"></a></h4>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No GNU/Linux, os dispositivos existentes em seu computador (como discos rígidos, pen-drives, flash, disquetes,, tela, portas de impressora, modem, etc) são identificados por um arquivo referente a este dispositivo no diretório /dev.
+            </p>
+            <p>A identificação de discos rígidos no GNU/Linux é feita da seguinte forma:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>sd</th>
+                    <td>Sigla que identifica o tipo do disco rígido (sd=SATA/SCSI, sd=IDE, xt=MFM).
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>a</th>
+                    <td>Letra que identifica o disco rígido (a=primeiro, b=segundo, etc...).
+                    </td>                
+                </tr>  
+                <tr>
+                    <th>1</th>
+                    <td>Número que identifica o número da partição no disco rígido.
+                    </td>                
+                </tr>  
+            </table>           
+            <p>Abaixo algumas identificações de discos e partições em sistemas Linux:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>/dev/fd0</th>
+                    <td>Primeira unidade de disquetes.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>/dev/fd1</th>
+                    <td>Segunda unidade de disquetes.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>/dev/sda1</th>
+                    <td>Primeira partição do primeiro disco rígido SATA ou SCSI.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>/dev/sdb1</th>
+                    <td>Primeira partição do segundo disco rígido SATA ou SCSI.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>/dev/sr0</th>
+                    <td>Primeiro CD-ROM SATA ou SCSI.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>/dev/sr1</th>
+                    <td>Segundo CD-ROM SATA ou SCSI.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>/dev/hda1</th>
+                    <td>Primeira partição do primeiro disco rígido IDE.
+                    </td>                
+                </tr>      
+            </table>
+        </div>        
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>O Comando: lsblk<a name="O Comando: lsblk"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O lsblk exibe informações sobre dispositivos de armazenamento. 
+            O utilitário costuma ser usado para identificar o nome correto do dispositivo a ser passado para um comando subsequente.
+            </p>
+            <p>Utilize o "--help" para obter maiores detalhes do comando.</p>
+            <p>Abaixo o retorno do comando lsblk.</p>              
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ lsblk<br>
+            NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS<br>
+            sda                         8:0    0  128G  0 disk<br>
+            ├─sda1                      8:1    0    1M  0 part<br>
+            ├─sda2                      8:2    0    2G  0 part /boot<br>
+            └─sda3                      8:3    0  126G  0 part<br>
+              └─ubuntu--vg-ubuntu--lv 253:0    0   63G  0 lvm  /<br>
+            sr0                        11:0    1 1024M  0 rom
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Identificando o tipo de dispositivo.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ lsblk -d -o +MODEL<br>
+            NAME MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS MODEL<br>
+            sda    8:0    0  128G  0 disk             VBOX HARDDISK<br>
+            sr0   11:0    1 1024M  0 rom              VBOX CD-ROM
+            </p>
+        </div>     
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Identificando partições e seus tipos.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ lsblk -o +FSTYPE,LABEL<br>
+            NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS FSTYPE      LABEL<br>
+            sda                         8:0    0  128G  0 disk<br>
+            ├─sda1                      8:1    0    1M  0 part<br>
+            ├─sda2                      8:2    0    2G  0 part /boot       ext4<br>
+            └─sda3                      8:3    0  126G  0 part             LVM2_member<br>
+              └─ubuntu--vg-ubuntu--lv 253:0    0   63G  0 lvm  /           ext4<br>
+            sr0                        11:0    1 1024M  0 rom
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Identificando se o dispositivo é removível. No retorno do comando, a coluna "RM" indica se o dispositivo é removível ou não.<br> 
+            0 = não removível.<br>
+            1 = removível.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ lsblk -o +RM<br>
+            NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS RM<br>
+            sda                         8:0    0  128G  0 disk              0<br>
+            ├─sda1                      8:1    0    1M  0 part              0<br>
+            ├─sda2                      8:2    0    2G  0 part /boot        0<br>
+            └─sda3                      8:3    0  126G  0 part              0<br>
+              └─ubuntu--vg-ubuntu--lv 253:0    0   63G  0 lvm  /            0<br>
+            sr0                        11:0    1 1024M  0 rom               1
+            </p>    
+        </div>                    
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Identificando se o dispositivo pelo seu UUID.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ lsblk -o +UUID<br>
+                NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS UUID<br>
+                sda                         8:0    0  128G  0 disk<br>
+                ├─sda1                      8:1    0    1M  0 part<br>
+                ├─sda2                      8:2    0    2G  0 part /boot       a18441a7-3b99-4f01-8680-81fe0efde7d9<br>
+                └─sda3                      8:3    0  126G  0 part             k84qKP-wySd-3vxZ-XH9g-k5Ip-mIYr-TBwxwi<br>
+                └─ubuntu--vg-ubuntu--lv 253:0    0   63G  0 lvm  /           fe91ee51-4b96-4056-b5cb-de3a906cb9e0<br>
+                sr0                        11:0    1 1024M  0 rom
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>O Comando: fdisk<a name="O Comando: fdisk"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O fdisk exibe informações sobre dispositivos de armazenamento. 
+            O utilitário costuma ser usado para identificar o nome correto do dispositivo a ser passado para um comando subsequente.
+            </p>
+            <p>Utilize o "--help" para obter maiores detalhes do comando.</p>
+            <p>Abaixo o retorno do comando fdisk -l.</p>              
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ sudo fdisk -l<br>
+            [sudo] password for edumcosta:<br>
+            <br>
+            <br>
+            Disk /dev/sda: 128 GiB, 137438953472 bytes, 268435456 sectors<br>
+            Disk model: VBOX HARDDISK<br>
+            Units: sectors of 1 * 512 = 512 bytes<br>
+            Sector size (logical/physical): 512 bytes / 512 bytes<br>
+            I/O size (minimum/optimal): 512 bytes / 512 bytes<br>
+            Disklabel type: gpt<br>
+            Disk identifier: C85B58AB-6B4F-4970-A422-E15BFCA726C3<br>
+            <br>
+            Device       Start       End   Sectors  Size Type<br>
+            /dev/sda1     2048      4095      2048    1M BIOS boot<br>
+            /dev/sda2     4096   4198399   4194304    2G Linux filesystem<br>
+            /dev/sda3  4198400 268433407 264235008  126G Linux filesystem<br>
+            <br>
+            <br>
+            Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 63 GiB, 67641540608 bytes, 132112384 sectors<br>
+            Units: sectors of 1 * 512 = 512 bytes<br>
+            Sector size (logical/physical): 512 bytes / 512 bytes<br>
+            I/O size (minimum/optimal): 512 bytes / 512 bytes
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para alterar as partições que estão na unidade /dev/sda, basta digitar:<strong>"sudo fdisk /dev/sda"</strong>.             
+            <p>Abaixo o retorno do comando.</p>              
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ sudo fdisk /dev/sda<br>
+            <br>
+            Welcome to fdisk (util-linux 2.37.2).<br>
+            Changes will remain in memory only, until you decide to write them.<br>
+            Be careful before using the write command.<br>
+            <br>
+            This disk is currently in use - repartitioning is probably a bad idea.<br>
+            It's recommended to umount all file systems, and swapoff all swap<br>
+            partitions on this disk.<br>
+            <br>
+            <br>
+            Command (m for help): p<br>
+            <br>
+            Disk /dev/sda: 128 GiB, 137438953472 bytes, 268435456 sectors<br>
+            Disk model: VBOX HARDDISK<br>
+            Units: sectors of 1 * 512 = 512 bytes<br>
+            Sector size (logical/physical): 512 bytes / 512 bytes<br>
+            I/O size (minimum/optimal): 512 bytes / 512 bytes<br>
+            Disklabel type: gpt<br>
+            Disk identifier: C85B58AB-6B4F-4970-A422-E15BFCA726C3<br>
+            <br>
+            Device       Start       End   Sectors  Size Type<br>
+            /dev/sda1     2048      4095      2048    1M BIOS boot<br>
+            /dev/sda2     4096   4198399   4194304    2G Linux filesystem<br>
+            /dev/sda3  4198400 268433407 264235008  126G Linux filesystem<br>
+            <br>
+            Command (m for help): q<br>
+            <br>
+            edumcosta@vm-ubuntu-v22-a:~$
+            </p>                        
+        </div>        
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Particionamento e Formatação de Disco Rígido Linux<a name="Particionamento e Formatação de Disco Rígido Linux"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Passo 1:</strong> Para preparar partições em um disco rígido instalado em um sistema operacional Linux utilizamos
+            a ferramenta “fdisk” executada através do superusuário “root”, para iniciar o particionamento
+            vamos listar os discos via comando “#fdisk -l” que exibirá os discos instalados no sistema, neste
+            exemplo temos o disco principal (SATA-0 /dev/sda) e (SATA-1 /dev/sdb).
+            </p>
+            
+            <p><strong>Passo 2:</strong> Neste exemplo vamos manipular o segundo disco que foi instalado posteriormente no sistema que
+            é indicado como “/dev/sdb”, digite o comando “#fdisk /dev/sdb” digite a opção “F” para listar o
+            espaço livre não particionado do disco.
+            </p>
+            <p><strong>Observação:</strong> No console do “fdisk” digite “m” para exibir a opções disponíveis para manipulação de disco
+            rígido, devido as limitações de endereçamento em modo “MBR” do disco rígido em computadores
+            que utilizam o sistema legado de “BIOS” só é possível dividir o disco em 4 partições primárias ou
+            3 partições primárias e 1 estendida que podem ser combinadas sendo necessário pelo menos 1
+            partição primária para instalação do sistema operacional, para criação de mais de 4 partições é
+            utilizada uma partição estendida que disponibiliza suporte para criação de até 59 partições lógicas,
+            esta limitação não existe em sistemas modernos com “UEFI” utilizando modo “GPT”.
+            </p>
+            <p><strong>Passo 3:</strong> No console do “fdisk” digite a sequência de opções a seguir: “n” para adicionar uma nova
+            partição, “p” para selecionar partição primária, “1” para o número da partição primária, digite
+            “Enter” para selecionar o primeiro setor do disco padrão, digite o tamanho desejado para a
+            partição, neste exemplo “+150G” 150 Gigabytes, no exemplo o disco estava formatado em “NTFS”
+            e foi necessário remover a assinatura utilizando a opção “S”, para gravar as alterações realizadas na
+            tabela de partições do disco digite “w” e aguarde a finalização.
+            </p>
+            <p><strong>Passo 4:</strong> Novamente no console do “fdisk” digite a sequência de opções, “F” para listar o espaço não
+            particionado, “n” para adicionar uma nova partição, “e” para selecionar partição estendida, “2”
+            para o número da partição estendida, digite “Enter” para o primeiro e o último setor, neste exemplo
+            vamos utilizar todo o espaço restante do disco, para gravar as alterações realizadas na tabela de
+            partições do disco digite “w” e aguarde a finalização.
+            </p>
+            <p><strong>Passo 5:</strong> Execute novamente o comando “fdisk -l” para exibir as novas partições criadas no disco
+            “/dev/sdb” que seguirão uma sequência padrão no Linux (sdb1 e sdb2).
+            </p>
+            <p><strong>Passo 6:</strong> Novamente no console do “fdisk” digite a sequência de opções a seguir: “n” para adicionar uma
+            nova partição lógica, digite “Enter” para selecionar o primeiro setor do disco padrão, digite o
+            tamanho desejado para a partição lógica, neste exemplo “+80G” 80 Gigabytes, repita a sequência
+            para criar uma segunda partição lógica, digite “Enter” para o primeiro e o último setor, neste
+            exemplo que utilizará o restante do espaço do disco, para gravar as alterações realizadas na tabela
+            de partições do disco digite “w” e aguarde a finalização.
+            </p>
+            <p><strong>Passo 7:</strong> No console do “fdisk” podemos listar todas as partições criadas anteriormente através da opção
+            “p”, na tela de exemplo abaixo podemos visualizar as novas partições (primária /dev/sdb1,
+            estendida /dev/sdb2, lógica /dev/sdb5, lógica /dev/sdb6).
+            </p>
+            <p><strong>Passo 8:</strong> Após o particionamento do disco é necessário formatar as partições com um sistema de arquivos,
+            na tela de exemplo abaixo foi determinado o “ext4” padrão atual do Linux Debian 9, para iniciar a
+            formatação digite o comando “#mkfs -t ext4 /dev/sdb1” e aguarde a finalização.
+            </p>
+            <p><strong>Passo 9:</strong> Para que o sistema de arquivos que acabamos de criar seja montado automaticamente na
+            inicialização do sistema devemos editar o arquivo “/etc/fstab”, é aconselhável fazer uma cópia de
+            segurança do arquivo “cp -p /etc/fstab /root/backup/fstab.bak”.
+            </p>
+            <p><strong>Passo 10:</strong> Primeiro obtemos o “UUID” da partição que será configurada para inicializar automaticamente
+            no carregamento do sistema digitando o comando “#blkid /dev/sdb1”.
+            </p>
+            <p><strong>Passo 11:</strong> Agora é só editar o arquivo “/etc/fstab” via um editor de texto com as seguintes informações,
+            “UUID” do disco, diretório criado para o ponto de montagem, o tipo de sistema de arquivo
+            escolhido, as opções de montagem e por fim o comando “dump” e a checagem de disco pelo
+            “pass” através do “fsck”, reinicialize o sistema para testar o novo ponto de montagem.
+            </p>
+            <p><strong>Passo 12:</strong> Para verificar o novo ponto de montagem digite o comando “$df -h”, na tela de exemplo abaixo
+            podemos visualizar suas informações.
+            </p>
+            <p><strong>Passo 13:</strong> Para criar um ponto de montagem manual basta criar um diretório no disco principal e montar o
+            dispositivo digitando o comando “#mount /dev/sdb5 /mnt/sdb5”, podemos verificar as
+            informações através do comando “#df -h”.
+            </p>
+            <p>Tabela de Opções para manipulação de disco do console "fdisk":</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opção</th>
+                    <th>Ação</th>                
+                </tr>      
+                <tr>
+                    <td>-a</td>
+                    <td>Ativa partição inicializável.</td>
+                </tr>
+                <tr>
+                    <td>-d</td>
+                    <td>Deleta uma partição.</td>
+                </tr>
+                <tr>
+                    <td>-F</td>
+                    <td>Lista o espaço não particionado.</td>
+                </tr>
+                <tr>
+                    <td>-l</td>
+                    <td>Lista os tipos de partições.</td>
+                </tr>
+                <tr>
+                    <td>-n</td>
+                    <td>Adiciona uma nova partição.</td>
+                </tr>
+                <tr>
+                    <td>-p</td> 
+                    <td>Mostra a tabela de partições criadas.</td>
+                </tr>
+                <tr>
+                    <td>-t</td> 
+                    <td>Altera o tipo de uma partição.</td>
+                </tr>
+                <tr>
+                    <td>-i</td> 
+                    <td>Informações detalhadas de uma partição específica.</td>
+                </tr>
+                <tr>
+                    <td>-m</td> 
+                    <td>Mostra o menu de opções do “fdisk”.</td>
+                </tr>
+                <tr>
+                    <td>-w</td>
+                    <td>Salva as alterações na tabela de partições e sai do “fdisk”.</td>
+                </tr>
+                <tr>
+                    <td>-q</td>
+                    <td>Sai sem salvar as alterações na tabela de partições do “fdisk”.</td>
+                </tr>      
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Formatando pen-drives compatíveis com o Windows<a name="Formatando pen-drives compatíveis com o Windows"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A formatação de pen-drives para serem usados no Windows é feita usando o comando mkfs.msdos que é geralmente incluído no pacote . O mkfs.msdos permite tanto a criação de sistemas de arquivos FAT16 ou FAT32.
+            </p>
+            <p>mkfs.msdos [opções] [dispositivo]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Descrição</th>                
+                </tr>      
+                <tr>
+                    <td>dispositivo</td>
+                    <td>Dispositivo a ser formatado.</td>
+                </tr>
+                <tr>
+                    <td>-F [num]</td>
+                    <td>Especifica o tipo de FAT que será usado na formatação. Podem ser usados os valores 12 (para formatação usando FAT12, limitado a 12MB), 16 (para formatação usando FAT16, limitado a 2Gb) e 32 (para formatação FAT32, limitado a 128Gb).</td>
+                </tr>
+                <tr>
+                    <td>-n [nome]</td>
+                    <td>Atribui o [nome] de volume ao dispositivo.</td>
+                </tr>
+                <tr>
+                    <td>-c</td>
+                    <td>Faz uma pesquisa por bad blocks antes da criação do sistema de arquivos no dispositivo. Os setores defeituosos encontrados serão automaticamente marcados para não serem utilizadas.</td>
+                </tr>
+                <tr>
+                    <td>-m [arquivo_mensagem]</td>
+                    <td>Especifica o arquivo que contém a mensagem que será exibida ao usuário caso o disco não seja inicializável. A mensagem não pode exceder 418 bytes.</td>
+                </tr>
+            </table>
+            <p>Abaixo, exemplos de utilização do comando mkfs.msdos:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>mkfs.msdos /dev/sdc1</th>
+                    <td>Formata o dispositivo no terceiro dispositivo SCSI Genérico, como FAT32 e usando os valores padrões.</td>                
+                </tr>      
+                <tr>
+                    <th>mkfs.msdos -n teste -F 16 /dev/sdc1</th>
+                    <td>Formata o dispositivo no terceiro dispositivo SCSI Genérico e como FAT16 e cria o volume "teste".</td>                
+                </tr>      
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Montando uma Partição de Disco<a name="Montando uma Partição de Disco"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Você pode acessar uma partição de disco usando o comando mount.</p>
+            <p>mount [dispositivo] [ponto de montagem] [opções]</p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Descrição</th>                
+                </tr>      
+                <tr>
+                    <td>dispositivo</td>
+                    <td>Identificação da unidade de disco/partição que deseja acessar: "/dev/hda1" (disco rígido) ou "/dev/fd0" (primeira unidade de disquetes).</td>
+                </tr>
+                <tr>
+                    <td>ponto de montagem</td>
+                    <td>Diretório de onde a unidade de disco/partição será acessado. O diretório deve estar vazio para montagem de um sistema de
+                        arquivo. Normalmente é usado o diretório "/mnt" para armazenamento de pontos de montagem temporários.
+                    </td>
+                </tr>
+                <tr>
+                    <td>-t [tipo]</td>
+                    <td>Tipo do sistema de arquivos usado pelo dispositivo. São aceitos os sistemas de arquivos: ext2,ext3,ext4,reiserfs,xfs,vfat,msdos e iso9660, para montar unidades de CD-ROM.            
+                    </td>
+                </tr>
+                <tr>
+                    <td>-r</td>
+                    <td>Caso for especificada, monta a partição somente para leitura.</td>
+                </tr>
+                <tr>
+                    <td>-w</td>
+                    <td>Caso for especificada, monta a partição como leitura/gravação. É o padrão.</td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Desmontando uma Partição de Disco<a name="Desmontando uma Partição de Disco"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Utilize o comando umount para desmontar um sistema de arquivos que foi montado com o mount. Você deve ter permissões de root para desmontar uma partição.</p>
+            <p>umount [dispositivo/ponto de montagem]</p>
+            <p>Para desmontar um sistema de arquivos /dev/sda1 montado em /mnt, utilize o comando <strong>"sudo umount /dev/sda1"</strong>.</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Arquivo etc/fstab<a name="Arquivo etc/fstab"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O arquivo /etc/fstab permite que as partições do sistema sejam montadas facilmente especificando somente o dispositivo
+                ou o ponto de montagem. Este arquivo contém parâmetros sobre as partições que são lidos pelo comando mount. Cada linha
+                deste arquivo contém a partição que desejamos montar, o ponto de montagem, o sistema de arquivos usado pela partição e
+                outras opções.
+            </p>
+            <p>O arquivo fstab tem a seguinte forma:<br>
+                [Sistema_de_arquivos] [Ponto_de_Montagem] [Tipo] [Opções] [dump] [ordem]
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>fstab</th>
+                    <th>Sistema_de_arquivos</th>                
+                    <th>Ponto_de_Montagem</th>                
+                    <th>Tipo</th>                
+                    <th>Opções</th>                
+                    <th>dump</th>                
+                    <th>ordem</th>                
+                </tr>      
+                <tr>
+                    <td>/dev/sda1 / ext3 defaults 0 1</td>
+                    <td>/dev/sda1</td>                
+                    <td>/</td>                
+                    <td>ext4</td>                
+                    <td>defaults</td>                
+                    <td>0</td>                
+                    <td>1</td>                
+                </tr>      
+                <tr>
+                    <td>/dev/hdg /cdrom iso9660 defaults,noauto 0 0</td>
+                    <td>/dev/hdg</td>                
+                    <td>/cdrom</td>                
+                    <td>iso9660</td>                
+                    <td>noauto</td>                
+                    <td>0</td>                
+                    <td>0</td>                
+                </tr>      
+            </table>
+            <hr>
+        </div>  
+        <div class="w3-container w3-theme-l1 w3-monospace">   
+            <p>edumcosta@vm-ubuntu-v22-a:~$ cat /etc/fstab<br>
+            # /etc/fstab: static file system information.<br>
+            #<br>
+            # Use 'blkid' to print the universally unique identifier for a<br>
+            # device; this may be used with UUID= as a more robust way to name devices<br>
+            # that works even if disks are added and removed. See fstab(5).<br>
+            #<br>
+            # &ltfile system> &ltmount point>   &lttype>  &ltoptions>       &ltdump>  &ltpass><br>
+            # / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation<br>
+            /dev/disk/by-id/dm-uuid-LVM-kank8wkrs2S7J7wktHd0mnC4C3dnIaoYAfWUlo42WqHfrXT8sdT2pE9X5ywNgoJd / ext4 defaults 0 1<br>
+            # /boot was on /dev/sda2 during curtin installation<br>
+            /dev/disk/by-uuid/a18441a7-3b99-4f01-8680-81fe0efde7d9 /boot ext4 defaults 0 1<br>
+            /swap.img       none    swap    sw      0       0
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Tabela de tipos de sistemas de arquivos Linux para edição do arquivo “/etc/fstab”:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Descrição</th>                
+                </tr>      
+                <tr>
+                    <td>ext2</td>
+                    <td>ext2 Sistema de arquivos padrão Linux Kernel 2.4.</td>
+                </tr>
+                <tr>
+                    <td>ext3</td>
+                    <td>Sistema de arquivos padrão Linux Kernel 2.6 – suporte a journaling.</td>
+                </tr>
+                <tr>
+                    <td>ext4</td> 
+                    <td>Sistema de arquivos padrão Linux atual e melhorado (evolução do ext2/ext3).</td>
+                </tr>
+                <tr>
+                    <td>reiserfs</td>
+                    <td>Sistema de arquivos Linux tipo journaling.</td>
+                </tr>
+                <tr>
+                    <td>xfs</td>
+                    <td>Sistema de arquivos Linux desenvolvido pela Silicon Graphics-Ideal para DBs.</td>
+                </tr>
+                <tr>
+                    <td>btrfs</td>
+                    <td>Sistema de arquivos Linux criado pela Oracle.</td>
+                </tr>
+                <tr>
+                    <td>vfat</td>
+                    <td>Sistema de arquivos compatível com sistemas Windows FAT32.</td>
+                </tr>
+                <tr>
+                    <td>swap</td>
+                    <td>Sistema de arquivos padrão Linux para memória virtual.</td>
+                </tr>
+                <tr>
+                    <td>iso9660</td>
+                    <td>Sistema de arquivos padrão para CD/DVD ROM.</td>
+                </tr>
+                <tr>
+                    <td>nfs</td>
+                    <td>Usado para montar dispositivos compartilhados em rede.</td>
+                </tr>
+            </table>
+            <p>Tabela de opções de montagem para edição do arquivo “/etc/fstab”:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opção</th>
+                    <th>Descrição</th>                
+                </tr>      
+                <tr>
+                    <td>auto</td>
+                    <td>Habilita montagem automática na inicialização do sistema operacional.</td>
+                </tr>
+                <tr>
+                    <td>noauto</td>
+                    <td>Desabilita montagem automática na inicialização do sistema operacional.</td>
+                </tr>
+                <tr>
+                    <td>ro</td>
+                    <td>Montagem de sistema de arquivos como somente leitura.</td>
+                </tr>
+                <tr>
+                    <td>rw</td>
+                    <td>Montagem de sistema de arquivos como leitura e gravação.</td>
+                </tr>
+                <tr>
+                    <td>exec</td>
+                    <td>Habilita execução de arquivos específicos.</td>
+                </tr>
+                <tr>
+                    <td>noexec</td>
+                    <td>Desabilita execução de arquivos específicos.</td>
+                </tr>
+                <tr>
+                    <td>user</td>
+                    <td>Habilita montagem do dispositivo para usuários do sistema.</td>
+                </tr>
+                <tr>
+                    <td>users</td>
+                    <td>Habilita montagem e desmontagem do dispositivo para usuários do sistema.</td>
+                </tr>
+                <tr>
+                    <td>nouser</td>
+                    <td>Somente o usuário “root” possui permissão para montar e desmontar o dispositivo.</td>
+                </tr>
+                <tr>
+                    <td>sync</td>
+                    <td>Habilita transferência síncrona de dados no dispositivo.</td>
+                </tr>
+                <tr>
+                    <td>async</td>
+                    <td>Habilita transferência assíncrona de dados no dispositivo.</td>
+                </tr>
+                <tr>
+                    <td>suid</td>
+                    <td>Habilita bits suid/sgid para executáveis rodarem como “root”.</td>
+                </tr>
+                <tr>
+                    <td>nosuid</td>
+                    <td>Desabilita bits suid/sgid para executáveis rodarem como “root”.</td>
+                </tr>
+                <tr>
+                    <td>defaults</td>
+                    <td>Habilita as opções de montagem padrão (auto, rw, exec, nouser, async, suid).</td>
+                </tr>
+            </table>
+
+            <p><strong>Observação:</strong>Para adicionar novos pontos de montagem de dispositivos crie antes um diretório para a nova
+                partição em “/mnt”, e adicione as seguintes opções conforme o modelo abaixo no arquivo
+                “/etc/fstab”.</p>            
+            <p><strong>Modo clássico:</strong><br>
+            [Tipo de sistema] [ponto de montagem] [Tipo] [Opções] [Dump] [Pass]<br>
+            /dev/sdb1 /mnt/sdb1 ext4 defaults 0 0
+            </p>
+            
+            <p><strong>Modo atual: (Para obter o UUID digite o comando “#blkid /dev/sdb1”)</strong><br>
+            [Tipo de sistema] [ponto de montagem] [Tipo] [Opções] [Dump] [Pass]<br>
+            UUID=5c5a3aff-d8a3-4794-c4956bd2b8fd /mnt/sdb1 ext4 defaults 0 0
+            </p>
+            
+            <p>Outros comandos importantes sobre armazenamento.</p> 
+            <li>O comando df exibe informações sobre os espaços, livres e ocupados, das partições.</li>
+            <li>O comando du exibe informações sobre o espaço usado pelos diretórios e arquivos.</li>
+            <li>O comando fsck verifica e recupera sistemas de arquivos.</li>
+            <li>O comando hdparm exibe/altera os parâmetros de discos SATA/IDE do sistema.</li>
+            <li>O comando smartctl exibe relatório detalhado sobre os discos IDE/SCSI existentes no sistema.</li>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>LVM - Logical Volume Manager<a name="LVM - Logical Volume Manager"></a></h4>            
+        </div>                
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Com o LVM, partições de discos físicas são adicionadas aos conjuntos de espaço chamados "Grupos de Volumes" e "Volumes Lógicos" recebem espaço a partir de "Grupos de Volumes" conforme necessário.
+            </p>
+            <p>Em um sistema de arquivos baseado em LVM (Logical Volume Manager), um grupo de volumes (ou "volume group" em inglês)
+                é uma coleção de um ou mais discos físicos ou partições que são combinados em um único espaço de armazenamento
+                lógico.
+            </p>            
+            <p><strong>Grupo de Volume:</strong> O objetivo de criar um grupo de volumes é permitir a alocação flexível de espaço de armazenamento para as partições
+                lógicas (também conhecidas como volumes lógicos) que serão criadas a partir do grupo de volumes. O tamanho dos
+                volumes lógicos pode ser facilmente aumentado ou diminuído conforme necessário, pois o grupo de volumes atua como
+                uma camada de abstração entre os volumes lógicos e os discos físicos.
+            </p>
+            <p>
+                Além disso, um grupo de volumes pode ter várias opções de configuração, como políticas de redundância (como o RAID),
+                opções de cache e outras configurações de desempenho que podem ser aplicadas aos volumes lógicos criados a partir
+                dele.
+            </p>
+            <p><strong>Volume Lógico:</strong> Os volumes lógicos permitem uma alocação flexível de espaço de armazenamento, pois podem ser
+                facilmente criados, dimensionados e redimensionados conforme necessário, sem a necessidade de reorganizar ou
+                reconfigurar todo o sistema de arquivos. Um volume lógico é criado a partir de um grupo de volumes combinando-se um
+                ou mais discos físicos ou partições em um único espaço de armazenamento lógico.
+            </p>
+            <p>
+                Os volumes lógicos podem ter diversos tamanhos e podem ser formatados com diferentes sistemas de arquivos,
+                tornando-os altamente flexíveis e personalizáveis para atender às necessidades específicas de armazenamento do
+                sistema. Além disso, é possível criar snapshots de volumes lógicos, que são cópias instantâneas do estado atual do
+                volume lógico, para fins de backup ou para realizar testes sem comprometer os dados originais.
+            </p>
+            <p>Os volumes lógicos LVM são usados de cima para baixo, mas são criados de baixo para cima,
+                primeiro você cria um ou mais volumes físicos, utiliza os volumes físicos para criar grupos de volumes e
+                então, cria volumes lógicos a partir dos grupos de volumes.
+            </p>
+            <p>Utilize o comando "lsblk" para verificar as informações de discos e partições.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">   
+            <p>edumcosta@vm-ubuntu-l22-h:~$ lsblk -o +FSTYPE,LABEL<br>
+                NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS FSTYPE      LABEL<br>
+                fd0                         2:0    1    4K  0 disk<br>
+                sda                         8:0    0  127G  0 disk<br>
+                sdb                         8:16   0  127G  0 disk<br>
+                ├─sdb1                      8:17   0    1M  0 part<br>
+                ├─sdb2                      8:18   0    2G  0 part /boot       ext4<br>
+                └─sdb3                      8:19   0  125G  0 part             LVM2_member<br>
+                  └─ubuntu--vg-ubuntu--lv 253:0    0 62.5G  0 lvm  /           ext4<br>
+                sr0                        11:0    1 1024M  0 rom                
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No resultado do comando "lsblk" podemos verificar que existe um volume lógico relacionado com a partição "sdb3" do disposivo "sdb".
+            </p>
+            <p>Para verificarmos informações sobre LVM, utilizamos 3 comandos:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Comando</th>
+                    <th>Descrição</th>                
+                </tr>      
+                <tr>
+                    <th>pvdisplay</th>
+                    <td>Mostra informações de LVM sobre os dispositivos físicos. </td>                
+                </tr>      
+                <tr>
+                    <th>vgdisplay</th>
+                    <td>Mostra informações de LVM sobre os Grupos de Volume.</td>                
+                </tr>      
+                <tr>
+                    <th>lvdisplay</th>
+                    <td>Mostra informações de LVM sobre os Volumes Lógicos.</td>                
+                </tr>      
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Abaixo veremos as saídas dos comandos: <strong>"pvdisplay"</strong>, <strong>"vgdisplay"</strong> e <strong>"lvdisplay"</strong>.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">   
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo pvdisplay<br>
+                --- Physical volume ---<br>
+                PV Name               /dev/sdb3<br>
+                VG Name               ubuntu-vg<br>
+                PV Size               &lt125.00 GiB / not usable 0<br>
+                Allocatable           yes<br>
+                PE Size               4.00 MiB<br>
+                Total PE              31999<br>
+                Free PE               16000<br>
+                Allocated PE          15999<br>
+                PV UUID               ZjFbo4-NdwW-Mwq2-hbee-6T2A-k0ez-mljYmi
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No resultado do comando "pvdisplay" podemos observar as características de uma volume lógico presente no sistema e as informações como tamanho do 
+                "PV", "Total PE", indica o total de espaço fisico em MiB do "Volume" no dispositivo,
+                "Free PE", o espaço disponível do "Volume" e 
+                "Allocated PE", o espaço utilizado.
+                Podemos ainda utilizar o comando "pvdisplay" pasando como argumento o dispositivo e sua partição: <strong>"sudo pvdisplay /dev/sdb3"</strong>.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">   
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo vgdisplay<br>
+                --- Volume group ---<br>
+                VG Name               ubuntu-vg<br>
+                System ID<br>
+                Format                lvm2<br>
+                Metadata Areas        1<br>
+                Metadata Sequence No  2<br>
+                VG Access             read/write<br>
+                VG Status             resizable<br>
+                MAX LV                0<br>
+                Cur LV                1<br>
+                Open LV               1<br>
+                Max PV                0<br>
+                Cur PV                1<br>
+                Act PV                1<br>
+                VG Size               &lt125.00 GiB<br>
+                PE Size               4.00 MiB<br>
+                Total PE              31999<br>
+                Alloc PE / Size       15999 / &lt62.50 GiB<br>
+                Free  PE / Size       16000 / 62.50 GiB<br>
+                VG UUID               BtYXev-7qUw-zRc3-B9yk-c9Fq-pA03-iXOaJm<br>
+                <br>
+                edumcosta@vm-ubuntu-l22-h:~$ sudo lvdisplay<br>
+                --- Logical volume ---<br>
+                LV Path                /dev/ubuntu-vg/ubuntu-lv<br>
+                LV Name                ubuntu-lv<br>
+                VG Name                ubuntu-vg<br>
+                LV UUID                AIasyx-2fPO-DRWy-Ij2O-Mhxi-U60W-qK7TLh<br>
+                LV Write Access        read/write<br>
+                LV Creation host, time ubuntu-server, 2022-06-08 23:31:41 +0000<br>
+                LV Status              available<br>
+                # open                 1<br>
+                LV Size                &lt62.50 GiB<br>
+                Current LE             15999<br>
+                Segments               1<br>
+                Allocation             inherit<br>
+                Read ahead sectors     auto<br>
+                - currently set to     256<br>
+                Block device           253:0
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para podermos trabalhar com volumes lógicos nos dispositivos, precisamos primeiramente indicar que o dispositivo utilizará o mecanismo de LVM.
+                Para fazer essa indicação, utilize o comando: <strong>"pvcreate"</strong>.                
+            </p>
+            <p>Conforme a listagem abaixo, temos o dispositivo "sda" que não está associado a um volume lógico, uma vez que o "FSTYPE" de "sda" não é "LVM2_member".</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">   
+            <p>edumcosta@vm-ubuntu-l22-h:~$ lsblk -o +FSTYPE,LABEL<br>
+                NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS FSTYPE      LABEL<br>
+                fd0                         2:0    1    4K  0 disk<br>
+                sda                         8:0    0  127G  0 disk<br>
+                sdb                         8:16   0  127G  0 disk<br>
+                ├─sdb1                      8:17   0    1M  0 part<br>
+                ├─sdb2                      8:18   0    2G  0 part /boot       ext4<br>
+                └─sdb3                      8:19   0  125G  0 part             LVM2_member<br>
+                  └─ubuntu--vg-ubuntu--lv 253:0    0 62.5G  0 lvm  /           ext4<br>
+                sr0                        11:0    1 1024M  0 rom                
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Abaixo vamos indicar ao dispositivo "sda" para utilizará o mecanismo de LVM.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">   
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo pvcreate /dev/sda<br>
+                Physical volume "/dev/sda" successfully created.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Vamos inspecionar novamente os dispositivos e ver que o "FSTYPE" de "sda" agora é "LVM2_member", mas ainda não está associado a nenhum "Grupo de Volume".</p>
+            <p>Você pode escanear por dispositivos de bloco (Volumes) que podem ser usados como volumes LVM com o comando <strong>"lvmdiskscan"</strong> ou <strong>"pvscan"</strong>.
+                A opção - l, <strong>"sudo lvmdiskscan -l"</strong>, lista somente os dispositivos físicos de bloco.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ lsblk -o +FSTYPE,LABEL<br>
+            NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS FSTYPE      LABEL<br>
+            fd0                         2:0    1    4K  0 disk<br>
+            sda                         8:0    0  127G  0 disk             LVM2_member<br>
+            sdb                         8:16   0  127G  0 disk<br>
+            ├─sdb1                      8:17   0    1M  0 part<br>
+            ├─sdb2                      8:18   0    2G  0 part /boot       ext4<br>
+            └─sdb3                      8:19   0  125G  0 part             LVM2_member<br>
+            └─ubuntu--vg-ubuntu--lv 253:0    0 62.5G  0 lvm  /           ext4<br>
+            sr0                        11:0    1 1024M  0 rom
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Após preparado o disco, vamos criar um Grupo de Volume, "vg-teste" e para isso vamos utilizar o comando <strong>"vgcreate"</strong>.
+            </p>
+            <p><strong>Observação:</strong> Não é permitido que um dispositivo possua mais de um "Grupo de Volume", mas um "Grupo de Volume" pode estar relacionado a vários dispositivos.
+                Para associar mais de um dispositivo, use <strong>"sudo vgcreate vg-teste /dev/sda /dev/sdb"</strong>.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo vgcreate vg-teste /dev/sda<br>
+            Volume group "vg-teste" successfully created
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Verificando o resultado da criação do Grupo de Volume "vg-teste" com o comando "vgdisplay".
+                Repare que ainda não temos nada consumido por esse grupo de volume.  
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo vgdisplay vg-teste<br>
+            --- Volume group ---<br>
+            VG Name               vg-teste<br>
+            System ID<br>
+            Format                lvm2<br>
+            Metadata Areas        1<br>
+            Metadata Sequence No  1<br>
+            VG Access             read/write<br>
+            VG Status             resizable<br>
+            MAX LV                0<br>
+            Cur LV                0<br>
+            Open LV               0<br>
+            Max PV                0<br>
+            Cur PV                1<br>
+            Act PV                1<br>
+            VG Size               &lt127.00 GiB<br>
+            PE Size               4.00 MiB<br>
+            Total PE              32511<br>
+            Alloc PE / Size       0 / 0<br>
+            Free  PE / Size       32511 / &lt127.00 GiB<br>
+            VG UUID               1bHEjb-0wiT-FcOB-WSLa-02n4-3P1q-XPl7ST
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Após criado o grupo de volume, vamos associar os "Volumes Lógicos" a partir do comando <strong>"lvcreate"</strong> e definindo um nome e tamanho para esse volume.                
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo lvcreate -n vl-teste-1 -L 1g vg-teste<br>
+            Logical volume "vl-teste-1" created.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Verificando o volume lógico criado.                
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo lvdisplay vg-teste<br>
+            --- Logical volume ---<br>
+            LV Path                /dev/vg-teste/vl-teste-1<br>
+            LV Name                vl-teste-1<br>
+            VG Name                vg-teste<br>
+            LV UUID                gqW0GB-PE8h-83is-a1xr-38Dw-gzBx-jwZDxC<br>
+            LV Write Access        read/write<br>
+            LV Creation host, time vm-ubuntu-l22-h, 2023-05-11 18:30:41 +0000<br>
+            LV Status              available<br>
+            # open                 0<br>
+            LV Size                1.00 GiB<br>
+            Current LE             256<br>
+            Segments               1<br>
+            Allocation             inherit<br>
+            Read ahead sectors     auto<br>
+            - currently set to     256<br>
+            Block device           253:1
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Após criado o volume lógico vamos utilizar o camando "mkfs" para formatar o volume e criar a montagem desse volume. <br>
+                Repare que na formatação não vamos indicar a unidade "sda", vamos indicar o grupo de volume e o volume lógico.
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo mkfs -t ext4 /dev/vg-teste/vl-teste-1<br>
+            mke2fs 1.46.5 (30-Dec-2021)<br>
+            Discarding device blocks: done<br>
+            Creating filesystem with 262144 4k blocks and 65536 inodes<br>
+            Filesystem UUID: 0641a619-6b2a-463a-b0fe-29720f957eb4<br>
+            Superblock backups stored on blocks:<br>
+                    32768, 98304, 163840, 229376<br>
+                    <br>
+            Allocating group tables: done<br>
+            Writing inode tables: done<br>
+            Creating journal (8192 blocks): done<br>
+            Writing superblocks and filesystem accounting information: done
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Realizando a montagem do Grupo de Volume. 
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ ls /mnt<br>
+            edumcosta@vm-ubuntu-l22-h:~$ sudo mkdir /mnt/lvm-teste<br>
+            edumcosta@vm-ubuntu-l22-h:~$ sudo mount /dev/vg-teste/vl-teste-1 /mnt/lvm-teste<br>
+            edumcosta@vm-ubuntu-l22-h:~$ ls /mnt<br>
+            lvm-teste<br>
+            edumcosta@vm-ubuntu-l22-h:~$ ls /mnt/lvm-teste/<br>
+            lost+found
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Verificando o tamanho do volume, 1 Gb e sua relação com volume lógico "vg--teste-vl--teste--1".                
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ df -h /mnt/lvm-teste/<br>
+            Filesystem                          Size  Used Avail Use% Mounted on<br>
+            /dev/mapper/vg--teste-vl--teste--1  974M   24K  907M   1% /mnt/lvm-teste
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Agora vamos estender o volume lógico em + 1Gb, com o comando <strong>"lvextend"</strong>.</p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo lvextend -L +1g /dev/vg-teste/vl-teste-1<br>
+            Size of logical volume vg-teste/vl-teste-1 changed from 1.00 GiB (256 extents) to 2.00 GiB (512 extents).<br>
+            Logical volume vg-teste/vl-teste-1 successfully resized.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Observação:</strong> Se verificarmos o dispositivo "sda", vamos ver uma ocupação de 2Gb e conforme o comandio de aumento em mais 1Gb, mas se montarmos 
+                novamnete o volume lógico, esse ainda terá somente 1Gb.</p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ lsblk<br>
+                NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS<br>
+                fd0                         2:0    1    4K  0 disk<br>
+                sda                         8:0    0  127G  0 disk<br>
+                └─vg--teste-vl--teste--1  253:1    0    2G  0 lvm  /mnt/lvm-teste<br>
+                sdb                         8:16   0  127G  0 disk<br>
+                ├─sdb1                      8:17   0    1M  0 part<br>
+                ├─sdb2                      8:18   0    2G  0 part /boot<br>
+                └─sdb3                      8:19   0  125G  0 part<br>
+                └─ubuntu--vg-ubuntu--lv 253:0    0 62.5G  0 lvm  /<br>
+                sr0                        11:0    1 1024M  0 rom<br>
+                <br>
+                edumcosta@vm-ubuntu-l22-h:~$ df -h /mnt/lvm-teste/<br>
+                Filesystem                          Size  Used Avail Use% Mounted on<br>
+                /dev/mapper/vg--teste-vl--teste--1  974M   24K  907M   1% /mnt/lvm-teste                
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Portanto para completar o processo de expansão do volume lógico utilize o comando <strong>"sudo e2fsck -f /dev/vg-teste/vl-teste-1"</strong> para verificará a integridade do volume e reponteiramentos
+                e na sequência utilize o comando <strong>"sudo resize2fs /dev/vg-teste/vl-teste-1"</strong>, para completar o processo de redimensionamento.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Na instalação do "Volume Lógico" Ubuntu, por padrão, á area inicial do volume lógico não aloca 100% do espaço dispositivo no dispositivo / partição.<br>
+                Para que todo esse espaço seja alocado execute:
+                <ul>
+                    <li>Para aumentar o volume: <strong>sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv"</strong></li>
+                    <li>Verifica se o tamanho está de acordo com a capacidade da partição: <strong>"sudo lvdisplay"</strong></li>                    
+                    <li>Redimensiona a partição:<strong>sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</strong></li>
+                    <li>Verifica o tamanho da partição:<strong>df -h</strong></li>
+                </ul>
+            </p>  
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ sudo e2fsck -f /dev/vg-teste/vl-teste-1<br>
+                e2fsck 1.46.5 (30-Dec-2021)<br>
+                Pass 1: Checking inodes, blocks, and sizes<br>
+                Pass 2: Checking directory structure<br>
+                Pass 3: Checking directory connectivity<br>
+                Pass 4: Checking reference counts<br>
+                Pass 5: Checking group summary information<br>
+                /dev/vg-teste/vl-teste-1: 11/65536 files (0.0% non-contiguous), 12955/262144 blocks<br>
+                edumcosta@vm-ubuntu-l22-h:~$ sudo resize2fs /dev/vg-teste/vl-teste-1<br>
+                resize2fs 1.46.5 (30-Dec-2021)<br>
+                Resizing the filesystem on /dev/vg-teste/vl-teste-1 to 524288 (4k) blocks.<br>
+                The filesystem on /dev/vg-teste/vl-teste-1 is now 524288 (4k) blocks long.<br>
+                <br>
+                edumcosta@vm-ubuntu-l22-h:~$ sudo mount /dev/vg-teste/vl-teste-1 /mnt/lvm-teste<br>
+                edumcosta@vm-ubuntu-l22-h:~$ df -h /mnt/lvm-teste/<br>
+                Filesystem                          Size  Used Avail Use% Mounted on<br>
+                /dev/mapper/vg--teste-vl--teste--1  2.0G   24K  1.9G   1% /mnt/lvm-teste
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para reduzir o tamanho de um volume lógico vamos utilizar o comando <strong>"lvreduce"</strong>.<br>
+                Após o comando teremos o mesmo contexto utilizado para extender, ou seja, reduzimos com <strong>lvreduce</strong>, depois fazemos a
+                verificação com o comando <strong>"e2fsck"</strong> e depois completamos o processo com o comando <strong>"resize2fs"</strong>.
+            </p>
+            <p>No exemplo abaixo vamos criar um arquivo antes de reduzir o volume lógico e depois verificar a sua existência e o novo tamanho.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-l22-h:~$ df -h /mnt/lvm-teste/<br>
+            Filesystem                          Size  Used Avail Use% Mounted on<br>
+            /dev/mapper/vg--teste-vl--teste--1  2.0G   24K  1.9G   1% /mnt/lvm-teste<br>
+            <br>
+            edumcosta@vm-ubuntu-l22-h:~$ sudo lvreduce -L -1g /dev/vg-teste/vl-teste-1<br>
+            WARNING: Reducing active logical volume to 1.00 GiB.<br>
+            THIS MAY DESTROY YOUR DATA (filesystem etc.)<br>
+            Do you really want to reduce vg-teste/vl-teste-1? [y/n]: y<br>
+            Size of logical volume vg-teste/vl-teste-1 changed from 2.00 GiB (512 extents) to 1.00 GiB (256 extents).<br>
+            Logical volume vg-teste/vl-teste-1 successfully resized.<br>
+            <br>
+            edumcosta@vm-ubuntu-l22-h:~$ sudo e2fsck -f /dev/vg-teste/vl-teste-1<br>
+            e2fsck 1.46.5 (30-Dec-2021)<br>
+            The filesystem size (according to the superblock) is 524288 blocks<br>
+            The physical size of the device is 262144 blocks<br>
+            Either the superblock or the partition table is likely to be corrupt!<br>
+            Abort&lty>? no<br>
+            Pass 1: Checking inodes, blocks, and sizes<br>
+            Pass 2: Checking directory structure<br>
+            Pass 3: Checking directory connectivity<br>
+            Pass 4: Checking reference counts<br>
+            Pass 5: Checking group summary information<br>
+            /dev/vg-teste/vl-teste-1: 12/131072 files (0.0% non-contiguous), 17196/524288 blocks<br>
+            <br>
+            edumcosta@vm-ubuntu-l22-h:~$ sudo resize2fs /dev/vg-teste/vl-teste-1<br>
+            resize2fs 1.46.5 (30-Dec-2021)<br>
+            Resizing the filesystem on /dev/vg-teste/vl-teste-1 to 262144 (4k) blocks.<br>
+            The filesystem on /dev/vg-teste/vl-teste-1 is now 262144 (4k) blocks long.<br>
+            <br>
+            edumcosta@vm-ubuntu-l22-h:~$ sudo mount /dev/vg-teste/vl-teste-1 /mnt/lvm-teste<br>
+            edumcosta@vm-ubuntu-l22-h:~$ ls /mnt/lvm-teste/<br>
+            arquivo-teste.txt  lost+found<br>
+            <br>
+            edumcosta@vm-ubuntu-l22-h:~$ df -h /mnt/lvm-teste/<br>
+            Filesystem                          Size  Used Avail Use% Mounted on<br>
+            /dev/mapper/vg--teste-vl--teste--1  974M   24K  907M   1% /mnt/lvm-teste
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para remover a referência de um dispositivo de armazenamento a um grupo de volume LVM somente associado ao dispositivo, realize os seguintes passos:</p>
+            <ul>
+                <li>Utilize o comando <strong>"sudo vgdisplay"</strong> para verificar os grupos de volume.</li>
+                <li>Utilize o comando <strong>"sudo vgchange -an NOME-VOLUME"</strong> para ativar o grupo e manipular a sua remoção.</li>
+                <li>Utilize o comando <strong>"sudo vgremove NOME-VOLUME"</strong> para remover o grupo de volume e o próprio volume.</li>
+                <li>Utilize o comando <strong>"sudo pvdisplay"</strong> para verificar os dispositivos n"ao associados a grupo de volume.</li>
+                <li>Utilize o comando <strong>"sudo pvremove DISPOSITVO"</strong> para remover a associação do dispositivo a uma LVL.</li>
+            </ul>
+            <p>Caso o dispositivo pertença a um volume que também é referenciado em outros dispositivos, devem ser realizados o seguuintes passos:</p>
+            <ul>
+                <li>Utilize o comando <strong>"sudo vgdisplay"</strong> para verificar os grupos de volume.</li>
+                <li>Utilize o comando <strong>"sudo vgchange -an NOME-VOLUME"</strong> para ativar o grupo e manipular a sua remoção.</li>
+                <li>Utilize o comando <strong>"sudo vgremove NOME-VOLUME"</strong> para remover o grupo de volume e o próprio volume.</li>
+                <li>Utilize o comando <strong>"sudo pvdisplay"</strong> para verificar os dispositivos n"ao associados a grupo de volume.</li>
+                <li>Utilize o comando <strong>"sudo pvremove DISPOSITVO"</strong> para remover a associação do dispositivo a uma LVL.</li>
+            </ul>
+        </div>        
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>                
+    </body>
+</html>

@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../lista_comandos/lista_comandos.html">Redirecionamentos</a></li>                    
+                    <li><a href="#Coringas">Coringas</a></li>
+                    <li><a href="#Lista de Comandos">Lista de Comandos</a></li><br>                    
+                    <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Comando</th>
+                            <th>Função</th>
+                        </tr>
+                        <tr>
+                            <td>Armazenamento</td>
+                            <td><a href="#> du"><strong>du</strong></a></td>                            
+                            <td>Mostra o espaço ocupado por arquivos e sub-diretórios do diretório atual.</td>
+                        </tr>                                        
+                        <tr>
+                            <td>Armazenamento</td>
+                            <td><a href="#> df"><strong>df</strong></a></td>                            
+                            <td>Mostra o espaço livre/ocupado de cada partição.</td>
+                        </tr>                                        
+                        <tr>
+                            <td>Armazenamento</td>
+                            <td><a href="#> tree"><strong>tree</strong></a></td>                            
+                            <td>Visualiza a estrutura de diretório.</td>
+                        </tr>                                        
+                        <tr>
+                            <td>Manipulação de Diretórios</td>
+                            <td><a href="#> ls"><strong>ls</strong></a></td>                            
+                            <td>Lista os arquivos de um diretório.</td>
+                        </tr>                                        
+                        <tr>
+                            <td>Manipulação de Diretórios</td>
+                            <td><a href="#> cd"><strong>cd</strong></a></td>                            
+                            <td>Navega entre diretórios.</td>
+                        </tr>                                        
+                        <tr>
+                            <td>Manipulação de Diretórios</td>
+                            <td><a href="#> pwd"><strong>pwd</strong></a></td>                            
+                            <td>Mostra o diretório corrente.</td>
+                        </tr>                                        
+                        <tr>
+                            <td>Manipulação de Diretórios</td>
+                            <td><a href="#> mkdir"><strong>mkdir</strong></a></td>                            
+                            <td>Cria um diretório no sistema.</td>                            
+                        </tr>                                     
+                        <tr>
+                            <td>Manipulação de Diretórios</td>
+                            <td><a href="#> rmdir"><strong>rmdir</strong></a></td>                            
+                            <td>Remove um diretório do sistema.</td>                            
+                        </tr>                                     
+                        <tr>
+                            <td>Manipulação de Arquivos</td>
+                            <td><a href="#> cat"><strong>cat</strong></a></td>                            
+                            <td>Mostra o conteúdo de um arquivo binário ou texto.</td>                            
+                        </tr>                                                             
+                        <tr>
+                            <td>Manipulação de Arquivos</td>
+                            <td><a href="#> rm"><strong>rm</strong></a></td>                            
+                            <td>Apaga aquivos e diretórios.</td>                            
+                        </tr>                                                             
+                        <tr>
+                            <td>Manipulação de Arquivos</td>
+                            <td><a href="#> cp"><strong>cp</strong></a></td>                            
+                            <td>Copia aquivos e diretórios.</td>                            
+                        </tr>                                                             
+                        <tr>
+                            <td>Manipulação de Arquivos</td>
+                            <td><a href="#> mv"><strong>mv</strong></a></td>                            
+                            <td>Move ou renomeia arquivos e diretórios. O processo é semelhante ao do comando cp mas o arquivo de origem é apagado após o término da cópia.</td>                            
+                        </tr>                                                             
+                        <tr>
+                            <td>Manipulação Diretórios e Arquivos</td>
+                            <td><a href="#> ln"><strong>ln</strong></a></td>                            
+                            <td>Cria links para arquivos e diretórios no sistema.</td>                            
+                        </tr>                                                             
+                        <tr>
+                            <td>Compressão e Descompressão de Arquivos</td>
+                            <td><a href="#> gzip"><strong>gzip</strong></a></td>                            
+                            <td>Este comando compacta/descompacta arquivos.</td>                            
+                        </tr>                                                             
+                        <tr>
+                            <td>Compressão e Descompressão de Arquivos</td>
+                            <td><a href="#> tar"><strong>tar</strong></a></td>                            
+                            <td>Este comando compacta/descompacta arquivos.</td>                            
+                        </tr>                                                             
+                        <tr>
+                            <td>Comunicação</td>
+                            <td><a href="#> ss"><strong>ss</strong></a></td>                            
+                            <td>Fornece informações de sockets / rede. Evolução do comando netstat</td>                            
+                        </tr>                                                                                     
+                        <tr>
+                            <td>Comunicação</td>
+                            <td><a href="#> scp"><strong>scp</strong></a></td>                            
+                            <td>Copia arquivos entre computadores.</td>                            
+                        </tr>
+                        <tr>
+                            <td>Comunicação</td>
+                            <td><a href="#> curl"><strong>curl</strong></a></td>                            
+                            <td>Aplicativo para backup do sistema.</td>                            
+                        </tr>
+                        <tr>
+                            <td>Busca</td>
+                            <td><a href="#> find"><strong>find</strong></a></td>                            
+                            <td>Localiza expressão em diretórios e arquivos.</td>                            
+                        </tr>                                                                                     
+                        <tr>
+                            <td>Backup</td>
+                            <td><a href="#> Rsync"><strong>Rsync</strong></a></td>                            
+                            <td>Aplicativo para backup do sistema.</td>                            
+                        </tr>                                                                                     
+                    </table>
+                    <br>
+                    <li><a href="#Ajuda Interna para Comandos">Ajuda Interna para Comandos</a></li>                                    
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Redirecionamentos<a name="Redirecionamentos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Esta seção explica o funcionamento dos recursos de direcionamento de entrada e saída do sistema GNU/Linux.</p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Caracter '>'</strong><a name="> Caracter '>'"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Redireciona a saída padrão de um programa/comando/script para algum dispositivo ou arquivo ao invés do dispositivo de saída padrão (tela). 
+                Quando é usado com arquivos, este redirecionamento cria ou substitui o conteúdo do arquivo.
+            </p>            
+            <p>Por exemplo, você pode usar o comando ls para listar arquivos e usar ls >listagem para enviar a saída do comando para o arquivo listagem. Use o comando cat para visualizar o conteúdo do arquivo listagem.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Caracter ">>"</strong><a name="> Caracter '>>'"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Redireciona a saída padrão de um programa/comando/script para algum dispositivo ou adiciona as linhas ao final de
+            arquivo ao invés do dispositivo de saída padrão (tela). A diferença entre este redirecionamento duplo e o simples, é se
+            caso for usado com arquivos, adiciona a saída do comando ao final do arquivo existente ao invés de substituir seu
+            conteúdo.</p>
+            <p>Por exemplo, você pode acrescentar a saída do comando ls ao arquivo listagem do capítulo anterior usando ls /
+            >>listagem. Use o comando cat para visualizar o conteúdo do arquivo listagem. 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Caracter '&lt'</strong><a name="> Caracter '&lt'"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Direciona a entrada padrão de arquivo/dispositivo para um comando. Este comando faz o contrário do anterior, ele envia
+            dados ao comando.
+            </p>
+            <p>Você pode usar o comando cat &lt teste.txt para enviar o conteúdo do arquivo teste.txt ao comando cat que mostrará seu
+                conteúdo ou por exemplo, mandar o conteudo de um arquivo para o comando "mail", $ mail uira@certificacaolinux.com.br &lt e-mail.txt</p>. 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Caracter "|"</strong><a name="> Caracter '|'"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Redireciona a saída padrão de um programa/comando/script para algum dispositivo ou adiciona as linhas ao final de
+            arquivo ao invés do dispositivo de saída padrão (tela). A diferença entre este redirecionamento duplo e o simples, é se
+            caso for usado com arquivos, adiciona a saída do comando ao final do arquivo existente ao invés de substituir seu
+            conteúdo.</p>
+            <p>Por exemplo, você pode acrescentar a saída do comando ls ao arquivo listagem do capítulo anterior usando ls /
+            >>listagem. Use o comando cat para visualizar o conteúdo do arquivo listagem. 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Coringas<a name="Coringas"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Coringas (ou referência global) é um recurso usado para especificar um ou mais arquivos ou diretórios do sistema de uma
+            só vez. Este é um recurso permite que você faça a filtragem do que será listado, copiado, apagado, etc. São usados 4
+            tipos de coringas no GNU/Linux:
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Coringa</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>*</th>
+                    <td>Faz referência a um nome completo/restante de um arquivo/diretório.</td>                
+                </tr>      
+                <tr>
+                    <th>?</th>
+                    <td>Faz referência a uma letra naquela posição.</td>                
+                </tr>      
+                <tr>
+                    <th>[padrão]</th>
+                    <td>Faz referência a uma faixa de caracteres de um arquivo/diretório. A procura pelos caracteres diferencia maisculos de minúsculas [a-z A-Z]. Os padrões podem ser:
+                        <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                            <tr>
+                                <th>[a-z][0-9]</th>
+                                <td>Faz referência a caracteres de a até z seguido de um caracter de 0 até 9.</td>
+                            </tr>
+                            <tr>
+                                <th>[a,z][1,0]</th>
+                                <td>Faz a referência aos caracteres a e z seguido de um caracter 1 ou 0 naquela posição.</td>
+                            </tr>            
+                            <tr>
+                                <th>[a-z,1,0]</th>
+                                <td>Faz referência a intervalo de caracteres de a até z ou 1 ou 0 naquela posição.</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th>^</th>
+                    <th>Faz referência a uma letra naquela posição. Por exemplo [^abc]
+                        faz referência a qualquer caracter exceto a, b e c.</th>                
+                </tr>      
+                <tr>
+                    <th>{padrões}</th>
+                    <td>Expande e gera strings para pesquisa de padrões de um arquivo/diretório.
+                        <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                            <tr>
+                                <th>X{ab,01}</th>
+                                <td>Faz referência a seqüencia de caracteres Xab ou X01.</td>
+                            </tr>
+                            <tr>
+                                <th>X{a-z,10}</th>
+                                <td>Faz referencia a seqüencia de caracteres Xa-z e X10.</td>
+                            </tr>
+                        </table>
+                    </td>                    
+                </tr>      
+            </table>
+             
+            <p>Exemplo de coringas:</p>                        
+            <p>O diretório /usr/teste: teste1.txt, teste2.txt, teste3.txt, teste4.new, teste5.new.</p>
+            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>ls *.txt</th>
+                    <td>Retorna todos os arquivos onde o final seja igual ".txt".</td>
+                </tr>
+                <tr>
+                    <th>ls teste?.txt</th>
+                    <td>Retorna todos os arquivos que comecem com "teste" e na sexta posição, possua qualquer caracter e após esse caracter, o final seja igual ".txt"</td>
+                </tr>
+                <tr>
+                    <th>ls teste[1-3].txt</th>
+                    <td>Retorna todos os arquivos que comecem com "teste" e na sexta posição possua um dos caracteres, 1 ou 2 ou 3 e após esse caracter, o final seja igual ".txt".</td>
+                </tr>
+                <tr>
+                    <th>ls teste[1-3].txt</th>
+                    <td>Retorna todos os arquivos que comecem com "teste" e na sexta posição possua um dos caracteres, 1 ou 2 ou 3 e após esse caracter, o final seja igual ".txt".</td>
+                </tr>
+                <tr>
+                    <th>ls teste[4,5].*</th>
+                    <td>Retorna todos os arquivos que comecem com "teste" e na sexta posição possua um dos caracteres, 4 ou 5 e depois desse caracter seja qualquer valor.</td>
+                </tr>                
+            </table>
+            <hr>
+        </div>            
+            
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Lista de Comandos<a name="Lista de Comandos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Os comandos dispostos nesse documento seguem uma organização de contexto quanto a sua utilização.</p>            
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Grupo Armazenamento<a name="Grupo Armazenamento"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> du</strong><a name="> du"></a></p>
+        </div>
+
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Mostra o espaço ocupado por arquivos e sub-diretórios do diretório atual.</p>            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-a, --all</th>
+                    <td>Mostra o espaço ocupado por todos os arquivos.</td>                
+                </tr>      
+                <tr>
+                    <th>-b, --bytes</th>
+                    <td>Mostra o espaço ocupado em bytes.</td>                
+                </tr>      
+                <tr>
+                    <th>-c, --total</th>
+                    <td>Faz uma totalização de todo espaço listado.</td>                
+                </tr>      
+                <tr>
+                    <th>-D</th>
+                    <td>Não conta links simbólicos.</td>                
+                </tr>      
+                <tr>
+                    <th>-h, --human</th>
+                    <td>Mostra o espaço ocupado em formato legível por humanos (Kb, Mb) ao invés de usar blocos.</td>                
+                </tr>      
+                <tr>
+                    <th>-H</th>
+                    <td>Como o anterior mas usa 1000 e não 1024 como unidade de cálculo.</td>                
+                </tr>      
+                <tr>
+                    <th>-k</th>
+                    <td>Mostra o espaço ocupado em Kbytes.</td>                
+                </tr>      
+                <tr>
+                    <th>-m</th>
+                    <td>Mostra o espaço ocupado em Mbytes.</td>                
+                </tr>      
+                <tr>
+                    <th>-S, --separate-dirs</th>
+                    <td>Não calcula o espaço ocupado por sub-diretórios.</td>                
+                </tr>      
+                <tr>
+                    <th>-x</th>
+                    <td>Não faz a contagem de diretórios em sistemas de arquivos diferentes do atual.</td>                
+                </tr>
+                <tr>
+                    <th>--max-depth</th>
+                    <td>Somente liminta o nível de apresentação de subdiretórios na saída do comando.</td>                
+                </tr>
+            </table>
+            <p>Abaixo o exemplo do comando du. A saída do comando a partir do diretório raiz, apresenta no final a 
+            totalização de espaço ocupado no dispositivo</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ sudo du / -hc<br>
+            552K    /etc/ssl/certs<br>
+            4.0K    /etc/ssl/private<br>
+            576K    /etc/ssl<br>
+            24K     /etc/iscsi<br>
+            12K     /etc/groff<br>
+            4.0K    /etc/rc4.d<br>
+            28K     /etc/logrotate.d<br>
+            4.0K    /etc/modules-load.d<br>
+            12K     /etc/bash_completion.d<br>
+            12K     /etc/multipath<br>
+            16K     /etc/cron.daily<br>
+            8.0K    /etc/menu<br>
+            ... <br>
+            ... <br>
+            4.0K    /tmp/.font-unix<br>
+            4.0K    /tmp/systemd-private-b34ac9b54c6d499e9ad17adac772f952-systemd-resolved.service-UaX9ws/tmp<br>
+            8.0K    /tmp/systemd-private-b34ac9b54c6d499e9ad17adac772f952-systemd-resolved.service-UaX9ws<br>
+            52K     /tmp<br>
+            6.4G    /<br>
+            6.4G    total            
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Obtemos o mesmo resultado mais sem que a listagem fique grande, indicando a profundidade de apresentação em 1 nível 
+                e conforme o exemplo abaixo.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ sudo du / -hc --max-depth=1<br>
+                4.9M    /etc<br>
+                du: cannot access '/proc/883/task/883/fd/4': No such file or directory<br>
+                du: cannot access '/proc/883/task/883/fdinfo/4': No such file or directory<br>
+                du: cannot access '/proc/883/fd/3': No such file or directory<br>
+                du: cannot access '/proc/883/fdinfo/3': No such file or directory<br>
+                0       /proc<br>
+                4.0K    /media<br>
+                0       /sys<br>
+                4.0K    /srv<br>
+                2.8G    /usr<br>
+                48K     /root<br>
+                0       /dev<br>
+                462M    /var<br>
+                4.0K    /opt<br>
+                4.0K    /mnt<br>
+                16K     /lost+found<br>
+                740K    /run<br>
+                8.0K    /snap<br>
+                251M    /boot<br>
+                44K     /home<br>
+                52K     /tmp<br>
+                6.4G    /<br>
+                6.4G    total
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> df</strong><a name="> df"></a></p>
+        </div>
+
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Mostra o espaço livre/ocupado de cada partição.</p>            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-a</th>
+                    <td>Inclui sistemas de arquivos com 0 blocos.</td>                
+                </tr>      
+                <tr>
+                    <th>-h</th>
+                    <td>Mostra o espaço livre/ocupado em MB, KB, GB ao invés de blocos.</td>                
+                </tr>      
+                <tr>
+                    <th>-k</th>
+                    <td>Lista em Kbytes.</td>                
+                </tr>      
+                <tr>
+                    <th>-m</th>
+                    <td>Lista em Mbytes (equivalente a --block-size=1048576).</td>                
+                </tr>      
+                <tr>
+                    <th>-T</th>
+                    <td>Lista o tipo de sistema de arquivos de cada partição.</td>                
+                </tr>      
+                <tr>
+                    <th>-t [tipo]</th>
+                    <td>Lista somente sistema de arquivos do tipo.<br>
+                        [tipo] = sistemas linux partições.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>-x [tipo]</th>
+                    <td>Não lista sistemas de arquivos do tipo.<br>
+                        [tipo] = sistemas linux partições.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>-l</th>
+                    <td>Somente lista sistema de arquivos locais.</td>                
+                </tr>      
+            </table>
+            <p>Abaixo o resultado do comando "df".</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ df -hT<br>
+            Filesystem                        Type   Size  Used Avail Use% Mounted on<br>
+            tmpfs                             tmpfs  299M  732K  298M   1% /run<br>
+            /dev/mapper/ubuntu--vg-ubuntu--lv ext4    62G  6.2G   53G  11% /<br>
+            tmpfs                             tmpfs  1.5G     0  1.5G   0% /dev/shm<br>
+            tmpfs                             tmpfs  5.0M     0  5.0M   0% /run/lock<br>
+            /dev/sda2                         ext4   2.0G  251M  1.6G  14% /boot<br>
+            tmpfs                             tmpfs  299M  4.0K  299M   1% /run/user/1000
+            </p>
+        </div>  
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> tree</strong><a name="> tree"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Visualiza a estrutura de diretório.</p>            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-d</th>
+                    <td>Lista somente diretórios.</td>                
+                </tr>      
+                <tr>
+                    <th>-l</th>
+                    <td>Lista links simbólicos.</td>                
+                </tr>      
+                <tr>
+                    <th>--inodes</th>
+                    <td>Mostra a referencia "inode" de armmazenamento.</td>                
+                </tr>      
+            </table>
+            <p>Abaixo o exemplo do comando tree.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@VM-DESK-LK22:~$ tree<br>
+            .<br>
+            ├── Área de Trabalho<br>
+            ├── Documentos<br>
+            ├── Downloads<br>
+            ├── Imagens<br>
+            ├── Modelos<br>
+            ├── Música<br>
+            ├── Público<br>
+            ├── snap<br>
+            │   ├── snapd-desktop-integration<br>
+            │   │   ├── 14<br>        
+            │   │   │   ├── Área de Trabalho<br>
+            │   │   │   ├── Documentos<br>
+            │   │   │   ├── Downloads<br>        
+            │   │   │   ├── Imagens<br>
+            │   │   │   ├── Modelos<br>
+            │   │   │   ├── Música<br>
+            │   │   │   ├── Público<br>
+            │   │   │   └── Vídeos<br>
+            │   │   ├── 49<br>
+            │   │   │   ├── Área de Trabalho<br>
+            │   │   │   ├── Documentos<br>
+            │   │   │   ├── Downloads<br>
+            │   │   │   ├── Imagens<br>
+            │   │   │   ├── Modelos<br>
+            │   │   │   ├── Música<br>
+            │   │   │   ├── Público<br>
+            │   │   │   └── Vídeos<br>
+            │   │   ├── common<br>
+            │   │   └── current -> 49<br>
+            │   └── snap-store<br>
+            │       ├── 582<br>
+            │       ├── common<br>
+            │       └── current -> 582<br>
+            └── Vídeos<br>
+            <br>       
+            <br>
+            34 directories, 0 files
+            </p>
+        </div>        
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Grupo Manipulação de Diretórios<a name="Grupo Manipulação de Diretórios"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> ls</strong><a name="> ls"></a></p>
+        </div>
+
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Lista os arquivos de um diretório.</p>            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-a -all</th>
+                    <td>Lista todos os arquivos (inclusive os ocultos) de um diretório, exceto o diretório atual e o de nível anterior.</td>                
+                </tr>      
+                <tr>
+                    <th>-B, --ignore-backups</th>
+                    <td>Não lista arquivos que terminam com ~ (Backup).</td>                
+                </tr>      
+                <tr>
+                    <th>--color=PARAM</th>
+                    <td>Mostra os arquivos em cores diferentes, conforme o tipo de arquivo. PARAM pode ser:<br>
+                        <li><strong>never:</strong> Nunca lista em cores (mesma coisa de não usar o parâmetro --color).</li>            
+                        <li><strong>always:</strong> Sempre lista em cores conforme o tipo de arquivo.</li>                        
+                        <li><strong>auto:</strong> Somente colore a listagem se estiver em um terminal.</li>
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>-d, --directory</th>
+                    <td>Lista os nomes dos diretórios ao invés do conteúdo.</td>                
+                </tr>      
+                <tr>
+                    <th>-f</th>
+                    <td>Não classifica a listagem.</td>                
+                </tr>      
+                <tr>
+                    <th>-F</th>
+                    <td>Insere um caracter após arquivos:<br>
+                        <li><strong>executáveis ('*')</strong></li>
+                        <li><strong>diretórios ('/')</strong></li>
+                        <li><strong>soquete ('=')</strong></li>
+                        <li><strong>link simbólico ('@')</strong></li>
+                        <li><strong>pipe ('|')</strong></li>
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>-G, --no-group</th>
+                    <td>Oculta a coluna de grupo do arquivo.</td>                
+                </tr>      
+                <tr>
+                    <td>-h, --human-readable</td>
+                    <td>Mostra o tamanho dos arquivos em Kbytes, Mbytes, Gbytes.</td>                
+                </tr>      
+                <tr>
+                    <th>-l</th>
+                    <td>Usa o formato longo para listagem de arquivos. Lista as permissões, data de modificação, donos, grupos, etc.</td>                
+                </tr>      
+                <tr>
+                    <th>-R</th>
+                    <td>Lista diretórios e sub-diretórios recursivamente.</td>                
+                </tr>      
+                <tr>
+                    <th>--full-time</th>
+                    <td>Lista data e hora completa.</td>                
+                </tr>
+            </table>
+            <p>Abaixo o exemplo do comando ls. </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:/$ ls / -lh<br>
+            total 3.0G<br>
+            lrwxrwxrwx   1 root root    7 Apr 21  2022 bin -> usr/bin<br>
+            drwxr-xr-x   4 root root 4.0K Mar 21 22:17 boot<br>
+            drwxr-xr-x  19 root root 4.0K Mar 22 13:18 dev<br>
+            drwxr-xr-x  85 root root 4.0K Mar 21 22:16 etc<br>
+            drwxr-xr-x   3 root root 4.0K Sep  1  2022 home<br>
+            lrwxrwxrwx   1 root root    7 Apr 21  2022 lib -> usr/lib<br>
+            lrwxrwxrwx   1 root root    9 Apr 21  2022 lib32 -> usr/lib32<br>
+            lrwxrwxrwx   1 root root    9 Apr 21  2022 lib64 -> usr/lib64<br>
+            lrwxrwxrwx   1 root root   10 Apr 21  2022 libx32 -> usr/libx32<br>
+            drwx------   2 root root  16K Sep  1  2022 lost+found<br>
+            drwxr-xr-x   2 root root 4.0K Apr 21  2022 media<br>
+            drwxr-xr-x   2 root root 4.0K Apr 21  2022 mnt<br>
+            drwxr-xr-x   2 root root 4.0K Apr 21  2022 opt<br>
+            dr-xr-xr-x 165 root root    0 Mar 22 13:18 proc<br>
+            drwx------   4 root root 4.0K Mar 22 02:53 root<br>
+            drwxr-xr-x  22 root root  700 Mar 22 13:20 run<br>
+            lrwxrwxrwx   1 root root    8 Apr 21  2022 sbin -> usr/sbin<br>
+            drwxr-xr-x   2 root root 4.0K Sep  1  2022 snap<br>
+            drwxr-xr-x   2 root root 4.0K Apr 21  2022 srv<br>
+            -rw-------   1 root root 3.0G Sep  1  2022 swap.img<br>
+            dr-xr-xr-x  13 root root    0 Mar 22 13:18 sys<br>
+            drwxrwxrwt  11 root root 4.0K Mar 22 13:19 tmp<br>
+            drwxr-xr-x  14 root root 4.0K Apr 21  2022 usr<br>
+            drwxr-xr-x  13 root root 4.0K Apr 21  2022 var
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> cd</strong><a name="> cd"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Nevega entre diretórios. Você precisa ter a permissão de execução para entrar no diretório.</p>            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>/</th>
+                    <td>Retorna ao diretório raíz.</td>                
+                </tr>      
+                <tr>
+                    <th>..</th>
+                    <td>Retorna para o diretório menos hierárquico.</td>                
+                </tr>      
+                <tr>
+                    <th>../</th>
+                    <td>Retorna um diretório e entra imediatamente no próximo.</td>                
+                </tr>      
+                <tr>
+                    <th>~ ou somente o cpomando "cd"</th>
+                    <td>Retorna para o diretório do usuário.</td>                
+                </tr>      
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> pwd</strong><a name="> pwd"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Mostra o diretório corrente.</p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ pwd<br>
+                /home/edumcosta
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> mkdir</strong><a name="> mkdir"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Cria um diretório no sistema.</p>
+            <p>mkdir [opções] [caminho/diretório] [caminho1/diretório1]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>caminho</th>
+                    <td>Caminho onde o diretório será criado.</td>                
+                </tr>      
+                <tr>
+                    <th>diretório </tthd>
+                    <td>Nome do diretório que será criado.</td>                
+                </tr>      
+                <tr>
+                    <th>-p</th>
+                    <td>Caso os diretórios dos níveis acima não existam, eles também serão criados.</td>                
+                </tr>      
+                <tr>
+                    <th>--verbose</th>
+                    <td>Mostra uma mensagem para cada diretório criado. As mensagens de erro serão mostradas mesmo que esta opção não seja usada.</td>                
+                </tr>      
+            </table>
+            <p>Abaixo o exemplo do comando mkdir. </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ sudo mkdir diretorio_1/subdiretorio_1-1/subdiretorio_1-2 diretório_2/subdiretorio_2-1/subdiretorio_2-2 -p<br>
+            edumcosta@vm-ubuntu-v22-a:~$ ls -lh<br>
+            total 8.0K<br>
+            drwxr-xr-x 3 root root 4.0K Mar 22 18:20 diretorio_1<br>
+            drwxr-xr-x 3 root root 4.0K Mar 22 18:20 diretório_2
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> rmdir</strong><a name="> rmdir"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Remove um diretório do sistema. 
+            Utilize esse comando para remover diretório a diretório e sempre a partir de seu nível mais acima. 
+            Para a exclusão de diretórios de forma recursiva, utilize o comando "rm".
+            </p>
+            <p>rmdir [caminho/diretório] [caminho1/diretório1]</p>
+            <p>Abaixo o exemplo do comando rmdir. </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ sudo rmdir diretorio_1/subdiretorio_1-1/subdiretorio_1-2 diretório_2/subdiretorio_2-1/subdiretorio_2-2<br>
+            edumcosta@vm-ubuntu-v22-a:~$ ls -lh diretorio_1/<br>
+            total 4.0K<br>
+            drwxr-xr-x 2 root root 4.0K Mar 22 18:27 subdiretorio_1-1<br>
+            edumcosta@vm-ubuntu-v22-a:~$ ls -lh diretorio_1/subdiretorio_1-1/<br>
+            total 0
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Grupo Manipulação de Arquivos<a name="Grupo Manipulação de Arquivos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> cat</strong><a name="> cat"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Mostra o conteúdo de um arquivo binário ou texto.</p>
+            <p>cat [opções] [diretório/arquivo] [diretório1/arquivo1]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>diretório/arquivo</th>
+                    <td>Localização do arquivo que deseja visualizar o conteúdo.</td>                
+                </tr>      
+                <tr>
+                    <th>-n, --number</th>
+                    <td>Mostra o número das linhas enquanto o conteúdo do arquivo é mostrado.</td>                
+                </tr>      
+            </table>
+
+            <p>Abaixo o exemplo do comando cat. </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ sudo cat /etc/netplan/00-installer-config.yaml<br>
+                # This is the network config written by 'subiquity'<br>
+                network:<br>
+                &nbsp version: 2<br>
+                &nbsp renderer: networkd<br>
+                &nbsp ethernets:<br>
+                &nbsp &nbsp enp0s3:<br>
+                &nbsp &nbsp &nbsp addresses:<br>
+                &nbsp &nbsp &nbsp &nbsp - 10.100.1.37/24<br>
+                &nbsp &nbsp &nbsp &nbsp - 10.100.1.38/24:<br>
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp label: enp3s0:0<br>
+                &nbsp &nbsp &nbsp &nbsp - 10.100.1.39/24:<br>
+                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp label: enp3s0:some-label<br>
+                &nbsp &nbsp &nbsp gateway4: 192.168.100.1<br>
+                &nbsp &nbsp &nbsp nameservers:<br>
+                &nbsp &nbsp &nbsp &nbsp search: <br>
+                &nbsp &nbsp &nbsp &nbsp [mydomain, otherdomain]<br>
+                &nbsp &nbsp &nbsp addresses:<br>
+                &nbsp &nbsp &nbsp &nbsp [192.168.100.1, 192.168.100.2]
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> rm</strong><a name="> rm"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Apaga arquivos. Também pode ser usado para apagar diretórios e sub-diretórios vazios ou que contenham arquivos.</p>
+            <p>rm [opções][caminho][arquivo/diretório] [caminho1][arquivo1/diretório1]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>diretório/arquivo</th>
+                    <td>Arquivo que será apagado.</td>                
+                </tr>      
+                <tr>
+                    <th>-i, --interactive</th>
+                    <td>Pergunta antes de remover, esta é ativada por padrão.</td>                
+                </tr>      
+                <tr>
+                    <th>-v, --verbose</th>
+                    <td>Mostra os arquivos na medida que são removidos.</td>                
+                </tr>      
+                <tr>
+                    <th>-r, --recursive</th>
+                    <td>Usado para remover arquivos em sub-diretórios. Esta opção também pode ser usada para remover sub-diretórios.</td>                
+                </tr>      
+                <tr>
+                    <th>-f, --force</th>
+                    <td>Remove os arquivos sem perguntar.</td>                
+                </tr>      
+                <tr>
+                    <th>-- arquivo</th>
+                    <td>Remove arquivos/diretórios que contém caracteres especiais. O separador "--" funciona com todos os comandos do shell e permite que os caracteres especiais como "*", "?", "-", etc. sejam interpretados como caracteres comuns.</td>                
+                </tr>      
+            </table>
+
+            <p>Abaixo o exemplos do comando rm.</p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Exemplo</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <td>rm teste.txt</td>
+                    <td>Apaga o arquivo teste.txt no diretório atual.</td>                
+                </tr>      
+                <tr>
+                    <td>rm *.txt</td>
+                    <td>Apaga todos os arquivos do diretório atual que terminam com .txt.</td>                
+                </tr>      
+                <tr>
+                    <td>rm *.txt teste.novo</td>
+                    <td>Apaga todos os arquivos do diretório atual que terminam com .txt e também o arquivo teste.novo.</td>                
+                </tr>      
+
+                <tr>
+                    <td>rm -rf /tmp/teste/*</td>
+                    <td>Apaga todos os arquivos e sub-diretórios do diretório /tmp/teste mas mantém o sub-diretório /tmp/teste.</td>                
+                </tr>      
+                <tr>
+                    <td>rm -rf /tmp/teste</td>
+                    <td>paga todos os arquivos e sub-diretórios do diretório /tmp/teste, inclusive /tmp/teste.</td>                
+                </tr>      
+                <tr>
+                    <td>rm -f -- teste</td>
+                    <td>Remove o arquivo de nome teste.</td>                
+                </tr>     
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> cp</strong><a name="> cp"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Copia arquivos e diretórios</p>
+            <p>cp [opções] [origem] [destino]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-i, --interactive</th>
+                    <td>Pergunta antes de substituir um arquivo existente.</td>                
+                </tr>      
+                <tr>
+                    <th>-f, --force</th>
+                    <td>Não pergunta, substitui todos os arquivos caso já exista.</td>                
+                </tr>      
+                <tr>
+                    <th>-r</th>
+                    <td>Copia arquivos dos diretórios e subdiretórios da origem para o destino. É recomendável usar -R ao invés de -r.</td>                
+                </tr>      
+                <tr>
+                    <th>-R, --recursive</th>
+                    <td>Copia arquivos e sub-diretórios (como a opção -r) e também os arquivos especiais FIFO e dispositivos.</td>                
+                </tr>      
+                <tr>
+                    <th>-v, --verbose</th>
+                    <td>Mostra os arquivos enquanto estão sendo copiados.</td>                
+                </tr>      
+                <tr>
+                    <th>-s, --simbolic-link</th>
+                    <td>Cria link simbólico ao invés de copiar.</td>                
+                </tr>      
+                <tr>
+                    <th>-l, --link</th>
+                    <td>Faz o link no destino ao invés de copiar os arquivos.</td>                
+                </tr>      
+                <tr>
+                    <th>-p, --preserve</th>
+                    <td>Preserva atributos do arquivo, se for possível.</td>                
+                </tr>      
+                <tr>
+                    <th>-u, --update</th>
+                    <td>Copia somente se o arquivo de origem é mais novo que o arquivo de destino ou quando o arquivo de destino não existe.</td>                
+                </tr>      
+            </table>
+
+            <p>Abaixo o exemplos do comando cp.</p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Exemplo</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <td>cp teste.txt teste1.txt</td>
+                    <td>Copia o arquivo teste.txt para teste1.txt.</td>                
+                </tr>      
+                <tr>
+                    <td>cp teste.txt /tmp</td>
+                    <td>Copia o arquivo teste.txt para dentro do diretório /tmp.</td>                
+                </tr>      
+                <tr>
+                    <td>cp * /tmp</td>
+                    <td>Copia todos os arquivos do diretório atual para /tmp.</td>                
+                </tr>      
+                <tr>
+                    <td>cp /bin/*</td>
+                    <td>Copia todos os arquivos do diretório /bin para o diretório em que nos encontramos no momento.</td>                
+                </tr>      
+                <tr>
+                    <td>cp -R /bin /tmp</td>
+                    <td>Copia o diretório /bin e todos os arquivos/sub-diretórios existentes para o diretório /tmp.</td>                
+                </tr>      
+                <tr>
+                    <td>cp -R /bin/* /tmp</td>
+                    <td>Copia todos os arquivos do diretório /bin (exceto o diretório /bin) e todos os arquivos/sub-diretórios existentes dentro dele para /tmp.</td>                
+                </tr>      
+                <tr>
+                    <td>cp -R /bin /tmp</td>
+                    <td>Copia todos os arquivos e o diretório /bin para /tmp.</td>                
+                </tr>      
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> mv</strong><a name="> mv"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Move ou renomeia arquivos e diretórios. O processo é semelhante ao do comando cp mas o arquivo de origem é apagado após o término da cópia.</p>
+            <p>mv [opções] [origem] [destino]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-f, --force</th>
+                    <td>Substitui o arquivo de destino sem perguntar.</td>                
+                </tr>      
+                <tr>
+                    <th>-i, --interactive</th>
+                    <td>Pergunta antes de substituir. É o padrão.</td>                
+                </tr>      
+                <tr>
+                    <th>-v, --verbose</th>
+                    <td>Mostra os arquivos que estão sendo movidos.</td>                
+                </tr>      
+                <tr>
+                    <th>-u, --update</th>
+                    <td>Move somente arquivos antigos, ou novos arquivos.</td>                
+                </tr>      
+            </table>
+
+            <p>Abaixo o exemplos do comando mv.</p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Exemplo</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <td>mv teste.txt teste1.txt</td>
+                    <td>Muda o nome do arquivo teste.txt para teste1.txt.</td>                
+                </tr>      
+                <tr>
+                    <td>mv teste.txt /tmp</td>
+                    <td>Move o arquivo teste.txt para /tmp. Lembre-se que o arquivo de origem é apagado após ser movido.</td>                
+                </tr>      
+                <tr>
+                    <td>mv teste.txt teste.new</td>
+                    <td>Copia o arquivo teste.txt por cima de teste.new (supondo que teste.new já exista) e apaga teste.txt após terminar a cópia.</td>                
+                </tr>      
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Manipulação Diretórios e Arquivos<a name="Manipulação Diretórios e Arquivos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> ln</strong><a name="> ln"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Cria links para arquivos e diretórios no sistema. O link é um mecanismo que faz referência a outro arquivo ou diretório em outra localização.</p>            
+            <p>ln [opções] [origem] [link]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>origem</th>
+                    <td>Diretório ou arquivo de onde será feito o link.</td>                
+                </tr>      
+                <tr>
+                    <th>link</th>
+                    <td>Nome do link que será criado.</td>                
+                </tr>      
+                <tr>
+                    <th>-s</th>
+                    <td>Cria um link simbólico. Usado para criar ligações com o arquivo/diretório de destino.</td>                
+                </tr>      
+                <tr>
+                    <th>-v</th>
+                    <td>Mostra o nome de cada arquivo antes de fazer o link.</td>                
+                </tr>      
+                <tr>
+                    <th>-d</th>
+                    <td>Cria um hard link para diretórios. Somente o root pode usar esta opção.</td>                
+                </tr>      
+            </table>
+            <p>Existem 2 tipos de links: simbólicos e hardlinks.</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Link Simbólico</th>
+                    <td>O  cria um arquivo especial no disco (do tipo link) que tem como conteúdo o caminho para chegar até o arquivo alvo (isto pode ser verificado pelo tamanho do arquivo do link). Use a opção -s para criar links simbólicos.</td>                
+                </tr>      
+                <tr>
+                    <th>hardlink</th>
+                    <td>O hardlink faz referência ao mesmo inodo do arquivo original, desta forma ele será perfeitamente idêntico, inclusive nas permissões de acesso, ao arquivo original.
+                    </td>                
+                </tr>      
+            </table>
+            <p>Ao contrário dos links simbólicos, não é possível fazer um hardlink para um diretório ou fazer referência a arquivos que estejam em partições diferentes.</p>
+            <p>Exemplos do comando "ln".</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Exemplo</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <td>ln -s /dev/ttyS1 /dev/modem</td>
+                    <td>Cria o link /dev/modem para o arquivo /dev/ttyS1.</td>                
+                </tr>      
+                <tr>
+                    <td>ln -s /tmp ~/tmp</td>
+                    <td>Cria um link ~/tmp para o diretório /tmp.</td>                
+                </tr>      
+            </table>
+            <hr>                
+        </div>        
+        
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Compressão e Descompressão de Arquivos<a name="Compressão e Descompressão de Arquivos"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> gzip</strong><a name="> gzip"></a></p>
+        </div>            
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Este comando compacta/descompacta arquivos.</p>            
+            <p>gzip [opções] [arquivos]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-c</th>
+                    <th>Grava o resultado na saída padrão e mantém o arquivo original inalterado.</th>                
+                </tr>      
+                <tr>
+                    <th>-d</th>
+                    <th>Descompacta (igual ao comando gunzip).</th>                
+                </tr>      
+                <tr>
+                    <th>-l</th>
+                    <th>Lista informações sobre os arquivos.</th>                
+                </tr>    
+                <tr>
+                    <th>-r</th>
+                    <th>compacta/descompacta recursivamente (navega a estrutura de diretórios recursivamente).</th>                
+                </tr>    
+                <tr>
+                    <th>-t</th>
+                    <th>Verifica a integridade do arquivo compactado.</th>                
+                </tr>
+                <tr>
+                    <th>-número (1 a 9, o padrão é 6)</th>
+                    <th>Define o nível de compressão (1 menor, 9 maior).</th>                
+                </tr>
+                <tr>
+                    <th>-v</th>
+                    <th>Mostra a taxa de compressão do arquivo.</th>                
+                </tr>
+            </table>
+            <p>Abaixo o exemplos do comando gzip.</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Exemplo</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <td>gzip teste1.txt</td>
+                    <td>Compacta o arquivo teste1.txt e gera o arquivo teste1.txt.gz. O arquivo original e apagado.</td>                
+                </tr>      
+                <tr>
+                    <td>gzip -c teste1.txt</td>
+                    <td>Compacta o arquivo teste1.txt, gera o arquivo teste1.txt.gz e o arquivo teste1.txt permanece presente no diretório.</td>                
+                </tr>      
+
+                <tr>
+                    <td>gzip -1 filename</td>
+                    <td>Compacta o arquivo com nível de compressão = 1.</td>                
+                </tr>      
+                <tr>
+                    <td>gzip filename1 filename2</td>
+                    <td>Compacta os arquivos informados.</td>                
+                </tr>      
+                <tr>
+                    <td>gzip -r Pasta1</td>
+                    <td>Compacta o diretório "Pasta1" de forma recursiva.</td>                
+                </tr>      
+                <tr>
+                    <td>gzip -rcv Pasta1</td>
+                    <td>Compacta o diretório "Pasta1" de forma recursiva e mostra a taxa de compressão.</td>                
+                </tr>      
+                <tr>
+                    <td>gzip -rcv Pasta1 >Pasta1_Compactada.gz </td>
+                    <td>Compacta o diretório "Pasta1" de forma recursiva, mostra a taxa de compressão e cria o arquivo Pasta1_Compactada.gz.</td>                
+                </tr>      
+                <tr>
+                    <td>gzip -d filename.gz</td>
+                    <td>Descompacta o arquivo.</td>                
+                </tr>                      
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> tar</strong><a name="> tar"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Este comando compacta/descompacta arquivos.</p>            
+            <p>tar [opções] repositório.tar [arquivos]</p>
+
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-c</th>
+                    <th>Cria um novo arquivo tar.</th>                
+                </tr>      
+                <tr>
+                    <th>-j ou −−bzip2</th>
+                    <th>Compacta/descompacta os arquivos usando bzip2.</th>                
+                </tr>      
+                <tr>
+                    <th>-t</th>
+                    <th>Lista o conteúdo do arquivo tar.</th>                
+                </tr>    
+                <tr>
+                    <th>-x</th>
+                    <th>Extrai o conteúdo do arquivo tar.</th>                
+                </tr>    
+                <tr>
+                    <th>-v</th>
+                    <th>Mostra mensagens.</th>                
+                </tr>
+                <tr>
+                    <th>-f arquivo</th>
+                    <th>Define o nome do arquivo tar.</th>                
+                </tr>
+                <tr>
+                    <th>-z ou −−gzip</th>
+                    <th>Compacta/descompacta os arquivos usando gzip/gunzip.</th>                
+                </tr>
+            </table>
+            <p>Abaixo o exemplos do comando gzip.</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">   
+                <tr>
+                    <th>Exemplo</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <td>tar cvf colecao_txt *.txt</td>
+                    <td>Criar o arquivo colecao_txt contendo todos os arquivos txt do diretório atual.</td>                
+                </tr>      
+                <tr>
+                    <td>tar tvf colecao_txt</td>
+                    <td>Verifica o conteúdo do arquivo colecao_txt.</td>                
+                </tr>      
+
+                <tr>
+                    <td>tar xvf colecao_txt</td>
+                    <td>Extrair todos arquivos de colecao_txt.</td>                
+                </tr>      
+                <tr>
+                    <td>tar xvf colecao_txt nome_arquivo</td>
+                    <td>Extrai somente o arquivo nome_arquivo.</td>                
+                </tr>      
+            </table>
+            <hr>
+        </div>            
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> ss</strong><a name="> ss"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Este comando apresenta sockets, erndereços e portas em execução.</p>            
+            <p>ss [opções]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-a</th>
+                    <td>Lista todos os sockets.</td>                
+                </tr>      
+                <tr>
+                    <th>-r</th>
+                    <td>Resolve os endereços IPs e portas por nomes de serviços.</td>                
+                </tr>      
+                <tr>
+                    <th>-l</th>
+                    <td>Lista  somente as portas abertas (LISTEN).</td>                
+                </tr>    
+                <tr>
+                    <th>-e</th>
+                    <td>Mostra informações detalhadas sobre o socket.</td>                
+                </tr>    
+                <tr>
+                    <th>-m</th>
+                    <td>Mostra a alocação de memória do socket.</td>                
+                </tr>
+                <tr>
+                    <th>-p</th>
+                    <td>Mostra o processo dono do socket.</td>                
+                </tr>
+                <tr>
+                    <th>-h</th>
+                    <td>Ajuda com o comando onde é possível identificar uma extensa lista de opções.</td>                
+                </tr>
+            </table>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> scp</strong><a name="> scp"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>SCP (Secure Copy) é um protocolo de rede para transferências de arquivos.</p>            
+            <p>scp [other options] [source username@IP]:/[directory and file name] [destination username@IP]:/[destination directory]</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>[other options]</th>
+                    <td>São modificadores que você pode adicionar ao comando SCP. Vamos mostrar os mais populares dele mais abaixo.</td>                
+                </tr>      
+                <tr>
+                    <th>[source username@IP]</th>
+                    <td>É o nome do usuário e o IP da máquina que tem o arquivo que você quer. Seria algo como root@123.123.123.12.</td>                
+                </tr>      
+                <tr>
+                    <th>:/</th>
+                    <td>Informa o comando SCP que você está prestes a digitar no diretório fonte.</td>                
+                </tr>      
+                <tr>
+                    <th>[directory and file name]</th>
+                    <td>É onde o arquivo está localizado e o nome dele. Se parece com algo como /users/Edward/Desktop/SCP.png</td>                
+                </tr>      
+                <tr>
+                    <th>[destination username@IP]</th>
+                    <td>É o nome do usuário e do IP da máquina de destino.</td>                
+                </tr>      
+                <tr>
+                    <th>[destination directory]</th>
+                    <td>É o diretório onde o arquivo será salvo.</td>                
+                </tr>    
+            </table>
+            <p>Abaixo exemplo do comando:</p>
+        </div>  
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>scp -p root@162.168.1.1:/media/scp.png edward@162.168.1.2:/desktop/destination</p>
+            <p>scp CAMINHO\ARQUIVO [Windows] edward@162.168.1.2:/desktop/destination</p>
+            <p>scp CAMINHO/ARQUIVO [Linux] edward@162.168.1.2:/desktop/destination</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>As outras opções do comando scp.</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-P</th>
+                    <td>Possibilita especificar uma entrada diferente para o servidor (a porta padrão para a porta TCP para o comando é a 22).</td>                
+                </tr>      
+                <tr>
+                    <th>-c</th>
+                    <td>Permite  especificar a encriptação do algoritmo que o cliente vai usar. 
+                        Alguns dos valores que você pode usar são ‘aes256-ctr’, ‘aes256-cbc’, ‘blowfish-cbc’, ‘arcfour’, ‘arcfour128’, ‘arcfour256’, ‘cast128-cbc’, aes128-ctr’, ‘aes128-cbc’, ‘aes192-ctr’, ‘aes192-cbc’ e 3des-cbc’. 
+                        A opção padrão na configuração do shell é ‘AnyStdCipher’.</td>                
+                </tr>      
+                <tr>
+                    <th>-q</th>
+                    <td>Executa a operação em modo silencioso, o que significa que apenas os erros críticos é que serão mostrados.</td>                
+                </tr>      
+                <tr>
+                    <th>-r</th>
+                    <td>Cópia recursiva, que vai incluir todos os subdiretórios.</td>                
+                </tr>      
+                <tr>
+                    <th>-p</th>
+                    <td>Preserva os tempos iniciais de modificação e atributos do arquivo. .</td>                
+                </tr>      
+                <tr>
+                    <th>-u</th>
+                    <td>Apaga a fonte do arquivo logo depois que a transferência for completada.</td>                
+                </tr>      
+                <tr>
+                    <th>-c</th>
+                    <td>Habilita a compressão de dados enquanto a operação de transferência está sendo executada.</td>                
+                </tr>      
+            </table>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> curl</strong><a name="> curl"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Curl é uma ferramenta para transferir dados de/para um servidor, usando um dos protocolos suportados (HTTP,FTP,GOPHER,IMAP e LDAP).<br>
+                Para instalar: <strong>sudo apt install curl</strong>.
+            </p>            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-L</th>
+                    <td>Redireciona para a existência de URL em HTTPS, caso não informado na linha de comando.<br>
+                    Exemplo: <strong>curl -L www.xxxxx.com.br/</strong></td>                
+                </tr>      
+                <tr>
+                    <th>-i</th>
+                    <td>Apresenta mais informações de resultado.<br>
+                    Exemplo: <strong>curl -L -i www.xxxxx.com.br/</strong></td>                
+                </tr>      
+                <tr>
+                    <th>-I</th>
+                    <td>Apresenta somente as informações de cabeçalho.<br>
+                    Exemplo: <strong>curl -L -I www.xxxxx.com.br/</strong></td>                
+                </tr>      
+                <tr>
+                    <th>-O</th>
+                    <td>Realiza download de um arquivo e grava com o mesmo nome.<br>
+                    Exemplo: <strong>curl -O https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso ubuntu20.iso</strong></td>                
+                </tr>      
+                <tr>
+                    <th>-s</th>
+                    <td>Omite as informações de progresso.<br>
+                    Exemplo: <strong>curl -O -s https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso ubuntu20.iso</strong></td>                
+                </tr>      
+                <tr>
+                    <th>-C</th>
+                    <td>Continua o download caso seja interrompido.<br>
+                    Exemplo: <strong>curl -C - -O https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso ubuntu20.iso</strong><br>
+                    <strong>Observação:</strong> o "-" após a opção -C indica que o download deve iniciar do ponto onde parou.</td>                
+                </tr>      
+                <tr>
+                    <th>-X [METODO HTTP]</th>
+                    <td>Executa um método HTTP, como por exemplo realizar o upload de uma arquivo. <br>
+                    Exemplo: <strong>curl -C - -O curl -X POST -F "arquivo=@caminho/local/arquivo" URL_do_servidor</strong><br>
+                    <strong>curl -X POST -F "arquivo=@/caminho/local/meu_arquivo.txt" http://exemplo.com/upload.php.</td>                
+                </tr>      
+
+        </div>
+
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> find</strong><a name="> find"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O comando find no UNIX é um utilitário de linha de comando para percorrer uma hierarquia de arquivos.<br>
+                Ele pode ser usado para localizar arquivos e diretórios e executar operações subsequentes neles.<br>
+                Ele suporta pesquisa por arquivo, pasta, nome, data de criação, data de modificação, proprietário e permissões. Ao usar o '-exec', outros comandos UNIX podem ser executados em arquivos ou pastas encontrados.
+            </p>
+            <p><strong>$ find [onde começar a pesquisar] [expressão determina o que encontrar] [-opções] [o que encontrar]</strong></p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções</th>
+                    <th>Resultado</th>                
+                </tr>      
+                <tr>
+                    <th>-exec CMD</th>
+                    <td>O arquivo sendo pesquisado que atende aos critérios acima e retorna 0 como seu status de saída para execução bem-sucedida do comando.</td>                
+                </tr>      
+                <tr>
+                    <th>-ok CMD</th>
+                    <td>Funciona da mesma forma que -exec, exceto que o usuário é solicitado primeiro.</td>                
+                </tr>      
+                <tr>
+                    <th>-inum N</th>
+                    <td>Procura por arquivos com número de inode [N corresponde ao inode].</td>                
+                </tr>      
+                <tr>
+                    <th>-links N</th>
+                    <td>Pesquisa arquivos com links [N corresponde ao link].</td>                
+                </tr>      
+                <tr>
+                    <th>-name demo</th>
+                    <td>Pesquise por arquivos que são especificados por "demo".</td>                
+                </tr>      
+                <tr>
+                    <th>-iname</th>
+                    <td>Ignora diferença de maiúsculas e miniúsculas.</td>                
+                </tr>                      
+                <tr>
+                    <th>-newer file</th>
+                    <td>Pesquise por arquivos que foram modificados/criados do arquivo "file".</td>                
+                </tr>      
+                <tr>
+                    <th>-perm octal</th>
+                    <td>Procure arquivos com permissão formato "octal".</td>                
+                </tr>      
+                <tr>
+                    <th>-user usuário</th>
+                    <td>Procure arquivos pertencentes ao nome de usuário ou ID 'nome'.</td>                
+                </tr>      
+                <tr>
+                    <th>-print</th>
+                    <td>Exibe o nome do caminho dos arquivos encontrados usando o restante dos critérios.</td>                
+                </tr>      
+                <tr>
+                    <th>-empty</th>
+                    <td>Pesquisa por arquivos e diretórios vazios.</td>                
+                </tr>      
+                <tr>
+                    <th>-type</th>
+                    <td>Procura por um tipo de arquivo:<br>
+                        f: a regular file<br>
+                        d: directory<br>
+                        l: symbolic link<br>
+                        c: character devices<br>
+                        b: block devices<br>
+                        p: named pipe (FIFO)<br>
+                        s: socket
+                    </td>                
+                </tr>      
+            </table>
+            <p>Exemplos:</p>
+            <ul>
+                <li><stgrong>find /home -name tecmint.txt</stgrong></li>
+                <li><strong>find /home -iname tecmint.txt</strong></li>
+                <li><strong>find / -type d -name Tecmint</strong></li>
+                <li><strong>find . -type f -perm 0777 -print</strong></li>
+                <li><strong>find / -type f ! -perm 777</strong></li>
+            </ul>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Rsync</strong><a name="> Rsync"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>
+                Pagina de documentação do "rsync" :  <a href="https://manpages.ubuntu.com/manpages/jammy/man1/rsync.1.html"></a>
+            </p>
+            <p>Para instalar o "rsync": <strong>"sudo apt install rsync"</strong><br>
+            Para instalar o "grsync", versão GUI : <strong>"sudo apt-get install grsync"</strong>
+            </p>
+            <p>Para iniciar o rsync como um serviço, crie o arquivo, vazio, <strong>"/etc/rsyncd.conf"</strong> e 
+                copie <strong>"/lib/systemd/system/rsync.service"</strong> para <strong>"/etc/systemd/system/rsync.service"</strong>.<br>
+                Reiniciar o serviço: <strong>"sudo systemctl restart rsync"</strong>.
+            </p>
+            <p>Principais opções "rsync":</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opção</th>
+                    <th>Descrição</th>                
+                </tr>      
+                <tr>
+                    <th>-v</th>
+                    <td>Mostra a saída da execução do comando.</td>                
+                </tr>      
+                <tr>
+                    <th>-h</th>
+                    <td>Mostra a saída da execução do comando, formato humano.</td>                
+                </tr>      
+                <tr>
+                    <th>-d</th>
+                    <td>Cópia de diretórios de forma não recursiva.</td>                
+                </tr>      
+                <tr>
+                    <th>-u</th>
+                    <td>Pula os arquivos que são mais recentes no destino.</td>                
+                </tr>      
+                <tr>
+                    <th>-r</th>
+                    <td>Copia arquivos recursivamente, mas sem preservar as permissões e links.</td>                
+                </tr>      
+                <tr>
+                    <th>-a</th>
+                    <td>Copia arquivos recursivamente e preserva links simbólicos, permissões de arquivos, 
+                        propriedades de usuário e grupo (ownership) e timestamps.
+                    </td>                
+                </tr>      
+                <tr>
+                    <th>-p</th>
+                    <td>Preservar as permissões.</td>                
+                </tr>      
+                <tr>
+                    <th>-E</th>
+                    <td>Preserva a propriedade de execução.</td>                
+                </tr>      
+                <tr>
+                    <th>-z</th>
+                    <td>Aplica processo de compactação das informações.</td>                
+                </tr>      
+                <tr>
+                    <th>-e</th>
+                    <td>Especificar o shell remoto a ser usado (rsh, ssh).</td>                
+                </tr>      
+                <tr>
+                    <th>-c ou -–checksum</th>
+                    <td>Calcula os checksums dos arquivos para verificar se eles são iguais ao transferi-los. Utilizada para verificar a integridade dos dados copiados.</td>                
+                </tr>      
+                <tr>
+                    <th>-b ou -–backup</th>
+                    <td>Arquivos existentes no destino serão deletados conforme a transferência progride.</td>                
+                </tr>                    
+                <tr>
+                    <th>-P ou -–progress</th>
+                    <td>Mostra como saída o progresso da execução.</td>                
+                </tr>  
+                <tr>
+                    <th>--include</th>
+                    <td>Permite especificar arquivos ou diretórios.</td>                
+                </tr>  
+                <tr>
+                    <th>--delete</th>
+                    <td>Exclui um arquivo ou diretório no destino caso ele não exista na origem.</td>                
+                </tr>  
+                <tr>
+                    <th>--exclude=PATTERN</th>
+                    <td>Exclui o arquivo que coincide com o PATTERN.</td>                
+                </tr>  
+                <tr>
+                    <th>-–remove-source-files</th>
+                    <td>Exclui os arquivos no diretório de origem após o término.</td>                
+                </tr>     
+                <tr>
+                    <th>-n / -–dry-run</th>
+                    <td>Operar em modo teste / simulação.</td>                
+                </tr>      
+                <tr>
+                    <th>-–log-file</th>
+                    <td>Local e arquivo de log.</td>                
+                </tr>      
+            </table>
+            <p>Temos ainda dentro desse comando as definições de:</p>
+            <ul>
+                <li><strong>[SOURCE]</strong> : – Caminho de "origem", arquivos, diretórios que pode ser o host local ou um host remoto.
+                </li>
+                <li><strong>[DESTINATION]</strong> – Caminho de "destino" onde os arquivos serão copiados e que pode ser o host local ou um host remoto.
+                </li>                                    
+            </ul>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">        
+            <p>Exemplos "rsync":</p>
+            <p>Como copiar / sincronizar arquivo e diretório em um computador local com Rsync:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p># Este comando irá sincronizar um único arquivo em uma máquina local.<br> 
+            # Aqui neste exemplo, o arquivo planilha.xls está sendo copiado / sincronizado para o diretório /tmp/backups<br> 
+            <br>                        
+            sudo rsync -zvh planilha.xls /tmp/backups/<<br>
+            <br>
+            <br>
+            created directory /tmp/backups<br>
+            planilha.xls<br>
+            sent 14.71M bytes received 31 bytes 3.27M bytes/sec <br>
+            total size is 16.18M speedup is 1.10<br>
+            <br>
+            </p>
+        </div>            
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Copiar / sincronizar um diretório no computador local:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p># O comando abaixo irá transferir ou sincronizar todos os arquivos de um diretório para outro diretório na mesma máquina.<br>
+            # Aqui neste exemplo, /var/apt/apt/archives contém alguns arquivos de pacotes .deb<br>
+            <br>
+            sudo rsync -avzh  /var/apt/apt/archives /tmp/backups/<br>
+            <br>
+            sending incremental file list<br>
+            /var/apt/apt/archives<br>
+            sent 4.99M bytes  received 92 bytes  3.33M bytes/sec<br>
+            total size is 4.99M  speedup is 1.00<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Copiar / sincronizar arquivos e diretório com um computador remoto:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p># Este comando irá sincronizar um diretório a partir de uma máquina local para uma máquina remota.<br>
+            # Por exemplo : Existe uma pasta no seu computador local o mesmo do exemplo anterior “/var/apt/apt/archives”, que contém alguns pacotes .deb,<br>  
+            # se quiser que o conteúdo desse diretório local seja enviado para um servidor remoto, você pode usar comando a seguir.<br>
+            <br>
+            sudo rsync -avz /var/apt/apt/archives root@10.1.1.1:/tmp/<br>
+            <br>
+            root@10.1.1.1's password:<br>
+            <br>
+            sending incremental file list<br>
+            ...<br>
+            sent 4993369 bytes  received 91 bytes  399476.80 bytes/sec<br>
+            total size is 4991313  speedup is 1.00<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Copiar / sincronizar um diretório remoto para um computador local:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">        
+            <p># Este comando irá ajudá-lo a sincronizar um diretório remoto para um diretório local.<br>
+            # Aqui neste exemplo, um diretório:<br>
+            # /home/e-tinet/textos  que está em um servidor remoto está sendo copiado em seu computador local em /tmp/textos.<br>
+            <br>            
+            sudo rsync -avzh root@10.1.1.1:/home/e-tinet/textos /tmp/textos<br>
+            <br>
+            root@10.1.1.1's password:<br>
+            <br>
+            receiving incremental file list<br>
+            created directory /tmp/textos<br>
+            ....<br>
+            sent 91 bytes  received 4.99M bytes  322.16K bytes/sec<br>
+            total size is 4.99M  speedup is 1.00<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Como usar o Rsync rodando com o SSH:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">        
+            <p># Para especificar um protocolo com rsync usamos o parametro ” -e “.  Aqui neste exemplo, iremos utilizar ” ssh .<br>
+            <br>    
+            sudo rsync -avzhe ssh root@10.1.1.1:/root/install.log /tmp/<br>
+            <br>
+            root@10.1.1.1's password:<br>
+            <br>
+            receiving incremental file list<br>
+            install.log<br>
+            sent 30 bytes  received 8.12K bytes  1.48K bytes/sec<br>
+            total size is 30.74K  speedup is 3.77<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Copiar um arquivo de um servidor local para um servidor remoto com SSH:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">        
+            <p>sudo rsync -avzhe ssh planilha.xls root@10.1.1.1:/backups/<br> 
+            <br>
+            root@10.1.1.1's password:<br>
+            <br>            
+            sending incremental file list<br>
+            planilha.xls<br>
+            sent 14.71M bytes  received 31 bytes  1.28M bytes/sec<br>
+            total size is 16.18M  speedup is 1.10<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Usar a opção -–include e -–exclude:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">        
+            <p># Aqui neste exemplo, o comando rsync irá incluir arquivos e diretórios apenas que começam com ‘ M ‘ e excluir todos os outros arquivos e diretórios.<br>                       
+            # OBS.: Excluir da cópia não excluir o arquivo do sistema de arquivos.<br>
+            <br>            
+            sudo rsync -avze ssh --include 'm*' --exclude '*' root@10.1.1.2:/var/log/ /root/log<br>
+            <br>
+            root@10.1.1.2's password:<br>
+            <br>            
+            receiving incremental file list<br>
+            created directory /var/log<br>
+            ./<br>
+            Requirename<br>
+            Requireversion<br>
+            sent 67 bytes  received 167289 bytes  7438.04 bytes/sec<br>
+            total size is 434176  speedup is 2.59<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Uso de opção -–delete:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">            
+            <p># Se um arquivo ou pasta não existe na origem, mas já existe no destino, você pode apagar o arquivo / diretório existente.<br>
+            sudo touch teste.txt<br>
+            <br>
+            sudo rsync -avz --delete root@10.1.1.1:/home/pedro<br>
+            <br>
+            receiving file list ... done<br>
+            deleting teste.txt<br>
+            ./<br>
+            sent 26 bytes  received 390 bytes  48.94 bytes/sec<br>
+            total size is 45305958  speedup is 108908.55<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Apagar automaticamente arquivos da origem após a transferência bem sucedida:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">            
+            <p># Cenário:<br>
+            # -> backup diário para um servidor de backup.<br>
+            # -> Esperar até que a transferência seja concluída e, em seguida, apagar os arquivos de backup local com a opção ” –-remove-source-files”.<br>
+            <br>            
+            sudo rsync --remove-source-files -zvh img.jpg /tmp/backups/img.jpg<br>
+            <br>
+            sent 14.71M bytes  received 31 bytes  4.20M bytes/sec<br>
+            total size is 16.18M  speedup is 1.10<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">                    
+            <p>Usar o parâmetro –dry-run com o Rsync:</p>
+        </div>          
+        <div class="w3-container w3-theme-l1 w3-monospace">            
+            <p>sudo rsync --dry-run --remove-source-files -zvh texto.txt /tmp/backups/texto.tar<br>
+            <br>
+            sent 35 bytes  received 15 bytes  100.00 bytes/sec<br>
+            total size is 16.18M  speedup is 323584.00 (DRY RUN)<br>
+            <br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

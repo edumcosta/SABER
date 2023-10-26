@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <meta charset="utf-8"> <!-- indica o dicionário de caracteres presentes na página -->        
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../paginas/aplicativos/aplicativos.html">Aplicativos</a></li>
+                    <ul>
+                        <li><a href="#Editor Vim">Editor Vim</a></li>
+                        <li><a href="#Utilitários de Rede">Utilitários de Rede (Ping / Traceroute / DNS)</a></li>
+                        <li><a href="#Função Auto Completar - Bash">Função Auto Completar - Bash</a></li>
+                        <li><a href="#Conexões netstat">Conexões com netstat</a></li>
+                        <li><a href="#Instalação VirtualBox Guest (Utilitários)">Instalação VirtualBox Guest (Utilitários)</a></li>
+                    </ul>
+                </ul>
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Aplicativos</h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Nesta seção de tópicos são mencionados os principais aplicativos utiizados em laboratório Ubuntu, versão: 22.04 LTS</p>            
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Editor Vim<a name="Editor Vim"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Instala o editor Vim.<br>            
+            Utilize o comando abaixo para instalar essa biblioteca:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>sudo apt-get install vim</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Veja a seguir a tabela de comandos aceitos pelo vi. Todos os comandos deverão ser dados no modo de operação. O sinal “+” indica teclas que devem ser pressionadas simultaneamente. A vírgula indica que as teclas devem ser digitadas em sequência. Confira também o nosso conteúdo com todos os principais processos e comandos no linux.<br>                        
+            </p>
+        </div>
+        <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+            <tr>
+                <th>Ação</th>
+                <th>Comando</th>                
+            </tr>  
+            <tr>
+                <td>Abrir Arquivo</td>
+                <td>:e arquivo</td>                
+            </tr>  
+            <tr>
+                <td>Salvar Arquivo</td>
+                <td>:w</td>
+            </tr>
+            <tr>
+                <td>Salvar Arquivo Como</td>
+                <td>:w arquivo</td>
+            </tr>
+            <tr>
+                <td>Salvar e Sair</td>
+                <td>:wq</td>
+            </tr>
+            <tr>
+                <td>Sair sem salvar</td>
+                <td>:q!</td>
+            </tr>
+            <tr>
+                <td>Gravar conteúdo se alterado</td>
+                <td>:ZZ</td>
+            </tr>
+            <tr>
+                <td>Para marcar um texto para cópia ou corte</td>
+                <td>v, setas de direção</td>
+            </tr>
+            <tr>
+                <td>Para copiar texto marcado</td>
+                <td>y</td>
+            </tr>
+            <tr>
+                <td>Para cortar texto marcado</td>
+                <td>c</td>
+            </tr>
+            <tr>
+                <td>Para colar texto marcado</td>
+                <td>p</td>
+            </tr>
+            <tr>
+                <td>Copiar uma linha</td>
+                <td>yy</td>
+            </tr>
+            <tr>
+                <td>Copiar até o final do arquivo</td>
+                <td>yG</td>
+            </tr>
+            <tr>
+                <td>Apagar texto à frente (DEL)</td>
+                <td>x</td>
+            </tr>
+            <tr>
+                <td>Apagar texto para trás (BACKSPACE)</td>
+                <td>X</td>
+            </tr>
+            <tr>
+                <td>Apagar uma linha</td>
+                <td>dd</td>
+            </tr>
+            <tr>
+                <td>Apagar até o final do arquivo</td>
+                <td>dG</td>
+            </tr>
+            <tr>
+                <td>Apagar até o final da linha</td>
+                <td>D</td>
+            </tr>
+            <tr>
+                <td>Localizar texto à frente</td>
+                <td>/texto</td>
+            </tr>
+            <tr>
+                <td>Localizar novamente</td>
+                <td>/</td>
+            </tr>
+            <tr>
+                <td>Localizar texto para trás</td>
+                <td>?texto</td>
+            </tr>
+            <tr>
+                <td>Localizar novamente</td>
+                <td>?</td>
+            </tr>
+            <tr>
+                <td>Desfazer alterações</td>
+                <td>u</td>
+            </tr>
+            <tr>
+                <td>Refazer alterações</td>
+                <td>CTRL+r</td>
+            </tr>
+            <tr>
+                <td>Formatar Alinhamento Centralizado</td>
+                <td>:ce</td>
+            </tr>
+            <tr>
+                <td>Alinhamento à direta</td>
+                <td>:ri</td>
+            </tr>
+            <tr>
+                <td>Alinhamento à esquerda</td>
+                <td>:le</td>
+            </tr>
+            <tr>
+                <td>Abrir nova janela</td>
+                <td>:new</td>
+            </tr>
+            <tr>
+                <td>Dividir a janela atual em duas</td>
+                <td>:split</td>
+            </tr>
+            <tr>
+                <td>Abrir arquivo em nova janela</td>
+                <td>:split arquivo</td>
+            </tr>
+            <tr>
+                <td>Ir para janela de cima</td>
+                <td>CTRL+w, k</td>
+            </tr>
+            <tr>
+                <td>Ir para janela de baixo</td>
+                <td>CTRL+w, j</td>
+            </tr>
+            <tr>
+                <td>Ir para o início da linha</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>Ir para o final da linha</td>
+                <td>$</td>
+            </tr>
+            <tr>
+                <td>Ir para o final do arquivo</td>
+                <td>G</td>
+            </tr>
+            <tr>
+                <td>Ir para uma linha do arquivo</td>
+                <td>Número da Linha + G</td>
+            </tr>
+            <tr>
+                <td>Ir para a linha de baixo</td>
+                <td>j</td>
+            </tr>
+            <tr>
+                <td>Ir para a linha de cima</td>
+                <td>k</td>
+            </tr>
+            <tr>
+                <td>Ir para a esquerda</td>
+                <td>h</td>
+            </tr>
+            <tr>
+                <td>Ir para a direita</td>
+                <td>l</td>
+            </tr>
+            <tr>
+                <td>Ir para o final da tela</td>
+                <td>L</td>
+            </tr>
+            <tr>
+                <td>Ajuda</td>
+                <td>:help</td>
+            </tr>
+            <tr>
+                <td>Insere texto antes do cursor</td>
+                <td>i</td>
+            </tr>
+            <tr>
+                <td>Insere texto depois do cursor</td>
+                <td>a</td>
+            </tr>
+            <tr>
+                <td>Insere texto em uma nova linha</td>
+                <td>o</td>
+            </tr>        
+        </table>       
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Utilitários de Rede (Ping / Traceroute / DNS)<a name="Utilitários de Rede"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Utilitário: Ping</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Utilize o comando abaixo para instalar o utilitário "ping":</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>sudo apt-get install iputils-ping</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Utilitário: Traceroute</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Utilize o comando abaixo para instalar o utilitário "traceroute":</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>sudo apt-get install traceroute</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>Utilitário: DNS</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Utilize o comando abaixo para instalar o utilitário "DNS":</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>apt-get install dnsutils</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Conexões com netstat<a name="Conexões netstat"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Instala o utilitário que mostra conexões de rede, tabelas de roteamento, estatísticas de interface e
+                conexões mascaradas.<br>            
+            Utilize o comando abaixo para instalar essa biblioteca:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>sudo apt-get install apt install net-tools</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O tipo de informação impressa pelo netstat é controlado pelo primeiro argumento, um dos seguintes:</p>            
+        </div>
+        <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+            <tr>
+                <td>(sem opção)</td>
+                <td>Por padrão, o netstat exibe uma lista de soquetes abertos. Se você não especificar nenhuma família de endereços, os soquetes ativos de todas as famílias de endereços configuradas serão impressos.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>–route, -r</td>
+                <td>Exiba as tabelas de roteamento do kernel . Veja a descrição na rota para obter detalhes. netstat -r e route -e produzem a mesma saída.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>–groups, -g</td>
+                <td>Exibir informações de associação ao grupo multicast para IPv4 e IPv6.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>–interfaces, -i</td>
+                <td>Exiba uma tabela de todas as interfaces de rede.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>–masquerade, -M</td>
+                <td>Exibe uma lista de conexões mascaradas.
+                </td>                
+            </tr>  
+            <tr>
+                <td>–estatistics, -s</td>
+                <td>Exibir estatísticas resumidas para cada protocolo.
+                </td>                
+            </tr>              
+        </table>       
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Após o primeiro argumento, as seguintes opções especificam o comportamento dos relatórios do netstat:</p>            
+        </div>
+        <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+            <tr>
+                <td>–verbose, -v</td>
+                <td>Diga ao usuário o que está acontecendo, operando verbalmente . Imprima especialmente algumas informações úteis sobre famílias de endereços não configuradas.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>–largo, -W</td>
+                <td>Não trunque endereços IP usando a saída na largura necessária. Isso é opcional por enquanto para não interromper os scripts existentes.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>–numeric, -n</td>
+                <td>Mostre endereços numéricos em vez de tentar determinar nomes simbólicos de host, porta ou usuário.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>–numeric-hosts</td>
+                <td>Mostra endereços de host numéricos, mas não afeta a resolução de nomes de porta ou usuário.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>–numeric-ports</td>
+                <td>Mostra números de porta numéricos, mas não afeta a resolução dos nomes de host ou usuário.
+                </td>                
+            </tr>  
+            <tr>
+                <td>–numeric-users</td>
+                <td>Mostra IDs de usuário numéricos, mas não afeta a resolução dos nomes de host ou porta.
+                </td>                
+            </tr>  
+            <tr>
+                <td>–protocol = família, -A</td>
+                <td>Especifica as “famílias de endereços” ( protocolos de baixo nível) para as quais as conexões devem ser mostradas. A família é uma lista separada por vírgula de palavras-chave da família de endereços como inet , unix , ipx , ax25 , netrom e ddp . Isso tem o mesmo efeito que o uso das opções –inet , –unix ( -x ), –ipx , –ax25 , –netrom e –ddp.<br>
+                    A família de endereços inet inclui soquetes de protocolo raw, udp e tcp .
+                </td>                
+            </tr>  
+            <tr>
+                <td>-c, –contínuo</td>
+                <td>Faça com que o netstat imprima as informações selecionadas a cada segundo continuamente.
+                </td>                
+            </tr>  
+            <tr>
+                <td>-e, –extend</td>
+                <td>Exibir informações adicionais. Use esta opção duas vezes para obter o máximo de detalhes.
+                </td>                
+            </tr>  
+            <tr>
+                <td>-p, –program</td>
+                <td>Mostre o PID (identificador do processo) e o nome do programa ao qual cada soquete pertence.
+                </td>                
+            </tr>  
+            <tr>
+                <td>-l, –ouvindo</td>
+                <td>Mostrar apenas soquetes de escuta. (Estes são omitidos por padrão).
+                </td>                
+            </tr>  
+            <tr>
+                <td>-a, –all</td>
+                <td>Mostrar soquetes de escuta e não escuta. Com a opção –interfaces, mostre interfaces que não estão ativadas.
+                </td>                
+            </tr>   
+        </table>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Exemplos de comandos:</p>            
+        </div>
+        <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+            <tr>
+                <td>netstat</td>
+                <td>Exibe estatísticas genéricas sobre a atividade de rede do sistema local.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>netstat -an</td>
+                <td>Mostra informações sobre todas as conexões ativas com o servidor, incluindo os endereços IP e as portas de origem e de destino, se você tiver permissões adequadas.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>netstat -rn</td>
+                <td>Exibe a tabela de roteamento para todos os endereços IP vinculados ao servidor.                    
+                </td>                
+            </tr>  
+            <tr>
+                <td>netstat -natp</td>
+                <td>Exibir estatísticas sobre conexões ativas com a Internet.                    
+                </td>                
+            </tr>              
+            <tr>
+                <td>netstat -an | grep: 80 |  wc -l</td>
+                <td>Coleta estatísticas sobre a quantidade de conexões ativas na porta 80 e canaliza esses dados para o comando wc , que exibe o número de conexões contando as linhas da saída netstat original.                    
+                </td>                
+            </tr>              
+        </table>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Função Auto Completar - Bash<a name="Função Auto Completar - Bash"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Essa biblioteca permite a sugestão de argumentos ou opções utilizadas em comandos no Bash. Essa biblioteca não se aplica a diretórios e arquivos, sendo essas um padrão presente no S.O.<br>
+            comando [opção(ões)/parâmetro(s)...] [argumento(s)...]<br>   
+            Utilize o comando abaixo para instalar essa biblioteca:
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ sudo apt-get install bash-completion</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Caso seja necessário a reinstalação, utilize o comando abaixo:</p>        
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ sudo apt-get install --reinstall bash-completion</p>        
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Após a instalação da biblioteca, será necessário habilitar essa função no arquivo .bashrc<br>
+            Verfique se o seu arquivo .bashrc possui as instruções abaixo. Caso elas existam, mas estejam comentadas, remova os comentários. Caso não existam, incluir as instruções abaixo no final do arquivo.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p># enable bash completion in interactive shells<br>
+                if ! shopt -oq posix; then<br>
+                &nbsp&nbsp
+                   if [ -f /usr/share/bash-completion/bash_completion ]; then<br>
+                    &nbsp&nbsp&nbsp
+                      . /usr/share/bash-completion/bash_completion<br>
+                    &nbsp&nbsp
+                   elif [ -f /etc/bash_completion ]; then<br>
+                    &nbsp&nbsp&nbsp
+                      . /etc/bash_completion<br>
+                    &nbsp&nbsp
+                   fi<br>                
+                fi
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Instalação VirtualBox Guest (Utilitários)<a name="Instalação VirtualBox Guest (Utilitários)"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Essa biblioteca permite que um S.O. convidado se beneficie de recursos como: tamanho de tela, integração com mouse ou repositórios do sistema host.<br>
+            Para que essa funcionalidade funbcione é necessário aumentar a quantidade de memória de vídeo que será disponibilizada para a VM (128 MB).
+            Os passos para concluir essa instalação dependerá dos recursos pré-instalados no S.O.<br>
+            Caso o S.O convidado esteja com os recursos de instalação mínima, deverão ser instaladas as bibliotecas indicadas abaixo e que são necessárias para a compilação dos pacotes do Virtualbox.
+            </p>
+            <p>Bibliotecas necessárias para o caso de instalação mínima:</p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>sudo apt-get update<br>
+            sudo apt-get install build-essential<br>
+            sudo apt-get install gcc<br>
+            sudo apt-get install make<br>
+            sudo apt-get install pearl<br>
+            sudo apt-get install dkms</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Utilize a midia de instalação dos pacotes adicionais de convidados e execute o arquivo de extensão ".sh". Caso necessário reinicie o S.O.</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Linux - #edumcosta</h4>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <br>
+            <li><a href="#Índice">Índice</a></li>
+            <br>                                    
+        </div>
+
+    </body>
+</html>

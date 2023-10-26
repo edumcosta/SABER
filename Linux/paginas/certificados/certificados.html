@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../certificados/certificados.html">Certificados</a></li>                    
+                    Certify web --- pesquisar.
+            </ul>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Certificados<a name="Certificados"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Um certificado digital é uma chave identificadora de algo, como uma pessoa, uma empresa ou um software.<br>
+               Certificados digitais devem ser obtidos através de entidades certificadoras (ou CAs - Certification Authorities), pois somente estas têm as permissões necessárias para gerar certificados digitais válidos.
+            </p>
+            <p>Um certificado é composto basicamente por duas partes, uma chave pública e uma chave privada que são geradas randomicamente pela entidade certificadora.<br> 
+                A chave pública é utilizada para verificar os clientes que realizam as requisições, enquanto a chave privada é utilizada para a realização do processo de criptografia.
+            </p>
+            <p>Diferenças entre os tipos de certificado SSL:</p>            
+        
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Descrição</th>                
+                </tr>  
+                <tr>
+                    <td>Self Signed (auto assinado)</td>
+                    <td>Os certificados SSL Self Signed, ou “auto-assinados”, são aqueles gerados pela própria empresa. 
+                        Eles só podem ser usados internamente e não operam em conjunto com os navegadores de internet. Não possuem confiança pública.
+                    </td>                
+                </tr>  
+                <tr>
+                    <td>Domain Validated</td>
+                    <td>A segunda modalidade de certificados é a “Domain Validated”, que pode ser traduzida livremente como um certificado de “validação de domínio”.<br>
+                        O que acontece neste caso, como o próprio nome já indica, é somente a validação do domínio. A autoridade responsável por emitir a certificação somente atesta, 
+                        de maneira totalmente automática, que aquele domínio acessado existe e que a pessoa que solicita o certificado para o site possui posse daquele domínio.<br>
+                        Tal validação é feita com a ajuda da base de dados da entidade responsável pelo registro daquele domínio.
+                    </td>                
+                </tr>  
+                <tr>
+                    <td>Fully Authenticated</td>
+                    <td>Se estamos falando sobre quais as diferenças entre os tipos de SSL, é preciso notar que o “Fully Authenticated”, como o próprio nome indica, é o mais “completo” entre os três que foram citados até agora em nosso texto.<br>
+                        Conhecido como “Validação de Organização”, o certificado SSL Fully Authenticated é o mais valioso até aqui pois garante toda a empresa como um agente totalmente idôneo.<br>                    
+                        Ao contratar um certificado de SSL Fully Authenticated, o site ganhará uma chave ou cadeado na barra de endereços, deixando claro para os usuários o nível de segurança proporcionado por ele.<br>
+                        Neste certificado constará as informações das empresas, comprovando ao usuário que ele está conversando com a “pessoa” certa.
+                    </td>                
+                </tr>  
+                <tr>
+                    <td>Certificado SSL/TLS EV</td>
+                    <td>Conhecida como uma certificação “extended validation”, ou de “validação estendida”, esta modalidade garante uma saída ainda mais eficaz para os problemas de segurança dentro do ambiente virtual.<br>
+                        Essa certificação permite que usuários visualizem a razão social da empresa na barra de endereço na coloração verde. Comprovando o ambiente seguro e garantido que a certeza de “quem” está por trás daquela página.<br>
+                        Para ter esse tipo de certificado é necessário:
+                        <li>Mínimo de 3 anos de experiência no mercado</li>
+                        <li>Disponível para clientes de navegadores como Firefox, Internet Explorer, Google Chrome, Safari e Opera entre outros.</li>
+                    </td>                
+                </tr>  
+            </table>
+            <p>O processo de comunicação por meio de certiifcado digital ocorre da seguinte forma:</p>             
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>1 - Autenticação</th>                
+                </tr>  
+                <tr>                    
+                    <td>O remetente apresenta seu certificado digital para o receptor durante o processo de estabelecimento de conexão.<br>
+                        O receptor verifica a autenticidade do certificado digital do remetente.<br>
+                        Isso envolve a verificação da assinatura digital do certificado usando a chave pública da Autoridade Certificadora (AC)
+                        emissora.<br>
+                        Se a assinatura for válida e o certificado estiver dentro do período de validade, o remetente é considerado autenticado.
+                    </td>
+                </tr>
+                <tr>
+                    <th>2 - Troca de Chaves</th>                
+                </tr>  
+                <tr>
+                    <td>Após a autenticação bem-sucedida, ocorre uma troca de chaves.<br>
+                        O remetente e o receptor geram uma chave de sessão compartilhada.<br>
+                        A chave de sessão é usada para criptografar e descriptografar os dados transmitidos.
+                    </td>
+                </tr>
+                <tr>
+                    <th>3 - Criptografia</th>                
+                </tr>  
+                <tr>
+                    <td>Os dados a serem transmitidos são criptografados pelo remetente usando a chave de sessão compartilhada.
+                    </td>
+                </tr>
+                <tr>
+                    <th>4 - Transmissão dos dados</th>                
+                </tr>  
+                <tr>
+                    <td>Os dados criptografados são transmitidos pela rede, como a Internet, para o receptor.<br>
+                        Durante a transmissão, mesmo que um invasor consiga interceptar os dados, eles não serão legíveis devido à criptografia
+                        aplicada.
+                    </td>
+                </tr>
+                <tr>
+                    <th>5 - Descriptografia</th>                
+                </tr>  
+                <tr>
+                    <td>O receptor recebe os dados criptografados.<br>
+                        Usando a chave de sessão compartilhada, o receptor descriptografa os dados, tornando-os legíveis novamente.                
+                    </td>
+                </tr>
+            </table>
+            <p>Além da autenticação e criptografia, os certificados digitais também podem garantir a integridade dos dados.<br>
+                O remetente pode aplicar uma função hash criptográfica aos dados antes de criptografá-los.<br>
+                O valor de hash resultante é assinado digitalmente com a chave privada do remetente.<br>
+                O receptor pode verificar a integridade dos dados recalculando o valor de hash e comparando-o com o valor assinado.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Chave de Sessão</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Uma  é uma chave criptográfica temporária que é gerada e compartilhada entre dois ou mais participantes
+            para garantir a confidencialidade e a integridade dos dados em uma comunicação segura. A chave de sessão é usada para
+            criptografar e descriptografar os dados transmitidos durante uma sessão específica, e ela é geralmente descartada após o
+            término da sessão.
+            </p>        
+            <p>Aqui estão algumas informações importantes sobre as chaves de sessão:</p>
+            
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Geração</th>
+                    <td>A chave de sessão é gerada por um algoritmo criptográfico adequado. Algoritmos de geração de chaves, como o
+                    Diffie-Hellman, podem ser usados para criar uma chave secreta compartilhada entre os participantes. Essa chave é
+                    derivada de informações trocadas durante um processo seguro de acordo de chaves.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Temporariedade</th> 
+                    <td>A chave de sessão é projetada para ser usada apenas durante uma sessão específica e por um período
+                    limitado de tempo. Isso reduz o risco de comprometimento da chave ao longo do tempo. Uma nova chave de sessão é gerada
+                    para cada sessão subsequente.
+                    </td>
+                </tr>
+                <tr>                    
+                    <th>Compartilhamento</th> 
+                    <td>O compartilhamento pode ocorrer por meio de técnicas como usando criptografia de chave pública ou o estabelecimento
+                    prévio de uma chave secreta compartilhada.
+                    </td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Criptografia</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A criptografia pode ocorrer de forma simétrica e assimétrica e são duas abordagens diferentes para criptografar e descriptografar dados.<br>
+            Cada uma possui características distintas e é adequada para diferentes cenários de segurança. 
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Criptografia Simétrica</th>            
+                    <td>Também conhecida como criptografia de chave privada ou criptografia de chave única.<br>
+                    Na criptografia simétrica, a mesma chave é usada tanto para criptografar quanto para descriptografar os dados.<br>
+                    A chave de criptografia é compartilhada entre o remetente e o destinatário de forma segura antes da comunicação.<br>
+                    Algoritmos comuns de criptografia simétrica incluem o AES (Advanced Encryption Standard) e o DES (Data Encryption Standard).<br>
+                    A criptografia simétrica é mais rápida e eficiente do que a criptografia assimétrica, pois não envolve operações matemáticas complexas.<br>
+                    No entanto, um desafio da criptografia simétrica é o compartilhamento seguro da chave, especialmente quando há muitos participantes envolvidos.
+                    </td>
+                </tr>
+                <tr>
+                    <th>Criptografia Assimétrica</th>
+                    <td>Também conhecida como criptografia de chave pública.<br>
+                    Na criptografia assimétrica, um par de chaves é usado: uma chave pública e uma chave privada.<br>
+                    A chave pública é amplamente distribuída e usada para criptografar os dados pelo remetente.<br>
+                    A chave privada corresponde à chave pública e é mantida em segredo pelo destinatário para descriptografar os dados.<br>
+                    Os algoritmos de criptografia assimétrica são baseados em funções matemáticas complexas, como RSA (Rivest-Shamir-Adleman) e ECC (Elliptic Curve Cryptography).<br>
+                    A criptografia assimétrica é ideal para autenticação e troca segura de chaves, mas é computacionalmente mais intensiva e lenta do que a criptografia simétrica.
+                    </th>
+                </tr>
+            </table>
+            <p><strong>Uso combinado:</strong></p>            
+            <p>Para aproveitar os benefícios de ambas as abordagens, a criptografia simétrica e assimétrica são frequentemente usadas em conjunto.<br>
+            Geralmente, a criptografia simétrica é usada para criptografar os dados propriamente ditos, 
+            enquanto a criptografia assimétrica é usada para estabelecer uma comunicação segura e compartilhar a chave simétrica.<br>
+            Esse método é chamado de criptografia híbrida e combina a eficiência da criptografia simétrica com a segurança da criptografia assimétrica.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Certificado Auto Assinado</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para gerar um certificado autoassinado no Linux, você pode usar a ferramenta OpenSSL, amplamente disponível na maioria das distribuições Linux. 
+                Aqui estão os passos básicos para gerar um certificado autoassinado:
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Passo 1: Instalar o OpenSSL</th>
+                    <td>Execute o comando:<strong> sudo apt-get install openssl</strong>
+                    </td>
+                </tr>            
+                <tr>
+                    <th>Passo 2: Gerar a chave privada</th>
+                    <td>Abra um terminal e execute o seguinte comando para gerar uma chave privada:<strong> openssl genpkey -algorithm RSA -out chave_privada.key</strong><br>
+                    Isso irá gerar uma chave privada RSA de 2048 bits e salvá-la em um arquivo chamado "chave_privada.key".
+                    </td>
+                </tr>
+                <tr>
+                    <th>Passo 3: Gerar o certificado autoassinado</th>
+                    <td>Com a chave privada gerada, agora você pode gerar o certificado autoassinado. Execute o seguinte comando: <br><strong>openssl req -new -x509 -sha256 -key chave_privada.key -out certificado.crt -days 365</strong><br> 
+                    Você será solicitado a fornecer algumas informações durante o processo de geração do certificado, como nome da organização, 
+                    nome comum (geralmente o nome de domínio) e outras informações relevantes.
+                    </td>
+                </tr>
+            </table>
+            <p>No exemplo acima será gerado um certificado autoassinado válido por 365 dias e salvá-lo em um arquivo chamado "certificado.crt".
+            </p>
+            <p>Verifique na internet opções de geração de certificados por meio da  "Let’s Encrypt" / "Certbot": <a href="https://letsencrypt.org/pt-br/getting-started/">Let’s Encrypt</a>
+            </p>
+        </div>
+            
+        O que são chaves SSH
+        Você pode se conectar a servidores SSH remotos através de vários métodos. Um deles se baseia no uso de senhas, apenas, e você deve evitá-lo sempre que possível.
+        
+        Permitir que um servidor SSH remoto possa ser acessado através de um simples conjunto de usuário e senha (mesmo que forte) pode representar uma verdadeira “porta de entrada” para ações indesejadas.
+        
+        Nesse sentido, vale também dizer que scripts automatizados são atualmente capazes de “forçar a entrada” de maneira até bem fácil, principalmente nos casos em que senhas fracas são utilizadas.
+        
+        Entretanto, ao utilizar chaves SSH para autenticação, você garante muito mais segurança e tranquilidade, além de agilidade. Através das chaves privada e pública, servidor remoto e máquina local “conversam” entre si.
+        
+        Assim, o acesso ao servidor é liberado ou não, dependendo de como tudo transcorre. Além disso, como você já deve ter percebido, as chaves SSH funcionam em pares: há a chave pública e a chave privada.
+        
+        Como funcionam as chaves SSH
+        Trata-se de um conjunto de chaves criptografadas capazes de assegurar a autenticação. Você deve manter uma chave privada armazenada localmente, de preferência em um local seguro e com as permissões de acesso devidamente ajustadas.
+        
+        Em seguida, é necessário que você copie a chave pública para os servidores nos quais necessita de acesso. Esta chave pode inclusive ser compartilhada sem qualquer risco.
+        
+        As chaves pública e privada funcionam sempre em “dupla”, sendo que o elemento privado (private key) é o único capaz de descriptografar as informações criptografadas pelo elemento público (public key).
+        
+        Assim, é fácil perceber que você pode logar em qualquer máquina remota que possua a sua chave pública armazenada no diretório correto. Para isto, basta que você também esteja em posse da chave privada correspondente/autorizada.
+        
+        Ou seja, no momento de uma tentativa de conexão através de chaves SSH, o servidor remoto verifica se o cliente está em posse de uma chave privada correspondente, e então libera o acesso caso esta realmente exista.
+        
+        Neste modo seguro de acesso ao SSH, a utilização de uma senha é desnecessária, embora também seja possível proteger sua chave privada deste modo, para ainda mais segurança.
+        
+        Onde ficam as chaves?
+        Por padrão, as chaves SSH são armazenadas no diretório ~/.ssh. Ou seja, trata-se de um diretório oculto, localizado dentro da pasta home do usuário.
+        
+        É interessante mencionar também que dentro deste diretório existe um arquivo chamado authorized_keys. Tal arquivo, no computador remoto, contém as chaves públicas com permissão de acesso SSH.
+        
+        No momento do pedido de autenticação, o servidor fará uma verificação neste arquivo, checando se você realmente está em posse de uma chave privada que pertence ao mesmo par (esta, armazenada localmente).
+        
+        Assim, perceba porque trabalhamos sempre com um par de chaves (key pair), e porque este método de acesso ao SSH é muito mais seguro.
+        
+        Obviamente, se alguma outra pessoa obter acesso à sua chave privada, ela também será capaz de se conectar ao servidor através do shell seguro.
+        
+        É por este motivo que é imprescindível mantê-la à salvo, até mesmo porque ela possibilita logins rápidos e sem uso de senhas (basta um ssh usuário@IP_do_Servidor para a autenticação).
+        
+        Porém, não se preocupe: este guia também fornece algumas dicas para que você proteja suas chaves. Além disso, segue abaixo um breve descritivo de alguns termos relacionados:
+        
+        ~/.ssh/authorized_keys: arquivo que guarda as chaves públicas autorizadas, na máquina remota;
+        ~/.ssh/id_rsa: esta é a chave privada (armazenada localmente);
+        ~/.ssh/id_rsa.pub: chave pública (deve ser copiada para o servidor remoto);
+        Como gerar as chaves SSH
+        O processo de geração das chaves SSH é bem simples, e deve ser feito na máquina cliente. Em primeiro lugar, acesse um terminal e digite o comando abaixo:
+        
+        ssh-keygen -t rsa
+        Logo a seguir, a ferramenta iniciará o processo de criação do key pair (par de chaves). Uma pergunta inicial é feita, e ela diz respeito ao arquivo e ao diretório onde as chaves serão geradas.
+        
+        Eu recomendo que você não altere nada, aqui. Permaneça com o padrão sugerido, apenas teclando ENTER. Continuando, o componente de geração das chaves pede que você informe uma passphrase.
+        
+        Na verdade, aqui o utilitário está perguntando se você deseja informar uma frase secreta, uma senha, para que ele então criptografe a sua chave privada.
+        
+        Embora seja totalmente possível trabalhar com chaves SSH sem utilizar senha alguma, eu recomendo firmemente que você proteja sua chave privada com uma passphrase (robusta).
+        
+        Em outras palavras: agindo assim você adiciona uma camada extra de proteção ao conjunto, e mesmo que algum atacante e/ou pessoa não autorizada obtenha acesso à sua chave privada, ainda assim será necessário conhecer a frase secreta para descriptografá-la.
+        
+        Ou seja, em uma situação assim esta hipotética pessoa ainda estará impedida de acessar os seus servidores. Isto pode até mesmo fornecer algum tempo para que você então corrija o problema, substituindo o key pair comprometido.
+        
+        Agora, continuando com o processo de geração das chaves, após informar e confirmar a sua passphrase (ou não), tecle ENTER e o processo será finalizado.
+        
+        Obs: caso não deseje utilizar uma senha em conjunto com sua chave privada, basta teclar ENTER sem digitar nada, duas vezes seguidas.
+        
+        Neste momento, você obterá uma saída parecida com a imagem abaixo:
+        
+        Geração de chaves SSH
+        Pronto! Você acabou de criar um par de chaves para a autenticação SSH.
+        
+        Como copiar a chave pública SSH para o servidor remoto
+        Agora que você gerou seu par de chaves RSA, chegou o momento de copiar a chave pública para o servidor remoto.
+        
+        Assim, você será capaz de se logar via SSH de forma prática e segura. Caso você tenha informado uma senha de proteção para a sua private key, será necessário digitá-la para que a autenticação seja concluída.
+        
+        Existem vários modos de realizar a cópia da chave pública para o computador remoto. Vamos agora, portanto, conferir alguns deles.
+        
+        É importante ressaltar, antes de mais nada, que neste momento você ainda deve ser capaz de se autenticar na máquina remota através de um usuário e uma senha.
+        
+        Como copiar a chave através da ferramenta ssh-copy-id
+        Este é o método mais fácil e rápido. Esta ferramenta adiciona rapidamente sua chave pública no servidor Linux remoto desejado. Ela a adicionará, mais precisamente, ao arquivo authorized_keys (veja acima).
+        
+        Para copiar sua chave pública para o computador remoto, utilize um comando semelhante ao abaixo, lembrando sempre de substituir “usuário” e “IP_Do_Servidor” pelas informações corretas:
+        
+        ssh-copy-id usuário@IP_Do_Servidor
+        Obs: neste ponto, será necessário informar os dados de acesso baseados em senha com os quais você se loga atualmente no servidor.
+        
+        Assim, e lembrando mais uma vez que este procedimento deve ser realizado no computador onde o par de chaves foi gerado (local), você obterá informações semelhantes às abaixo no seu terminal:
+        
+        Geração de chaves SSH
+        Se você observar a imagem acima, perceberá que foi solicitada a digitação da senha de proteção da chave privada (id_rsa). Se você não informou uma senha durante a geração, naturalmente esta não será aqui solicitada.
+        
+        Antes do processo de cópia ser concluído, é possível que você receba algumas mensagens diferentes no terminal. Tais mensagens podem ser iniciadas pela frase “The authenticity of host…”, por exemplo.
+        
+        Isto acontece somente na primeira vez em que você realiza o procedimento. Basta, na sequência, confirmar com yes/sim.
+        
+        Pronto! Você acaba de copiar sua chave pública para o servidor. A partir deste momento, já é possível utilizar o par para a devida autenticação.
+        
+        Como copiar a chave através do próprio SSH
+        Nesse sentido, você também pode copiar sua chave pública para um servidor remoto através do próprio SSH.
+        
+        Isto é muito útil caso o utilitário ssh-copy-id não esteja disponível, por qualquer motivo que seja. Neste caso, use um comando como o abaixo:
+        
+        cat ~/.ssh/id_rsa.pub | ssh usuário@IP_Do_Servidor  "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+        Obs: lembre-se apenas de substituir “usuário” e “IP_Do_Servidor” pelos seus dados reais de acesso.
+        
+        Ou seja, através do comando acima, você pode “extrair” e enviar diretamente para o servidor remoto, através do SSH, o conteúdo do arquivo id_rsa.pub (a chave pública).
+        
+        Nesse sentido, perceba também que o comando faz com que o conteúdo extraído (a public key) seja adicionado ao arquivo ~/.ssh/authorized_keys.
+        
+        Mais uma vez, é importante lembrar que para a concretização do procedimento, você deverá digitar a senha da sua chave privada (caso tenha informado alguma).
+        
+        Como copiar a chave SSH manualmente
+        Se você prefere um método mais simples (caso o sh-copy-id não esteja disponível), é também possível realizar a cópia da chave pública para a máquina remota de forma totalmente manual.
+        
+        Claro, a definição de “simplicidade” pode variar de pessoa para pessoa, e justamente devido a este motivo achei interessante introduzir mais de um método de cópia.
+        
+        Basicamente, neste caso, você deve abrir o arquivo ~/.ssh/id_rsa.pub no seu computador local, copiar seu conteúdo e colá-lo no final do arquivo ~/.ssh/authorized_keys do servidor remoto.
+        
+        Agora, passo a passo: abra o arquivo ~/.ssh/id_rsa.pub na máquina local (onde o par de chaves foi gerado). Copie todo o seu conteúdo (para a área de transferência ou para um outro arquivo de texto).
+        
+        Acesse o servidor remoto, através do método de sua preferência. Neste caso, você pode até mesmo utilizar um cliente FTP ou algum gerenciador de arquivos fornecido pela sua empresa de hospedagem.
+        
+        Acesse o diretório ~/.ssh. Nele, você encontrará o arquivo authorized_keys. Abra-o ou baixe-o para sua máquina local. O importante aqui é editá-lo e adicionar o conteúdo do arquivo id_rsa.pub em seu final.
+        
+        Caso tenha baixado o arquivo, edite-o localmente, portanto. Adicione nele o conteúdo do arquivo id_rsa.pub, salve a alteração e envie-o novamente para o servidor, substituindo qualquer um que aí exista.
+        
+        Pronto, você acaba de “instalar” sua chave pública manualmente no servidor remoto.
+        
+        Como acessar o servidor através de chaves SSH
+        Se você chegou até aqui, já possui um par de chaves SSH gerado. Uma chave privada (a id_rsa) e uma chave pública (a id_rsa.pub).
+        
+        Dessa forma, a autenticação via chaves SSH no servidor Linux remoto é agora perfeitamente possível. Você nem precisará digitar uma senha para concluir a conexão, embora eu recomende mais uma vez que você projeta sua chave privada mediante o uso de uma senha (veja acima).
+        
+        Basicamente, neste ponto, para realizar a conexão basta que você digite o seguinte no terminal:
+        
+        ssh usuário@IP_Do_Servidor
+        Por exemplo:
+        
+        ssh root@0.0.0.0
+        Apenas lembre-se de utilizar os dados corretos, ou seja, informe seu usuário e o IP do servidor.
+        
+        Como fazer backup das chaves pública e privada
+        Basicamente, você deve manter seu par de chaves à salvo de imprevistos. O arquivo mais importante, na verdade, é o id_rsa. Ele representa sua chave privada.
+        
+        E, caso você perca sua chave privada, por exemplo, pelo menos a princípio será impedido de se logar nos seus servidores.
+        
+        De qualquer forma, é bem fácil fazer um backup na íntegra, contendo o par de chaves SSH. Basta copiar o conteúdo do diretório ~/.ssh para um local seguro.
+        
+        Copie tudo: id_rsa, id_rsa.pub, etc. Faça cópias para um HD ou SSD externo, para um pen drive, para sua conta em algum serviço de armazenamento seguro em nuvem, etc.
+        
+        Simples, não?
+        
+        Como proteger as chaves SSH
+        Em primeiro lugar, após logar-se no servidor remoto, digite o comando abaixo:
+        
+        sudo chmod -R 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys
+        Basicamente, o comando acima ajusta as permissões do diretório ~/.ssh, de forma tal a permitir que apenas o proprietário (no caso, você) tenha acesso a ele.
+        
+        Além disso, as permissões do arquivo authorized_keys também são ajustadas, de forma mais restritiva.
+        
+        Você deve, além disso, proteger sua chave privada mediante uma passphrase (veja acima). Finalmente, recomendo que você desabilite logins baseados em senha no servidor.
+        
+        Nesse sentido, você encontra estes procedimentos em detalhes, além de mais alguns outros, em vários guias aqui no TecLinux. Confira acima os links para os mesmos.
+        
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>

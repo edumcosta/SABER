@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <!-- A propriedade lang ofece para o usuário a opção de traduzir -->
+    <head>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-dark-grey.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            .w3-theme-l5 {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-l4 {color:#000 !important; background-color:#e5e3dc !important}
+            .w3-theme-l3 {color:#000 !important; background-color:#cbc7b9 !important}
+            .w3-theme-l2 {color:#000 !important; background-color:#b1ab95 !important}
+            .w3-theme-l1 {color:#fff !important; background-color:#978e72 !important}
+            .w3-theme-d1 {color:#fff !important; background-color:#6a634e !important}
+            .w3-theme-d2 {color:#fff !important; background-color:#5e5845 !important}
+            .w3-theme-d3 {color:#fff !important; background-color:#524d3d !important}
+            .w3-theme-d4 {color:#fff !important; background-color:#464234 !important}
+            .w3-theme-d5 {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme-light {color:#000 !important; background-color:#f7f7f4 !important}
+            .w3-theme-dark {color:#fff !important; background-color:#3b372b !important}
+            .w3-theme-action {color:#fff !important; background-color:#3b372b !important}
+
+            .w3-theme {color:#fff !important; background-color:#766f57 !important}
+            .w3-text-theme {color:#766f57 !important}
+            .w3-border-theme {border-color:#766f57 !important}
+
+            .w3-hover-theme:hover {color:#fff !important; background-color:#766f57 !important}
+            .w3-hover-text-theme:hover {color:#766f57 !important}
+            .w3-hover-border-theme:hover {border-color:#766f57 !important}
+        </style>
+
+        <title>Linux - #edumcosta</title>
+
+    </head>
+    <body>
+        <div class="w3-container w3-theme-d5 w3-monospace">
+            <h1>Linux - #edumcosta</h1>                               
+            <hr>                   
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace"> 
+            <p>Ir Para:<a name="Índice"></a></p>
+            <ul>
+                <li><a href="../../Linux.html">Página Principal</a></li>
+                <ul>
+                    <li><a href="../servicos/servicos.html">Serviços</a></li>                    
+                    <ul>                        
+                        <li><a href="#Desabilitar Cloud Init">Desabilitar Cloud Init</a></li>
+                        <li><a href="#Acesso SSH com o Usuário Root">Acesso SSH com o Usuário Root</a></li>
+                        <li><a href="#Definir Time Zone">Definir o Time Zone</a></li>
+                        <li><a href="#Se Linux">Se Linux</a></li>
+                        <li><a href="#Hyper V: Acesso Host a Máquinas Virtuais via NAT">Hyper V: Acesso Host a Máquinas Virtuais via NAT.</a></li>                    
+                        <li><a href="#NTP">NTP - Protocolo de Sincronismo de Horário</a></li>                    
+                        <li><a href="#VirtualBox Oracle">VirtualBox Oracle</a></li>                                            
+                        <li><a href="#KVM - Virtualização Linux">KVM - Virtualização Linux</a></li>                                            
+                        <li><a href="#Servidor WEB - NGINX">Servidor WEB - NGINX</a></li>                    
+                        <li><a href="#Interface de Gerenciamento Webmin">Interface de Gerenciamento Webmin</a></li>                    
+                        <li><a href="#Zabbix - Monitoramento">Zabbix - Monitoramento</a></li>
+                        <li>Open VPN https://linuxhint.com/openvpn-server-ubuntu-22-04/</li>
+                        <li>IPTables</li>
+                        <li><a href="#Docker">Docker</a></li>                        
+                        <li>MinIO Object Storage for Linux</li>
+                        <li>Backup do Sistema "rsync"</li>
+                        
+
+                    </ul>
+                </ul>
+            </ul>
+        </div>    
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Serviços<a name="Serviços"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Esta seção explica a utilização de serviços Linux.</p>            
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Desabilitar Cloud Init<a name="Desabilitar Cloud Init"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Existem duas formas de desabilitar o Cloud Init:</p>
+            <ul>
+                <li>Criando o arquivo: <strong>"sudo touch /etc/cloud/cloud-init.disabled"</strong></li>
+                <li>Desinstalando o pacote Cloud Init:</li>
+                <ul>
+                    <p>1. Desinstala o pacote: <strong>"sudo dpkg-reconfigure cloud-init"</strong><br>
+                    2. Remove o pacote: <strong>"sudo apt-get purge cloud-init"</strong><br>
+                    3. Remove o diretório: <strong>"sudo rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/"</strong>
+                    </p>
+                </ul>
+            </ul>
+            <p>Reniciar o servidor.</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Definir o Time Zone<a name="Definir o Time Zone"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para definir o Time Zone execute o comando: <strong>"sudo dpkg-reconfigure tzdata"</strong> e siga as instruções.</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Acesso SSH com o Usuário Root<a name="Acesso SSH com o Usuário Root"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O acesso via ssh pelo usuário "root" pode ser uma política padrão e conforme o módulo responsável pelo gerenciamento das políticas dse segurança, portanto é importante verificá-las, "Se Lixux" e "PAM".</p> 
+            <p>Outra forma para conceder esse privilégio é definir essa política de acesso, diretamente no arquivo de configuração <strong>"'/etc/ssh/sshd_config'"</strong> do serviço de "ssh".
+                No conteúdo desse arquivo, na seção de autenticação "# Authentication:", modifique o parâmetro "PermitRootLogin" para "yes" <strong>PermitRootLogin yes</strong>. 
+                Lembre-se que o caractere "#" corresponde a um comentário.</p>
+            <p>Após a modificação, reinicie o serviço "ssh" com o comando: <strong>"sudo service ssh restart"</strong></p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Se Linux<a name="Se Linux"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para interagir com o Ser Linux é necessário ter a aplicação "sestatus". Para instalá-la utilize o comando <strong>sudo apt-get install policycoreutils</strong>.
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Hyper V: Acesso Host a Máquinas Virtuais via NAT<a name="Hyper V: Acesso Host a Máquinas Virtuais via NAT"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para acessar máquinas virtualizadas diretamente pelo host, é preciso ativar a funcionalidade NAT para uma rede específica no Windows.</p>             
+            <p>Para isso, crie ou utilize adaptador virtual que tenha como tipo de conexão "Rede Interna" e a partir do adaptador escolhido, 
+                vá até as configurações desse adaptador no Windows e indique um endereço IPV4 para ele, lembrando que ele servirá como o endereço de início da rede 
+                que deverá ser utilizada nas máquinas virtuais que utilizem esse adaptador.</p>
+            <p>Exemplo: Vamos atribuir para esse adaptador de rede nas propriedades de IPV4, o endereço 192.168.16.1/24 (255.255.255.0). 
+                Nas configurações desse adaptador, não informamos um default gateway e nem um DNS, lebrando que esse adaptador fará a função de gateway entre a rede do host e ás máquinas virtuais.
+            </p>
+            <p>Uma vez configurado o endereço IP do adaptador, abra o terminal power shell como administrador e execute o comando <strong>"Get-NetNat"</strong> para verificar as redes NAT configuradas.            
+            </p>
+            <p>Caso o seu endereço de rede atrubído ao adaptador de rede não seja listado, utilize o conando <strong>"New-NetNat -Name NAT-REDE-1 -InternalIPInterfaceAddressPrefix 192.168.16.0/24"</strong>, 
+                para criar uma rede NAT e que será utilizada como o endereço NAT para o adaptador.</p>
+            <p>Nas máquinas virtuais utilize endereço IP estático, caso você não tenha um servidor DHCP habilitado non escopo dessa rede, 
+                uma vez que o Hyper-V não possui a função de atuar como um servidor DHCP, como por exemplo poderíamos configurar um máquina virtual com as seguintes características de rede:
+            </p>
+            <li>Endereço IPV4: 192.168.16.10</li>
+            <li>Máscara de Rede: 255.255.255.0</li>
+            <li>Gateway: 192.168.16.1</li>
+            <li>DNS: 8.8.8.8</li>
+            <p><strong>Observação:</strong> A configuraçaõ desse tipo de ponte tem somente o objetivo de facilitar a comunicação entre o hospedeiro e
+                 serviços presentes nas máquinas virtuais, uma vez que com a criação dessa camada, ataques realizados do host para as máquinas virtuais passam a ter alcance pela rede.    
+            </p>
+            <p>Abaixo, a saída do comando "Get-NetNat".</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>C:\Windows\system32> Get-NetNat<br>
+            <br>
+            Name                             : NAT-REDE-1<br>
+            ExternalIPInterfaceAddressPrefix :<br>
+            InternalIPInterfaceAddressPrefix : 192.168.16.0/24<br>
+            IcmpQueryTimeout                 : 30<br>
+            TcpEstablishedConnectionTimeout  : 1800<br>
+            TcpTransientConnectionTimeout    : 120<br>
+            TcpFilteringBehavior             : AddressDependentFiltering<br>
+            UdpFilteringBehavior             : AddressDependentFiltering<br>
+            UdpIdleSessionTimeout            : 120<br>
+            UdpInboundRefresh                : False<br>
+            Store                            : Local<br>
+            Active                           : True
+            </p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>NTP - Protocolo de Sincronismo de Horário<a name="NTP"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Durante o processo de instalação é estabelecida uma zona de localização. Utilize o comando <strong>timedatectl list-timezones</strong> para verifricar as zonas de configuração</p>
+            <p>No exemplo abaixo estou verificando as zonas consideradas como "Americas" e localidade "São Paulo".</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ timedatectl list-timezones |grep -E "America/S"[a,A]o<br>
+                America/Sao_Paulo                
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para verificar o status do serviço responsável pelo sincronismo NTP, utilize o comando <strong>systemctl status systemd-timesyncd</strong>, para verificar o status do serviço NTP e algumas informações desse serviço.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ systemctl status systemd-timesyncd<br>
+                ● systemd-timesyncd.service - Network Time Synchronization<br>
+                     Loaded: loaded (/lib/systemd/system/systemd-timesyncd.service; enabled; vendor preset: enabled)<br>
+                     Active: active (running) since Tue 2023-03-28 11:37:05 UTC; 7h ago<br>
+                       Docs: man:systemd-timesyncd.service(8)<br>
+                   Main PID: 579 (systemd-timesyn)<br>
+                     Status: "Initial synchronization to time server 185.125.190.58:123 (ntp.ubuntu.com)."<br>
+                      Tasks: 2 (limit: 3440)<br>
+                     Memory: 1.3M<br>
+                        CPU: 114ms<br>
+                     CGroup: /system.slice/systemd-timesyncd.service<br>
+                             └─579 /lib/systemd/systemd-timesyncd<br>
+                <br>
+                Mar 28 11:37:05 vm-ubuntu-v22-a systemd[1]: Starting Network Time Synchronization...<br>
+                Mar 28 11:37:05 vm-ubuntu-v22-a systemd[1]: Started Network Time Synchronization.<br>
+                Mar 28 11:37:05 vm-ubuntu-v22-a systemd-timesyncd[579]: Network configuration changed, trying to establish connection.<br>
+                Mar 28 11:37:07 vm-ubuntu-v22-a systemd-timesyncd[579]: Network configuration changed, trying to establish connection.<br>
+                Mar 28 11:37:19 vm-ubuntu-v22-a systemd-timesyncd[579]: Network configuration changed, trying to establish connection.<br>
+                Mar 28 11:37:28 vm-ubuntu-v22-a systemd-timesyncd[579]: Initial synchronization to time server 185.125.190.58:123 (ntp.ubuntu.com).
+            </p>                
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Portanto conforme o resultado do comando acima, podemos perceber que o serviço NTP utiliza como fonte de infoprmação o servidor "ntp.ubuntu.com", 
+                mas se quisermos sincronizar com uma outra fonte NTP, ou fazer um próprio servidor NTP para a rede, precisaremos instalar o pacote "ntp" <strong>sudo apt install ntp</strong>.</p>
+            <p><strong>Observação: </strong>Ao instalarmos o pacote "ntp", o atual serviço <strong>"systemd-timesyncd"</strong> será removido, e o pacote "ntp" passará a ser o serviço NTP.</p>            
+            <p>Após a instalação por padrão será criado um arquivo de configuração em <strong>"/etc/ntp.conf"</strong> e que contem os servidores "NTP".</p>
+            <p>pool 0.ubuntu.pool.ntp.org iburst<br>
+                pool 1.ubuntu.pool.ntp.org iburst<br> 
+                pool 2.ubuntu.pool.ntp.org iburst<br>
+                pool 3.ubuntu.pool.ntp.org iburst
+            </p>
+            <p>Para verificar o status do serviço "ntp", utilize o comando <strong>"systemctl status ntp"</strong> e utilize o comando <strong>"ntpq -p"</strong> deve imprimir as estatísticas que podemos usar para verificar a conectividade, 
+                lembrando que a porta 123 corresponde a porta utilizada para o sincronismo.</p>
+            </p>
+            <p>Desde que seu servidor esteja sincronizando corretamente e a porta 123 esteja aberta entre eles através do firewall, você poderá reconfigurar seus nós para se conectar ao seu servidor,
+                alterando os endereços do pool na configuração do seu cliente (dentro de /etc/ntp.conf ) para apontar para o endereço IP
+                ou o nome de domínio totalmente qualificado (FQDN) do seu servidor NTP em vez dos servidores do Ubuntu externos a sua rede.
+            </p>
+            <p>Para utilizar o serviço de forma centralizada para os clientes que se conectem a esse serviço "ntp", é preciso verificar a configuração no arquivo <strong>/etc/ntp.conf</strong> e que pode se parecer como <strong>"#restrict 192.168.123.0 mask 255.255.255.0 notrust</strong><br>
+            As configurações dessa linha deve estar de acordo com a configuração da sua rede, endereçamento IP e sub-rede, lembrando que essa essa linha está comentada, e a opção <strong>notrust</strong> deve ser removida.
+            </p>
+            <p>Para utiizar o servidor NTP como o servidor de horário designado para sua rede de clientes, utilize os parâmetros de configuração no servidor de DHCP (option ntp-servers 192.168.1.1;), ou informar no arquivo de configuração de outros servidores o servidor "NTP".</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>VirtualBox Oracle<a name="VirtualBox Oracle"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Pontos importantes:</p>
+            <ul>
+                <li>Para a instalação, atualizar "sudo apt update" e executar a instalação: <strong>"sudo apt install virtualbox"</strong>.</li>
+                <li>Para executar uma VM em backgroud e sem interface, executar a VM como "headless".<br>
+                    Via linha de comando <strong>"VBoxManage startvm nome-maquina-virtual --type headless"</strong>
+                </li>
+                <li>Comando Virtual Box, "VBoxManage", para o gerenciamento de VM´s: https://www.oracle.com/technical-resources/articles/it-infrastructure/admin-manage-vbox-cli.html                    
+                </li>                
+            </ul>
+            <p>Principais comandos:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Comando</th>
+                    <th>Detalhe</th>
+                </tr>
+                <tr>
+                    <th>VBoxManage list vms</th>
+                    <td>Lista das máquinas virtuais configuradas.</td>
+                </tr>
+                <tr>
+                    <th>VBoxManage list runningvms</th>
+                    <td>Lista das máquinas virtuais em execução.</td>
+                </tr>
+                <tr>
+                    <th>VBoxManage showvminfo maquina-virtual</th>
+                    <td>Lista as informações de uma máquinas virtual.</td>
+                </tr>
+                <tr>
+                    <th>VBoxManage controlvm maquina-virtual [estado]</th>
+                    <td>Controla o estado de uma máquina virtual:<br>
+                        [estado] = pause|resume|reset|poweroff|savestate
+                    </td>
+                </tr>
+                <tr>
+                    <th>VBoxManage snapshot maquina-virtual [ação]</th>
+                    <td>Controla as imagens gravadas de uma máquina virtual:<br>
+                        [ação] = take &ltsnapshot-name> [--description=description] [--live] [--uniquename Number,Timestamp,Space,Force]<br>
+                        [ação] = delete &ltsnapshot-name><br>
+                        [ação] = restore &ltsnapshot-name><br>                      
+                        [ação] = edit &ltsnapshot-name | --current> [--description=description] [--name=new-name]<br>
+                        [ação] = list [--details | --machinereadable]<br>
+                        [ação] = showvminfo &ltsnapshot-name>            
+                    </td>
+                </tr>                
+            </table>
+        </div>                
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>KVM - Virtualização Linux<a name="KVM - Virtualização Linux"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para a instalação:</p> 
+            <ul>
+                <li>Atualize os repositórios <strong>"sudo apt update"</strong>.</li>
+                <li>Para instalar o KVM:  <strong>"sudo apt install -y qemu-kvm virt-manager libvirt-daemon-system virtinst libvirt-clients bridge-utils"</strong>.</li>
+                <ul>
+                    <li><strong>qemu-kvm</strong> – An opensource emulator and virtualization package that provides hardware emulation.</li>
+                    <li><strong>virt-manager</strong> – A Qt-based graphical interface for managing virtual machines via the libvirt daemon.</li>
+                    <li><strong>libvirt-daemon-system</strong> – A package that provides configuration files required to run the libvirt daemon.</li>
+                    <li><strong>virtinst</strong> – A set of command-line utilities for provisioning and modifying virtual machines.</li>
+                    <li><strong>libvirt-clients</strong> – A set of client-side libraries and APIs for managing and controlling virtual machines & hypervisors 
+                        from the command line.</li>
+                    <li><strong>bridge-utils</strong> – A set of tools for creating and managing bridge devices.</li>
+                </ul>                
+            </ul>
+            <p>Após a instalação adicionar o usuário corrente aos grupos:</p>
+            <ul>
+                <li><strong>sudo usermod -aG kvm $USER</strong></li>
+                <li><strong>sudo usermod -aG libvirt $USER</strong></li>
+            </ul>
+            <p>Configuração de início do serviço: <strong>sudo systemctl enable --now libvirtd</strong>
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Criação de Rede Bridge</strong><a name="> Criação de Rede Bridge"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Altere o seu arquivo de configuração de rede</strong> na pasta <strong>"/etc/netplan"</strong> com 
+            as configurações abaixo e aplicar as alterações: <strong>sudo netplan apply</strong>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>$ sudo vi /etc/netplan/01-netcfg.yaml<br>
+            network:<br>
+            version: 2
+            ethernets:<br>
+                enp0s3:<br>
+                    dhcp4: false<br>
+                    dhcp6: false<br>
+            # add configuration for bridge interface<br>
+            bridges:<br>
+                br0:<br>
+                    interfaces: [enp0s3]<br>
+                    dhcp4: false<br>
+                    addresses: [192.168.1.162/24]<br>
+                    macaddress: 08:00:27:4b:1d:45<br>
+                    routes:<br>
+                        - to: default<br>
+                        via: 192.168.1.1<br>
+                        metric: 100<br>
+                    nameservers:<br>
+                        addresses: [4.2.2.2]<br>
+                    parameters:<br>
+                        stp: false<br>
+                        dhcp6: false<br>            
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Observação:</strong></p>
+            <ul>
+                <li>A variável <strong>addresses: [192.168.1.162/24]</strong>, corresponderá
+                    ao endereço IP da bridge ligada a interface de rede.                        
+                </li>
+                <li>A variável <strong>macaddress: 08:00:27:4b:1d:45</strong>, deve corresponder
+                ao "MAC Address" da interface de rede. Algumas redes bloqueiam o tráfego de pacotes que não possuam "MAC Address".
+                </li>
+                <li>Verificar a política de checagem de "MAC Address Policy" em <strong>"/usr/lib/systemd/network/99-default.link"</strong>,
+                    caso seja <strong>"persistent"</strong>, modificar para "none"</strong>.
+                </li>
+            </ul> 
+        </div>                
+
+
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Servidor WEB - NGINX<a name="Servidor WEB - NGINX"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Acesse: <strong>https://docs.nginx.com/</strong></p>
+            <p>Quando um serviço do NGINX é iniciado um processo principal ("Master") é criado e que será responsável pelo gerenciamento dos "Worker Process".<br>
+                Os "Worker Process" são os responsáveis pelo tratamento das requisições, a partir do conceito de "Multiplexing I/O", que permite o trtamento dessas requisições de forma assíncrona.<br>
+                A quantidade de "Worker Process" dependerá da quantidade de núcleos disponíveis ou configurada.            
+            </p>
+            <p>Para instalar o NGINX, utilize <strong>"sudo apt install nginx"</strong>.</p>
+            <p>Após instalado utilize o comando "nginx -v" para ver o caminho do arquivo de configurações do "nginx".
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-t:~$ nginx -h<br>
+            nginx version: nginx/1.18.0 (Ubuntu)<br>
+            Usage: nginx [-?hvVtTq] [-s signal] [-c filename] [-p prefix] [-g directives]<br>
+            <br>
+            Options:<br>
+            -?,-h         : this help<br>
+            -v            : show version and exit<br>
+            -V            : show version and configure options then exit<br>
+            -t            : test configuration and exit<br>
+            -T            : test configuration, dump it and exit<br>
+            -q            : suppress non-error messages during configuration testing<br>
+            -s signal     : send signal to a master process: stop, quit, reopen, reload<br>
+            -p prefix     : set prefix path (default: /usr/share/nginx/)<br>
+            -c filename   : set configuration file (default: /etc/nginx/nginx.conf)<br>
+            -g directives : set global directives out of configuration file
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Configurações NGINX para a versão em questão.</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Configuração</th>
+                    <th>Local</th>
+                    <th>Detalhe</th>
+                </tr>
+                <tr>
+                    <td>worker_processes</td>
+                    <td>nginx.conf</td>
+                    <td>"Auto", corresponde a opção automática e conforme núcleos disponíveis para S.O. 
+                        Indique um número para definir uma qunatidade específica.</td>
+                </tr>
+                <tr>
+                    <td>worker_connections</td>
+                    <td>nginx.conf</td>
+                    <td>Indica a quantidade máxima de descritores que cada worker poderá criar no Linux.<br>
+                    Deve-se observar essa configuração e a configuração estipulada para o S.O. (Comando: <strong>"ulimit"</strong>.</td>
+                </tr>
+                <tr>
+                    <td>include</td>
+                    <td>Padrão para todos os arquivos</td>
+                    <td>Referencia arquivo ou arquivos em diretório.</td>
+                </tr>
+                <tr>
+                    <td>include /etc/nginx/conf.d/*.conf;<br>
+                        include /etc/nginx/sites-enabled/*;
+                    </td>
+                    <td>/etc/nginx/conf.d/*.conf<br>
+                        /etc/nginx/sites-enabled/
+                    </td>
+                    <td>Referencia os diretórios de configuração de servers/sites.
+                        <ul>
+                            <li>/etc/nginx/sites-enabled/ : O arquivo "default" possui a configuração padrão.</li>
+                            <li>/etc/nginx/conf.d/ : Os arquivos "*.conf" correspondem a cada server/site específico.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>server_name</th>
+                    <td>Configuração da Seção "server"</td>
+                    <td>Define o nome do HOST / DNS (Domínio Site)</td>                    
+                </tr>
+                <tr>
+                    <th>listen</th>
+                    <td>Configuração da Seção "server"</td>
+                    <td>Porta para a aplicação.</td>                    
+                </tr>
+                <tr>
+                    <th>index</th>
+                    <td>Configuração da Seção "server"</td>
+                    <td>Página de entrada da aplicação quando a requisição for feita para o caminho raiz do site.<br>
+                    Coloque mais de uma página separadas por espaços:<br>
+                    Exemplo: index index.html index.htm index.nginx-debian.html;
+                    </td>                    
+                </tr>
+                <tr>
+                    <th>root</th>
+                    <td>Configuração da Seção "server"</td>
+                    <td>Define o caminho raiz de uma aplicação.<br>
+                     Exemplo: root /usr/share/zabbix;
+                    </td>                    
+                </tr>
+                <tr>
+                    <th>location</th>
+                    <td>Configuração da Seção "server"</td>
+                    <td>Corresponde a endereços que serão utilizados pela aplicação URL.<br>
+                    Muitas das configurações de "location", dependem da aplicação em execução
+                    e cobrem aspectos gerais como a págiana que deverá ser apresentada para um endereço do site que não exista<br>
+                    Exemplo:<br>
+                    location / {<br>
+                        # First attempt to serve request as file, then<br>
+                        # as directory, then fall back to displaying a 404.<br>
+                        try_files $uri $uri/ =404;<br>
+                    }
+                    </td>                    
+                </tr>
+            </table>
+            <p>Para testar as configurações use <strong>"nginx -t"</strong>.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-t:~$ sudo nginx -t<br>
+            nginx: the configuration file /etc/nginx/nginx.conf syntax is ok<br>
+            nginx: configuration file /etc/nginx/nginx.conf test is successful<br>
+            edumcosta@vm-ubuntu-v22-t:~$
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Nota:</strong> Pode acontecer que ao digitar o caminho raiz de uma site: Http://127.0.0.1/ para verificar o funcionamento no serviço "NGINX" é
+                apresentada a página padrão do servidor HTTP "Apache", ao invés da página padrão do "NGINX", pois algo do Apache existe no seu S.O.<br>                
+                Para esse caso, verifique a configuração <strong>"root /var/www/html"</strong> presente no arquivo, <strong>"/etc/nginx/sites-enabled/default"</strong> 
+                que justamente aponta para o diretório padrão do "Apache".<br>
+                Ajuste para o caminho do "NGINX" conforme o caminho informado no comando "nginx -h", 
+                caminho "NGINX" : "/usr/share/nginx/", caminho pagina "index.html" padrão em "/usr/share/nginx/html".
+            </p>  
+            <p><strong>Boas Práticas:</strong></p>
+            <ul>
+                <li>Não expor as páginas padrão do "NGINX" em retorno HTTP 400 ou 500 para que não seja apresentada informações do ambiente.</li>
+            </ul>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Proxy Reverso</strong><a name="> Proxy Reverso"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Detalhe</th>
+                </tr>
+                <tr>
+                    <th>Proxy de Rede</th>
+                    <td>É um serviço que responsável pelo recebimento das requisições dos clientes para acessar recursos externos da rede.                        
+                    </td> 
+                </tr>
+                <tr>
+                    <th>Proxy Reverso</th>
+                    <td>É um serviço que responsável pelo recebimento das requisições dos clientes para acessar recursos internos da rede.                        
+                </tr>
+            </table>    
+            <p>A diretiva "proxy_pass" é usada para configurar um proxy reverso, permitindo que o servidor
+                Nginx encaminhe solicitações para um servidor de backend ou outra localização. Essa diretiva é amplamente utilizada
+                para balancear a carga, redirecionar tráfego para diferentes servidores ou aplicativos e realizar tarefas de proxy
+                em geral.
+            </p>
+            <p>A sintaxe básica da diretiva "proxy_pass" é a seguinte:<br>
+                <br>
+                location /caminho {<br>
+                proxy_pass http://endereco_do_backend:Porta;<br>
+                }
+            </p>
+            <p>Onde:</p>
+            <ul>
+                <li><strong>/caminho</strong> : é o caminho específico ou padrão que corresponde à solicitação recebida pelo Nginx. Pode ser uma URL
+                específica ou uma expressão regular.
+                </li>
+                <li><strong>http://endereco_do_backend</strong> : é o endereço do servidor de backend para onde o Nginx encaminhará as solicitações.<br> 
+                Pode ser um endereço IP ou um nome de domínio e deve incluir o esquema (http ou https).            
+                </li>
+            </ul>
+            <p>Outros Exemplos de location baseado no conteúdo da URL:</p>           
+            <p>location ~* \.php$ {<br>
+                <strong># ~</strong> : Indica que a partir desse caracter está sendo utilizada uma expressão regular.<br>
+                # <strong>*</strong>: Ignora maiúsculas ou minúsculas.<br>
+                # <strong>\.php</strong> : O caracter "\" faz a função de proteger o conteudo ".php".<br> 
+                # <strong>$</strong> : Indica o final do location.<br>
+                proxy_pass http://endereco_do_backend:Porta;<br>
+                # </strong>$</strong> : Se na URL tem ".php", manda para o servidor php.<br>
+            }
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Múltiplos Serviços</strong><a name="> Múltiplos Serviços"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para esse cenário vamos permancer com um site "localhost" na porta 80.
+                <ul>
+                    <li>Essa configuração está no arquivo: "/etc/nginx/sites-available/default".</li>
+                </ul>
+            </p>
+            <p>Serão iniciados mais dois serviços para "localhost" na porta 8001 e porta 8001 .
+                <ul>
+                    <li>Essas configurações estão nos arquivos específicos de cada serviço em "/etc/nginx/conf.d/"<br>
+                        <ul>
+                            <li>servico1.conf</li>
+                            <li>servico2.conf</li>
+                        </ul>
+                    </li>
+                    <li>Dentro da configuração desses arquivos o diretório "root" aponta para cada diretório de aplicação, no caso "index.html".<br>
+                    </li>                
+                </ul>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p># Conteúdo arquivo servico1.conf<br>
+                server {<br>
+                    server_name localhost;<br>
+                    listen 8002;<br>
+                    root /usr/share/nginx/html/servico1;<br>
+                    index index.html;<br>
+                    <br>
+                    location / {<br>
+                            # First attempt to serve request as file, then<br>
+                            # as directory, then fall back to displaying a 404.<br>
+                            try_files $uri $uri/ =404;<br>
+                    }<br>
+                }
+            </p>            
+            <p># Conteúdo arquivo servico2.conf<br>
+                server {<br>
+                    server_name localhost;<br>
+                    listen 8002;<br>
+                    root /usr/share/nginx/html/servico2;<br>
+                    index index.html;<br>
+                    <br>
+                    location / {<br>
+                            # First attempt to serve request as file, then<br>
+                            # as directory, then fall back to displaying a 404.<br>
+                            try_files $uri $uri/ =404;<br>
+                    }<br>
+                }
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para o site "localhost" em funcionamento da porta padrão, vamos redirecionar para o site 
+                "localhost:8001" ou "localhost:8002", conforme a URL requisitada.
+            </p>
+            <p>Para isso vamos acrescentar no arquivo "default" as seguintes configurações abaixo:<br>
+            <strong>location /servico1 {<br>
+                proxy_pass http://localhost:8001/;<br>
+            }</strong><br>
+            <br>
+            <strong>location /servico2 {<br>
+                proxy_pass http://localhost:8002/;<br>
+            }</strong>
+            </p>
+            <p><strong>Observação:</strong> O caracter barra ao final da URL: http://localhost:8001<strong>/</strong>, 
+                indica que é esperado "/servico1" na URL para que a requisição seja redirecioanda com a URL para o outro servidor.<br>
+                Caso a "/" não seja colocada ao final, será uma requisição para o site raiz. 
+            </p>
+            <p>Esse tipo de arquitetura no qual temos um ponto de entrada para + de um serviço se chama <strong>"API Gateway"</strong>.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Balanceamento Básico - Round Robin</strong><a name="> Balanceamento Básico - Round Robin"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Configuramos um balanceamento básico, "alternância entre servidores", no "NGINX" e a partir da seção de configuração <strong>"upstream"</strong>.
+            </p>
+            <p>Na seção "upstream" indicamos:</p>
+            <ul>
+                <li>Nome balanceador</li>
+                <li>Servidores envolvidos no balanceamento.</li>
+                <li>Definimos um location definido o proxy_pass.</li>
+            </ul>        
+            <p>Para montar esse cenário vamos acrescentar um novo "localhost" na porta 8000, a partir de um arquivo servicos.conf 
+                e que fará o balanceamento entre os serviços: "localhost:8001" e "localhost:8002".
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>Exemplo:<br>
+            upstream servicos {<br>
+                    server localhost:8001;<br>
+                    server localhost:8002;<br>
+            }<br>
+            <br>
+            server {<br>
+                    server_name localhost;<br>
+                    listen 8003;<br>
+                    <br>
+                    # Nao é necessário indicar o caminho root (balanceador)<br>
+                    # Nesse caso o location / deve ser o proxy_pass<br>
+                    <br>
+                    #  location / {<br>
+                             # First attempt to serve request as file, then<br>
+                             # as directory, then fall back to displaying a 404.<br>
+                             #try_files $uri $uri/ =404;
+                     #}<br>
+                     <br>
+                     location / {<br>
+                             proxy_pass http://servicos;<br>
+                     }<br>            
+            }
+            </p>                    
+        </div>   
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Ajustando Log</strong><a name="> Ajustando Log"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No arquivo de configuração do "NGINX" temos:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><strong>##<br>
+            # Logging Settings<br>
+            ##<br>
+            <br>
+            access_log /var/log/nginx/access.log;<br>
+            error_log /var/log/nginx/error.log;
+            </strong>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Essas variáveis podem ser redefinidas serviço a serviço, lembrando que o diretório no qual os arquivos serão gerados,
+                precisam de permissão para o usuário responsável pelo serviço "NGINX".
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Log</th>
+                    <th>Formato</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <th>Access Logs</th>
+                    <td>log_format [Nome Log] '[Opções Log]';</td>
+                    <td>log_format customizado<br>
+                        'Remote Address: "$remote_addr",'<br>
+                        ' Time: ["$time_local"],'<br>
+                        ' Request: "$request",'<br>
+                        ' Status: "$status",'<br>
+                        ' Bytes: "$bytes_sent",'<br>
+                        ' Referencia: "$http_referer"';
+                    </td>        
+                </tr>
+                <tr>
+                    <th>Error Logs</th>
+                    <td>error_log [Local arquivo de Log] [log_level];<br><br>
+                        [log_level]
+                        <li>emerg: These are the emergency logs. They mean that the system is unusable.</li>
+                        <li>alert: An immediate action is required.</li>
+                        <li>crit: A critical condition occurred.</li>
+                        <li>error: An error or failure occurred while processing a request.</li>
+                        <li>warn: There was an unexpected event, or something needs to be fixed, but NGINX fulfilled the request as expected.</li>
+                        <li>notice: Something normal, but important, has happened, and it needs to be noted.</li>
+                        <li>info: These are messages that give you information about the process.</li>
+                        <li>debug: These are messages that help with debugging and troubleshooting. They are generally not enabled unless needed because they create a lot of noise.</li>
+                    </td>
+                    <td>error_log /var/log/nginx/error_log crit;
+                    </td>        
+                </tr>
+            </table>          
+            <p>Abaixo um exemplo de arquivo de configuração com opção de log customizada, onde:<br>
+                <ul>
+                    <li>O "Access Logs" está sendo apresentado em dois formatos diferentes.</li>
+                    <li>O "Error Logs" estão separados em arquivos diferentes e conforme [log_level].</li>
+                </ul>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p><br>
+                ##<br>
+                # Logging Settings<br>
+                ##<br>
+                <br>
+                log_format customizado<br>
+                        'Remote Address: "$remote_addr",'<br>
+                        ' Time: ["$time_local"],'<br>
+                        ' Request: "$request",'<br>
+                        ' Status: "$status",'<br>
+                        ' Bytes: "$bytes_sent",'<br>
+                        ' Referencia: "$http_referer"';<br>
+                        <br>
+                log_format json_log escape=json<br>
+                        '{'<br>
+                        '"time_local":"$time_local",'<br>
+                        '"remote_addr":"$remote_addr",'<br>
+                        '"remote_user":"$remote_user",'<br>
+                        '"request":"$request",'<br>
+                        '"status": "$status",'<br>
+                        '"body_bytes_sent":"$body_bytes_sent",'<br>
+                        '"http_referrer":"$http_referer",'<br>
+                        '"http_user_agent":"$http_user_agent",'<br>
+                        '"request_time":"$request_time"'<br>
+                        '}';<br>
+                        <br>
+                access_log /var/log/nginx/access_customizado_log.log customizado;<br>
+                access_log /var/log/nginx/access_json.log json_log;<br>
+                <br>
+                error_log /var/log/nginx/error_alert.log alert;<br>
+                error_log /var/log/nginx/error_crit.log crit;<br>
+                error_log /var/log/nginx/error_erro.log error;
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> LOG - Injetando informações no Hypertext Transfer Protocol Headers</strong><a name="> LOG - Injetando informações no Hypertext Transfer Protocol Headers"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Cabeçalhos HTTP (Hypertext Transfer Protocol Headers) são componentes essenciais das solicitações e respostas no
+                protocolo HTTP, usado para comunicação entre um cliente (geralmente um navegador da web) e um servidor web.
+            </p>
+            <p>Os cabeçalhos HTTP são divididos em duas categorias principais: "Cabeçalhos de Solicitação" e "Cabeçalhos de Resposta".<br>
+            Abaixo estão os principais cabeçalhos HTTP utilizados.
+            </p>
+            <li><strong>Cabeçalhos de Solicitação:</strong></li>
+                <ul>
+                    <li><strong>Host</strong> : Indica o nome do host alvo, geralmente no formato "domínio:porta" (por exemplo, www.exemplo.com:80).</li>
+                    <li><strong>User-Agent</strong> : Fornece informações sobre o agente (navegador ou cliente) que está fazendo a solicitação.</li>
+                    <li><strong>Accept</strong> : Define os tipos de mídia que o cliente pode processar, geralmente formatos MIME.</li>
+                    <li><strong>Cookie</strong> : Envia informações do cookie para o servidor, se houver algum.</li>
+                    <li><strong>Authorization</strong> : Usado para enviar credenciais de autenticação ao servidor (por exemplo, tokens de acesso).</li>
+                    <li><strong>Referer</strong> : Indica a página da qual a solicitação foi originada.</li>
+                    <li><strong>Content-Type</strong> : Especifica o tipo de mídia dos dados no corpo da solicitação (por exemplo, application/json).</li>
+                    <li><strong>Content-Length</strong> : Indica o tamanho do corpo da solicitação em bytes.</li>
+                </ul>
+            <li><strong>Cabeçalhos de Resposta:</strong></li>
+                <ul>
+                    <li><strong>Status-Line</strong> : Contém o código de status da resposta e uma breve descrição.</li>
+                    <li><strong>Server</strong> : Identifica o software do servidor web que está respondendo à solicitação.</li>
+                    <li><strong>Date</strong> : Indica a data e a hora em que a resposta foi gerada.</li>
+                    <li><strong>Set-Cookie</strong> : Define cookies no lado do cliente para serem enviados nas próximas solicitações.</li>
+                    <li><strong>Location</strong> : Utilizado em redirecionamentos para fornecer a nova localização.</li>
+                    <li><strong>Content-Type</strong> : Especifica o tipo de mídia dos dados no corpo da resposta.</li>
+                    <li><strong>Content-Length</strong> : Indica o tamanho do corpo da resposta em bytes.</li>
+                </ul>                
+            <p>Você pode criar cabeçalhos HTTP personalizados para enviar informações específicas entre o cliente e o servidor que não
+            são cobertas pelos cabeçalhos padrão.<br>
+            Você pode escolher qualquer nome para o cabeçalho, desde que comece com "X-" para indicar que é um cabeçalho personalizado.             
+            </p>
+            <p>Portanto para o cenário de balanceamento de carga utilizando o "NGINX", podemos utilizar o comnando <strong>"proxy_set_header"</strong>
+                para complementar a informação do HOST para o qual o "API Gateway" redirecionou o HTTP a partir da variável <strong>"$remote_addr"</strong>.<br>
+                Exemplo: <strong>set_proxy_header X-Endereco-Remoto $remote_addr;</strong>
+            </p>
+            <p>Após injetarmos essa informação, podemos definir um padrão nos logs do "NGINX", a informação que anteriromente trazia 
+                a informação do <strong>Host Remoto</strong> e que apontava para a variável <strong>"$remote_addr"</strong>, agora vai apontar 
+                para a variável <strong>"$http_X-Endereco-Remoto"</strong>, onde "X-Endereco-Remoto" corresponde ao valor informado no comando <strong>"proxy_set_header"</strong>.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>log_format customizado<br>
+                'Remote Address: "$http_X-Endereco-Remoto",'<br>
+                ' Time: ["$time_local"],'<br>
+                ' Request: "$request",'<br>
+                ' Status: "$status",'<br>
+                ' Bytes: "$bytes_sent",'<br>
+                ' Referencia: "$http_referer"';<br>
+                <br>
+
+            </p>                
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Balanceamento por Peso - Waited Round Robin</strong><a name="> Balanceamento por Peso - Wait Round Robin"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O balanceamento por peso pode ser realizado por meio da variável <strong>"weight"</strong>, onde definirmos o peso para 
+                cada um dos servidores indicados na seção de configuração <strong>upstream</strong>.
+            
+        </div>   
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>Exemplo: Abaixo o server localhost:8001 receberá uma requisição a mais que o servidor server localhost:8002.<br>
+            upstream servicos {<br>
+                    server localhost:8001 weight=2;<br>
+                    server localhost:8002 weight=1;<br>
+            }<br>
+            <br>
+            server {<br>
+                    server_name localhost;<br>
+                    listen 8003;<br>
+                    <br>
+                    # Nao é necessário indicar o caminho root (balanceador)<br>
+                    # Nesse caso o location / deve ser o proxy_pass<br>
+                    <br>
+                    #  location / {<br>
+                             # First attempt to serve request as file, then<br>
+                             # as directory, then fall back to displaying a 404.<br>
+                             #try_files $uri $uri/ =404;
+                     #}<br>
+                     <br>
+                     location / {<br>
+                             proxy_pass http://servicos;<br>
+                     }<br>            
+            }
+            </p>                    
+        </div>   
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Balanceamento Baseado em Conexões Ativas - List Connections</strong><a name="> Balanceamento Baseado em Conexões Ativas - List Connections"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O balanceamento baseado em conexões ativas direcionará o HTTP para o servidor que tiver menos conexões ativas 
+                e independentemente da sua capacidade, ideal para balanceamento com servidores de mesma capacidade.<br>
+                Para implementarmos esse tipo de balaceamento no "NGINX", utilizamos o comando <strong>"least_conn"</strong>, 
+                na seção de configuração <strong>upstream</strong>.
+            
+        </div>   
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>Exemplo:<br>
+            upstream servicos {<br>
+                    least_conn;<br>
+                    server localhost:8001;<br>
+                    server localhost:8002;<br>
+            }<br>
+            <br>
+            server {<br>
+                    server_name localhost;<br>
+                    listen 8003;<br>
+                    <br>
+                    # Nao é necessário indicar o caminho root (balanceador)<br>
+                    # Nesse caso o location / deve ser o proxy_pass<br>
+                    <br>
+                    #  location / {<br>
+                             # First attempt to serve request as file, then<br>
+                             # as directory, then fall back to displaying a 404.<br>
+                             #try_files $uri $uri/ =404;
+                     #}<br>
+                     <br>
+                     location / {<br>
+                             proxy_pass http://servicos;<br>
+                     }<br>            
+            }
+            </p>                    
+        </div>   
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para outros modelos de balanceamento: "https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/"
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Balanceamento Acrescentando Backup</strong><a name="> Balanceamento Acrescentando Backup"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Podemos acrescentar um host denominado "backup", utilizando o comando <strong>"backup"</strong>, 
+                na seção de configuração <strong>upstream</strong>, no qual esse host será acionado para balanceamento,
+                caso a opção <strong>"max_fails"</strong> indicada nas configurações de outro host não "backup", seja verdadeira, ou seja, 
+                esse servidor apresentar a quantidade de falhas ocorridas. Em conjunto com o comando <strong>"max_fails"</strong>, utilizamos 
+                também o comando <strong>"fail_timeout"</strong> e que corresponderá ao tempo em que esse servidor não deverá receber novas conexões.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>Exemplo:<br>
+            upstream servicos {<br>
+                    server localhost:8001 weight=2 max_fails=1 fail_timeout=120s;<br>
+                    server localhost:8002 weight=1 max_fails=1 fail_timeout=120s;<br>
+                    server localhost:8003 weight=1 backup;<br>
+            }<br>
+            <br>
+            server {<br>
+                    server_name localhost;<br>
+                    listen 8003;<br>
+                    <br>
+                    # Nao é necessário indicar o caminho root (balanceador)<br>
+                    # Nesse caso o location / deve ser o proxy_pass<br>
+                    <br>
+                    #  location / {<br>
+                             # First attempt to serve request as file, then<br>
+                             # as directory, then fall back to displaying a 404.<br>
+                             #try_files $uri $uri/ =404;
+                     #}<br>
+                     <br>
+                     location / {<br>
+                             proxy_pass http://servicos;<br>
+                     }<br>            
+            }
+            </p>                                
+        </div>   
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Na versão paga podemos utilizar o comando <strong>health_check</strong>, onde o próprio "NGINX" verifica a disponibilidade
+            dos host envolvidos no balaceamento.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>Exemplo:<br>
+            upstream backend_servers {<br>
+            server backend1.example.com:80;<br>
+            server backend2.example.com:80;<br>
+            <br>
+            # Configuração do health check<br>
+            keepalive 64;<br>
+            keepalive_requests 100;<br>
+            keepalive_timeout 65;<br>
+            <br>
+            # Configuração do health check<br>
+            # O módulo ngx_http_healthcheck_module deve estar habilitado<br>
+            check interval=3000 rise=2 fall=5 timeout=1000;<br>
+            }
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p># Configuração do health check:</p>
+            <ul>
+                <li><strong>keepalive</strong> : Define o número máximo de conexões persistentes a serem mantidas abertas com o servidor
+                    backend.
+                </li>                
+                <li><strong>keepalive_requests</strong> : Define quantas solicitações HTTP podem ser feitas por meio de uma conexão persistente antes de
+                    serem renegociadas.
+                </li>                
+                <li><strong>keepalive_timeout</strong> : Define o tempo em segundos durante o qual uma conexão persistente permanecerá aberta aguardando
+                mais solicitações.
+                </li>
+            </ul>
+            <p># Configuração do Check:</p>
+                <ul>                                    
+                    <li><strong>interval</strong> : Especifica o intervalo de tempo entre as verificações de saúde (em milissegundos).
+                    </li>
+                    <li><strong>rise</strong> : O número de verificações bem-sucedidas consecutivas para considerar um servidor como "levantado" novamente.
+                    </li>
+                    <li><strong>fall</strong> : O número de verificações consecutivas com falha para considerar um servidor como "caído".
+                    </li>
+                    <li><strong>timeout</strong> : Tempo limite em milissegundos para cada verificação de saúde.
+                    </li>
+                </ul>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> CGI / FastCGI (Common Gateway Interface)</strong><a name="> CGI / FastCGI (Common Gateway Interface)"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O CGI Common Gateway Interface), assim como o FastCGI, correspodem a um protocolo e que pode ser utilizado 
+                para que um servidor web "NGINX" se comunicar com aplicações.<br>
+                A diferença entre "CGI" e "FastCGI" é que ao utilizarmos FastCGI, os processos trafegados entre o servidor e a aplicação web 
+                não são finalizados a cada requisição, eles permanecem ativos para tratar outras requisições.
+            </p>            
+            <p>A utilização do modelo "CGI" e "FastCGI" deve levar em consideração de que tanto o servidor web "NGINX", quanto o servidor "CGI" / "FastCGI" e a aplicação devem ser executadas no mesmo servidor, 
+                caso contrário a arquitetura a ser utilizada deverá ser por meio de proxy reverso, no qual as requisições são redirecionadas para outro servidor e que no caso poderia ser redirecionado para o servidor 
+                responsável pelo "CGI" / "FastCGI" e aplicação.</p>
+            <p>Podemos ter uma aplicação web sendo executada num servidor "auto-contido" e que basicamente corresponde a um servidor web 
+                escrito na própria linguagem de programação, diferentemente do "NGINX", que tem o propósito de servir aplicações, 
+                independentemente da linguagem da aplicação.
+            </p>
+            <p>Para exemplificar o uso do "FastCGI" o "PHP" utiliza o "PHP fpm" como serviço para intermediar as requisições entre o servidor web e uma aplicação em "PHP".
+            </p>
+            <p><strong>CLiente WEB -> Requisição HTTP -> Servidor Web (NGINX) -> FastCGI -> Aplicação PHP.<br>
+                CLiente WEB &lt- Response HTTP &lt- Servidor Web (NGINX) &lt- FastCGI &lt- Aplicação PHP.</strong><br>
+            </p>
+            <p>O cenário abaixo representa uma comunicação "FastCGI" com o "PHP" via "PHP fpm".<br>
+                Para isso utilizaremos:
+            </p>
+            <ul>
+                <li>Um container que executará a aplicação "PHP fpm" numa porta específica.</li>
+                <li>Um serviço web no NGINX para receber as requisições HTTP e respostas da aplicação "PHP fpm" numa porta específica.</li>
+                <li>Para enviar as requisições utilizaremos o comando <strong>"fastcgi_pass"</strong>.</li>
+                <li>Utilizaremos uma página em "PHP" que simplesmente retornará informações do "PHP".</li>
+            </ul>                       
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">        
+            <p>Com o comando abaixo executaremos um container que executa a imagem do gerenciador de "CGI" / "FastCGI", "php:fpm", para "PHP".<br>
+            Observação: O volume "$(pwd):/exemplo_php_fpm" aponta para o diretório nda aplicação no qual temos um arquivo "index.php".<br><br>
+            docker run -it --network=host -p9000:9000 -v $(pwd):/exemplo_php_fpm php:fpm<br>
+            </p>
+            <p>O arquivo index.php possui o seguinte conteúdo:<br><br>
+                edumcosta@vm-ubuntiu-v22-h:~$ cat exemplo_php_fpm/index.php<br>
+                &lt'?php phpinfo();'><br>                
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No serviço "NGINX" responsável pelas requisições HTTP teremos:</p> 
+            <ul>
+                <li>Referência do diretório da aplicação: <strong>root  /caminho_do_arquivo_index;</strong></li>
+                <li>Referência do arquivo de configuração "NGINX" de suporte a "CGI" / "FastCGI" : <strong>include fastcgi.conf;</strong></li>
+                <li>A diretiva de encaminhamento da requisição recebida para o servidor responsável pelo protocolo "FastCGI" : <strong>fastcgi_pass localhost:9000;</strong></li>
+            </ul>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">        
+            <p>
+                server {<br>
+                    server_name localhost;<br>
+                    listen 8005;<br>
+                    <br>
+                    root  /caminho_do_arquivo_index;<br>
+                    <br>
+                    location / {<br>
+                            include fastcgi.conf;<br>
+                            fastcgi_pass localhost:9000;<br>
+                    }<br>            
+            }
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Cache HTTP</strong><a name="> Cache HTTP"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>É possível utilizar o "NGINX" com diretiva para a utilização de "Cache" pelo cliente web.<br> 
+            Essa diretiva corresponde ao comando <strong>"expires"</strong> ou <strong>"expires max"</strong>.
+            </p>            
+            <p><strong>"expires"</strong></p>               
+            <ul>
+                <li><strong>1y</strong> : 1 ano.</li>
+                <li><strong>30d</strong> : para 30 dias.</li>
+                <li><strong>7d</strong> : para 7 dias.</li>
+                <li><strong>2h</strong> : para 2 horas.</li>
+                <li><strong>30m</strong> : para 30 minutos.</li>
+                <li><strong>30s</strong> : para 30 segundos.</li>
+            </ul>
+            <p><strong>"expires max"</strong></p>               
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Atributo</th>
+                    <th>Função</th>
+                </tr>
+                <tr>
+                    <th>public</th>
+                    <th>Indica que o recurso pode ser armazenado em cache por proxies e navegadores.</th>
+                </tr>
+                <tr>
+                    <th>private</th>
+                    <th>Indica que o recurso pode ser armazenado em cache apenas no navegador do usuário e não por intermediários como proxies.</th>
+                </tr>
+                <tr>
+                    <th>max-age</th>
+                    <th>Define a quantidade de segundos pelo qual o recurso deve ser considerado válido no cache.<br>]
+                     Por exemplo, "max-age=3600" indica que o recurso pode ser armazenado em cache por 1 hora.</th>
+                </tr>
+                <tr>
+                    <th>s-maxage</th>
+                    <th>Similar a `max-age`, mas é aplicado apenas a caches de proxy compartilhados.</th>
+                </tr>
+                <tr>
+                    <th>no-cache</th>
+                    <th>Indica que o recurso pode ser armazenado em cache, mas uma solicitação de validação deve ser feita antes de usá-lo novamente.</th>
+                </tr>
+                <tr>
+                    <th>no-store</th>
+                    <th>Indica que o recurso não deve ser armazenado em cache de forma alguma.</th>
+                </tr>
+                <tr>
+                    <th>must-revalidate</th>
+                    <th>Indica que o cache deve ser validado com o servidor antes de ser usado após a expiração.</th>
+                </tr>
+            </table>
+            <p>O exemplo define a expiração máxima para recursos HTML para 1 hora e inclui cabeçalhos de controle de cache para permitir 
+                o armazenamento em cache público e a revalidação após a expiração.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">    
+            <p>```nginx<br>
+            location ~* \.html$ {<br>
+                expires max;<br>
+                add_header Cache-Control "public, max-age=3600, must-revalidate";<br>
+            }<br>
+            ```
+            </p>
+        </div>            
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Servidor de Cache</strong><a name="> Servidor de Cache"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Observação:</strong> A versão paga do "NGINX" permite que expurguemos o conteúdo em cache, a partir de uma requisição
+            intermediária para verificar a informação do cache com a informação de origem.<br>
+            Portanto os aspectos mencionados nesse capítulo, devem ser utiizadas para informações com comportamento 
+            mais estático, uma vez que esse conteúdo só se expira na versão gratuita através da sua
+            expiração.
+            </p> 
+            <p>Podemos utilizar o "NGINX" como um servidor de cache, no qual uma área de disco é reservada
+            para que as informações sejam aramzenadas e durante um período de tempo, condição.<br>
+            A função de um servidor de cache é fornecer informações aos clientes web sem que o servidor
+            que possua a informação de origem, tenha que mandar novamente a informação.       
+            </p>
+            <p>As diretivas de cache no "NGINX" se aplicam a estriutura de funcionamento 
+                como proxy reversos e fastcgi.                 
+            </p>
+            <ul>
+                <li><strong>proxy_cache_path</strong> : Diretiva proxy "http" para o 
+                    armazenamento em cache.
+                </li>
+                <li><strong>fastcgi_cache_path</strong> : Diretiva fastcgi "http" para o 
+                    armazenamento em cache.
+                </li>
+            </ul>
+            <p>A sintaxe básica é a mesma para ambas as diretivas:</p>
+            <ul>
+                <li><strong>proxy_cache_path [caminho de armazenamento do cache] levels=1:[Níveis] keys_zone=[nome da zona]:[tamanho da zona de aramazenamento];</strong></li>
+                <li><strong>fastcgi_cache_path [caminho de armazenamento do cache] levels=1:[Níveis] keys_zone=[nome da zona]:[tamanho da zona de aramazenamento];</strong></li>
+            </ul>
+            <p>Exemplo: <strong>fastcgi_cache_path /tmp/cache levels=1:2 keys_zone=zona1:10m;</strong>
+            </p>
+            <ul>
+                <li><strong>/tmp/cache</strong> : Corresponde ao local no qual as informações serão armazenadas.<br>
+                Caso a pasta não exista ela será criada.</li> 
+                <li><strong>levels=1:2</strong> : Define que as informações serão armazenadas em 2 níveis de diretórios.</li> 
+                <li><strong>keys_zone=zona1:10m</strong> : Define o nome da zona e seu tamanho.</li> 
+            </ul>
+            <p>Para indicarmos a utilização de cache no servidor de cache, usamos as diretivas:                
+            </p>
+            <ul>
+                <li><strong>fastcgi_cache</strong> : Diretiva fastcgi utilizada para um "location".
+                </li>
+                <li><strong>proxy_cache</strong> : Diretiva proxy utilizada para um "location".
+                </li>
+            </ul>
+            <p>Quando utilizamos "fastcgi_cache" ou proxy_cache, precisamos utilizar as diretivas:</p>            
+            <ul>
+                <li><strong>fastcgi_cache_key ou proxy_cache_key</strong> : Define a chave, condição no qual 
+                    será realizado o processo de cache.
+                </li>
+                <li><strong>fastcgi_cache_valid ou proxy_cache_valid</strong> : Define o prazo de expiração do cache.
+                </li>
+            </ul>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>No exemplo abaixo definimos "fastcgi_cache_key", com a condição de ser um "request" e 
+                para a condição "location" e "fastcgi_cache_valid" indicando os tipos de responses 
+                que deverão ser enviados para o cache e sua duração.<br>
+                Se omitirmos os códigos de resposta e só informarmos o tempo de expiração,
+                serão considerados os códigos 200,301 e 302 por padrão. Para todos os códigos,
+                utilizar a palavra "any", <strong>proxy_cache_valid any 1m;</strong>. 
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">    
+            <p>```nginx<br>
+            location ~* \.html$ {<br>
+                fastcgi_cache zona1;<br>
+                fastcgi_cache_key $request_method;$request_uri;<br>
+                fastcgi_cache_valid 301 302 1h;
+                fastcgi_cache_valid 200 1d;                
+                fastcgi_pass localhost:9000;<br>
+            }<br>
+            ```
+            </p>            
+        </div>            
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para verificar se as informações estão sendo recuperadas em cache,
+                podemos adicionar um cabeçalho customizado e avaliar a condição da variável por meio da variável <strong>"$upstream_cache_status"</strong>
+                e observar esse valor no cabeçalho HTTP, 
+                "$upstream_cache_status = HIT" a informação foi recuperada via cache.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">    
+            <p>```nginx<br>
+            location ~* \.html$ {<br>
+                fastcgi_cache zona1;<br>
+                fastcgi_cache_key $request_method;$request_uri;<br>
+                fastcgi_cache_valid 301 302 1h;<br>
+                fastcgi_cache_valid 200 1d;<br>                
+                add_header X-Cache-Status $upstream_cache_status;<br>
+            }<br>
+            ```
+            </p>
+        </div>            
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Acesse a documentação do NGINX e percorra os módulos correspodnentes a 
+                funcionalidade para obter maiortes detalhes sobre o "NGINX" : https://nginx.org/en/docs/
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Compresão</strong><a name="> Compresão"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Usamos a diretiva <strong>"gzip on;"</strong> para indicar a comnpressão de conteúdo.<br>
+                Por padrão o "NGINX" somente comprimi conteúdos em arquivos HTML. Para indicar outros tipos de arquivos é 
+                necessário indicá-los por meio da diretiva <strong>"gzip_types"</strong>.<br>
+                <strong>Observação:</strong> Imagens não possuem um benefício de copmpressão versus processamento.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">    
+            <p>server {<br>
+                gzip on;<br>
+                # Exemplo: bzip_types caminho_1 caminho_2 caminho_N ... ultimo_caminho;
+                bzip_types text/css;            
+            }<br>
+            ```
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> KeepAlive</strong><a name="> KeepAlive"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A diretiva "KeepAlive" determina um período pelo qual as conexões criadas para o tratamento de requisições, deva se permancer aberta.<br>
+                Podemos definir essa diretiva de duas formas: 
+            </p>
+            <ul>
+                <li>Adicionando um cabeçalho <strong>"add_header Keep-Alive: "timeout=5, max=1000;""</strong><br>
+                    timeout=(segundos) e max=(número máximo de requisições para a conexão).<br>                    
+                </li>
+                <li>Utilizando a diretiva <strong>"keepalive_timeout (Segundos)"</strong> dentro da configuração "HTTP".
+                </li>
+            </ul>
+            <p>Exemplos:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">    
+            <p>http {<br>
+                keepalive_timeout 60;<br>
+                ...<br>
+                ...<br>
+            }
+            </p>             
+            <p>server {<br>                
+                ...<br>
+                ...<br>
+                add_header Keep-Alive: "timeout=5, max=1000";<br>                
+            }<br>
+            location ~* \.html$ {<br>
+                expires max;<br>
+                add_header Keep-Alive: "timeout=5, max=1000";<br>
+            }
+            </p>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> HTTPS</strong><a name="> HTTPS"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para gerar um certificado auto assinado válido sem uma unidade certificadora: "https://letsencrypt.org/pt-br/",
+                para efeitos de desenvolvimento e testes.<br>
+            </p>
+            <p>Para gerar um certificado auto assinado consulte o arquivo: "GitHub/SABER/Linux/paginas/certificados/certificados.html".</p>
+            <p>Após a geração do certificado, copie os arquivos, "certificado.crt" e "chave_privada.key" para um diretório acessível 
+                pelo usuário no "NGINX".<br>
+                Exemplo: "/etc/nginx/conf.d/certificados"
+            </p>
+            <p>Para configurar um servidor HTTPS:</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">    
+            <p>server {<br>
+                listen 443 ssl;<br>
+                #server_name seusite.com www.seusite.com;<br>
+                server_name localhost;<br>
+                <br>
+                ssl_certificate /etc/nginx/conf.d/certificados/certificado.crt;<br>
+                ssl_certificate_key /etc/nginx/conf.d/certificados/chave_privada.key;<br>
+                <br>
+                root /usr/share/nginx/html/serv_alura1;<br>
+                index index.html;<br>            
+                location / {<br>
+                            # First attempt to serve request as file, then<br>
+                            # as directory, then fall back to displaying a 404.<br>
+                            try_files $uri $uri/ =404;<br>
+                }<br>
+            <br>
+            }
+            </p>            
+        </div>
+
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Interface de Gerenciamento Webmin<a name="Interface de Gerenciamento Webmin"></a></h4>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A instalação do Webmin precisa ser executada como "root".<br>
+            Execute os comandos: 
+            <ul>
+                <li><strong>"curl -o setup-repos.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh"</strong></li>
+                <li><strong>"sh setup-repos.sh"</strong></li>
+            </ul>
+            <p>Para a instalação utilize <strong>"sudo apt install webmin"</strong>.</p>
+            <p>Após a sua instalação utilize o comando:</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Comando</th>
+                    <th>Função</th>
+                </tr>
+                <tr>
+                    <td>sudo systemctl status webmin</td>
+                    <td>Verifica o status do serviço</td>
+                </tr>
+                <tr>
+                    <td>sudo systemctl enable webmin</td>
+                    <td>Configura para o serviço ser iniciado junto com a incialização.</td>
+                </tr>
+            </table>
+            <p>Para acessar a interface HTTP de gerenciamento, utilize a porta 10000 e usuário linux do servidor.</p> 
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Zabbix - Monitoramento<a name="Zabbix - Monitoramento"></a></h4>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Arquitetura</strong><a name="> Instalação"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A arquitetura do Zabbix se organiza, dentro do contexto dos serviços de rede, no modelo three-tier, que faz uma
+            abordagem em três camadas. Essas camadas são: a aplicação, o banco de dados e a interface web.</p>
+            
+            <p>O back-end do Zabbix foi desenvolvido com a linguagem C e o front-end foi desenvolvido em PHP. O Zabbix também foi
+            desenvolvido para suportar os principais SGBDs do mercado. A partir da versão 1.8, o Zabbix introduziu uma API para
+            integrar outros sistemas, como, por exemplo, um sistema de registro de chamados. Essa integração é feita pelo formato de
+            intercâmbio de dados computacionais JSON.</p>
+
+            <p>Aplicações que compõem o Zabbix:</p> 
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Zabbix Server</th>
+                    <td>Todos os agentes se reportam ao back-end (servidor), que armazena os dados coletados na base de dados.</td>
+                </tr>
+                <tr>
+                    <th>Zabbix Proxy</th>
+                    <td>Este elemento é opcional. O Zabbix Server não depende dele para funcionar. O Zabbix Proxy é um host responsável por fazer a coleta em clientes remotos.</td>
+                </tr>
+                <tr>
+                    <th>Zabbix Agent</th>
+                    <td>É o cliente que se reporta para o Zabbix Server ou para o Zabbix Proxy.</td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Requisitos de Software</strong><a name="> Requisitos de Software"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+
+            <p>Requisitos de software:</p> 
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Software</th>
+                    <th>Versão Mínima</th>
+                </tr>
+                <tr>
+                    <td>Apache</td>
+                    <td>1.3.12</td>
+                </tr>
+                <tr>
+                    <td>PHP com suporte bc, XML, session, socket, multibyte</td>
+                    <td>5.1.6</td>
+                </tr>
+            </table>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Opções de Banco de Dados</th>
+                </tr>
+            </table>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Software</th>
+                    <th>Versão Mínima</th>
+                </tr>
+                <tr>
+                    <td>PHP GD</td>
+                    <td>2.0</td>
+                </tr>
+                <tr>
+                    <td>MySQL</td>
+                    <td>5.0</td>
+                </tr>
+                <tr>
+                    <td>Oracle</td>
+                    <td>10g</td>
+                </tr>
+                <tr>
+                    <td>PostgreSQL</td>
+                    <td>8.1</td>
+                </tr>
+                <tr>
+                    <td>SQLite</td>
+                    <td>3.3.5</td>
+                </tr>
+                <tr>
+                    <td>MariaDB</td>
+                    <td>-</td>
+                </tr>
+            </table>
+            <hr>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Planejando o Crescimento do Banco de Dados</strong><a name="> Planejando o Crescimento do Banco de Dados"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O tamanho do banco de dados do Zabbix depende principalmente das seguintes variáveis:</p> 
+            <li>Número de Valores Processados por Segundo (VPS).</li>
+            <li>Dados Históricos.</li>
+            <li>Dados Estatísticos.</li>
+            <li>Dados de Eventos.</li>
+
+            <p>Primeiramente, precisamos saber o total de itens monitorados. Esse total corresponde ao número de itens cadastrados e ativos,
+            multiplicado pelo número de hosts associados. Por exemplo, suponhamos que temos 1000 itens sendo monitorados com taxa de atualização a cada 60 segundos. Para sabermos
+            o número de valores processados por segundo utilizamos a seguinte fórmula:</p>
+            <p><strong>VPS = itens / taxa de atualização</strong></p>
+
+            <p>Conforme o exemplo acima, VPS = 16,67 novos valores adicionados na base de dados a cada segundo.</p>
+            
+            <p>O próximo passo é calcular o tamanho (em bytes) dos dados históricos. O Zabbix mantém valores dos itens por um período fixo de tempo. Este período é customizável, você é quem
+            decide quantos dias os dados ficarão armazenados em histórico. Para o cálculo dos dados históricos utilizamos a seguinte
+            fórmula:</p> 
+            <p><strong>Histórico = dias * 24 * 3600 * VPS * bytes</strong></p>
+
+            <p>Na fórmula "Histórico", 24 é o número de horas que temos em um dia e 3600 é o número de segundos que temos em uma hora.
+            Bytes é o número de bytes necessários para manter um único valor, o que varia de acordo com o SGBD utilizado. Na média
+            este valor é de 50 bytes.</p> 
+            <p>Vamos utilizar o exemplo com 30 dias para entender esta fórmula. Se o Zabbix está processando
+            16,67 valores por segundo, ao substituirmos os valores na fórmula, teremos: 30 * 24 * 3600 * 16,67 * 50, o que daria um
+            total de 2,01 GB de espaço utilizado por mês em nossa base de dados e apenas para os dados históricos.</p> 
+            <p> Zabbix também mantém uma média estatística para cada item cadastrado. Esses dados são utilizados para analisar tendências ao longo do
+            período através de gráficos. Isso é ótimo para analisarmos, por exemplo, a utilização de recursos de memória, CPU etc.
+            Com a leitura do gráfico, é possível saber se uma troca de hardware será necessária. Na instalação do Zabbix, o padrão
+            para dados estatísticos é de 365 dias. A fórmula para calcular esta variável é a seguinte:</p>
+            <p><strong>Estatística = (itens / 3600) * (24 * 3600 * dias) * bytes</strong></p> 
+            
+            <p>Na fórmula "Estatística", itens é o número de itens sendo monitorados, dias é a quantidade de dias para dados
+            estatísticos e bytes é o número de bytes necessários para armazenar o valor na base de dados. A média para esta variável
+            é 128 bytes. O valor 3600 na primeira parte da fórmula é o resultado da quantidade de bytes que um item ocupa na tabela trends
+            por dia. Portanto, ao substituirmos os valores na fórmula, temos: (1000 / 3600) * (24 * 3600 *365) * 128 = 1,04 GB.</p>
+
+            <p>A última fórmula que devemos utilizar é para calcular o crescimento dos dados de eventos. Para cada evento,
+            aproximadamente 130 bytes são gravados em disco. Evento é um acontecimento gerado por uma trigger de um determinado
+            item. A fórmula para calcular esta variável é a seguinte:</p>
+            <p><strong>Eventos = dias * eventos * 24 * 3600 * bytes</strong></p>
+            
+            <p>Na fórmula "Eventos", dias é o número de dias que os dados de eventos serão mantidos no
+            banco de dados, eventos é a quantidade de eventos gerados e bytes é a quantidade média que um registro de evento ocupa
+            em disco. Suponhamos que o Zabbix gere um evento a cada segundo, o que é absolutamente normal em um ambiente com vários
+            hosts e itens sendo monitorados. Substituindo os valores, teremos: 365 * 1 * 24 * 3600 * 130 = 3,81 GB.</p> 
+            <p>A partir dos cálculos das variáveis explicadas anteriormente, poderemos prever o uso em disco da base de dados utilizada pelo
+            servidor de monitoramento.</p>
+            <p><strong>Total = Histórico + Estatística + Eventos</strong></p>
+            <p>Conforme os valores obtidos teríamos como total de espaço em disco utilizado em um ano = <strong>7,91 GB (2,01 + 2,09 + 3,81)</strong>.</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Instalação do MYSQL SERVER</strong><a name="> Instalação do MYSQL SERVER"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Para instalar o "MySQL Server", execute o comando: <strong>"sudo apt install mysql-server"</strong></p>
+            <p>Para verificar o serviço carregado do MySQL Server utilize o comando: <strong>"sudo systemctl status mysql.service"</strong></p>
+            <p><strong>Configurações Iniciais - Opção MYSQL</strong></p>                
+            <p>Modificação do plugin de autenticação de usuários:</p>
+            <ul>
+                <li>Conectar no MYSQL como "root" (a senha ainda não foi redefinida): <strong>sudo mysql -u root</strong></li>
+                <li>Mudar para o banco de dados mysql: <strong>USE mysql;</strong></li>
+                <li>Execute o comando: <strong>update mysql.user set plugin='mysql_native_password';</strong></li>
+                <li>Sair do MYSQL, paralisar e reiniciar o serviço MYSQL.</li>
+            </ul>
+            <p><strong>Observação:</strong> No momento dessa documentação, ao modificar o atributo de todos os usuários e inclusive o "root" para 
+                plugin='mysql_native_password', o usuário root passa a não enxergar comandos como "SHOW DATABASES;".<br>
+                Para corrigir esse problema, exclua o usuário "'mysql.infoschema'@'localhost'" e crie ele novamnete com os respectivos privilégios.                      
+            </p>
+            <div class="w3-container w3-theme-l1 w3-monospace">
+                <p>edumcosta@vm-ubuntu-v22-t:~$ sudo mysql -u root -p<br>
+                    Enter password:<br>
+                    Welcome to the MySQL monitor.  Commands end with ; or \g.<br>
+                    Your MySQL connection id is 8<br>
+                    Server version: 8.0.33-0ubuntu0.22.04.4 (Ubuntu)<br>
+                    <br>
+                    Copyright (c) 2000, 2023, Oracle and/or its affiliates.<br>
+                    <br>
+                    Oracle is a registered trademark of Oracle Corporation and/or its<br>
+                    affiliates. Other names may be trademarks of their respective<br>
+                    owners.<br>
+                    <br>
+                    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.<br>
+                    <br>
+                    mysql> show databases;<br>
+                    ERROR 1449 (HY000): The user specified as a definer ('mysql.infoschema'@'localhost') does not exist<br>
+                    mysql> DROP USER 'mysql.infoschema'@'localhost';<br>
+                    Query OK, 0 rows affected (0.01 sec)<br>
+                    <br>
+                    mysql> use mysql;<br>
+                    Database changed<br>
+                    mysql> select user,host from user;<br>
+                    +------------------+-----------+<br>
+                    | user             | host      |<br>
+                    +------------------+-----------+<br>
+                    | debian-sys-maint | localhost |<br>
+                    | mysql.session    | localhost |<br>
+                    | mysql.sys        | localhost |<br>
+                    | root             | localhost |<br>
+                    +------------------+-----------+<br>
+                    4 rows in set (0.00 sec)<br>
+                    <br>
+                    mysql> CREATE USER 'mysql.infoschema'@'localhost' IDENTIFIED BY 'addsemsenha00';<br>
+                    Query OK, 0 rows affected (0.01 sec)<br>
+                    <br>
+                    mysql> GRANT SELECT ON *.* TO 'mysql.infoschema'@'localhost';<br>
+                    Query OK, 0 rows affected (0.00 sec)<br>
+                    <br>
+                    mysql> exit<br>
+                    Bye<br>
+                    edumcosta@vm-ubuntu-v22-t:~$ sudo systemctl stop mysql.service<br>
+                    edumcosta@vm-ubuntu-v22-t:~$ sudo systemctl start mysql.service<br>
+                    edumcosta@vm-ubuntu-v22-t:~$ sudo mysql -u root -p<br>
+                    Enter password:<br>
+                    Welcome to the MySQL monitor.  Commands end with ; or \g.<br>
+                    Your MySQL connection id is 8<br>
+                    Server version: 8.0.33-0ubuntu0.22.04.4 (Ubuntu)<br>
+                    <br>
+                    Copyright (c) 2000, 2023, Oracle and/or its affiliates.<br>
+                    <br>
+                    Oracle is a registered trademark of Oracle Corporation and/or its<br>
+                    affiliates. Other names may be trademarks of their respective<br>
+                    owners.<br>
+                    <br>
+                    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.<br>
+                    <br>
+                    mysql> show databases;<br>
+                    +--------------------+<br>
+                    | Database           |<br>
+                    +--------------------+<br>
+                    | information_schema |<br>
+                    | mysql              |<br>
+                    | performance_schema |<br>
+                    | sys                |<br>
+                    +--------------------+<br>
+                    4 rows in set (0.00 sec)<br>
+                    <br>
+                    mysql>
+                </p>                  
+            <p>Executando o comando "mysql_secure_installation" para definir modo de autenticação, conexões, bancos e privilégios: <strong>sudo mysql_secure_installation</strong>    
+            </p>
+            <p>Alterando a senha do "root":</p>
+            <ul>
+                <li>Conectar no MYSQL como "root": <strong>mysql -u root</strong></li>
+                <li>Mudar para o banco de dados mysql: <strong>USE mysql;</strong></li>
+                <li>Atualizar a senha do "root": <strong>ALTER USER 'root'@'localhost' IDENTIFIED BY 'nova_senha';</strong></li>
+                <li>Execute o comando: <strong>FLUSH PRIVILEGES;</strong></li>                
+            </ul>            
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Obtendo o Zabbix</strong><a name="> Obtendo o Zabbix"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Criando o repositório Zabbix (Versão 6.0 LTS)</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Execute o comandos "sudo apt update" para verificar as atualizações e o comando "sudo apt upgrade" para atualizar o sistema.</p>                                    
+            <p>Após a atualização, baixar e instalar o pacote de instalação do Zabbix. Como boa prática utilizamos o diretório <strong>"/usr/src"</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~$ cd /usr/src<br>
+                edumcosta@vm-ubuntu-v22-a:~/downloads$ sudo wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-4+ubuntu22.04_all.deb<br>
+                --2023-03-29 14:19:22--  https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-4+ubuntu22.04_all.deb<br>
+                Resolving repo.zabbix.com (repo.zabbix.com)... 178.128.6.101, 2604:a880:2:d0::2062:d001<br>
+                Connecting to repo.zabbix.com (repo.zabbix.com)|178.128.6.101|:443... connected.<br>
+                HTTP request sent, awaiting response... 200 OK<br>
+                Length: 3676 (3.6K) [application/octet-stream]<br>
+                Saving to: ‘zabbix-release_6.0-4+ubuntu22.04_all.deb’<br>
+                <br>
+                zabbix-release_6.0-4+ubuntu22.04_all.deb           100%[===============================================================================================================>]   3.59K  --.-KB/s    in 0s<br>
+                <br>
+                2023-03-29 14:19:23 (1.09 GB/s) - ‘zabbix-release_6.0-4+ubuntu22.04_all.deb’ saved [3676/3676]<br>
+            </p>
+        </div>  
+        <div class="w3-container w3-theme-l1 w3-monospace">
+            <p>edumcosta@vm-ubuntu-v22-a:~/sudo dpkg -i zabbix-release_6.0-4+ubuntu22.04_all.deb<br>
+                Selecting previously unselected package zabbix-release.<br>
+                (Reading database ... 116600 files and directories currently installed.)<br>
+                Preparing to unpack zabbix-release_6.0-4+ubuntu22.04_all.deb ...<br>
+                Unpacking zabbix-release (1:6.0-4+ubuntu22.04) ...<br>
+                Setting up zabbix-release (1:6.0-4+ubuntu22.04) ...<br>                
+            </p>
+        </div>          
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Verifique novamente a necessidade de atualizar o sistema, "sudo apt update" e "sudo apt upgrade".</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Instalando o Zabbix, servidor, front-end e o agente.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Servidor WEB: Apache</strong></p>
+            <ul>
+                <li>sudo apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent</li>
+            </ul>            
+            <p><strong>Servidor WEB: Nginx</strong></p>
+            <ul>
+                <li>sudo apt install zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent</li>
+            </ul>                                
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>edumcosta@vm-ubuntu-v22-a:~/downloads$ sudo apt install zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent<br>
+            Reading package lists... Done<br>
+            Building dependency tree... Done<br>
+            Reading state information... Done<br>
+            ...<br>
+            ...<br>
+            0 upgraded, 76 newly installed, 0 to remove and 7 not upgraded.<br>
+            Need to get 35.7 MB of archives.<br>
+            After this operation, 185 MB of additional disk space will be used.<br>
+            Do you want to continue? [Y/n] y<br>
+            ...
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Configurando o Zabbix</strong><a name="> Configurando o Zabbix"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Criando o banco de dados do Zabbix no MYSQL.</strong></p>            
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>sudo mysql -uroot -p<br>
+            mysql> create database zabbix_db character set utf8mb4 collate utf8mb4_bin;<br>
+            mysql> create user 'user_zabbix'@'localhost' identified by '&ltpassword>';<br>
+            mysql> grant all privileges on zabbix_db.* to 'user_zabbix'@'localhost';<br>            
+            mysql> quit;
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Populando o esquema do banco de dados.</strong></p>            
+            <p>Para popular o esquema do banco de dados, deverá ser executado o script "server.sql" presente no arquivo server.sql.gz".<br>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Descompactar o arquivo "server.sql.gz".<br>
+                Você pode utilizar o comando "locate"
+                <ul>
+                    <li>Para instalar: <strong>"apt install locate"</strong></li>
+                    <li>Após instalado: <strong>"updatedb"</strong></li>
+                    <li>Execurar: <strong>"locate server.sql.gz</strong></li>
+                </ul>
+            <p>Por padrão os pacotes são extraídos em "/usr/share/zabbix-sql-scripts/mysql/server.sql.gz".</p>            
+            <p>Para descompactar: <strong>"sudo gzip -d /usr/share/zabbix-sql-scripts/mysql/server.sql.gz"</strong></p>            
+            <p>Antes de executar o script execute o comando: <strong>SET GLOBAL log_bin_trust_function_creators = 1;</strong></p>
+            <p>Alterar o script "server.sql" adicionado a primeira linha:   </p>
+            <p>Executar o script server.sql no MYSQL: <strong>mysql -u user_zabbix -puserzabbix00 &lt /usr/share/zabbix-sql-scripts/mysql/server.sql</strong></p>
+            <p>Após executar o script execute o comando: <strong>SET GLOBAL log_bin_trust_function_creators = 0;</strong></p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>mysql> SHOW VARIABLES LIKE 'log_bin_trust_function_creators';<br>
+            +---------------------------------+-------+<br>
+            | Variable_name                   | Value |<br>
+            +---------------------------------+-------+<br>
+            | log_bin_trust_function_creators | ON    |<br>
+            +---------------------------------+-------+<br>
+            1 row in set (0.00 sec)<br>
+            <br>
+            mysql>
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Configurando o Zabbix - MySQL Dedicado</strong><a name="> Configurando o Zabbix - MySQL Dedicado"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Para executar por meio de uma estação remota, o MYSQL deve estar configurado para receber conexões remotas.<br>
+            Para permitir conexões remotas, altere as variáveis <strong>"bind-address", "mysqlx-bind-address"</strong>
+             presente nos arquivo de configuração do MYSQL. Utilize o mesmo valor em ambas as variáveis.
+            </p>
+            <ul>
+                <li>Endereços fixados: <strong>bind-address = 10.0.0.1,10.0.1.1,10.0.2.1</strong></li>
+                <li>Qualquer endereço: <strong>bind-address = 0.0.0.0</strong></li>
+            </ul>
+            </p>
+            <p>Abaixo é realizada uma pesquisa pela variável "bind-address" nos arquivos de configuração do MYSQL.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>edumcosta@vm-ubuntu-v22-t:~$ sudo grep -r "bind" /etc/mysql/<br>
+            /etc/mysql/mysql.conf.d/mysqld.cnf:bind-address         = 127.0.0.1<br>
+            /etc/mysql/mysql.conf.d/mysqld.cnf:mysqlx-bind-address  = 127.0.0.1<br>
+            edumcosta@vm-ubuntu-v22-t:~$
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Caso não encontre a variável previamente configurada utilize o comando abaixo para identificar os aquivos MYSQL de confiugração.</p>
+            <p><strong>Observação:</strong></p>
+            <ul>
+                <li>Para que a conexão seja estabelecida é necessário:</li>
+                <ul>
+                    <li>Verificar porta 3306 TCP no firewall.</li>
+                    <li>Deve ser criado um usuário sem referência a um "bind-address" e privilégios para o esquema "zabbix" de banco de dados.</li>
+                </ul>
+            </ul>
+        </div>        
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>O usuário que será utilizado pelo servidor Zabbix para se conectar ao banco de dados sem que esse esteja associado a um host, como localhost.</p>            
+        <div class="w3-container w3-theme-l1 w3-monospace">                       
+            CREATE DATABASE zabbix_db character set utf8mb4 collate utf8mb4_bin;
+            CREATE USER 'user_zabbix'@'%' IDENTIFIED BY 'some_pass';
+            GRANT ALL PRIVILEGES ON zabbix_db.* TO 'user_zabbix'@'%' WITH GRANT OPTION;     
+            FLUSH PRIVILEGES;
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>edumcosta@vm-ubuntu-v22-t:~$ mysql --help | grep "Default options" -A 1<br>
+            Default options are read from the following files in the given order:<br>
+            /etc/my.cnf /etc/mysql/my.cnf ~/.my.cnf<br>
+            edumcosta@vm-ubuntu-v22-t:~$
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">            
+            <p>Para executar localmente no servidor, altere o script original e acrescentando o comnando <strong>"USE zabbix_db;"</strong> como a primeira linha do arquivo.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>sudo mysql -u user_zabbix -p &lt /usr/share/zabbix-sql-scripts/mysql/server.sql</p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Desabilitar o parâmetro "log_bin_trust_function_creators" após a importação do esquema.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>sudo mysql -uroot -p<br>
+                mysql> set global log_bin_trust_function_creators = 0;<br>
+                mysql> quit;
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Executando o mysql_secure_installation.</strong></p>
+            <p>Execute o comando: </strong>"sudo mysql_secure_installation", para terminar a configuração do MYSQL.</strong></p>
+            <p>Configure o banco de dados para o servidor Zabbix, editando o arquivo "/etc/zabbix/zabbix_server.conf".</p>
+            <p><strong>Variáveis a ajustar:</strong></p>
+            <ul>
+                <li>DBHost=[Nome ou IP do host]</li>
+                <li>DBName=zabbix_db</li>
+                <li>DBUser=user_zabbix</li>
+                <li>DBPassword=some_pass</li>
+            </ul>
+            <p>Caso utilizando NGINX, edite o arquivo <strong>"/etc/zabbix/nginx.conf"</strong>, descomente e defina a diretivas 'listen' e 'server_name' para habilitar o site.</p>        
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>server {<br>
+                listen          8080;<br>
+                server_name     vm-ubuntu-v22-t;
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Caso utilizando Apache, edite o arquivo <strong>"/etc/zabbix/nginx.conf"</strong>, descomente a diretiva 
+                <strong>"php_value date.timezone Europe/Riga"</strong> e defina para <strong>php_value date.timezone America/Sao_Paulo</strong>.
+            </p>        
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>server {<br>
+                listen          8080;<br>
+                server_name     vm-ubuntu-v22-t;
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Definindo o indioma.</strong></p>
+            <p>Utilizando o comando <strong>"locate -a"</strong> para ver os indiomas instalados ou verifique se existe no diretório <strong>"/etc"</strong>, o arquivo <strong>locale.gen</strong>.<br>
+                Caso esse não arquivo não exista, excute o comando <strong>"sudo apt purge locales && sudo apt install locales"</strong>.
+                No arquivo "locale.gen", localize a linguagem correspondente e execute o comando <strong>"locale-gen"</strong> para criar o pacote da linguagem.
+            </p>
+            <p><strong>Observação:</strong> Caso você tenha problemas de linguagem não encontrada após se autenticar no Zabbix, interface gráfica HTTP, significa que você não possui o dicionário da linguagem configurado na máquina.
+                A linguagem padrão utilizada pelo Zabbix é, <strong>"en_US.UTF-8"</strong>, para o caso de português Brasil é, <strong>"pt_BR.UTF-8"</strong>.  
+            </p>    
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>sudo locale-gen "en_US.UTF-8"<br>
+            Generating locales (this might take a while)...<br>
+            en_US.UTF-8... done<br>
+            Generation complete.
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Utilizar o comando <strong>sudo dpkg-reconfigure locales</strong>. Conforme o programa instalado, ao executar esse comando, pode ser necessário informar o número da localidade,
+                no caso "en_US.UTF-8" corresponde a número 160, assim como também definir a linguagem padrão utilizada para o sistema.
+            </p>
+            <p>Após a conclusão da reconfiguração de pacotes, reinicie os serviços relacioandos ao zabbix, <strong>"sudo systemctl restart zabbix-server zabbix-agent nginx php8.1-fpm"</strong>.</p>
+            <p>Iniciar esses mesmos serviços ao boot do sistema.</p>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>sudo systemctl restart zabbix-server zabbix-agent nginx php8.1-fpm<br>
+            sudo systemctl enable zabbix-server zabbix-agent nginx php8.1-fpm
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>A partir dessa etapa a conclusão das configurações do Zabbix podem ser feitas via http://[IP Servidor]:8080</p>
+            <p>O super usuário do zabbix é: "Admin", senha: "zabbix"</p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Otimizando a Performance do MYSQL SERVER</strong><a name="> Otimizando a Performance do MYSQL SERVER"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Verificando os recursos disponíveis no servidor.</p>   
+            <ul>
+                <li>Memória</li>
+                <li>Procesadores</li>
+            </ul>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>edumcosta@vm-ubuntu-v22-t:~$ grep MemTotal /proc/meminfo<br>
+            MemTotal:        4003516 kB<br>
+            edumcosta@vm-ubuntu-v22-t:~$ cat /proc/cpuinfo | grep processor<br>
+            processor       : 0<br>
+            processor       : 1<br>
+            processor       : 2<br>
+            processor       : 3<br>
+            processor       : 4<br>
+            processor       : 5<br>
+            processor       : 6<br>
+            processor       : 7<br>
+            processor       : 8<br>
+            processor       : 9<br>
+            processor       : 10<br>
+            processor       : 11
+            </p>
+        </div>  
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Verificando e ajustando os valores configurados no MYSQL.</p>   
+            <p>Para visualizar o valor de uma variável no MYSQL, utilize a syntax <strong>"SHOW VARIABLES LIKE 'nome da variável';"</strong>
+            </p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Variável</th>
+                    <th>Valor</th>                    
+                </tr>
+                <tr>
+                    <th>thread_cache_size</th>
+                    <td>Especifica o número máximo de threads que o MySQL mantém em cache para reutilização. Sistemas com muitas conexões mais threads.<br> 
+                        O valor dessa variável pode variar de 8 a 64, um início balanceado correspoderia a 16.          
+                        Ajustada para: <strong>thread_cache_size = 16 </strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>key_buffer_size</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 8 MB. Especifica o tamanho da memória cache usada 
+                        para armazenar os índices em memória da engine "MyISAM". Deve corresponder a 20% da memória disponível do servidor.<br>                        
+                        <strong>Observação:</strong> Um esquema de banco de dados que utilize a engine "innodb" também precisará de 70%/80% da memória disponível do servidor.<br>
+                        Ajustada configuração 512 MB: <strong>key_buffer_size = 536870912</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>max_allowed_packet</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 8 MB.<br> 
+                        Define o tamanho máximo dos pacotes que podem ser transmitidos entre o cliente e o servidor MySQL em uma única operação.<br>                        
+                        Ajustada configuração 0,75 GB: <strong>max_allowed_packet = 805306368</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>sort_buffer_size</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 256 KB.<br>
+                        Define o tamanho do buffer usado para realizar operações de classificação (sorting) durante a execução de consultas.<br>                        
+                        Ajustada configuração 1 MB: <strong>sort_buffer_size = 1048576</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>read_rnd_buffer_size</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 256 KB.<br>
+                        Melhorar o desempenho durante a leitura de blocos aleatórios, armazenando temporariamente esses dados em memória para reduzir o acesso frequente ao disco.<br>                        
+                        Ajustada configuração 1 MB: <strong>read_rnd_buffer_size = 1048576</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>bulk_insert_buffer_size</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 8 MB.<br>
+                        Melhorar o desempenho de operações de inserção em massa, reduzindo o número de operações de gravação no disco e consolidando várias inserções em uma única gravação.<br>                        
+                        Ajustada configuração 64 MB: <strong>bulk_insert_buffer_size = 67108864</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>myisam_sort_buffer_size</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 8 MB.<br>
+                        Define o tamanho de espaço em memória utilizado para classificação de dados relacionados a engine "MyISAM".
+                        Ajustada configuração 64 MB: <strong>myisam_sort_buffer_size = 67108864</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>max_heap_table_size</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 16 MB.<br>
+                        Essa área de memória define o tamanho máximo das tabelas temporárias em memória (heap).<br>
+                        Tabelas "temporárias" ou "memory" são criadas durante a execução de consultas que envolvem operações como ordenação, agrupamento ou tabelas temporárias explícitas.<br>
+                        <strong>Observação:</strong> Por padrão, o valor de <strong>"max_heap_table_size"</strong> é geralmente definido como uma fração do valor de <strong>"tmp_table_size" ou possuem o mesmo tamanho.</strong><br>
+                        Ajustada configuração 256 MB: <strong>max_heap_table_size = 268435456
+                        </strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>tmp_table_size</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 16 MB.<br>
+                        Define o tamanho máximo para todas as tabelas temporárias, independentemente de serem armazenadas em memória (heap) ou em disco.<br>                        
+                        Ajustada configuração 256 MB: <strong>tmp_table_size = 268435456
+                        </strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>join_buffer_size</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 256 KB.<br>
+                        Define o tamanho do buffer usado para executar operações de junção (JOIN) entre tabelas.<br>                        
+                        Ajustada configuração 64 MB: <strong>join_buffer_size = 67108864</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>table_open_cache</th>
+                    <td>Valor expresso em bytes e valor padrão inicial MYSQL 4 KB.<br>
+                        Define o número de tabelas que o servidor MySQL pode manter abertas simultaneamente na cache de tabelas.<br>                        
+                        Ajustada configuração 512 KB: <strong>table_open_cache = 524288</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>innodb_flush_log_at_trx_commit</th>
+                    <td>
+                        Valor padrão inicial MYSQL é 1. 
+                        Define o comportamento de gravação dos logs de transação (transaction logs) no disco.<br>                        
+                        <strong>innodb_flush_log_at_trx_commit = 0</strong> : Nessa opção, o InnoDB não escreve os logs de transação no disco após cada transação. Pode ocorrer perda em caso de falha do servidor.<br>
+                        <strong>innodb_flush_log_at_trx_commit = 1</strong> : Nessa opção, valor padrão, o InnoDB escreve os logs de transação no disco após cada transação. Garante que as transações sejam duráveis (D), ou seja, estão permanentemente salvas no disco, mesmo em
+                        caso de falha do servidor, mas pode afetar o desempenho, pois ocorre uma gravação síncrona em disco após cada transação.<br>
+                        <strong>innodb_flush_log_at_trx_commit = 2</strong> : Nessa opção, o InnoDB escreve os logs de transação no disco após cada transação, mas utiliza um mecanismo de escrita assíncrona (doublewrite buffer). 
+                        Fornece mais desempenho e compromisso com a durabilidade.<br>
+                        Ajustadada para: <strong>innodb_flush_log_at_trx_commit = 2</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>innodb_log_file_size</th>
+                    <td>Valor expresso em bytes.<br>
+                        Corresponde a engine "innodb" utilizada em tabelas. Bancos com muitas gravações ou mista, ou seja, escrita e leitura, deve possuir um tamanho entre 3GB e 8GB. 
+                        Quanto mais gravação maior deve ser o tamanho.<br>
+                        Para modificar esse parâmetro é necessário paralizar o MYSQL e remover os arquivos "ib_logfile0" e "ib_logfile1", para que
+                        os novos arquivos sejam criados com o novo tamanho na inicialização do MYSQL. Esse procedimento é indicado mais abaixo nesse documento.<br>                         
+                        Ajustada configuração 2,25 GB: <strong>innodb_log_file_size = 2415919104</strong> 
+                    </td>
+                </tr>                              
+                <tr>
+                    <th>innodb_buffer_pool_instances</th>
+                    <td>Determina o número de instâncias de buffer pool do InnoDB. Mais Instâncias mais paralelismo ocorrerá para lidar com as transações pool. O valor padrão é 1 e depende do números de cores.<br>                    
+                        Ajustada 2 instâncias: <strong>innodb_buffer_pool_instances = 2</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>innodb_buffer_pool_size</th>
+                    <td>Valor expresso em bytes.<br>
+                        Corresponde a engine "innodb" utilizada em tabelas. Deve corresponder a 70%/80% da memória disponível do servidor.<br>
+                        <strong>Observação:</strong> Um esquema de banco de dados que utilize a engine "MyISAM" também precisará de 25% da memória disponível do servidor.<br>
+                        Ajustada configuração 2,25 GB: <strong>innodb_buffer_pool_size = 2415919104</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>innodb_flush_method</th>
+                    <td>Controla o método usado pelo InnoDB para escrever dados e logs em disco. Utilizar o "O_DIRECT"<br> 
+                        Esta configuração permite que o InnoDB acesse o dispositivo de armazenamento diretamente, evitando a utilização do cache do sistema operacional.<br>
+                        Ajustada para: <strong>innodb_flush_method = O_DIRECT</strong>
+                    </td>
+                </tr>
+            </table>
+            <p>As variáveis abaixo também coprrespondem a itens de performance, mas os seus valores padrão atendem aos requisitos.</p>
+            <ul>
+                <li>innodb_write_io_threads = 4</li>
+                <li>innodb_read_io_threads = 4</li>
+                <li>innodb_file_per_table = 1</li>
+                <li>innodb_thread_concurrency = 0</li>
+                <li>innodb_buffer_pool_chunk_size = 134217728</li>
+            </ul>
+            <p>Resultado de configuração para alocação de memória "MYSQL".</p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Variável</th>
+                    <th>Valor bytes</th>                    
+                </tr>
+                    <td>key_buffer_size</td>
+                    <td>805306368</td>
+                </tr>
+                <tr>
+                    <td>sort_buffer_size</td>
+                    <td>1048576</td>
+                </tr>
+                <tr>
+                    <td>read_rnd_buffer_size</td>
+                    <td>1048576</td>
+                </tr>
+                <tr>
+                    <td>bulk_insert_buffer_size</td>
+                    <td>67108864</td>
+                </tr>
+                <tr>
+                    <td>myisam_sort_buffer_size</td>
+                    <td>67108864</td>
+                </tr>
+                <tr>
+                    <td>max_heap_table_size</td>
+                    <td>268435456</td>
+                </tr>
+                <tr>
+                    <td>tmp_table_size</td>
+                    <td>268435456</td>
+                </tr>
+                <tr>
+                    <td>join_buffer_size</td>
+                    <td>67108864</td>
+                </tr>
+                <tr>
+                    <td>table_open_cache</td>
+                    <td>524288</td>
+                </tr>
+                <tr>
+                    <td>innodb_buffer_pool_size</td>
+                    <td>2415919104</td>
+                </tr>
+            </table>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Item</th>                    
+                    <th>Valor</th>
+                    <th>Detalhe</th>
+                </tr>
+                <tr>
+                    <th>Núcleos</th>
+                    <th>12</th>                    
+                    <td>Necessário 2 núcleos e conforme valor confiugurado para: "innodb_buffer_pool_instances"</td>                    
+                </tr>
+                <tr>
+                    <th>Mémoria Alocada MYSQL</th>
+                    <th>3,6 GB</th>                    
+                    <th>Disponível 4GB. Reservar +- 512 MB para o S.O.</th>                    
+                </tr>
+            </table>            
+            <p>As configurações acima devem ser realizados na seção <strong>[mysqld]</strong> no arquivo "my.cnf" para que dessa forma
+            se tornem persistentes. Para MySQL 8.0 e versões mais recentes o arquivo de configuração corresponde a: 
+            <strong>"/etc/mysql/mysql.conf.d/mysqld.cnf"</strong>.
+            </p>
+            <p>O procedimento para a exclusão dos arquivos "ib_logfile0" e "ib_logfile1"</p>
+            <ul>
+                <li>1. Pare o servidor MYSQL.</li>
+                <li>2. Defina as configurações "innodb_log_file_size" no arquivo de configuração do MYSQL.</li>
+                <li>3. Remova os arquivos.</li>
+                <li>4. Inicie o servidor MYSQL.</li>
+                <li>5. Verifique o log de erro conforme caminho indicado no arquivo de copnfiguração.</li>
+            </ul>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>edumcosta@vm-ubuntu-v22-t:~$ cat /etc/mysql/mysql.conf.d/mysqld.cnf |grep log_error<br>
+            log_error = /var/log/mysql/error.log
+            </p>
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Zabbix - HA (Redundância)</strong><a name="> Zabbix - HA (Redundância)"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Para esse cenário teremos duas instâncias de Zabbix Server apontando para uma única base de dados e utilizaremos como servidor web o "Apache2"
+                para podermos utilizar a funcionalidade de "Keep Alive", grátis no "Apache", mas paga no "NGINX".
+            </p>            
+            <li><strong>Servidor "MYSQL":</strong></li>
+            <p><strong>Comentar as variáveis de ambiente:</strong></p>
+            <ul>
+                <li><strong>bind-address:</strong> Endereço IP ao qual o servidor MySQL está "vinculado" ou "ligado".<br> 
+                    O servidor MySQL escuta em um endereço IP específico e porta para aceitar conexões de clientes, como aplicativos, 
+                    ferramentas de administração ou outros servidores.</li>
+                <li><strong>mysqlx-bind-address:</strong> Endereço IP ao qual o servidor MySQL X Protocol está "vinculado" ou "ligado".<br>
+                O MySQL X Protocol é um protocolo de comunicação que possibilita a interação com o MySQL usando JSON e comunicação assíncrona, 
+                além de ser otimizado para aplicações modernas e baseadas em web.
+                </li>
+                <li><strong>Observação:</strong> A variável "bind-address" ou "mysqlx-bind-address", permitem múltiplos
+                valores de IP, onde cada endereço deve estar separado por virgula ",".<br>
+                Exemplo: bind-address = 192.168.16.1,192.168.16.2,192.168.16.3
+                </li>
+            </ul>
+            <p><strong>Adicionar as variáveis de ambiente:</strong></p>
+            <ul>
+                <li><strong>skip-networking</strong> Essa variável define a configuração no MySQL 
+                    que controla se o servidor MySQL deve ou não aceitar conexões de rede TCP/IP.<br>
+                    Quando essa opção está habilitada, o servidor MySQL não escuta conexões de rede TCP/IP, 
+                    permitindo que ele funcione apenas localmente, através de conexões socket Unix ou 
+                    IPC (Inter-Process Communication).
+                </li>
+                <ul>
+                    <li>"Sem valor": Opção habilitada.<br>
+                    Exemplo: "skip-networking"
+                    </li>
+                    <li>Valor "0": Opção desabilitada.<br>
+                    Exemplo: "skip-networking=0"
+                    </li>
+                </ul>                
+            </ul>
+            <p><strong>Instalação do Script SQL do Zabbix:</strong></p>
+            <ul>
+                <li>Executar o procedimento para a obtenção dos pacotes do Zabbix.</li>                                        
+                <li>Instalar somente o pacote de banco de dados: <strong>sudo apt install zabbix-sql-scripts</strong>.</li>
+                <li>Executar o procedimento de criação do banco "MYSQL" Zabbix.</li>
+            </ul>
+            <li><strong>Servidor Zabbix HA1 - Servidor 1:</strong></li>
+            <p>Executar o procedimento para a obtenção dos pacotes do Zabbix.</p>
+            <ul> 
+                <li><strong>Observação:</strong> Utilizar a instalação com "Apache2" ao invés do "NGINX".<br>
+                Exemplo: <strong>sudo apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf</strong>
+                </li><br>                        
+                <li>Instalar somente o pacote server Zabbix para "MYSQL": <strong>sudo apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf</strong>.</li>
+                <li>Modificar as configurações do servidor: "/etc/zabbix/zabbix-server.conf".</li>            
+            
+                <li>Seguir o padrão de instalação já visto.</li>
+                <ul>
+                    <li>DBHost=[IP do servidor MYSQL]</li>
+                    <li>DBName=[Nome do Banco MYSQL]</li>                
+                    <li>DBUser=[Usuário do Banco MYSQL]</li>
+                    <li>DBPassword=[Senha do Usuário do Banco MYSQL]</li>
+                </ul>
+                <li><strong>Opções do HA</strong></li>
+                <ul>
+                    <li>Ajustar as varíaveis:</li>
+                    <ul>
+                        <li><strong>HANodeName</strong> : Nome do nó, "hostname".<br>
+                        Exemplo: HANodeName=vm-ubuntu-v22-ha1
+                        </li>
+                        <li><strong>NodeAddress</strong><li> : Endereço do nó, ip do "hostname".<br>
+                        Exemplo: NodeAddress=192.168.16.101
+                        </li>                            
+                        <li><strong>AllowUnsupportedDBVersions</strong> : Permite a utilização de banco de dados não relacionados a versão Zabbix.<br>
+                            Exemplo: AllowUnsupportedDBVersions=1
+                        </li>    
+                    </ul>
+                </ul>
+            </ul>
+            <li><strong>Servidor Zabbix HA2 - Servidor 2:</strong></li>            
+            <p>Executar o mesmo procedimento realizado para "Zabbix HA1 - Servidor 1".</p>                    
+            
+            <p><strong>Observação:</strong> Caso os nomes dos servidores não estejam registrados 
+                num sistema de DNS, é necessário utilizar o sistema local de identificação de hosts: <strong>sudo vi /etc/hosts</strong>.<br>
+                Dentro desse arquivo devem estar todos as referências de Ip/Hostname de todos os servidores envolvidos
+                na configuração.                             
+            </p>
+            <li><strong>Configurando o "Keep Alive"</strong></li>            
+            <p>Em cada um dos servidores "HA", instalar o pacote : <strong>sudo apt install keepalived</strong>.
+            </p>
+            <ul>
+                <li>Criar o arquivo <strong>"vim /etc/keepalived/keepalived.conf"</strong> e realizar as seguintes configurações:</li>
+            </ul>
+        </div>
+        <div class="w3-container w3-theme-l1 w3-monospace">           
+            <p>
+            vrrp_track_process chk_apache_apache2 {<br>                
+                process apache2<br> [Define que está sendo utuilizado o Apache2 como servidor web.]
+                weight 10<br>
+            }<br>
+            <br>
+            vrrp_instance ZBX_1 {<br> [Indica o nome da instância Zabbix.]
+                state MASTER<br> ["MASTER" ou "BACKUP". MASTER define o Zabbix que é o nó principal e "BACKUP" o nó reserva.]
+                interface enp0s3<br> [Define a interface de rede]
+                virtual_router_id 51<br>
+                priority 244<br>
+                advert_int 1<br>
+                authentication {<br>
+                    auth_type PASS<br>
+                    auth_pass zabbix<br>
+            }<br>
+            <br>
+            track_process {<br>
+                chk_apache_apache2<br> [Variável do "Apache2" de track de processo.]
+            }<br>
+            <br>
+            virtual_ipaddress {<br>
+                192.168.15.50/24<br> [Indica o IP do servidor relacionado a configuração.]
+                }<br>
+            }<br>
+            </p>                       
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Como podemos ver no exemplo acima, a diferença de configuração entre os servidsores "HA1" e "HA2" de "keepalive" serão:</p>
+            <ul>
+                <li>vrrp_instance : Nome da instância.</li>
+                <li>state : Tipo da instância.</li>
+                <li>interface : Interface de rede da instância.</li>
+                <li>virtual_ipaddress : Ip  da interface de rede da instância.</li>
+            </ul>
+            <p>Executar os comandos:</p>
+            <ul>
+                <li><strong>sudo systemctl stop apache2 keepalived</strong></li>
+                <li><strong>sudo systemctl enable apache2 keepalived</strong></li>
+                <li><strong>sudo systemctl start apache2 keepalived</strong></li>
+                <li>Verificar os logs do Zabbix para verificar a inicialização: <strong>"/var/log/zabbix/zabbix-server.log"</strong></li>
+            </ul>
+            <p>Após verificada a inicialização, executar o Zabbix via <strong>hhtp://[Servidor HA1]/zabbix</strong> e realizar as configurações de setup do "Zabbix HA1". 
+            </p>
+            <p>Após feita as configurações para "Zabbix HA1", parar o serviço "Apache" "HA1" e executar o Zabbix via <strong>hhtp://[Servidor HA2]/zabbix</strong> e realizar as configurações de setup do "Zabbix HA2". 
+            </p>
+            <p>Após feita as configurações para "Zabbix HA2", iniciar o serviço "Apache" "HA1".</p>
+        </div>
+
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Zabbix - Opções de Administração</strong><a name="> Zabbix - Opções de Administração"></a></p>
+        </div>
+            
+            
+
+
+
+
+
+
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>Docker<a name="Docker"></a></h4>            
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>Docker é uma plataforma voltada para container. Um container é um ambiente isolado utilizado para empacotar aplicações. 
+                Containers têm o objetivo de segregar e facilitar a portabilidade de aplicações em diferentes ambientes. 
+                Um container contém um conjunto de processos que são executados a partir de uma imagem e que essa contem todos os arquivos 
+                necessários para que a aplicação seja executada.
+            </p>
+            <p><strong>Lista Principais Comandos</strong></p>
+            <ul>
+                <li><strong>run</strong> : Create and run a new container from an image.<br>
+                <strong>Exemplo: docker container run hello-world [hello-world corresponde a uma imagem].</strong></li>
+                <li><strong>exec</strong> : Execute a command in a running container.<br>
+                <strong>Exemplo: docker exec meu-container ls [Executará o comando ls no container].</strong></li>
+                <li><strong>ps</strong> : List containers.<br>
+                <strong>Exemplo: docker ps ou docker ps -a [Executará o comando ps para listar os containers em execução e a opção "-a" listará os inativos].</strong></li>
+                <li><strong>build</strong> : Build an image from a Dockerfile.<br>
+                <strong>Exemplo: docker build -t meu-aplicativo:1.0 . [Criará a imagem "meu-aplicativo onde "":1.0", corresponde a TAG o ".""
+                indica o diretório corrente no qual se encontra o arquivo "Dockerfile"].</strong></li>
+                <li><strong>pull</strong> : Download an image from a registry.<br>
+                <strong>Exemplo: docker pull ubuntu:20.04 [Faz o dowload da imagem "ubuntu:20.04" registrada no repositório padrão do DockerHub].</strong></li>
+                <li><strong>push</strong> : Upload an image to a registry.<br>
+                <strong>Exemplo: docker push meu-aplicativo:1.0 [Faz o upload da imagem para um repositório. O repositório em questão seria o Docker Hub, 
+                onde antes de fazer o upload é necessário utuilizar o comando "login".</strong></li>
+                <li><strong>images</strong> : List images.</li>
+                <li><strong>login</strong> : Log in to a registry.</li>
+                <li><strong>logout</strong> : Log out from a registry.</li>
+                <li><strong>search</strong> : Search Docker Hub for images.</li>
+                <li><strong>version</strong> : Show the Docker version information.</li>
+                <li><strong>info</strong> : Display system-wide information.</li>
+            </ul>
+            <p><strong>Lista Outros Comandos</strong></p>
+            <ul>            
+                <li><strong>attach</strong> : Attach local standard input, output, and error streams to a running container.</li>
+                <li><strong>commit</strong> : Create a new image from a container's changes.</li>
+                <li><strong>cp</strong> : Copy files/folders between a container and the local filesystem.</li>
+                <li><strong>create</strong> : Create a new container.</li>
+                <li><strong>diff</strong> : Inspect changes to files or directories on a container's filesystem.</li>
+                <li><strong>events</strong> : Get real time events from the server.</li>
+                <li><strong>export</strong> : Export a container's filesystem as a tar archive.</li>
+                <li><strong>history</strong> : Show the history of an image.</li>
+                <li><strong>import</strong> : Import the contents from a tarball to create a filesystem image.</li>
+                <li><strong>inspect</strong> : Return low-level information on Docker objects.</li>
+                <li><strong>kill</strong> : Kill one or more running containers.</li>
+                <li><strong>load</strong> : Load an image from a tar archive or STDIN.</li>
+                <li><strong>logs</strong> : Fetch the logs of a container.</li>
+                <li><strong>pause</strong> : Pause all processes within one or more containers.</li>
+                <li><strong>port</strong> : List port mappings or a specific mapping for the container.</li>
+                <li><strong>rename</strong> : Rename a container.</li>
+                <li><strong>restart</strong> : Restart one or more containers.</li>
+                <li><strong>rm</strong> : Remove one or more containers.</li>
+                <li><strong>rmi</strong> : Remove one or more images.</li>
+                <li><strong>save</strong> : Save one or more images to a tar archive (streamed to STDOUT by default).</li>
+                <li><strong>start</strong> : Start one or more stopped containers.</li>
+                <li><strong>stats</strong> : Display a live stream of container(s) resource usage statistics.</li>
+                <li><strong>stop</strong> : Stop one or more running containers.</li>
+                <li><strong>tag</strong> : Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE.</li>
+                <li><strong>top</strong> : Display the running processes of a container.</li>
+                <li><strong>unpause</strong> : Unpause all processes within one or more containers.</li>
+                <li><strong>update</strong> : Update configuration of one or more containers.</li>
+                <li><strong>wait</strong> : Block until one or more containers stop, then print their exit codes.</li>
+            </ul>
+            <p>Lista de Parâmetros + Comuns Docker RUN</p>
+            <ul>
+                <li><strong>"-d" ou "--detach"</strong> : Executa o contêiner em segundo plano (modo daemon).<br>
+                <strong>Exemplo: docker run -d minha-imagem</strong></li>
+                <li><strong>"-i" ou "--interactive"</strong> : Mantém STDIN aberto mesmo se não estiver conectado, permitindo a interação com o contêiner.<br>
+                <strong>Exemplo: docker run -i minha-imagem</strong></li>
+                <li><strong>"-t" ou "--tty"</strong> : Aloca um pseudo TTY (terminal) e vincula-o ao STDIN, que é útil para interagir com o contêiner.<br>
+                <strong>Exemplo: docker run -it minha-imagem</strong></li>                
+                <li><strong>"--name"</strong> : Especifica um nome personalizado para o contêiner em vez de um nome gerado automaticamente.<br>
+                <strong>Exemplo: docker run --name meu-contêiner minha-imagem</strong></li>                
+                <li><strong>"-e" ou "--env"</strong> : Define variáveis de ambiente no contêiner.<br>
+                <strong>Exemplo: docker run -e VARIAVEL=valor minha-imagem</strong><br>
+                <li><strong>"-p" ou "--publish"</strong> : Publica portas do contêiner no host. Permite mapear portas do contêiner para portas do host.<br>
+                <strong>Exemplo: docker run -p 8080:80 minha-imagem</strong></li>              
+                <li><strong>"-v" ou "--volume"</strong> : Monta volumes para compartilhar dados entre o host e o contêiner.<br>
+                <strong>Exemplo: docker run -v /caminho/local:/caminho/contêiner minha-imagem</strong></li>
+                <li><strong>"--network"</strong> : Define a rede do contêiner.<br>
+                <strong>Exemplo: docker run --network minha-rede minha-imagem</strong></li>   
+                <li><strong>"--rm"</strong> : Remove automaticamente o contêiner após a saída (útil para contêineres temporários).<br>
+                <strong>Exemplo: docker run --rm minha-imagem</strong></li>
+                <li><strong>"--privileged"</strong> : Dá ao contêiner privilégios elevados no host. Use com cuidado, pois isso pode ser uma brecha de segurança.<br>
+                <strong>Exemplo: docker run --privileged minha-imagem</strong></li>
+                <li><strong>"--entrypoint"</strong> : Substitui o comando de entrada padrão do contêiner.<br>
+                <strong>Exemplo: docker run --entrypoint /caminho/meu-script.sh minha-imagem</strong></li>                
+            </ul>
+            <p><strong>Lista Comandos de Gerenciamento</strong></p>
+            <ul>                
+                <li><strong>builder</strong> : Manage builds.</li>
+                <li><strong>buildx*</strong> : Docker Buildx (Docker Inc., v0.11.2).</li>
+                <li><strong>compose*</strong> : Docker Compose (Docker Inc., v2.20.2).</li>
+                <li><strong>container</strong> : Manage containers.</li>
+                <li><strong>context</strong> : Manage contexts.</li>
+                <li><strong>image</strong> : Manage images.</li>
+                <li><strong>manifest</strong> : Manage Docker image manifests and manifest lists.</li>
+                <li><strong>network</strong> : Manage networks.</li>
+                <li><strong>plugin</strong> : Manage plugins.</li>
+                <li><strong>system</strong> : Manage Docker.</li>
+                <li><strong>trust</strong> : Manage trust on Docker images.</li>
+                <li><strong>volume</strong> : Manage volumes.</li>
+            </ul>
+            <p><strong>Comando de Gerenciamento Cluster</strong></p>
+            <ul>
+                <li><strong>swarm</strong> : Manage Swarm.</li>                       
+            </ul>              
+        </div>
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <p><strong>> Volumes</strong><a name="> Volumes"></a></p>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p><strong>Tipos de Volumes</strong></p>
+            <table class="w3-table w3-theme-l3 w3-bordered w3-monospace">
+                <tr>
+                    <th>Tipo Volume</th>
+                    <th>Descrição</th>                    
+                </tr>
+                <tr>
+                    <th>Anônimos (anonymous)</th>
+                    <td>Diretórios criados pela flag -v, porém com um nome aleatório; Podemos criar um volume anônimo (anonymous) 
+                        da seguinte maneira: <strong>docker run -v /data</strong><br> 
+                        Onde /data será o diretório que contém o volume anônimo e este container estará atrelado ao volume anônimo
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nomeado (named)</th>
+                    <td>Podemos criar um volume nomeado (named) da seguinte maneira: <strong>docker run -v nomedovolume:/data</strong><br>
+                        Agora o volume tem um nome  e pode ser facilmente referenciado.
+                        Da mesma maneira que o anônimo, este volume tem como função armazenar arquivos.                        
+                    </td>
+                </tr>
+                <tr>
+                    <th>Bind mount</th>
+                    <td>Esse tipo de volume fica em um diretório que nós especificamos,<strong>docker run /dir/data:/data</strong><br>
+                        Desta maneira o diretório /dir/data no nosso computador, será o volume deste container;                        
+                    </td>
+                </tr>
+            </table>
+            <p>Podemos criar volumes manualmente com <strong>docker volume create nome-volume</strong>.</p>
+            <p>Podemos criar um volume que tem apenas permissão de leitura, isso é útil em algumas aplicações, <strong>docker run -v volume:/data:ro</strong> , onde 
+                ":ro" é a abreviação de read only;
+            </p>
+        </div>
+
+        Para instalar o Docker utilize as intruções do fornecedor: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+        Documentação Docker - Comandos:
+        https://docs.docker.com/engine/reference/commandline
+
+        Ocorre quando uma porta indicada para o container já está sendo utilizada. 
+        edumcosta@hvm-ubuntu-v22-a:~/udemy/docker/primeiro-build$ sudo docker container run -p 8080:80 primeiro-build
+        docker: Error response from daemon: driver failed programming external connectivity on endpoint frosty_bhaskara (54fbefe12af840200d507d2d699e738c37306d3d3793e18a1b19f5fdbacb33d5): Error starting userland proxy: listen tcp4 0.0.0.0:8080: bind: address already in use.
+        ERRO[0000] error waiting for container:
+
+        Usar o comando "netstat -pna | grep 8080" para identificar o processo. Para o caso em questão a porta está sendo utilizada pelo serviço "nginx" no próprio host. 
+        Para rodar o container o serviço foi finalizado: "sudo systemctl stop nginx.service"
+
+        O erro abaixo ocorre quando o usuário autenticado na sessão não possui privilégios "root" ou não pertence ao grupo relacionado ao Docker.
+        edumcosta@hvm-ubuntu-v22-a:~/udemy/docker/primeiro-build$ docker run hello-world
+        docker: permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/create": dial unix /var/run/docker.sock: connect: permission denied.
+        See 'docker run --help'.
+
+        edumcosta@hvm-ubuntu-v22-a:~/udemy/docker/primeiro-build$ sudo cat /etc/group |grep docker
+        docker:x:999:
+        
+        edumcosta@hvm-ubuntu-v22-a:~/udemy/docker/primeiro-build$ echo $USER
+        edumcosta
+        edumcosta@hvm-ubuntu-v22-a:~/udemy/docker/primeiro-build$ sudo usermod -a -G docker $USER
+        edumcosta@hvm-ubuntu-v22-a:~/udemy/docker/primeiro-build$ sudo cat /etc/group |grep docker
+        docker:x:999:edumcosta
+        
+        
+        Instalando o Docker 3.1. Quero instalar, vamos lá? Bom, dado que você já sabe o que é um
+        container e o que é o tal do Docker, chegou a hora de pôr a mão na massa. Vamos instalar o
+        Docker pela primeira vez! O daemon do Docker roda nativo em distribuições Linux, e por isso a
+        instalação em sistemas operacionais que não sejam Linux consiste basicamente em subir uma VM e
+        rodar o daemon de lá. O cliente, no entanto, pode ser instalado nos principais sistemas
+        operacionais disponíveis atualmente. Para realizar a instalação do Docker em máquinas Linux é
+        bastante simples. Precisamos somente observar alguns pontos: O Docker não suporta processadores
+        32 bits. O Docker é suportado somente (stable) na versão do kernel 3.8 ou superior. O kernel
+        deve ter suporte aos sistemas de arquivos utilizados pelo Docker, como o AUFS, Device Mapper,
+        OverlayFS, etc. O kernel deverá ter suporte a cgroups e namespaces, o que normalmente já vem por
+        default habilitado na maioria das distros. Você também pode acessar a URL:
+        https://docs.docker.com/engine/security/security/. Lá é possível aprender a instalar o Docker em
+        diversas distribuições Linux, nos principais clouds e também no MacOS e no Windows. Neste livro
+        vamos utilizar a distribuição Debian Linux 8, porém o processo de instalação não muda quase nada
+        para outras distribuições. Chega de conversa, vamos lá! Primeiro, vamos verificar a versão do
+        kernel para saber se ele é compatível com o Docker: # uname -r Agora, a instalação do Docker é
+        bastante simples. Você pode optar por instalá-lo utilizando os pacotes disponíveis para sua
+        distro – por exemplo, o apt-get ou yum. Nós preferimos fazer a instalação através da execução do
+        curl a seguir, que irá baixar um script de instalação e já o executará: # curl -fsSL
+        https://get.docker.com/ | sh Assim ele sempre buscará a versão mais recente do Docker. :) Agora
+        adicione a chave pgp para conseguir baixar o pacote do repositório do Docker. Caso você esteja
+        utilizando o Debian e queira realizar a instalação através dos pacotes disponíveis no
+        repositório, faça: #apt-key adv --keyserver \ hkp://pgp.mit.edu:80 --recv-keys \
+        58118E89F3A912897C070ADBF76221572C52609D Agora vamos criar/editar o arquivo
+        “/etc/apt/sources.list.d/docker.list” e adicionar o endereço do repositório correspondente à
+        versão do seu Debian. No nosso caso estamos utilizando a versão Debian 8, também conhecida como
+        Jessie. # vim /etc/apt/sources.list.d/docker.list # Debian Jessie
+        deb https://apt.dockerproject.org/repo debian-jessie main Após adicionar a linha anterior, é
+        necessário atualizar a lista de repositórios executando: # apt-get update Após finalizar a
+        atualização da lista de repositórios disponíveis, já podemos fazer a instalação do Docker. O
+        nome do pacote é “docker-engine”. :) # apt-get install docker-engine Vamos verificar se o Docker
+        está em execução. Digite na linha de comando o seguinte: #/etc/init.d/docker status Ou: #
+        service docker status docker stop/waiting Com isso, podemos verificar se o processo está em
+        execução. Como podemos notar, o daemon do Docker não está em execução, portanto vamos iniciá-lo.
+        # service docker start docker start/running, process 4303
+
+        # service docker status docker start/running, process 4303 Perfeito! Agora já temos o Docker
+        instalado e pronto para começar a brincar com os containers. \o/
+
+***************************************************
+
+Aqui trecho de um outro documento com script que seta a data e que pode ser utilizado em backups:
+
+CURDATE=$(date +%m-%d-%Y) 
+export $CURDATE 
+sudo rsync -avb --delete --backup-dir=/backup/incremental/$CURDATE/src /target
+
+***********
+
+
+        Prepare a Backup Device
+To make a full backup of the system, you need a device that has much space to keep all files. A backup device can be a locally attached drive, network device, or cloud storage like Amazon S3, Azure Spaces, etc.
+
+Create a directory to store the backup on the backup device. Assuming you have attached a separate disk in your local machine mounted at /mnt directory.
+ADVERTISEMENT
+
+
+mkdir /mmnt/full-backup 
+Install Rsync Utility
+Rsync is a command line utility that helps to synchronize content between two directories. They either exist on the local system or one can be the remote. You can quickly install on using the default package manager on most modern Linux distributions. To install Rsync on Debian-based systems, type:
+
+sudo apt install rsync 
+Backup Your System
+You can run the command directly to make a backup of the complete system. For example, to create a backup of the system to the “/mnt/full-backup” directory, run the following command.
+ADVERTISEMENT
+
+
+sudo rsync -aAXv / --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /mnt/full-backup 
+The above command will backup the entire root (/) directory, excluding /dev, /proc, /sys, /tmp, /run, /mnt, /media, and /lost+found directories, and save the data in /mnt/full-backup folder. Here:
+
+The `-aAXv` options are used so that the files are transferred in “archive” mode, which ensures that symbolic links, devices, permissions, ownerships, modification times, ACLs, and extended attributes are preserved.
+
+Automate the Backup
+It’s good practice to schedule automatic backups. You can simply add the above command in crontab, or write them in a shell script and then schedule the script.
+ADVERTISEMENT
+
+
+
+#!/usr/bin/evn bash
+
+BACKUP_PATH="/mnt/full-backup"
+EXCLUDE_DIR='{"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"}'
+SOURCE_DIR="/"
+
+sudo rsync -aAXv ${SOURCE_DIR} --exclude=${EXCLUDE_DIR} ${BACKUP_PATH}
+
+if [ $? -eq 0 ]; then
+    echo "Backup completed successfully"
+else
+    echo "Some error occurred during backup"
+fi
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+#!/usr/bin/evn bash
+ 
+BACKUP_PATH="/mnt/full-backup"
+EXCLUDE_DIR='{"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"}'
+SOURCE_DIR="/"
+ 
+sudo rsync -aAXv ${SOURCE_DIR} --exclude=${EXCLUDE_DIR} ${BACKUP_PATH}
+ 
+if [ $? -eq 0 ]; then
+    echo "Backup completed successfully"
+else
+    echo "Some error occurred during backup"
+fi
+You can schedule the script to run automatically using a tool such as cron. This will allow you to create regular backups of your system without having to manually run the script.
+
+To schedule the script, edit the crontab:
+
+crontab -e 
+Append the following entry. Make sure to set the correct script name and path. The below schedule will run the script at 02 AM every day.
+
+0  2  *  *  *  bash backup.sh >> backup.log
+1
+0  2  *  *  *  bash backup.sh >> backup.log
+Save and close the editor.
+
+
+
+
+        <div class="w3-container w3-theme-l3 w3-monospace">
+            <ul>
+                <li><a href="#Índice">Índice</a></li>
+            </ul>                                    
+        </div>        
+    </body>
+</html>
