@@ -252,6 +252,9 @@
             </p>
             <p>Verifique na internet opções de geração de certificados por meio da  "Let’s Encrypt" / "Certbot": <a href="https://letsencrypt.org/pt-br/getting-started/">Let’s Encrypt</a>
             </p>
+            <p>Podemos realizar a geraçãop desse certificado por meio de um comando único.<br>
+                <strong>openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/httpd/ssl/private/apache-selfsigned.key -out /etc/httpd/ssl/apache-selfsigned.crt</strong>
+            </p>
         </div>
             
         O que são chaves SSH

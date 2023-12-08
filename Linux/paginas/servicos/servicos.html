@@ -44,8 +44,9 @@
                 <li><a href="../../Linux.html">Página Principal</a></li>
                 <ul>
                     <li><a href="../servicos/servicos.html">Serviços</a></li>                    
-                    <ul>                        
+                    <ul>
                         <li><a href="#Desabilitar Cloud Init">Desabilitar Cloud Init</a></li>
+                        <li><a href="#XRDP - Remote desktop Ubuntu 22.04">XRDP - Remote desktop Ubuntu 22.04</a></li>                        
                         <li><a href="#Acesso SSH com o Usuário Root">Acesso SSH com o Usuário Root</a></li>
                         <li><a href="#Definir Time Zone">Definir o Time Zone</a></li>
                         <li><a href="#Se Linux">Se Linux</a></li>
@@ -89,6 +90,26 @@
                 </ul>
             </ul>
             <p>Reniciar o servidor.</p>
+        </div>
+        <div class="w3-container w3-theme-d2 w3-monospace">
+            <h4>XRDP - Remote desktop Ubuntu 22.04<a name="XRDP - Remote desktop Ubuntu 22.04"></a></h4>
+        </div>
+        <div class="w3-container w3-theme-l5 w3-monospace">
+            <p>https://www.cyberithub.com/how-to-install-xrdp-on-ubuntu-22-04-lts-jammy-jellyfish/</p>
+            <p>sudo apt update<br> 
+                sudo apt install xrdp -y<br>
+                sudo systemctl status xrdp <br> 
+                The installer will create a new account named “xrdp”. The xrdp session uses a certificate key file “/etc/ssl/private/ssl-cert-snakeoil.key”, 
+                which plays an important role with remote desktops.<br>                
+                In order to work it properly, add the xrdp user to the “ssl-cert” group with the following command.<br>
+                Executar: sudo usermod -a -G ssl-cert xrdp<br>
+                sudo systemctl restart xrdp<br>
+                Configure System Firewall<br>
+                sudo ufw allow from 192.168.1.0/24 to any port 3389<br> 
+                sudo ufw reload<br>
+                <br>
+                Observação: Se o usuário estiv er logado no host o RDP não funciona, a tela fica verde.
+            </p>
         </div>
         <div class="w3-container w3-theme-d2 w3-monospace">
             <h4>Definir o Time Zone<a name="Definir o Time Zone"></a></h4>
@@ -225,7 +246,7 @@
                 <li>Para executar uma VM em backgroud e sem interface, executar a VM como "headless".<br>
                     Via linha de comando <strong>"VBoxManage startvm nome-maquina-virtual --type headless"</strong>
                 </li>
-                <li>Comando Virtual Box, "VBoxManage", para o gerenciamento de VM´s: https://www.oracle.com/technical-resources/articles/it-infrastructure/admin-manage-vbox-cli.html                    
+                <li>Comando Virtual Box, "VBoxManage", para o gerenciamento de VM´s: https://www.oracle.com/technical-resources/articles/it-infrastructure/admin-manage-vbox-cli.html ou link para a listagem sintética https://www.virtualbox.org/manual/UserManual.html               
                 </li>                
             </ul>
             <p>Principais comandos:</p>
