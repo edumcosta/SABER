@@ -148,6 +148,7 @@
             </p>
             <p>Caso o seu endereço de rede atrubído ao adaptador de rede não seja listado, utilize o conando <strong>"New-NetNat -Name NAT-REDE-1 -InternalIPInterfaceAddressPrefix 192.168.16.0/24"</strong>, 
                 para criar uma rede NAT e que será utilizada como o endereço NAT para o adaptador.</p>
+            <p>Para excluir use o comando <strong>"Remove-NetNat -Name "NomeDoNAT"</strong></p>
             <p>Nas máquinas virtuais utilize endereço IP estático, caso você não tenha um servidor DHCP habilitado non escopo dessa rede, 
                 uma vez que o Hyper-V não possui a função de atuar como um servidor DHCP, como por exemplo poderíamos configurar um máquina virtual com as seguintes características de rede:
             </p>
@@ -155,7 +156,7 @@
             <li>Máscara de Rede: 255.255.255.0</li>
             <li>Gateway: 192.168.16.1</li>
             <li>DNS: 8.8.8.8</li>
-            <p><strong>Observação:</strong> A configuraçaõ desse tipo de ponte tem somente o objetivo de facilitar a comunicação entre o hospedeiro e
+            <p><strong>Observação:</strong> A configuração desse tipo de ponte tem somente o objetivo de facilitar a comunicação entre o hospedeiro e
                  serviços presentes nas máquinas virtuais, uma vez que com a criação dessa camada, ataques realizados do host para as máquinas virtuais passam a ter alcance pela rede.    
             </p>
             <p>Abaixo, a saída do comando "Get-NetNat".</p>
@@ -175,7 +176,7 @@
             UdpInboundRefresh                : False<br>
             Store                            : Local<br>
             Active                           : True
-            </p>
+            </p>            
         </div>
         <div class="w3-container w3-theme-d2 w3-monospace">
             <h4>NTP - Protocolo de Sincronismo de Horário<a name="NTP"></a></h4>
