@@ -1599,3 +1599,12 @@ edumcosta@vm-ubuntu-l22-h:~$ IFS=$TEMP_IFS
 edumcosta@vm-ubuntu-l22-h:~$
 ```
 
+# Proteger Script - Shell script compiler
+
+https://manpages.ubuntu.com/manpages/jammy/man1/shc.1.html
+
+sudo apt install gcc
+sudo apt-get install shc
+
+shc -f myscript -o mybinary
+shc -f script-mysql-config-docker.sh
