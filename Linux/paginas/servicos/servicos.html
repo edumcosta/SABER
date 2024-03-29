@@ -146,7 +146,7 @@
             </p>
             <p>Uma vez configurado o endereço IP do adaptador, abra o terminal power shell como administrador e execute o comando <strong>"Get-NetNat"</strong> para verificar as redes NAT configuradas.            
             </p>
-            <p>Caso o seu endereço de rede atrubído ao adaptador de rede não seja listado, utilize o conando <strong>"New-NetNat -Name NAT-REDE-1 -InternalIPInterfaceAddressPrefix 192.168.16.0/24"</strong>, 
+            <p>Caso o seu endereço de rede atrubído ao adaptador de rede não seja listado, utilize o comando <strong>"New-NetNat -Name NAT-REDE-1 -InternalIPInterfaceAddressPrefix 192.168.16.0/24"</strong>, 
                 para criar uma rede NAT e que será utilizada como o endereço NAT para o adaptador.</p>
             <p>Para excluir use o comando <strong>"Remove-NetNat -Name "NomeDoNAT"</strong></p>
             <p>Nas máquinas virtuais utilize endereço IP estático, caso você não tenha um servidor DHCP habilitado non escopo dessa rede, 
