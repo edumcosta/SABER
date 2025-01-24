@@ -1253,7 +1253,7 @@ Condições numéricas:
 - -le : Menor ou igual que.
 
 Condições texto:
-- = : Igual.
+- == : Igual.
 - != : Diferente.
 - != : Diferente.
 - -n : Não Nula.
